@@ -1,0 +1,164 @@
+% !TeX TS-program = pdflatex
+% !BIB program = biber
+
+
+
+\providecommand{\twolines}{}
+\renewcommand{\twolines}[2]{$
+	\displaystyle 
+	\begin{array}{c} \\[-3.1ex]
+		#1 \\
+		+ \\
+		#2
+	\end{array}
+$}
+
+%\providecommand{\xA}{-11.5}
+%\providecommand{\xB}{ -8.5}
+%\providecommand{\xC}{ -5.5}
+%\providecommand{\xD}{ -2.5}
+%\providecommand{\xE}{  0.5}
+%\providecommand{\xF}{  3.5}
+%\providecommand{\xG}{  6.5}
+%\providecommand{\xH}{  9.5}
+%\providecommand{\xI}{ 12.5}
+%\providecommand{\xJ}{ 15.5}
+%\providecommand{\xJ}{ 15.5}
+\providecommand{\xA}{-12.0}
+\providecommand{\xB}{-10.5}
+\providecommand{\xC}{ -8.0}
+\providecommand{\xD}{ -5.5}
+\providecommand{\xE}{ -3.0}
+\providecommand{\xF}{ -0.5}
+\providecommand{\xG}{  2.0}
+\providecommand{\xH}{  4.5}
+\providecommand{\xI}{  7.0}
+\providecommand{\xJ}{  9.5}
+\providecommand{\xX}{ 12.5}
+
+\providecommand{\yAA}{- 0.75}
+\providecommand{\yAB}{- 3.70}
+\providecommand{\yDA}{- 4.50}
+\providecommand{\yDB}{- 7.45}
+\providecommand{\yCA}{- 8.25}
+\providecommand{\yCB}{-11.20}
+\providecommand{\yBA}{-12.00}
+\providecommand{\yBB}{-14.95}
+
+
+%\afterpage{%
+%\begin{landscape}
+
+% \begin{figure}[t]
+	% \scalebox{0.5}{
+	\resizebox{0.9\textwidth}{!}{%
+		\begin{tikzpicture}[scale = 0.7]
+		
+		% Crop the tikzpicture to avoid unnecessary whitespace around it:
+		\path[use as bounding box, red] (\xA-2.1, 1.5) rectangle (\xJ+0.8, \yBB-0.4);
+
+		\draw[->] (\xB - 0.75, 0) -- (\xJ + 0.75,0); 
+		\node at  (\xJ + 0.7, 0.4) {$t$};
+		
+		\node[below] at (0.5*\xB+0.5*\xC, 1.4) {$w$ weeks};
+		\path[->] (\xB,0.275) edge [bend left] (\xC, 0.275);
+		
+		\node[below] at (0.5*\xE+0.5*\xF, 1.4) {$w$ weeks};
+		\path[->] (\xE,0.275) edge [bend left] (\xF, 0.275);
+		
+		\draw (\xB,0.075) -- (\xB,-0.075); %node at (\xB,0.3) {$1$};
+		\draw (\xC,0.075) -- (\xC,-0.075); %node at (\xC,0.3) {$2$};
+		\draw (\xD,0.075) -- (\xD,-0.075); %node at (\xD,0.3) {$3$};
+		\draw (\xE,0.075) -- (\xE,-0.075); %node at (\xE,0.3) {$4$};
+		\draw (\xF,0.075) -- (\xF,-0.075); %node at (\xF,0.3) {$5$};
+		\draw (\xG,0.075) -- (\xG,-0.075); %node at (\xG,0.3) {$6$};
+		\draw (\xH,0.075) -- (\xH,-0.075); %node at (\xH,0.3) {$7$};
+		\draw (\xI,0.075) -- (\xI,-0.075); %node at (\xI,0.3) {$8$};
+		\draw (\xJ,0.075) -- (\xJ,-0.075); %node at (\xJ,0.3) {$9$};
+
+		% Gray horizontal separation lines:
+		\draw[gray] (\xB-0.75, \yBA+0.4) -- (\xJ+0.75, \yBA+0.4);
+		\draw[gray] (\xB-0.75, \yCA+0.4) -- (\xJ+0.75, \yCA+0.4);
+		\draw[gray] (\xB-0.75, \yDA+0.4) -- (\xJ+0.75, \yDA+0.4);
+		\draw[gray] (\xB-0.75, \yBB-0.3) -- (\xJ+0.75, \yBB-0.3);
+		
+		\node[below, text width = 3cm] at (\xA, \yAA+0.125) {$\CbalA$:};
+		
+		\node[below] at (\xB, \yAA) {\twolines{1}{B\,(1 - x)}}; % {$1$}
+		\node[above] at (\xB, \yAB) {\huge{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xC, \yAA) {$1$};
+		\node[below] at (\xD, \yAA) {$1$};
+		\node[below] at (\xE, \yAA) {$1$};
+		\node[below] at (\xF, \yAA) {$1$};
+		\node[below] at (\xG, \yAA) {$1$};
+		\node[below] at (\xH, \yAA) {$1$};
+		\node[below] at (\xI, \yAA) {$1$};
+		\node[below] at (\xJ, \yAA) {\twolines{1}{R\,B\,x}};
+		\node[above] at (\xJ, \yAB) {\huge{\textcolor{darkblue}{$\uparrow$}}};
+				
+		\node[below, text width = 3cm] at (\xA, \yBA+0.125) {$\CunbalA[8]$:}; 
+		
+		\node[below] at (\xB, \yBA) {\twolines{1}{B\,(1 - x)}};
+		\node[above] at (\xB, \yBB) {\huge{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xC, \yBA) {\twolines{1}{R\,B\,x\mathop{/}8}};
+		\node[above] at (\xC, \yBB) {\large{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xD, \yBA) {\twolines{1}{R\,B\,x\mathop{/}8}};
+		\node[above] at (\xD, \yBB) {\large{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xE, \yBA) {\twolines{1}{R\,B\,x\mathop{/}8}};
+		\node[above] at (\xE, \yBB) {\large{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xF, \yBA) {\twolines{1}{R\,B\,x\mathop{/}8}};
+		\node[above] at (\xF, \yBB) {\large{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xG, \yBA) {\twolines{1}{R\,B\,x\mathop{/}8}};
+		\node[above] at (\xG, \yBB) {\large{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xH, \yBA) {\twolines{1}{R\,B\,x\mathop{/}8}};
+		\node[above] at (\xH, \yBB) {\large{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xI, \yBA) {\twolines{1}{R\,B\,x\mathop{/}8}};
+		\node[above] at (\xI, \yBB) {\large{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xJ, \yBA) {\twolines{1}{R\,B\,x\mathop{/}8}};
+		\node[above] at (\xJ, \yBB) {\large{\textcolor{darkblue}{$\uparrow$}}};%
+		
+		\node[below, text width = 3cm] at (\xA, \yCA+0.125) {$\CunbalA[4]$:}; 
+		
+		\node[below] at (\xB, \yCA) {\twolines{1}{B\,(1 - x)}};
+		\node[above] at (\xB, \yCB) {\huge{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xC, \yCA) {$1$};
+		\node[below] at (\xD, \yCA) {$1$};
+		\node[below] at (\xE, \yCA) {$1$};
+		\node[below] at (\xF, \yCA) {$1$};
+		\node[below] at (\xG, \yCA) {\twolines{1}{R\,B\,x\mathop{/}4}};
+		\node[above] at (\xG, \yCB) {\Large{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xH, \yCA) {\twolines{1}{R\,B\,x\mathop{/}4}};
+		\node[above] at (\xH, \yCB) {\Large{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xI, \yCA) {\twolines{1}{R\,B\,x\mathop{/}4}};
+		\node[above] at (\xI, \yCB) {\Large{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xJ, \yCA) {\twolines{1}{R\,B\,x\mathop{/}4}};
+		\node[above] at (\xJ, \yCB) {\Large{\textcolor{darkblue}{$\uparrow$}}};%
+		
+		\node[below, text width = 3cm] at (\xA, \yDA+0.125) {$\CunbalA[2]$:}; 
+		
+		\node[below] at (\xB, \yDA) {\twolines{1}{B\,(1 - x)}};
+		\node[above] at (\xB, \yDB) {\huge{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xC, \yDA) {$1$};
+		\node[below] at (\xD, \yDA) {$1$};
+		\node[below] at (\xE, \yDA) {$1$};
+		\node[below] at (\xF, \yDA) {$1$};
+		\node[below] at (\xG, \yDA) {$1$};
+		\node[below] at (\xH, \yDA) {$1$};
+		\node[below] at (\xI, \yDA) {\twolines{1}{R\,B\,x\mathop{/}2}};
+		\node[above] at (\xI, \yDB) {\LARGE{\textcolor{darkblue}{$\uparrow$}}};
+		\node[below] at (\xJ, \yDA) {\twolines{1}{R\,B\,x\mathop{/}2}};
+		\node[above] at (\xJ, \yDB) {\LARGE{\textcolor{darkblue}{$\uparrow$}}};
+		\end{tikzpicture}%
+	}
+	\caption{Budget Sets $\CbalA$ and $\CunbalA$}
+	% \captionof{figure}{Budget Sets: \balA and \unbalA Conditions}
+	\label{fig:incrdisp_bs}
+		% with $b\in\{8,11\}$, $r\in\{0.2,0.5,0.8 \}$, $w\in\{2,3,6\}$, $n\in\{2,4,8\}$: \textcolor{red}{12 choices} \\
+%	\tablenotes[Note:]{%
+%		For the values of $B$, $R$, and $w$ that we used see \autoref{sec:Procedure}.
+%		The arrows indicate whether and in which direction payments at the respective payment dates change if the savings rate $x$ is increased.
+%	}
+% \end{figure}
+
+%\end{landscape}%
+%}

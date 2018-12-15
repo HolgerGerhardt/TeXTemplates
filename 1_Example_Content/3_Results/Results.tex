@@ -1,0 +1,53 @@
+% !TeX program = pdflatex
+% !BIB program = biber
+
+
+
+\section{Results}
+\label{sec:Results}
+
+\blindtext
+With this, we can test our hypotheses.
+
+\subsection{Test of \autoref{hy:UNBAL}}
+
+Our first result supports \autoref{hy:UNBAL}. \blindtext The analysis we conducted to obtain \autoref{r:main} is described in detail in \autoref{tmain:focus}. Let's reference a~section, a~subsection, and a~figure from the appendices: \autoref{sec:app:example_tables}, \autoref{sec:app:salience}, \autoref{fig:concentrated_cl}.
+
+\begin{result} \label{r:main}
+	\blindtext
+\end{result}
+
+\begin{table}[t]
+	\caption{An Example Table}
+	\label{tmain:focus}
+	\begin{tabularx}{\textwidth}[t]{L T{1.3}}
+		\toprule
+		Dependent variable & {$\hat{d}$} \\
+		\midrule
+		Estimate      &       0.123{***} \\
+		&     (0.011) \\
+		\midrule
+		Observations & {750} \\
+		%clustered by subjects & \\
+		Subjects      &         {250} \\
+		\bottomrule
+	\end{tabularx}
+	\tablenotes{%
+		Standard errors in parentheses, clustered on the subject level.
+		{*} $p < 0.10$, {**} $p < 0.05$, {***} $p<0.01$.
+	}
+\end{table}
+
+\blindtext
+
+\subsection{Test of \autoref{hy:UNBAL_2}}
+\blindtext We thereby test \autoref{hy:UNBAL_2}.
+
+\begin{result} \label{r:main2}
+	\blindtext
+\end{result}
+
+Our second result provides evidence in support of \autoref{hy:UNBAL_2}. \blindtext
+
+\subsection{Heterogeneity}
+\blindmathpaper

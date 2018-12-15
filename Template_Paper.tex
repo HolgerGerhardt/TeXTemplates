@@ -1,0 +1,121 @@
+% !TeX document-id = {41e45e82-ef69-4afe-b598-4ca4a64e5ec2}
+% !TeX program = pdflatex
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:compile = txs:///pdflatex/
+
+% !BIB program = biber
+% !BIB TS-program = biber
+% !TeX TXS-program:bibliography = txs:///biber
+
+
+
+
+%%%%%%%%%%%%%%%%
+%%  PREAMBLE  %%
+%%%%%%%%%%%%%%%%
+
+
+\documentclass[a4paper, 10pt]{article}
+% fleqn: flush-left aligned equations
+
+\newcommand{\papertitle}{A~Template for Academic Manuscripts}
+
+\input{0_0_Preamble/Preamble_Fundamental_packages}
+\hypersetup{
+	pdftitle={\papertitle},
+	pdfauthor={Adam Smith, Janet Smith, Jeremiah Smith}
+}
+\input{0_0_Preamble/Preamble_Page_layout_general}
+\input{0_0_Preamble/Preamble_Page_layout_paper}
+\input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
+\input{0_0_Preamble/Preamble_Sansserif_math}
+\input{0_0_Preamble/Preamble_BibLaTeX_AER}
+\input{0_0_Preamble/Preamble_Commenting_and_highlighting}
+\input{0_0_Preamble/Preamble_Commenting_off}
+\input{0_0_Preamble/Preamble_Miscellaneous}
+
+% Add global hyphenation rules to avoid unwelcome linebreaks:
+\hyphenation{Bu-shong Della-Vigna inter-tem-po-ral K\H{o}-szegi Spren-ger Bala-krish-nan}
+
+\bibliography{Library}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%  DOCUMENT BODY  %%
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+\defcitealias{Koszegi2013}{K\H{o}szegi--Szeidl}
+
+\selectlanguage{USenglish} \frenchspacing
+
+\input{0_1_Titlepage_paper/Titlepage}  % Do not use \subimport here yet
+
+% \subimport enables execution of \input commands in subdocuments without having to adjust paths
+\subimport*{1_Example_Content/1_Introduction/}{Introduction}
+\subimport*{1_Example_Content/2_Methods/}{Design}
+\subimport*{1_Example_Content/2_Methods/}{Predictions}
+\subimport*{1_Example_Content/3_Results/}{Results}
+\subimport*{1_Example_Content/3_Results/}{Structural_Estimation}
+\subimport*{1_Example_Content/4_Discussion/}{Discussion}
+\subimport*{1_Example_Content/5_Conclusion/}{Conclusion}
+
+\clearpage
+
+\begin{appendices}
+	\label{sec:appendix}
+	\FloatBarrier
+	\subimport*{1_Example_Content/9_Appendix/}{Attention}
+	\FloatBarrier
+	\newpage
+	\subimport*{1_Example_Content/9_Appendix/}{Additional_Figures}
+	\FloatBarrier
+	\subimport*{1_Example_Content/9_Appendix/}{siunitx_Examples}
+	%\begin{comment}
+		{\setlength{\parindent}{0cm}
+		%\setlength{\mathindent}{0cm}  % Only for ``fleqn'' option
+
+		\input{2_Math_Tests/mathtest_defs}
+
+		\newpage
+		\renewcommand{\showfamily}{{\color{magenta}%
+			Serif%
+		}}
+		{\rmfamily\mdseries\input{2_Math_Tests/mathtest}}
+
+		\newpage
+		\renewcommand{\showfamily}{{\color{magenta}%
+			Serif Bold%
+		}}
+		{\rmfamily\bfseries\input{2_Math_Tests/mathtest}}
+
+		\newpage
+		\renewcommand{\showfamily}{{\color{magenta}%
+			Sans Serif%
+		}}
+		{\sffamily\mdseries\input{2_Math_Tests/mathtest}}
+
+		\newpage
+		\renewcommand{\showfamily}{{\color{magenta}%
+			Sans Serif Bold%
+		}}
+		{\sffamily\bfseries\input{2_Math_Tests/mathtest}}
+	}
+	%\end{comment}
+\end{appendices}
+
+\newpage
+
+\phantomsection % Needed for the bibliography bookmark to point to the correct page
+
+\begin{refcontext}[sorting=nyt]  % Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
+\printbibliography[heading=bibintoc]
+\end{refcontext}
+
+
+\end{document}

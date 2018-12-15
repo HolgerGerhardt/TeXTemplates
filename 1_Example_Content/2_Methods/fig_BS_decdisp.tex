@@ -1,0 +1,154 @@
+% !TeX program = pdflatex
+% !BIB program = biber
+
+
+\renewcommand{\twolines}[2]{$
+	\displaystyle 
+	\begin{array}{c} \\[-12.75pt]
+	#1 \\
+	+ \\
+	\displaystyle #2
+	\end{array}
+	$}
+
+\renewcommand{\xA}{-12.00}
+\renewcommand{\xB}{-10.50}
+\renewcommand{\xC}{ -8.30}
+\renewcommand{\xD}{ -6.10}
+\renewcommand{\xE}{ -3.90}
+\renewcommand{\xF}{ -1.70}
+\renewcommand{\xG}{  0.50}
+\renewcommand{\xH}{  2.70}
+\renewcommand{\xI}{  4.90}
+\renewcommand{\xJ}{  7.10}
+\renewcommand{\xX}{  8.00}
+
+
+\renewcommand{\yAA}{- 0.75}
+\renewcommand{\yAB}{- 4.00}
+\renewcommand{\yDA}{- 4.75}
+\renewcommand{\yDB}{- 8.00}
+\renewcommand{\yCA}{- 8.75}
+\renewcommand{\yCB}{-12.00}
+\renewcommand{\yBA}{-12.75}
+\renewcommand{\yBB}{-16.00}
+
+%\afterpage{%
+%\begin{landscape}
+
+% \begin{figure}[b]
+	% \scalebox{0.5}{
+	\resizebox{0.9\textwidth}{!}{
+	\begin{tikzpicture}[scale = 0.75]
+		
+		\path[use as bounding box, red] (\xA-1.85, 2) rectangle (\xX+0.8,\yBB-0.4);	% To crop the tikzpicture to avoid unnecessary whitespace around it		
+		
+		\draw[-]      (\xB-0.75,0) -- (\xI+0.75,0);
+		\draw[dashed] (\xI+1,0) -- (\xX-1,0);
+		\draw[->]     (\xX-0.75,0) -- (\xX+0.75,0);
+		\node at      (\xX+0.7, 0.4) {$t$};
+		
+		\node[below] at (0.5*\xB+0.5*\xC, 1.4) {$w$ weeks};
+		\path[->] (\xB, 0.275) edge [bend left] (\xC, 0.275);
+		
+		\node[below] at (0.5*\xE+0.5*\xF, 1.4) {$w$ weeks};
+		\path[->] (\xE, 0.275) edge [bend left] (\xF, 0.275);
+		
+		\node at (0.5*\xI+0.5*\xX, 1.45) {7~months};
+		\path[->] (\xI, 0.275) edge [bend left=45] (\xX, 0.275);
+					
+		
+		\draw (\xB,0.075) -- (\xB,-0.075); %node at (\xB,0.3) {$1$};
+		\draw (\xC,0.075) -- (\xC,-0.075); %node at (\xC,0.3) {$2$};
+		\draw (\xD,0.075) -- (\xD,-0.075); %node at (\xD,0.3) {$3$};
+		\draw (\xE,0.075) -- (\xE,-0.075); %node at (\xE,0.3) {$4$};
+		\draw (\xF,0.075) -- (\xF,-0.075); %node at (\xF,0.3) {$5$};
+		\draw (\xG,0.075) -- (\xG,-0.075); %node at (\xG,0.3) {$6$};
+		\draw (\xH,0.075) -- (\xH,-0.075); %node at (\xH,0.3) {$7$};
+		\draw (\xI,0.075) -- (\xI,-0.075); %node at (\xI,0.3) {$8$};
+		\draw (\xX,0.075) -- (\xX,-0.075); %node at (\xX,0.3) {$9$};
+		
+		% Gray horizontal separation lines:
+		\draw[gray] (\xB-0.75, \yBA+0.4) -- (\xX+0.75, \yBA+0.4);
+		\draw[gray] (\xB-0.75, \yCA+0.4) -- (\xX+0.75, \yCA+0.4);
+		\draw[gray] (\xB-0.75, \yDA+0.4) -- (\xX+0.75, \yDA+0.4);
+		\draw[gray] (\xB-0.75, \yBB-0.3) -- (\xX+0.75, \yBB-0.3);
+
+	\node[below, text width = 3cm] at (\xA, \yAA+0.115) {$\CbalB$:};
+		
+		\node[below] at (\xB, \yAA) {$1$};
+		\node[below] at (\xC, \yAA) {$1$};
+		\node[below] at (\xD, \yAA) {$1$};
+		\node[below] at (\xE, \yAA) {$1$};
+		\node[below] at (\xF, \yAA) {$1$};
+		\node[below] at (\xG, \yAA) {$1$};
+		\node[below] at (\xH, \yAA) {$1$};
+		\node[below] at (\xI, \yAA) {\twolines{1}{B\,(1 - x)}};
+		\node[above] at (\xI, \yAB) {\huge{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xX, \yAA) {\twolines{1}{R\,B\,x}};
+		\node[above] at (\xX, \yAB) {\huge{\textcolor{darkblue}{$\uparrow$}}};
+
+	\node[below, text width = 3cm] at (\xA, \yDA+0.115) {$\CunbalB[2]$:}; 
+	
+		\node[below] at (\xB, \yDA) {$1$};
+		\node[below] at (\xC, \yDA) {$1$};
+		\node[below] at (\xD, \yDA) {$1$};
+		\node[below] at (\xE, \yDA) {$1$};
+		\node[below] at (\xF, \yDA) {$1$};
+		\node[below] at (\xG, \yDA) {$1$};
+		\node[below] at (\xH, \yDA) {\twolines{1}{\frac{B\,(1 - x)}{2}}};
+		\node[above] at (\xH, \yDB) {\LARGE{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xI, \yDA) {\twolines{1}{\frac{B\,(1 - x)}{2}}};
+		\node[above] at (\xI, \yDB) {\LARGE{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xX, \yDA) {\twolines{1}{R\,B\,x}};
+		\node[above] at (\xX, \yDB) {\huge{\textcolor{darkblue}{$\uparrow$}}};
+		
+	\node[below, text width = 3cm] at (\xA, \yCA+0.115) {$\CunbalB[4]$:}; 
+	
+		\node[below] at (\xB, \yCA) {$1$};
+		\node[below] at (\xC, \yCA) {$1$};
+		\node[below] at (\xD, \yCA) {$1$};
+		\node[below] at (\xE, \yCA) {$1$};
+		\node[below] at (\xF, \yCA) {\twolines{1}{\frac{B\,(1 - x)}{4}}};
+		\node[above] at (\xF, \yCB) {\Large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xG, \yCA) {\twolines{1}{\frac{B\,(1 - x)}{4}}};
+		\node[above] at (\xG, \yCB) {\Large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xH, \yCA) {\twolines{1}{\frac{B\,(1 - x)}{4}}};
+		\node[above] at (\xH, \yCB) {\Large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xI, \yCA) {\twolines{1}{\frac{B\,(1 - x)}{4}}};
+		\node[above] at (\xI, \yCB) {\Large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xX, \yCA) {\twolines{1}{R\,B\,x}};
+		\node[above] at (\xX, \yCB) {\huge{\textcolor{darkblue}{$\uparrow$}}};
+	
+	\node[below, text width = 3cm] at (\xA, \yBA+0.115) {$\CunbalB[8]$:};
+		
+		\node[below] at (\xB, \yBA) {\twolines{1}{\frac{B\,(1 - x)}{8}}};
+		\node[above] at (\xB, \yBB) {\large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xC, \yBA) {\twolines{1}{\frac{B\,(1 - x)}{8}}};
+		\node[above] at (\xC, \yBB) {\large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xD, \yBA) {\twolines{1}{\frac{B\,(1 - x)}{8}}};
+		\node[above] at (\xD, \yBB) {\large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xE, \yBA) {\twolines{1}{\frac{B\,(1 - x)}{8}}};
+		\node[above] at (\xE, \yBB) {\large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xF, \yBA) {\twolines{1}{\frac{B\,(1 - x)}{8}}};
+		\node[above] at (\xF, \yBB) {\large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xG, \yBA) {\twolines{1}{\frac{B\,(1 - x)}{8}}};
+		\node[above] at (\xG, \yBB) {\large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xH, \yBA) {\twolines{1}{\frac{B\,(1 - x)}{8}}};
+		\node[above] at (\xH, \yBB) {\large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xI, \yBA) {\twolines{1}{\frac{B\,(1 - x)}{8}}};
+		\node[above] at (\xI, \yBB) {\large{\textcolor{darkblue}{$\downarrow$}}};
+		\node[below] at (\xX, \yBA) {\twolines{1}{R\,B\,x}};
+		\node[above] at (\xX, \yBB) {\huge{\textcolor{darkblue}{$\uparrow$}}};
+		
+	\end{tikzpicture}%
+	}
+	\caption{Budget Sets $\CbalB$ and $\CunbalB$}
+	% \captionof{figure}{Budget Sets: \balB and \unbalB Conditions }
+	\label{fig:decrdisp_bs}
+
+	
+% \end{figure}
+
+%\end{landscape}%
+%}

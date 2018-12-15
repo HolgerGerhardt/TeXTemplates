@@ -1,0 +1,75 @@
+% !TeX program = pdflatex
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:bibliography = txs:///biber
+% !BIB program = biber
+
+
+
+
+%\newdateformat{monthyeardate}{\monthname[\THEMONTH]~\THEYEAR}
+
+\pagenumbering{roman}
+
+\makeatletter
+\renewcommand*{\maketitle}{%
+	%\begin{titlepage}
+	\thispagestyle{bullshitheader}
+	\begin{center}\selectlanguage{USenglish}\large\mbox{}
+		
+		\vfill
+		
+		{\LARGE\bfseries\@title\par}
+		
+		\vfill%\vspace{3\baselineskip}
+		
+		{\Large\ifthenelse{\equal{\thesistype}{BA}}{Bachelor's Thesis}{Master's Thesis}}
+		% Regarding the use of the apostrophe, see
+		% https://www.uni-bonn.de/die-universitaet/glossar/deutsch-englisches-glossar/bachelorarbeit%
+		% and
+		% https://www.uni-bonn.de/die-universitaet/glossar/deutsch-englisches-glossar/masterarbeit
+		
+		\vspace{1.5\baselineskip}
+		
+		Presented to the
+		
+		Department of Economics at the
+		
+		Rheinische Friedrich-Wilhelms-Universit{\"a}t Bonn
+
+		\vspace{1.5\baselineskip}
+
+		In Partial Fulfillment of the Requirements for the Degree of
+		
+		\ifthenelse{\equal{\thesistype}{BA}}{Bachelor of Science (B.Sc.)}{Master of Science (M.Sc.)}
+		
+		\vspace{1.5\baselineskip}
+		
+		Supervisor: \advisorname
+		
+		\vfill%\vspace{2\baselineskip}
+		
+		Submitted in \DTMenglishmonthname{\DTMfetchmonth{currentdate}}~\DTMfetchyear{currentdate}\ by
+		
+		\vspace{\baselineskip}
+		
+		{\Large \@author}
+		
+		\vspace{1\baselineskip}
+		
+		Matriculation Number: \studentID
+		
+		\vfill
+	\end{center}
+	%\end{titlepage}
+	\clearpage
+}
+\makeatother
+
+\maketitle
+
+\tableofcontents  % Include table of contents in the thesis version:
+
+\clearpage
+
+\pagenumbering{arabic}

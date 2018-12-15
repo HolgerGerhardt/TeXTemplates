@@ -1,0 +1,113 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TS-program = pdflatex
+% !TeX root = Diss-Template.tex
+
+
+
+
+%%%%%%%%%%%%%%%%%%
+%%  COVER PAGE  %%
+%%%%%%%%%%%%%%%%%%
+
+
+\frontmatter  % roman page numbering
+
+\noindent%
+\begin{center}
+\begin{minipage}[t][0.99\textheight][t]{0.9\textwidth}
+\title{\sffamily\bfseries\LARGE%
+	~\\[-10ex]
+	\disstitle%
+}
+\author{\large\selectlanguage{ngerman}%
+	\\[5ex]%	
+	% \textsf{% Sans-serif font
+		{\Large Inaugural-Dissertation}%
+	% }
+	\\[2ex]%
+	zur Erlangung des Grades eines Doktors \\%
+	der Wirtschafts- und Gesellschaftswissenschaften \\[1.25ex]%
+	durch \\[1.25ex]%
+	die Rechts- und Staatswissenschaftliche Fakultät der \\%
+	Rheinischen Friedrich-Wilhelms-Universität Bonn \\[2ex]%
+	vorgelegt von \\[3ex]%
+	\textbf{% Bold font
+		{\Large \dissauthor}
+	}
+	\\[2ex]%
+	aus \dissbornin
+}
+\date{{\Large\dissyear}%
+	% Include only after defense: -->
+	\ifnum \dissafterdefense=1
+		\vfill
+		\noindent \rule{\textwidth}{0.5pt} \\[1.25ex]
+		\noindent\selectlanguage{ngerman} Tag der Promotion: \dissdatedefense
+	\fi
+	% <--
+}
+
+\maketitle
+\end{minipage}
+\end{center}
+
+%\thispagestyle{empty}
+\thispagestyle{bullshitheader}
+
+
+
+
+%%%%%%%%%%%%%%
+%%  PAGE 2  %%
+%%%%%%%%%%%%%%
+
+
+% THIS PAGE IS NOT TO BE INCLUDED WHEN HANDING IN THE THESIS PRIOR TO THE DEFENSE.
+% ONLY INCLUDE IT IN THE VERSION THAT IS TO BE PUBLISHED AFTER THE SUCCESSFUL DEFENSE!
+
+\newpage
+\thispagestyle{empty}
+
+\ifnum \dissafterdefense=1
+	\mbox{\hspace{0pt}}	% Needed for the \vfill to work
+	\vfill
+	
+	\noindent\selectlanguage{ngerman}
+	\begin{tabular}{@{}l@{\quad}l@{}}
+		Dekan:                          & \dissdean             \\
+		Erstreferent:                   & \dissfirstsupervisor  \\
+		Zweitreferent:                  & \disssecondsupervisor \\
+		Tag der m\"undlichen Pr\"ufung: & \dissdatedefense
+	\end{tabular}
+\else
+	~
+\fi
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  PAGE 3 AND AFTER: TOC, LOF, ETC.  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\cleardoublepage
+
+\selectlanguage{american}
+
+\input{0_1_Frontmatter_Dissertation/Acknowledgements}
+
+\cleardoublepage
+
+\tableofcontents
+
+\cleardoublepage
+
+\listoffigures
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoftables
+\addcontentsline{toc}{chapter}{\listtablename}
+
+\cleardoublepage
+
+\mainmatter  % Arabic page numbering

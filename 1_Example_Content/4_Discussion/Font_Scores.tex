@@ -1,0 +1,62 @@
+% !TeX program = pdflatex
+% !BIB program = biber
+
+
+
+\begin{table}[t]
+	\caption{Points awarded in our typeface competition---basic formatting}
+	\label{tab:basic_formatting}
+	\begin{tabular}{@{}lccccc@{}}
+		\toprule
+					&	Utopia	&	Computer Modern	&	Charter	&	Times Roman	&	Palatino	\\
+		\midrule
+		Yo\"{e}l	&	1	&	1	&	2	&	0	&	1	\\
+		\c{C}elik	&	2	&	0	&	2	&	1	&	0	\\
+		Anit\`{a}	&	1	&	2	&	1	&	2	&	0	\\
+		U\u{g}ur	&	1	&	2	&	0	&	1	&	0	\\
+		H\r{a}kan	&	1	&	0	&	2	&	0	&	1	\\
+		Allison		&	2	&	0	&	1	&	2	&	1	\\
+		P\'{i}a		&	1	&	0	&	2	&	1	&	0	\\
+		David		&	1	&	0	&	2	&	1	&	1	\\
+		\midrule
+		Sum			&  10	&	5	&	12	&	8	&	4	\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\begin{table}[b]
+	\caption{Points awarded in our typeface competition---more sophisticated formatting}
+	\label{tab:advanced_formatting}
+	\sisetup{table-column-width = 0.13\textwidth}
+	% <{\qquad} @{\extracolsep{\fill}}
+	\renewcommand\cellalign{ct}
+	\begin{tabularx}{\textwidth}{ @{} L *{5}{T{2.0}} }
+		\toprule
+			&	{Utopia\parnote{\texttt{\textbackslash usepackage\{fourier\}}}}
+			&	{\makecell[{{p{0.13\textwidth}}}]{\centering Computer Modern\parnote{The \LaTeX\ standard serif font.}}}
+			&	{Charter\parnote{\texttt{\textbackslash usepackage[charter]\{mathdesign\}}}}
+			&	{\makecell[{{p{0.13\textwidth}}}]{\centering Times Roman\parnote{\texttt{\textbackslash usepackage\{newtxtext, newtxmath\}}}}}
+			&	{Palatino\parnote{\texttt{\textbackslash usepackage[sc]\{mathpazo\}}}}
+			\\
+		\midrule
+		Yo\"{e}l  	& 	1	&	1	&	2	&	0	&	1	\\
+		\c{C}elik	&	2	&	0	&	2	&	1	&	0	\\
+		Anit\`{a}	&	1	&	2	&	1	&	2	&	0	\\
+		U\u{g}ur	&	1	&	2	&	0	&	1	&	0	\\
+		H\r{a}kan	&	1	&	0	&	2	&	0	&	1	\\
+		Allison		&	2	&	0	&	1	&	2	&	1	\\
+		P\'ia		&	1	&	0	&	2	&	1	&	0	\\
+		David		&	1	&	0	&	2	&	1	&	1	\\
+		\midrule
+		Sum			&  10	&	5	&	12	&	8	&	4	\\
+		\bottomrule
+		%\multicolumn{6}{@{} p{\textwidth} @{}}{%
+		%	\renewcommand{\parnotevskip}{-22pt}
+		%	\parnotes%
+		%	\vspace{\parnotevskip}
+		%}
+		% {\justify\setlength{\parindent}{0pt}\parnotes}
+	\end{tabularx}
+	%\renewcommand{\parnotevskip}{-22pt}
+	\parnotes%
+\end{table}

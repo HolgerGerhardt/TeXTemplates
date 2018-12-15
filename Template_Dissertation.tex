@@ -1,0 +1,277 @@
+% !TeX document-id = {1898447c-dd8b-4106-9f92-de464eae291a}
+% !TeX program = pdflatex
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:compile = txs:///pdflatex/
+
+% !BIB program = biber
+% !BIB TS-program = biber
+% !TeX TXS-program:bibliography = txs:///biber
+
+
+
+%%%%%%%%%%%%%%%%
+%%  PREAMBLE  %%
+%%%%%%%%%%%%%%%%
+
+
+\documentclass[11pt, a4paper, twoside]{book}
+% Use option ``fleqn'' for left-aligned display formulae
+
+\newcommand{\dissafterdefense}{1}
+% Set to 1 for the final version AFTER the defense, because only after the defense is the second page (which lists the date of the defense and the names of the supervisors) to be included!
+% The same applies to the ``Tag der Promotion'' note on the title page.
+
+\newcommand{\disstitle}
+	{Essays in Theoretical and Empirical Microeconomics and Macroecoconomics with\unskip\nobreak\ Implications for Social Policy All\unskip\nobreak\ Around\unskip\nobreak\ the\unskip\nobreak\ World}
+\newcommand{\dissauthor}
+	{I.~M.~B{\'e}ta Zane-{\AA}l}
+\newcommand{\dissbornin}
+	{Summacumlaudeville}
+\newcommand{\dissyear}
+	{2018}
+\newcommand{\dissdean}
+	{Prof.~Dr. Jürgen von Hagen}
+\newcommand{\dissfirstsupervisor}
+	{Prof.~Dr. Armin Falk}
+\newcommand{\disssecondsupervisor}
+	{Prof.~Dr. Hans-Martin von Gaudecker}
+\newcommand{\dissdatedefense}
+	{11.~November~2018}
+
+\input{0_0_Preamble/Preamble_Fundamental_packages}
+\hypersetup{
+	pdftitle={\disstitle},
+	pdfauthor={\dissauthor}
+}
+\input{0_0_Preamble/Preamble_Page_layout_dissertation}
+\input{0_0_Preamble/Preamble_Page_layout_general}
+\input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
+\input{0_0_Preamble/Preamble_Sansserif_math}
+\input{0_0_Preamble/Preamble_BibLaTeX_AER}
+\input{0_0_Preamble/Preamble_Commenting_and_highlighting}
+\input{0_0_Preamble/Preamble_Commenting_off}
+\input{0_0_Preamble/Preamble_Miscellaneous}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  LOAD THE .BIB FILES  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\bibliography{Library.bib}
+%\addbibresource{.../filename.bib}  % Use to add further .bib files for the individual papers
+
+
+
+
+%%%%%%%%%%%%
+%%  BODY  %%
+%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+\input{0_1_Frontmatter_Dissertation/Frontmatter}
+	% use \input here, because \subimport prevents generation of the ToC
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  INTRODUCTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{refsection}
+
+\chapter*{Introduction}
+\label{diss:intro}
+\addcontentsline{toc}{chapter}{Introduction}
+\chaptermark{Introduction}
+
+\graphicspath{{0_Introduction_Dissertation/}}
+\input{0_Introduction_Dissertation/Introduction}
+
+\begin{refcontext}[sorting=nyt]
+	% Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
+	\printbibliography[heading=subbibliography]
+\end{refcontext}
+
+\end{refsection}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  CHAPTER 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{refsection}
+
+% Save old footnote definition
+\makeatletter
+\renewcommand{\@makefntext}[1]{\@makefntextorig{#1}}
+\makeatother
+\chapter
+	[My Job Market Paper]
+	{My Job Market Paper%
+	 \setcounter{footnote}{1}\textsuperscript{\Large\fnsymbol{footnote}}%
+	}
+\label{diss:JMP}
+% Use footnote symbols instead of numbers
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\footnotetext[1]{\:\protect\input{1_Example_Content/1_Introduction/Acknowledgments}}
+% Switch back to the original footnote definition
+\renewcommand{\thefootnote}{\thefootnoteorig}
+\makeatletter
+\renewcommand{\@makefntext}[1]{\@makefntextcustom{#1}}
+\renewcommand{\@makefnmark}{\@makefnmarkorig}
+\makeatother
+\setcounter{footnote}{0}
+
+\graphicspath{{1_Example_Content/}}
+\subimport*{1_Example_Content/1_Introduction/}{Introduction}
+\subimport*{1_Example_Content/2_Methods/}{Design}
+\subimport*{1_Example_Content/2_Methods/}{Predictions}
+\subimport*{1_Example_Content/3_Results/}{Results}
+\subimport*{1_Example_Content/3_Results/}{Structural_Estimation}
+\subimport*{1_Example_Content/4_Discussion/}{Discussion}
+\subimport*{1_Example_Content/5_Conclusion/}{Conclusion}
+
+\begin{subappendices}
+	\label{sec:appendix}
+	\appendixformat
+	\FloatBarrier
+	\subimport*{1_Example_Content/9_Appendix/}{Attention}
+	\FloatBarrier
+	\newpage
+	\subimport*{1_Example_Content/9_Appendix/}{Additional_Figures}
+	\FloatBarrier
+	\subimport*{1_Example_Content/9_Appendix/}{siunitx_Examples}
+\end{subappendices}
+
+\clearpage
+
+\begin{refcontext}[sorting=nyt]
+	% Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
+	\printbibliography[heading=subbibliography]
+\end{refcontext}
+
+\end{refsection}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  CHAPTER 2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{refsection}
+
+% Save old footnote definition
+\makeatletter
+\renewcommand{\@makefntext}[1]{\@makefntextorig{#1}}
+\makeatother
+\chapter
+	[My Second Paper]
+	{My Second Paper%
+	 \setcounter{footnote}{1}\textsuperscript{\Large\fnsymbol{footnote}}%
+	}
+\label{diss:MySecondPaper}
+% Use footnote symbols instead of numbers
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\footnotetext[1]{\:\protect\input{1_Example_Content/1_Introduction/Acknowledgments}}
+% Switch back to the original footnote definition
+\renewcommand{\thefootnote}{\thefootnoteorig}
+\makeatletter
+\renewcommand{\@makefntext}[1]{\@makefntextcustom{#1}}
+\renewcommand{\@makefnmark}{\@makefnmarkorig}
+\makeatother
+\setcounter{footnote}{0}
+\vspace{-\bigskipamount}\textsf{\textit{Joint with Adam Smith, Janet Smith, and Jeremiah Smith}} \bigskip
+
+\graphicspath{{1_Example_Content/}}
+\subimport*{1_Example_Content/1_Introduction/}{Introduction}
+\subimport*{1_Example_Content/2_Methods/}{Design}
+\subimport*{1_Example_Content/2_Methods/}{Predictions}
+\subimport*{1_Example_Content/3_Results/}{Results}
+\subimport*{1_Example_Content/3_Results/}{Structural_Estimation}
+\subimport*{1_Example_Content/4_Discussion/}{Discussion}
+\subimport*{1_Example_Content/5_Conclusion/}{Conclusion}
+
+\begin{subappendices}
+	\label{sec:appendix}
+	\appendixformat
+	\FloatBarrier
+	\subimport*{1_Example_Content/9_Appendix/}{Attention}
+	\FloatBarrier
+	\newpage
+	\subimport*{1_Example_Content/9_Appendix/}{Additional_Figures}
+	\FloatBarrier
+	\subimport*{1_Example_Content/9_Appendix/}{siunitx_Examples}
+\end{subappendices}
+
+\clearpage
+
+\begin{refcontext}[sorting=nyt]
+	% Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
+	\printbibliography[heading=subbibliography]
+\end{refcontext}
+
+\end{refsection}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  CHAPTER 3  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\begin{comment}
+
+\begin{refsection}
+
+\chapter{Math Tests}
+
+	{\setlength{\parindent}{0cm}
+	%\setlength{\mathindent}{0cm}  % Only for ``fleqn'' option
+	
+	\input{2_Math_Tests/mathtest_defs}
+	
+	\newpage
+	\renewcommand{\showfamily}{{\color{magenta}%
+		Serif%
+	}}
+	{\rmfamily\mdseries\input{2_Math_Tests/mathtest}}
+	
+	\newpage
+	\renewcommand{\showfamily}{{\color{magenta}%
+		Serif Bold%
+	}}
+	{\rmfamily\bfseries\input{2_Math_Tests/mathtest}}
+	
+	\newpage
+	\renewcommand{\showfamily}{{\color{magenta}%
+		Sans Serif%
+	}}
+	{\sffamily\mdseries\input{2_Math_Tests/mathtest}}
+	
+	\newpage
+	\renewcommand{\showfamily}{{\color{magenta}%
+		Sans Serif Bold%
+	}}
+	{\sffamily\bfseries\input{2_Math_Tests/mathtest}}
+}
+
+\end{refsection}
+
+%\end{comment}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  FORMAL STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{refsection}
+
+\selectlanguage{ngerman}
+
+\chapter*{%
+	Lebenslauf%
+	%	\setcounter{footnote}{1}\textsuperscript{\fnsymbol{footnote}}
+}
+\input{9_Formal_Stuff/CV}
+
+\end{refsection}
+
+
+\end{document}

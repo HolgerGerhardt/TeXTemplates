@@ -1,0 +1,94 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:bibliography = txs:///biber
+% !BIB program = biber
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FONT SETTINGS AND TYPOGRAPHY  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Use Fira Sans as the sansserif font
+% Load first because it otherwise doesn't work properly
+% ==>
+\usepackage[book, semibold, lining, tabular, scale=0.91]{FiraSans}[2018/05/23]
+\makeatletter
+\@ifpackagelater{FiraSans}{2017/05/23}
+	{}
+	{\PackageError{FiraSans}
+	     {Outdated 'FiraSans' package}
+	     {Upgrade to FiraSans 2018/05/23 or newer!\MessageBreak
+	      Otherwise the sans-serif font may not work properly, or the compilation might fail.\MessageBreak
+	      This is a fatal error. I'm aborting now.}%
+	   \endinput}
+\makeatother
+%% In case you wish to use the ``light'' options of FiraSans: -->
+%\usepackage{afterpackage}
+%\AfterPackage{siunitx}{%
+%  \providecommand*{\lseries}{\fontseries{l}\selectfont}
+%}
+%% <--
+%% See https://tex.stackexchange.com/questions/164791/combination-of-siunitx-and-light-weight-font-fails-to-compile.
+% Save the font family and font series definitions for later use:
+\newcommand{\savesffamily}{\sfdefault}
+\makeatletter
+\newcommand{\savesfmdseries}{\mdseries@sf}
+\newcommand{\savesfbfseries}{\bfseries@sf}
+\makeatother
+\usepackage[lining, scale=0.91]{FiraMono}
+% <==
+
+% Use Bitstream Charter as the math font
+% ==>
+\usepackage[charter, greeklowercase=italicized, greekuppercase=italicized, sfscaled=false, ttscaled=false]{mathdesign}
+% Save the font family and font series definitions for later use:
+\let \savermfamily   \rmdefault
+\let \savermmdseries \mddefault
+\let \savermbfseries \bfdefault
+% <==
+
+% Use Bitstream Charter as the text font
+% ==>
+\usepackage[scaled=.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport
+% Save the font family and font series definitions for later use:
+\let \savermdefaultfortext \rmdefault
+\let \savemddefaultfortext \mddefault
+\let \savebfdefaultfortext \bfdefault
+\renewcommand{\textellipsis}{\mbox{.{\kern.09em}.{\kern.09em}.}}
+\makeatletter
+\newcommand{\@makefnmarkorig}{%
+	\hbox{\sufigures\hspace*{.04em}\@thefnmark\hspace*{.04em}}%
+}  % Copied from XCharter.sty
+\makeatother
+% <==
+
+% The microtype package enables so-called hanging punctuation. That is, when a punctuation sign like ":", ".", "-", etc. is found at the beginning or end of a line, it is protruded a little into the page margin. This results in "optical margin alignment," because the protrusion makes the margin alignment look straighter.
+\ifxetex
+	% Do nothing.
+\else
+	\DisableLigatures[f]{family = {rm*}}
+	% Disable the f* ligatures for Charter because the font does not provide sufficient support.
+	\DisableLigatures[f]{family = {tt*}}
+	% Disable the f* ligatures for Fira Mono because they make no sense for a monospaced font.
+	\SetExtraKerning[unit=space]
+	{encoding=*, family=*, series=*, size={*, normalsize, footnotesize}, font = */*/*/*/*}
+	{\textemdash = {325, 325},
+		/ = {100, 100},
+		: = { 50,   0},
+		; = { 50,   0}}
+\fi
+
+\usepackage{xfrac}	% Provides \sfrac
+
+\usepackage[normalem]{ulem}	% Do NOT change \emph to \uline!
+
+% Since math mode uses a different font encoding, issuing \euro/\texteuro in math mode
+% produces an incorrect sign. We fix this. ==>
+\AtBeginDocument{%
+	\renewcommand*{\euro}[1]{%
+		\relax\ifmmode\text{\texteuro}#1\else\texteuro #1\fi%
+	}%
+}
+% <==

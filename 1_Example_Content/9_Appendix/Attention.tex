@@ -1,0 +1,33 @@
+% !TeX program = pdflatex
+% !BIB program = biber
+
+
+
+\section{Put More Complicated Derivations and Proofs Here}
+\label{sec:app:derivations}
+
+\subsection{Appendix Subsection}
+\label{sec:app:derivations:one}
+
+\blindmathtrue
+\Blindtext[4]
+
+\subsection{Salience}
+\label{sec:app:salience}
+
+Salience theory \citep{Bordalo2012, Bordalo2013} represents a~behavioral model according to which the most distinctive features of the available alternatives receive a~particularly large share of attention and are therefore over-weighted. More precisely, a~particular attribute out of all attributes of an~alternative becomes the more salient, the more it differs from that attribute's average level over all available alternatives.
+
+Formally, alternatives are assumed to be uniquely characterized by the values they take in ${T \geq 1}$ attributes (or, ``dimensions''). Utility is assumed to be additively separable in attributes, and salience attaches a~decision weight to each attribute of each good which indicates how salient the respective attribute is for that good. Suppose an agent chooses one alternative from some finite choice set $\CS$. Let $t$ index the $T$~different attributes, and let $k$ index the $K$~available alternatives. Let $u_t(\cdot)$ denote the function which assigns utility to values in dimension~$t$.
+Denote by $a^k_{t}$ the level of attribute $t$ of good $k$ and define ${u^k_t \coloneqq u_t(a^k_t)}$ as the utility that dimension $t$ of good~$k$ yields. Let $\overline{u}_t$ be the average utility level, across all $K$~goods, of dimension~$t$. The salience of each dimension of good~$k$ is determined by a~symmetric and continuous salience function ${\sigma(\cdot, \cdot)}$ that satisfies the following two properties:
+\begin{enumerate}
+\item \emph{Ordering.} Let ${\mu \coloneqq \mathrm{sgn}(u^k_t - \overline{u}_t)}$. Then for any ${\epsilon,\epsilon' \geq 0}$ with ${\epsilon + \epsilon' > 0}$, it holds that~
+\begin{equation}
+	\sigma(u^k_t + \mu\,\epsilon, \overline{u}_t - \mu\,\epsilon') > \sigma (u^k_t,\overline{u}_t).
+\end{equation}
+\item \emph{Diminishing sensitivity.} For any ${u^k_t, \overline{u}_t \geq 0}$ and all ${\epsilon > 0}$, it holds that
+\begin{equation}
+	\sigma(u^k_t + \epsilon, \overline{u}_t + \epsilon) < \sigma(u^k_t,\overline{u}_t).
+\end{equation}
+\end{enumerate}
+
+Following the smooth salience characterization proposed in \cite[p.\,1255]{Bordalo2012}, each dimension $t$ of good $k$ receives weight $\Delta^{-\sigma(u^k_t, \overline{u}_t)}$, where ${\Delta \in (0, 1]}$ is a~constant that captures an~agent's susceptibility to salience. ${\Delta = 1}$ gives rise to a~rational decision maker, and the smaller $\Delta$, the stronger is the salience bias. We call an~agent with ${\Delta < 1}$ a~salient thinker.

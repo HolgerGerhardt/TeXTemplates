@@ -1,0 +1,271 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX program = pdflatex
+% !TeX TXS-program:bibliography = txs:///bibtex
+% !BIB program = bibtex
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FUNDAMENTAL PACKAGES  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[LGR, T1]{fontenc}  % LGR needed for sansserif math
+
+\usepackage{calc}  % Enables calculations for lengths
+\usepackage[nomessages]{fp}	 % Enables calculations in LaTeX
+
+\usepackage{etoolbox}
+
+\PassOptionsToPackage{cmyk}{xcolor}
+\definecolor{UBonnBlue}  {cmyk}{1.00, 0.70, 0.00, 0.00}
+\definecolor{UBonnYellow}{cmyk}{0.00, 0.20, 1.00, 0.00}
+\definecolor{UBonnGray}  {cmyk}{0.00, 0.00, 0.15, 0.55}
+\colorlet{SpotColor}{UBonnBlue}
+\definecolor{CMYKBlack}{cmyk}{0.00, 0.00, 0.00, 1.00}
+\colorlet{CMYKGray}{CMYKBlack!50!}
+\setbeamercolor{normal text}{fg=CMYKBlack}
+\setbeamercolor{alerted text}{fg=SpotColor}
+\setbeamerfont{alerted text}{family=\sffamily, series=\bfseries}
+
+\setbeamercolor{block alerted title}{bg=SpotColor, fg=white}
+\setbeamercolor{block body}{fg=CMYKBlack}
+
+\setbeamercolor{title in headline}{fg=SpotColor}
+\setbeamercolor{institute in headline}{fg=CMYKBlack}
+
+\hypersetup{
+	colorlinks = false,
+	urlcolor   = SpotColor,
+	linkcolor  = SpotColor,
+	citecolor  = SpotColor
+}
+\urlstyle{same}
+\let \urlorig \url
+\renewcommand{\url}[1]{\textcolor{SpotColor}{\urlorig{#1}}}
+\let \hreforig \href
+\renewcommand{\href}[2]{\textcolor{SpotColor}{\hreforig{#1}{#2}}}
+\newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPboxrulesize}{1pt}
+\textblockrulecolor{SpotColor}
+
+\usepackage{ragged2e}
+
+% microtype enables ``hanging punctuation'' and other neat microtypographic features
+\ifxetex
+	\usepackage[protrusion=true, expansion=false]{microtype}
+\else
+	\usepackage[protrusion=true, expansion=false, kerning=true]{microtype}
+\fi
+
+% Use the bm (= boldmath) package for better support of setting math in bold ==>
+% Prevent the "Too many math fonts used" error:
+\newcommand{\bmmax}{0}
+\newcommand{\hmmax}{0}
+\usepackage{bm}
+% <==
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%  BEAMER SETTINGS  %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Use the beamerposter package for laying out the poster:
+% \usepackage[size=a0, scale=1.1]{beamerposter}
+	% A0: 840 mm by 1188 mm in beamerposter
+\usepackage[size=custom, width=84.1, height=118.9, scale=1.2]{beamerposter}
+	% 841 mm by 1189 mm: A0
+\beamertemplatenavigationsymbolsempty
+
+\usefonttheme{professionalfonts}
+
+\newcommand{\highlight}[1]{\alert{\textbf{#1}}}
+
+% Make itemize justified instead of flushleft
+% ==>
+\makeatletter
+\renewcommand{\itemize}[1][]{%
+	\beamer@ifempty{#1}{}{\def\beamer@defaultospec{#1}}%
+	\ifnum \@itemdepth >2\relax\@toodeep\else
+	\advance\@itemdepth\@ne
+	\beamer@computepref\@itemdepth% sets \beameritemnestingprefix
+	\usebeamerfont{itemize/enumerate \beameritemnestingprefix body}%
+	\usebeamercolor[fg]{itemize/enumerate \beameritemnestingprefix body}%
+	\usebeamertemplate{itemize/enumerate \beameritemnestingprefix body begin}%
+	\list
+	{\usebeamertemplate{itemize \beameritemnestingprefix item}}
+	{\def\makelabel##1{%
+			{%
+				\hss\llap{{%
+						\usebeamerfont*{itemize \beameritemnestingprefix item}%
+						\usebeamercolor[fg]{itemize \beameritemnestingprefix item}##1}}%
+			}%
+		}%
+	}
+	\fi%
+	\beamer@cramped%
+	\justifying% NEW
+	%\raggedright% ORIGINAL
+	\beamer@firstlineitemizeunskip%
+}
+\makeatother
+% <==
+
+% Add white space before lists and between items inside lists
+% ==>
+\makeatletter
+\def\@listi{\leftmargin\leftmarginii
+	\topsep 0.333333\baselineskip % Spacing before lists
+	\parsep 0\p@ \@plus\p@
+	\itemsep 0.333333\baselineskip} % Spacing between items
+\makeatother
+% <==
+
+\setbeamertemplate{itemize item}{\raisebox{-1.5pt}{\textbf{\textbullet}}}
+\setbeamercolor{item}{fg=SpotColor}
+
+\setbeamerfont{title}{series=\bfseries}
+\setbeamercolor{title}{fg=SpotColor}
+
+% Poster title
+\setbeamertemplate{headline}{
+	\leavevmode
+	\begin{columns}
+		\begin{column}{\linewidth}
+			\vskip-0.6\topmargin
+			% \centering
+			\Huge\textbf{\textsf{\textcolor{SpotColor}{\inserttitle}}}\\[-57pt]
+			{\color{SpotColor}\rule{\linewidth}{1pt}\\[-31pt]}
+			\usebeamercolor{author in headline}{\Large\insertauthor}\\[-42pt]
+			\usebeamercolor{institute in headline}{\large\textsf{\insertinstitute}}\\[1ex]
+			\vskip1cm
+		\end{column}
+		\vspace{1cm}
+	\end{columns}
+	\vspace{0.5in}
+	% \hspace{0.5in}\begin{beamercolorbox}[wd=47in,colsep=0.15cm]{cboxb}\end{beamercolorbox}
+	% \hspace{\leftmargin}\rule{\textwidth-\leftmargin-\rightmargin}{0.4pt}
+	\vspace{0.1in}
+}
+
+% Regular block definition
+\setbeamerfont{block title}{family=\sffamily, series=\bfseries}
+\setbeamercolor{block title}{fg=SpotColor}
+\setbeamertemplate{block begin}{
+	\par\vskip\medskipamount
+	\begin{beamercolorbox}[colsep*=0ex, dp=30pt, left]{block title}
+		\vskip-0.25cm
+		\usebeamerfont{block title}%
+		\large\insertblocktitle\\[-22pt]
+		\rule{\linewidth}{1pt}\\[22pt]
+	\end{beamercolorbox}
+	{\parskip0pt\par}
+	\ifbeamercolorempty[bg]{block title}
+	{}
+	{\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}
+	\usebeamerfont{block body}
+	\vskip-0.75cm
+	\begin{beamercolorbox}[colsep*=0ex,vmode]{block body}
+		\setlength{\baselineskip}{36pt}%
+		\sloppypar\justifying%
+}
+\setbeamertemplate{block end}{
+	\end{beamercolorbox}
+	\vskip\smallskipamount
+}
+
+% Alert block definition (with frame)
+\setbeamerfont{block alerted title}{family=\sffamily, series=\bfseries}
+\newlength{\inboxwd}
+\newlength{\iinboxwd}
+\newlength{\inboxrule}
+\setbeamertemplate{block alerted begin}{
+  \par
+  \begin{beamercolorbox}[sep=25pt, rounded=false, dp=2pt, leftskip=12pt, rightskip=12pt]{block alerted title}
+    \usebeamerfont{block alerted title}%
+    {\sloppy\large\insertblocktitle}
+  \end{beamercolorbox}
+  {\parskip0pt\par}
+  \usebeamerfont{block body}
+  \vskip-0.25in
+  \begin{beamercolorbox}[sep=0.5cm, rounded=false, center]{block body}
+  \setlength{\inboxwd}{\linewidth}
+  \addtolength{\inboxwd}{-1cm}
+  \begin{beamercolorbox}[rounded=false, wd={\inboxwd}, center]{block body}
+  \setlength{\iinboxwd}{\inboxwd}
+  \setlength{\inboxrule}{\inboxwd}
+  \addtolength{\iinboxwd}{-0.5cm}
+  \addtolength{\inboxrule}{0.5cm}
+  \begin{center}
+  \begin{minipage}{\iinboxwd}
+  \centering%
+  \sffamily
+}
+\setbeamertemplate{block alerted end}{
+  \end{minipage}
+  \end{center}
+  \end{beamercolorbox}
+  \end{beamercolorbox}
+  \vskip\smallskipamount
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  BIBLIOGRAPHY SETTINGS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{natbib}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%  MISCELLANEOUS  %%
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\affilindicator}[1]{\textsuperscript{\kern.75pt \textit{#1}}}
+\usepackage[math]{blindtext}  % For debugging only
+\makeatletter
+\def\blindtext@american{}
+\makeatother
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%  DOCUMENT LAYOUT  %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setlength{\leftmargin}{4cm}
+\setlength{\rightmargin}{4cm}
+
+\newcommand{\numcols}{3}
+\FPeval{\numcolsminusone}{\numcols-1}
+
+\newlength{\colsep}
+\setlength{\colsep}{1.5cm}
+\newlength{\totalcolsep}
+\setlength{\totalcolsep}{\numcolsminusone\colsep}
+
+\newlength{\colwidth}
+\setlength{\colwidth}{(\paperwidth-\leftmargin-\rightmargin-\totalcolsep)/\numcols}
+
+\setbeamersize{text margin left=\leftmargin, text margin right=\rightmargin}
+
+\setlength{\fboxsep}{0pt}%
+\setlength{\fboxrule}{1pt}%
+
+\frenchspacing

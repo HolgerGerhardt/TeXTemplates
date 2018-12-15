@@ -1,0 +1,95 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TXS-program:bibliography = txs:///biber
+% !TeX program = pdflatex
+% !BIB program = biber
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  COMMENTING COMMANDS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{tcolorbox}
+
+\definecolor{blazeorange}{rgb}{1,0.40,0.00}
+\newcommand{\highlight}[1]{\textcolor{blazeorange}{#1}}
+
+\newlength{\boxheight}
+\newlength{\boxwidth}
+\newcommand{\trackchanges}[2][]{%
+	\highlight{#2}%
+	\settoheight{\boxheight}{\parbox{\textwidth}{#2}}%
+	\marginpar{\vspace{-2\boxheight}%
+		\begin{tcolorbox}[width=1.25in, height=2\boxheight, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm, colback=blazeorange, boxrule=0pt, arc=0pt, opacityfill=0.5]
+			\tiny\RaggedRight%
+			\textcolor{white}{\textsf{%
+					\ifthenelse{\equal{#1}{}}{\textbf{Insertion}}{\textbf{Replaces:} ``#1''}%
+			}}
+		\end{tcolorbox}%
+	}%
+}
+% To ``accept'' all changes in the document:
+% \renewcommand{\trackchanges}[2][]{#2}	% Sets changes in plain text.
+\newcommand{\XXX}[2][]{\trackchanges[#1]{#2}}
+
+\usepackage{marginnote}  % Customizable marginal paragraphs
+\setlength{\marginparwidth}{3.5cm}
+\setlength{\marginparsep}{0.6cm}
+\setlength{\marginparpush}{0.6cm}
+
+% \usepackage{soul} % Already loaded earlier
+% Provides a~highlighting command: \hl{...}
+% Change the highlighting color:
+\sethlcolor{darkred25}
+
+
+\newcommand{\remark}[4][0pt]{
+	\marginnote{\RaggedRight\sloppypar\sffamily%
+		%\fontseries{l}\selectfont
+		\vspace{-10pt}%
+		\scriptsize\setlength{\baselineskip}{2.35ex}\textcolor{darkred}{\textbf{%
+				%\fontseries{sb}\selectfont
+				#3}\\ #4}}[#1]%
+	\hl{#2}%
+}
+
+\newcommand{\commentgeneric}[4][0pt]{%
+	\setbox99=\hbox{\textbf{\v{ }}}%
+	\makebox[0pt][l]{\hspace{-1.75pt}\textcolor{#4}{\textbf{\raisebox{1.75pt}{\v{ }}\hspace{-0.985\wd99}|}}}%
+	\marginnote{\RaggedRight\sloppypar\sffamily%
+		%\fontseries{l}\selectfont
+		\vspace{-10pt}%
+		\scriptsize\setlength{\baselineskip}{2.35ex}\textcolor{#4}{%
+			\textbf{#2} \\
+			#3%
+		}%
+	}[#1]%
+}
+\newcommand{\commentfreddie}[2][0pt]{%
+	\commentgeneric[#1]{Freddie says:}{#2}{darkblue}%
+}
+\newcommand{\commentholger}[2][0pt]{%
+	\commentgeneric[#1]{Holger says:}{#2}{customgreen}%
+}
+\newcommand{\commentlouis}[2][0pt]{%
+	\commentgeneric[#1]{Louis says:}{#2}{custompurple}%
+}
+\newcommand{\commentmarkus}[2][0pt]{%
+	\commentgeneric[#1]{Markus says:}{#2}{darkred}%
+}
+\newcommand{\commentgerhard}[2][0pt]{%
+	\commentgeneric[#1]{Gerhard says:}{#2}{blazeorange}%
+}
+% To suppress all comments in the document:
+% \renewcommand{\commentgeneric}[4][0pt]{}{}{}
+
+\usepackage{pdfcomment}
+\newenvironment{holgeradded}{%
+	\color{customgreen}%
+	\begin{pdfsidelinecomment}[color=customgreen,caption=inline,linebegin={/None},lineend={/None},linewidth=2bp,linesep=1cm]{Holger}\ignorespaces}%
+	{\end{pdfsidelinecomment}%
+}
+% To ``accept'' all insertions in the document:
+% \renewenvironment{holgeradded}{}{}

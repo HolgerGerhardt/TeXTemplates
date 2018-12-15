@@ -1,0 +1,51 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  TESTING MATH FONTS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\dit}{\mathit{d}}
+\newcommand{\dup}{\mathup{d}}
+
+\def\test#1{#1}
+
+\def\testnums{%
+  \test 0 \test 1 \test 2 \test 3 \test 4 \test 5 \test 6 \test 7
+  \test 8 \test 9 }
+\def\testupperi{%
+  \test A \test B \test C \test D \test E \test F \test G \test H
+  \test I \test J \test K \test L \test M }
+\def\testupperii{%
+  \test N \test O \test P \test Q \test R \test S \test T \test U
+  \test V \test W \test X \test Y \test Z }
+\def\testupper{%
+  \testupperi\testupperii}
+
+\def\testloweri{%
+  \test a \test b \test c \test d \test e \test f \test g \test h
+  \test i \test j \test k \test l \test m }
+\def\testlowerii{%
+  \test n \test o \test p \test q \test r \test s \test t \test u
+  \test v \test w \test x \test y \test z }
+\def\testlower{%
+  \testloweri\testlowerii}
+
+\def\testupgreeki{%
+  \test A \test B \test\Gamma \test\Delta \test E \test Z \test H
+  \test\Theta \test I \test K \test\Lambda \test M }
+\def\testupgreekii{%
+  \test N \test\Xi \test O \test\Pi \test P \test\Sigma \test T
+  \test\Upsilon \test\Phi \test X \test\Psi \test\Omega }
+\def\testupgreek{%
+  \testupgreeki\testupgreekii}
+
+\def\testlowgreeki{%
+  \test\alpha \test\beta \test\gamma \test\delta \test\epsilon
+  \test\zeta \test\eta \test\theta \test\iota \test\kappa \test\lambda
+  \test\mu }
+\def\testlowgreekii{%
+  \test\nu \test\xi \test o \test\pi \test\rho \test\sigma \test\tau
+  \test\upsilon \test\phi \test\chi \test\psi \test\omega }
+\def\testlowgreekiii{%
+  \test\varepsilon \test\vartheta \test\varpi \test\varrho
+  \test\varsigma \test\varphi}
+\def\testlowgreek{%
+  \testlowgreeki\testlowgreekii\testlowgreekiii}

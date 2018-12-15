@@ -1,0 +1,189 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:bibliography = txs:///biber
+% !BIB program = biber
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  PAGE LAYOUT: ADDITIONAL SETTINGS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Increase text width and text height by 5% to make the text
+% flow exactly as in \documentclass[a4paper, 10pt]{article}
+% ==>
+\addtolength{\textheight}{0.05\textheight}
+\addtolength{\textwidth}{0.05\textwidth}
+\addtolength{\evensidemargin}{-0.05\textwidth}
+% <==
+
+\usepackage[sf, bf, raggedright, explicit]{titlesec}	% Sansserif font for the headings
+% Bullshit page header
+% ==>
+\newpagestyle{bullshitheader}[\small\rmfamily\selectfont]{
+	\sethead%
+	{% odd-left
+	}
+	{% odd-center
+		\phantom{\textsf{~}}%
+		% We include a \textsf command, because for some weird reason,
+		% the command does not work otherwise when using \subimport*{...}
+		\phantom{\texteuro \textsu{12}}%
+		% We include a \euro sign and superscript digits because
+		% they do not work otherwise when using \subimport*{...}
+	}
+	{%	odd-right
+	}
+}
+\appto\maketitle{%
+	\thispagestyle{bullshitheader}
+}
+% <==
+% Page headers
+% ==>
+\newpagestyle{chapterleftsectionright}[\small\sffamily\selectfont]{
+	\sethead%
+	[\textbf{\thepage}~~|~~%
+	 \ifthechapter{\thechapter~~}{}\ecapitalisewords{\chaptertitle}%
+	]% even-left
+	[]% even-center
+	[]% even-right
+	{}% odd-left
+	{}% odd-center
+	{\ifx\sectiontitle\empty%
+		\ifthechapter{\thechapter~~}{}\ecapitalisewords{\chaptertitle}%
+	 \else%
+		\ifthesection{\thesection~~}{}\ecapitalisewords{\sectiontitle}%
+	 \fi%
+	 ~~|~~\textbf{\thepage}%
+	}%	odd-right
+}
+\pagestyle{chapterleftsectionright}
+\definecolor{almostwhite}{RGB}{254,254,254}
+% Some printers skip completely empty pages. To avoid this, we put a tiny gray period in ``empty'' headers:
+\renewpagestyle{empty}[\tiny\selectfont]{
+	\sethead%
+	[]% even-left
+	[]% even-center
+	[\textcolor{almostwhite}{.}]% even-right
+	{\textcolor{almostwhite}{.}}% odd-left
+	{}% odd-center
+	{}% odd-right
+}
+\usepackage{emptypage}  % Suppresses page numbers and headings from appearing on empty pages.
+\assignpagestyle{\chapter}{empty} % Make footer empty on starting page of a new chapter
+% <==
+
+% Remove indent from the list of figures and list of tables
+% ==>
+\usepackage{titletoc}
+\newcommand{\tocdots}{\titlerule*{\hspace{.8pc}.\hspace{-.45pc}}}
+\contentsmargin{2.55em}
+\titlecontents{chapter}
+	[1.5em]
+	{\addvspace{1ex}}
+	{\sffamily\bfseries\contentslabel{1.5em}}{\hspace*{-1.5em}\sffamily\bfseries}  % The latter ``outdents'' unnumbered sections; bold and sans-serif chapter entries in ToC
+	{\sffamily\bfseries\titlerule*{}\contentspage[\thecontentspage\hspace{-.12em}]}
+\titlecontents{section}
+	[3.8em] % = 1.5em + 2.3em, 1.5em reserved for chapter numbering
+	{\addvspace{0.25ex}}
+	{\contentslabel{2.3em}}{\hspace*{-2.3em}}  % The latter ``outdents'' unnumbered sections
+	{\tocdots\contentspage}
+\titlecontents{subsection}
+	[6.8em] % = 1.5em + 2.3em + 3em, 1.5em + 2.3em reserved for chapter and section numbering
+	{}{\contentslabel{3em}}{\hspace*{-3em}}  % The latter ``outdents'' unnumbered subsections
+	{\tocdots\contentspage}
+\newlength{\loflotleft} \setlength{\loflotleft}{3.5em}
+\titlecontents{figure}
+	[\loflotleft]
+	{}{\contentslabel{\loflotleft}}{}
+	{\tocdots\contentspage}
+\titlecontents{table}
+	[\loflotleft]
+	{}{\contentslabel{\loflotleft}}{}
+	{\tocdots\contentspage}
+% <==
+
+\setcounter{secnumdepth}{3}
+	% So that also 3rd-level headings are numbered.
+	% Note: chapter is level 0, hence \subsubsection is actually on the 4th level.
+
+\newcommand{\TestForPunct}[1]{\iftextterm{#1}{#1}{#1.}}
+	% Adds a period if no punctuation mark is present yet
+
+\titleformat{\chapter}[display]
+	{\sffamily\fontseries{mb}\huge}%\sffamily\bfseries\addfontfeature{Numbers=Lining}
+	{\chaptertitlename~\thechapter}% {\thechapter}
+	{\bigskipamount}%
+	{\sffamily\fontseries{l}\Huge\raggedright%
+	 \xcapitalisewords{%
+		#1%
+	 }%
+	}
+\newcommand{\appendixformat}[1][\currentname]{%
+	\titleformat{\section}[hang]
+	{\raggedright\Large\sffamily\bfseries}{Appendix~\thesection\quad}{0pt}{%
+		\ecapitalisewords{%
+			#1%
+		}%
+	}[]
+}
+\titleformat{name=\section}[hang]
+	{\raggedright\Large\sffamily\bfseries}{\thesection\quad}{0pt}{%
+		\xcapitalisewords{%
+			#1%
+		}%
+	}[]
+\titleformat{name=\section, numberless}[hang]
+	{\raggedright\Large\sffamily\bfseries}{}{0pt}{%
+		\xcapitalisewords{%
+			#1%
+		}%
+	}[]
+\titleformat{name=\subsection}[hang]
+{\raggedright\large\sffamily\bfseries}{\thesubsection\quad}{0pt}{%
+	\xcapitalisewords{%
+		#1%
+	}%
+}[]
+\titleformat{name=\subsection, numberless}[hang]
+{\raggedright\large\sffamily\bfseries}{}{0pt}{%
+	\xcapitalisewords{%
+		#1%
+	}%
+}[]
+\titleformat{name=\subsubsection}[hang]
+{\raggedright\normalsize\sffamily\bfseries}{\thesubsubsection\quad}{0pt}{%
+	\xcapitalisewords{%
+		#1%
+	}%
+}[]
+\titleformat{name=\subsubsection, numberless}[hang]
+{\raggedright\normalsize\sffamily\bfseries}{}{0pt}{%
+	\xcapitalisewords{%
+		#1%
+	}%
+}[]
+\titleformat{name=\paragraph, numberless}[runin]
+{}{}{0pt}{%
+	\textbf{%
+		#1\iftextterm{#1}{}{.}%
+	}%
+}[]
+\titleformat{name=\subparagraph, numberless}[runin]
+{}{}{0pt}{%
+	\textbf{%
+		#1\iftextterm{#1}{}{.}%
+	}%
+}[]
+\titlespacing{\paragraph}
+	{0pt}{0.5\baselineskip plus 0.5\baselineskip}{3\wordsep}[]
+\titlespacing{\subparagraph}
+	{\parindent}{0pt}{3\wordsep}[]
+
+\AtBeginDocument{%
+	\captionsetup{footfont={sf, footnotesize}}
+		% Set font in \floatfoot to sans-serif and footnotesize
+}

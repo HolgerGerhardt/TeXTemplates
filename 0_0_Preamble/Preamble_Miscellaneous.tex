@@ -1,0 +1,96 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:bibliography = txs:///biber
+% !BIB program = biber
+% !TeX root = ../Diss-Template.tex
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  OTHER PACKAGES AND COMMANDS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Some math-related definitions
+
+%\newcommand*{\coloneqq}{\mathrel{%
+%	\mathrel{%
+%		\raisebox{ 0.18ex}{\scalebox{0.85}{:}}\hspace{-0.2pt}%
+%	}%
+%	=%
+%}}
+% Provided by the mathtools package
+
+%\newcommand{\la}[1]{\lambda}
+
+\newcommand{\Corr}{\operatorname{Corr}}
+\newcommand{\Cov} {\operatorname{Cov}}
+\newcommand{\E}   {\operatorname{E}}
+\newcommand{\Var} {\operatorname{Var}}
+
+\newcommand{\dd}  {\mathup{d}}  % Differential d
+\newcommand{\e}   {\mathup{e}}  % Euler's e
+
+\newcommand{\sigstar}{\raisebox{0.66ex}{\scalebox{0.95}{$\star$}}}
+
+% Balanced/unbalanced sliders for text:
+\newcommand{\bal}{\mbox{\caps{BAL}}\xspace}
+\newcommand{\unbal}{\mbox{\caps{UNBAL}}\xspace}
+\newcommand{\balA}[1][1]{\mbox{\caps{BAL}$^{\mathup{I}}_{#1:#1}$}\xspace}
+\newcommand{\balB}[1][1]{\mbox{\caps{BAL}$^{\mathup{II}}_{#1:#1}$}\xspace}
+\newcommand{\unbalA}[1][n]{\mbox{\caps{UNBAL}$^{\mathup{I}}_{1:#1}$}\xspace}
+\newcommand{\unbalB}[1][n]{\mbox{\caps{UNBAL}$^{\mathup{II}}_{#1:1}$}\xspace}
+
+% Balanced/unbalanced slider choice sets for math:
+\newcommand{\CS}[1][C]{{\mathbf{#1}}}
+\newcommand{\CbalA}[1][1]{\CS^{\mathup{BAL,\,I}}_{#1:#1}}
+\newcommand{\CbalB}[1][1]{\CS^{\mathup{BAL,\,II}}_{#1:#1}}
+\newcommand{\CunbalA}[1][n]{\CS^{\mathup{UNBAL,\,I}}_{1:#1}}
+\newcommand{\CunbalB}[1][n]{\CS^{\mathup{UNBAL,\,II}}_{#1:1}}
+\newcommand{\cse}[1][c]{{\mathbf{#1}}}
+\newcommand{\cbalA}[1][1]{\cse^{\mathup{BAL,\,I}}_{#1:#1}}
+\newcommand{\cbalB}[1][1]{\cse^{\mathup{BAL,\,II}}_{#1:#1}}
+\newcommand{\cunbalA}[1][n]{\cse^{\mathup{UNBAL,\,I}}_{1:#1}}
+\newcommand{\cunbalB}[1][n]{\cse^{\mathup{UNBAL,\,II}}_{#1:1}}
+
+% Balanced/unbalanced choice lists for text:
+\newcommand{\balCL}[1][1]{\mbox{\caps{BAL}$_{\mathup{CL}}$}\xspace}
+\newcommand{\unbalCLA}[1][1]{\mbox{\caps{UNBAL}$^{\mathup{I}}_{\mathup{CL}}$}\xspace}
+\newcommand{\unbalCLB}[1][1]{\mbox{\caps{UNBAL}$^{\mathup{II}}_{\mathup{CL}}$}\xspace}
+
+% Balanced/unbalanced choice-list choice sets for math:
+\newcommand{\CbalCL}{{\CS}^{\textup{BAL}}_{\textup{CL}}}
+\newcommand{\CunbalCLA}{{\CS}^{\textup{UNBAL,\,I}}_{\textup{CL}}}
+\newcommand{\CunbalCLB}{{\CS}^{\textup{UNBAL,\,II}}_{\textup{CL}}}
+\newcommand{\cbalCL}{{\cse}^{\textup{BAL}}_{\textup{CL}}}
+\newcommand{\cunbalCLA}{{\cse}^{\textup{UNBAL,\,I}}_{\textup{CL}}}
+\newcommand{\cunbalCLB}{{\cse}^{\textup{UNBAL,\,II}}_{\textup{CL}}}
+
+%% Command to suppress text: ==>
+%\makeatletter
+%\font\dummyft@=dummy \relax
+%\def\suppress{%
+%	\begingroup\par
+%	\parskip\z@
+%	\offinterlineskip
+%	\baselineskip=\z@skip
+%	\lineskip=\z@skip
+%	\lineskiplimit=\maxdimen
+%	\dummyft@
+%	\count@\sixt@@n
+%	\loop\ifnum\count@ >\z@
+%	\advance\count@\m@ne
+%	\textfont\count@\dummyft@
+%	\scriptfont\count@\dummyft@
+%	\scriptscriptfont\count@\dummyft@
+%	\repeat
+%	\let\selectfont\relax
+%	\let\mathversion\@gobble
+%	\let\getanddefine@fonts\@gobbletwo
+%	\tracinglostchars\z@
+%	\frenchspacing
+%	\hbadness\@M}
+%\def\endsuppress{\par\endgroup}
+%\makeatother
+%% <==

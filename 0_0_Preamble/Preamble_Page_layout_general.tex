@@ -1,0 +1,526 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:bibliography = txs:///biber
+% !BIB program = biber
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  GRID-BASED TYPESETTING AS FAR AS POSSIBLE  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\flushbottom
+
+\ifdef{\linesperpagedesired}
+	{}% If already defined, do nothing.
+	{\newcommand{\linesperpagedesired}{42}}
+	% Number of text lines per page, see https://en.wikipedia.org/wiki/Gutenberg_Bible
+
+\newcommand{\linesperpagecurrent}{\numexpr (\textheight - \topskip) / \baselineskip + 1 \relax}  % Integer division!
+\makeatletter
+%\newcommand{\newbaselinestretch}{\strip@pt\dimexpr (\linesperpagecurrent pt - 1pt) / (\linesperpagedesired - 1)}
+\newcommand{\newbaselinestretch}{1.1}
+\makeatother
+\linespread{\newbaselinestretch}
+\newlength{\newbaselineskip}
+\setlength{\newbaselineskip}{
+	\dimexpr (\textheight - \topskip) / (\linesperpagedesired - 1)
+}
+\setlength{\textheight}{\dimexpr \numexpr \linesperpagedesired - 1 \relax \newbaselineskip + \topskip}  % to prevent too small \textheigtht due to rounding errors
+\newlength{\newparindent}
+\setlength{\newparindent}{1.15\newbaselineskip}%
+
+\AtBeginDocument{%
+	\setlength{\baselineskip}{\newbaselineskip}%
+	\setlength{\parindent}{\newparindent}
+	\setlength{\lineskiplimit}{0pt}  % Prevents increased line spacing in response to spacious inline formulas.
+}
+\newlength{\abovedisplayauxskip}
+\newlength{\belowdisplayauxskip}
+\setlength{\abovedisplayauxskip}{0pt plus 0.5\baselineskip}
+\setlength{\belowdisplayauxskip}{0pt plus 0.5\baselineskip}
+\newcommand{\predisplaycmd}{\nopagebreak[2]\vspace{\abovedisplayauxskip}}
+\newcommand{\postdisplaycmd}{\vskip\belowdisplayauxskip\noindent}
+\AtBeginEnvironment {align}     {\predisplaycmd}
+\AfterEndEnvironment{align}     {\postdisplaycmd}
+\AtBeginEnvironment {align*}    {\predisplaycmd}
+\AfterEndEnvironment{align*}    {\postdisplaycmd}
+\AtBeginEnvironment {alignat}   {\predisplaycmd}
+\AfterEndEnvironment{alignat}   {\postdisplaycmd}
+\AtBeginEnvironment {alignat*}  {\predisplaycmd}
+\AfterEndEnvironment{alignat*}  {\postdisplaycmd}
+\AtBeginEnvironment {eqnarray}  {\predisplaycmd}
+\AfterEndEnvironment{eqnarray}  {\postdisplaycmd}
+\AtBeginEnvironment {eqnarray*} {\predisplaycmd}
+\AfterEndEnvironment{eqnarray*} {\postdisplaycmd}
+\AtBeginEnvironment {equation}  {\predisplaycmd}
+\AfterEndEnvironment{equation}  {\postdisplaycmd}
+\AtBeginEnvironment {equation*} {\predisplaycmd}
+\AfterEndEnvironment{equation*} {\postdisplaycmd}
+\AtBeginEnvironment {flalign}   {\predisplaycmd}
+\AfterEndEnvironment{flalign}   {\postdisplaycmd}
+\AtBeginEnvironment {flalign*}  {\predisplaycmd}
+\AfterEndEnvironment{flalign*}  {\postdisplaycmd}
+\AtBeginEnvironment {gather}    {\predisplaycmd}
+\AfterEndEnvironment{gather}    {\postdisplaycmd}
+\AtBeginEnvironment {gather*}   {\predisplaycmd}
+\AfterEndEnvironment{gather*}   {\postdisplaycmd}
+\AtBeginEnvironment {multiline} {\predisplaycmd}
+\AfterEndEnvironment{multiline} {\postdisplaycmd}
+\AtBeginEnvironment {multiline*}{\predisplaycmd}
+\AfterEndEnvironment{multiline*}{\postdisplaycmd}
+% \setlength{\topskip}{\newbaselineskip pt}
+
+\setlength{\parskip}{0pt}  % Prevents whitespace from being added between paragraphs
+%\setlength{\parskip}{0pt plus 0.0001pt}
+% Add whitepsace between paragraphs only in emergency cases
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FORMATTING OF MATHEMATICS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\setlength{\mathindent}{\newparindent}  % Only for option ``fleqn''
+
+% Reduce/prevent stretching of spaces around operators in inline formulae ==>
+% See http://tex.stackexchange.com/questions/83746/keeping-the-distance-between-mathematical-symbols-consistent
+% \thinmuskip=3.0mu (already without glue)
+\medmuskip=1\medmuskip	% Formerly 4.0mu plus 2.0mu minus 4.0mu -> 4.0mu
+\thickmuskip=1\thickmuskip	% Formerly 5.0mu plus 5.0mu -> 5.0mu
+% <==
+\spaceskip=\fontdimen2\font plus \fontdimen3\font minus 0.75\fontdimen4\font	% Reduce by how much an interword space can shrink
+% See http://tex.stackexchange.com/questions/19236/how-to-change-the-interword-spacing and http://tex.stackexchange.com/questions/88991/what-do-different-fontdimennum-mean
+
+% Increase spacing around relational symbols (<, =, >, \le, \ge, \equiv; +, -, \times, etc.) in display formulae ==>
+\newcommand{\thickmu}{\thickmuskip=12mu \medmuskip=6mu}
+\AtBeginEnvironment{align}     {\thickmu}
+\AtBeginEnvironment{align*}    {\thickmu}
+\AtBeginEnvironment{alignat}   {\thickmu}
+\AtBeginEnvironment{alignat*}  {\thickmu}
+\AtBeginEnvironment{eqnarray}  {\thickmu}
+\AtBeginEnvironment{eqnarray*} {\thickmu}
+\AtBeginEnvironment{equation}  {\thickmu}
+\AtBeginEnvironment{equation*} {\thickmu}
+\AtBeginEnvironment{flalign}   {\thickmu}
+\AtBeginEnvironment{flalign*}  {\thickmu}
+\AtBeginEnvironment{gather}    {\thickmu}
+\AtBeginEnvironment{gather*}   {\thickmu}
+\AtBeginEnvironment{multiline} {\thickmu}
+\AtBeginEnvironment{multiline*}{\thickmu}
+% <==
+
+% Use the bm (= boldmath) package for better support of setting math in bold ==>
+% Prevent the "Too many math fonts used" error:
+\newcommand{\bmmax}{0}
+\newcommand{\hmmax}{0}
+\usepackage{bm}
+% <==
+
+% Allow paragraph breaks after a display equation
+\makeatletter
+\predisplaypenalty=\@medpenalty
+\postdisplaypenalty=0
+\makeatother
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  LAYOUT AND SECTIONING  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Disable single lines that start a~paragraph at the end of a~page (widows/Schusterjungen)
+% and disable single lines at the end of a~paragraph that start a~new page (orphans/Hurenkinder):
+\usepackage[all]{nowidow}
+
+\AtBeginDocument{%
+	% Reduce the amount of white space after a period (and enforce this throughout the entire document, because babel's \selectlanguage{...} resets \frenchspacing):
+	\let\nonfrenchspacing=\frenchspacing
+	\frenchspacing
+	\sloppy%  % Prevent overfull hboxes (at the expense of more uneven whitespace)
+}
+
+\ifxetex
+	\usepackage[protrusion=true, expansion=false]{microtype}
+\else
+	\usepackage[protrusion=true, expansion=false, kerning=true]{microtype}
+\fi
+
+% Let even relatively big floats (long tables, spacious figures) be placed on text pages ==>
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+% <== See http://tex.stackexchange.com/questions/39017/how-to-influence-the-position-of-float-environments-like-figure-and-table-in-lat/39020#39020
+
+% Set margins of block quotes
+% ==>
+\renewenvironment{quote}%
+  {\list{}{\leftmargin=\parindent \rightmargin=\parindent}\item[]\itshape\small}%
+  {\endlist}
+\renewenvironment{quotation}%
+  {\list{}{\leftmargin=\parindent \rightmargin=\parindent}\item[]\small}%
+  {\endlist}
+% <==
+
+\usepackage{csquotes}
+
+\usepackage{nameref}
+\makeatletter
+\newcommand*{\currentname}{\@currentlabelname}
+\makeatother
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%  APPENDIX STYLE  %%
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[title, titletoc]{appendix}  % allows, e.g., for appendices within chapters
+\usepackage{chngcntr}  % to innclude section numbers/letters in the figure/table/equation counters
+\AtBeginEnvironment{appendices}{%
+	\counterwithin{figure}{section}%
+	\counterwithin{table}{section}%
+	\counterwithin{equation}{section}%
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FORMATTING OF FOOTNOTES  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[multiple, bottom, norule, splitrule, marginal]{footmisc}
+% \renewcommand{\multfootsep}{,\,}
+% AER-like style: no regular footnote rule, half-page splitrule
+% ==>
+\setlength{\footnotemargin}{0.85\newparindent}%
+\renewcommand{\footnotelayout}{\hspace{0.15\newparindent}}
+\renewcommand{\hangfootparindent}{\newparindent}
+\preto{\footnote}{\setlength{\parindent}{\newparindent}}
+% Add some space around the footnoterule:
+\let\oldfootnoterule\footnoterule
+\addtolength{\skip\footins}{\bigskipamount}
+\AtBeginDocument{%
+	\renewcommand{\splitfootnoterule}{{\hrule width 0.5\textwidth}}%
+	\renewcommand{\footnoterule}{\oldfootnoterule\medskip}%
+}
+% <==
+%\setlength{\footnotesep}{0.8\baselineskip}
+
+% Chicago Manual of Style (16th edition):
+% ``Note reference numbers in text are set as superior (superscript) numbers.
+% In the notes themselves, they are normally full size, not raised, and followed by a period.''
+% (also REStud and JEEA style)
+% ==>
+\usepackage{xstring}
+\newlength{\textparindent}
+\setlength{\textparindent}{\parindent}
+\newlength{\templength}
+\makeatletter
+\let \@makefntextorig \@makefntext
+    % Saving the original definition so we can reuse it if necessary.
+\newcommand{\@makefntextcustom}[1]{%
+	\parindent 2\textparindent%
+	\hspace{-\textparindent}%
+	\settowidth{\templength}{0}%
+	\ifnum\value{footnote}<10 \hspace{\templength}\else\fi%
+	\thefootnote.\enskip #1%
+}
+\renewcommand{\@makefntext}[1]{\@makefntextcustom{#1}}
+\makeatother
+%\usepackage{scrextend}
+%\newlength{\footnoteflmargin}
+%\setlength{\footnoteflmargin}{\parindent}
+%% \deffootnote[\footnoteflmargin]{0pt}{0pt}{\thefootnotemark.\:\,}
+%\deffootnote[\footnoteflmargin]{0pt}{\footnoteflmargin}{}
+%\renewcommand{\footnote}[1]{%
+%	\footnoteorig{%
+%		\ifnum\value{footnote}<10 \phantom{0}\else\fi%
+%		\thefootnotemark.\enskip%
+%		#1%
+%	}%
+%}
+% <==
+\let \thefootnoteorig \thefootnote
+\DefineFNsymbols*{star}{%
+	{$\mathrm{\star}$}{$\mathrm{\star\star}$}{$\mathrm{\ddagger}$}%
+	{$\mathrm{\ddagger\ddagger}$}{\S}{\S\S}{\P}{\P\P}{$\mathrm{\|}$}{$\mathrm{\|\|}$}%
+}
+\setfnsymbol{star}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FIGURES AND TABLES  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[singlelinecheck=on]{caption}
+\DeclareCaptionLabelSeparator{periodlargespace}{.\:\:}
+\captionsetup{
+	singlelinecheck=on,
+	figureposition=below,
+	tableposition=above,
+	format = plain,
+	labelsep = periodlargespace,
+	margin = 0pt,
+	font = {sf, small},
+	labelfont = {sf, bf, small},
+	justification = justified
+}
+
+% Referencing ``subfigures'' (i.e., individual panels of which a figure is comprised):
+%\usepackage{subfigure}
+%\usepackage{subfig} 
+% Justus says this is the newer and preferable package.
+% However, see https://tex.stackexchange.com/questions/13625/subcaption-vs-subfig-best-package-for-referencing-a-subfigure:
+\usepackage{subcaption}
+
+% Packages for creating better-looking tables
+\usepackage{booktabs}
+\setlength{\cmidrulewidth}{.035em}
+\setlength{\lightrulewidth}{.035em}
+\setlength{\heavyrulewidth}{.09em}
+\setlength{\abovetopsep}{-5pt}
+\addtolength{\aboverulesep}{1.5pt}	% Make tables a little more spacious
+\addtolength{\belowrulesep}{1.5pt}
+% \setlength{\belowbottomsep}{-2pt}
+
+\usepackage{tabularx}	% Provides environment tabularx to adjust width of tables
+% \usepackage{tabulary}	% For some reason, tabulary doesn't obey the width argument ...
+% Emulate the "tabulary" column types:
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{J}{>{\arraybackslash}X}
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{R}{>{\RaggedLeft\arraybackslash}X}
+% \usepackage[flushleft]{threeparttable}	% Provides the tablenotes environment
+
+% Remove superfluous whitespace at beginning and end of table rows -->
+\LetLtxMacro{\oldtabular}{\tabular}
+\LetLtxMacro{\endoldtabular}{\endtabular}
+\RenewDocumentEnvironment{tabular}{O{c} m}{%
+	\oldtabular[#1]{@{}#2@{}}%
+}{%
+	\endoldtabular%
+}
+\LetLtxMacro{\oldtabularx}{\tabularx}
+\LetLtxMacro{\endoldtabularx}{\endtabularx}
+\RenewDocumentEnvironment{tabularx}{m O{c} m}{%
+	\oldtabularx{#1}[#2]{@{}#3@{}}%
+}{%
+	\endoldtabularx%
+}
+
+\usepackage{siunitx}
+	% Allows, among others, for alignment of decimal numbers in tables at the decimal point.
+\sisetup{
+	detect-all,
+	round-integer-to-decimal = true,
+	group-digits             = true,
+	group-minimum-digits     = 5,
+	group-separator          = {\kern 1pt},
+	table-align-text-pre     = false,
+	table-align-text-post    = false,
+	input-signs              = + -,
+	input-symbols            = {*} {**} {***} \sigstar,
+	input-open-uncertainty 	 = ,
+	input-close-uncertainty  = ,
+	retain-explicit-plus
+}
+\newcolumntype{T}[1]{@{}S[table-format = #1, table-space-text-pre = {***}, table-space-text-post = {***}]}
+
+% Ability to add footnotes to tables:
+% ==>
+\usepackage[restart, breakwithin, indentafter]{parnotes}
+	% BEWARE: For some reason, \parnotes removes the vertical space before the following section/the indent of the following paragraph if not included in the table itself!
+\renewcommand{\parnotevskip}{0pt}
+% \renewcommand{\parnoteintercmd}{\\}
+\renewcommand{\theparnotemark}{\alph{parnotemark}}
+\renewcommand{\parnotefmt}[1]{\footnotesize\noindent\justify #1\par}
+%\renewcommand{\parnotefmt}[1]{\footnotesize\rmfamily%
+%	\noindent\rule{\linewidth}{1pt}\\%
+%	\noindent#1\par%
+%	\noindent\rule{\linewidth}{1pt}\\%
+%}
+%\renewcommand{\parnoteintercmd}{\;$\bullet$\;}
+% <==
+
+\usepackage{makecell}
+
+\usepackage{longtable}
+
+\usepackage{multirow}
+
+% Redefine figure environment so that all figures are centered
+% ==>
+\makeatletter
+\let\oldfigure\figure
+\def\figure{\@ifnextchar[\figure@i \figure@ii}
+\def\figure@i[#1]{\oldfigure[#1]\centering}
+\def\figure@ii{\oldfigure\centering}
+\makeatother
+% <==
+
+\usepackage[font={sf, small}]{floatrow}	% Set the font in tables to sansserif small
+\floatsetup[table]{style=Plaintop}
+\renewcommand{\floatfootskip}{\smallskipamount}
+\newcommand{\tablenotes}[2][Notes:]{%
+	\floatfoot*{%
+		\setlength{\baselineskip}{11pt}%
+		\textit{#1} #2%
+	}%
+}
+\newcommand{\figurenotes}[2][Notes:]{%
+	\floatfoot{%
+		\setlength{\baselineskip}{11pt}%
+		\vspace{-\floatfootskip}%
+		\vspace{\medskipamount}%
+		\\[-\baselineskip]
+		\textit{#1} #2%
+	}%
+}
+% \usepackage{float}	% Allows the inclusion of figures inside a minipage	% Do not use in combination with floatrow.
+\usepackage{placeins} % improve placing of floats (figures, tables), provides \FloatBarrier
+
+% Adjust the minimum distance between a float (figure, table) and the body text:
+\setlength{\textfloatsep}{1.5\newbaselineskip plus 0.5\newbaselineskip minus 0.0pt}
+% originally, \textfloatsep: 20.0pt plus 2.0pt minus 4.0pt
+
+\usepackage{verbatim}
+
+\usepackage{longtable}
+
+%\usepackage{setspace}
+
+%\DeclareCaptionLabelFormat{REStudTable}{\MakeUppercase{\tablename}~#2}
+%\DeclareCaptionTextFormat{REStudTableT}{\textit{#1}}
+%\captionsetup[table]{labelformat=REStudTable, textformat=REStudTableT}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FORMATTING OF LISTS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{enumitem}
+% General settings:
+\setlist{leftmargin=\parindent, listparindent=\parindent, itemsep=\smallskipamount, parsep=0pt}
+%\setlist[1]{topsep=\medskipamount, partopsep=0pt}
+% Type-specific settings
+\setlist[enumerate]{labelwidth=\parindent, labelindent=0pt, labelsep=!, align=left}
+	% Fine as long as the list does not include more than 9 items.
+\setlist[enumerate, 2]{label=\alph*.}
+	% Taken from the Chicago Manual of Style (16th ed., Section 6.126)
+\setlist[enumerate, 3]{label=\roman*., align=right, widest*=3, labelsep=0.3\parindent}
+\setlist[itemize]{labelsep=0.435\parindent}
+\setlist[description]{font=\rmfamily\normalsize}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FORMATTING OF THEOREMS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newtheoremstyle{Standard}% name
+	{\topsep}    % Space above: Use \topsep to make the space identical to the one around lists
+	{\topsep}    % Space below
+	{\itshape}   % Body font
+	{}           % Indent amount (empty = no indent, \parindent = paragraph indent)
+	{\bfseries}  % Theorem head font
+	{.}          % Punctuation after theorem head
+	{.5em}       % Space after theorem head: " " = normal interword space; \newline = linebreak
+	{\thmname{#1}\thmnumber{\:#2}\thmnote{\bfseries\upshape\ (#3)}}
+		% Theorem head spec (changed such that also the ``theorem note'' is printed in boldface) 
+
+\theoremstyle{Standard}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{result}{Result}
+\newtheorem{hypothesis}{Hypothesis}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  AUTOMATIC CAPITALIZATION OF HEADINGS AND CAPTIONS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{mfirstuc-english}
+% \gMFUnocap{xxx} adds ``xxx'' to the words not to be capitalized
+% Do not capitalize prepositions:
+\gMFUnocap{about}
+\gMFUnocap{at}
+\gMFUnocap{against}
+\gMFUnocap{around}
+\gMFUnocap{between}
+\gMFUnocap{by}
+\gMFUnocap{from}
+\gMFUnocap{on}
+\gMFUnocap{over}
+\gMFUnocap{per}
+\gMFUnocap{to}
+\gMFUnocap{versus}
+\gMFUnocap{vs.}
+\gMFUnocap{vis-\`a-vis}
+\gMFUnocap{within}
+\gMFUnocap{without}
+
+\ifcase 0
+% 0 for disabling auto-capitalization, 1 for enabling auto-capitalization of headings, 2 for headings + figure/table captions
+\renewcommand{\capitalisewords}[1]{#1}
+\renewcommand{\ecapitalisewords}[1]{#1}
+\renewcommand{\xcapitalisewords}[1]{#1}
+\or
+% Add auto-capitalization to table of contents -->
+\let\SavedContentsline\contentsline
+\renewcommand{\contentsline}[4]{%
+	\SavedContentsline{#1}{\capitalisewords{#2}}{#3}{#4}%
+}
+% <--
+\else
+% Add auto-capitalization to table of contents -->
+\let\SavedContentsline\contentsline
+\renewcommand{\contentsline}[4]{%
+	\SavedContentsline{#1}{\capitalisewords{#2}}{#3}{#4}%
+}
+% <--	
+% Case 2: Also auto-capitalize figure and table captions:
+\LetLtxMacro{\SavedCaption}{\caption}
+\RenewDocumentCommand{\caption}{ O{\shortcaption} m }{%
+	\def\shortcaption{%
+		\xcapitalisewords{%
+			% \TestForPunct{%
+			#2%
+			% }%
+		}%
+	}%
+	\SavedCaption[#1]{%
+		\xcapitalisewords{%
+			% \TestForPunct{%
+			#2%
+			% }%
+		}%
+	}%
+}
+\fi

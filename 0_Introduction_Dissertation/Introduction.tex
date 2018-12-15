@@ -1,0 +1,34 @@
+% !TeX TS-program = pdflatex
+% !BIB program = biber
+
+
+
+\makeatletter
+\renewcommand{\@makefnmark}{{\sufigures\@makefnmarkorig}}
+\makeatother
+
+\noindent%
+\blindtext[1]%
+\unskip\footnote{A~test footnote.}
+
+\knutext
+
+Let us cite some publications: \cite{Andersen2008, Andreoni2012, Balakrishnan2016, Koszegi2013}. With the options set for BibLaTeX in the preamble, citations in the body text are automatically sorted chronologically---irrespective of the order of the ``citekeys'' in your input. Of course, entries are sorted alphabetically by author surname in the list of references.
+
+\begin{table}[p]
+	\caption{Characters contained in the serif font: \savermdefaultfortext}
+	\rmfamily
+	\makeatletter
+	\xfonttable{\f@encoding}{\f@family}{\f@series}{\f@shape}
+	\makeatother
+\end{table}
+
+\begin{table}[p]
+	\caption{Characters contained in the sans-serif font: \savesffamily}
+	\sffamily
+	\makeatletter
+	\xfonttable{\f@encoding}{\f@family}{\f@series}{\f@shape}
+	\makeatother
+\end{table}
+
+\Blindtext

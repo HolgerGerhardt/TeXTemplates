@@ -1,0 +1,232 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:bibliography = txs:///biber
+% !BIB program = biber
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FUNDAMENTAL PACKAGES  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{ifxetex}  % Detect if engine is XeTeX/XeLaTeX
+
+\usepackage{ifthen}
+
+\usepackage[utf8]{inputenc}  % so that umlauts can be input without having to use TeX code
+
+\ifxetex
+	\usepackage[euenc]{fontspec}
+\else
+	\usepackage[LGR, T1]{fontenc}  % LGR needed for sansserif math
+\fi
+
+\usepackage[ngerman, american]{babel}  % German and US English hyphenation and quotation marks
+\selectlanguage{american}
+\usepackage[american]{isodate}
+
+\usepackage{calc}  % Enables calculations for lengths; provides, e.g., \widthof{text}
+\usepackage{fp}  % Enables calculations in LaTeX
+% \usepackage[nomessages]{fp}
+
+\usepackage{etoolbox}  % Enables manipulating LaTeX commmands via \preto, \appto, \patchcmd, etc.
+\usepackage{xpatch}  % Enables manipulating LaTeX commmands via \xpatchcmd etc.
+\usepackage{letltxmacro}
+\usepackage{xparse}
+
+%\usepackage{geometry}  % See geometry.pdf to learn the layout options. There are lots.
+%\usepackage[mathscr]{eucal}
+%\geometry{a4paper, top=20mm, bottom=20mm, right=20mm, left=30mm}
+%\geometry{landscape}  % Activate for for rotated page geometry
+
+\usepackage{ragged2e}
+% Provides, among others, the \RaggedRight environment, which is \raggedright but with hyphenation enabled.
+%\renewcommand{\raggedright}{\RaggedRight}
+
+\usepackage{import}	 % To allow for relative paths in nested \input's (\import's)
+
+% \usepackage{float} % damit die figure da ist wo sie sein soll
+\usepackage{placeins}  % Improve placing of floats (figures, tables), provides \FloatBarrier
+
+% DO NOT USE \usepackage{amssymb}!
+% The AMS symbols are included in the mathdesign package or the fourier package.
+\usepackage{amsmath}
+\MakeRobust{\eqref}
+	% See https://tex.stackexchange.com/questions/61764/eqref-in-captions-with-mathtools
+\renewcommand{\eqref}[1]{(\ref{#1})}  % Necessary to make the font switch from serif to sansserif where required.
+\usepackage{amsthm}	% provides \newtheoremstyle
+\usepackage{mathtools}
+%\mathtoolsset{centercolon}
+	% This makes the compilation fail in combination with tikz. See
+	% https://tex.stackexchange.com/questions/89467/why-does-pdftex-hang-on-this-file.
+% Inspired by https://tex.stackexchange.com/questions/251460/how-to-put-symbols-of-equal-size-on-top-of-each-other
+\newcommand{\succeqq}{%
+  \mathrel{%
+    \vcenter{\offinterlineskip
+      \ialign{##\cr$\succ$\cr\noalign{\kern 1pt}$=$\cr}%
+    }%
+  }%
+}
+\newcommand{\nsucceqq}{\mathrel{\not\succeqq}}
+
+\usepackage[
+	colorlinks=true,
+	linkcolor=UBonnBlue,
+	citecolor=UBonnBlue,
+	filecolor=black,
+	urlcolor=UBonnBlue,
+	bookmarks=true,
+	bookmarksnumbered=true,
+	bookmarksopenlevel=2,
+	pdfstartview=Fit,
+	pdfpagelayout=SinglePage,
+	plainpages=false,
+	pdfpagelabels=true
+]{hyperref}
+\urlstyle{same}   % Sets URLs in the text font instead of the typewriter font
+\Urlmuskip = 0mu\relax  % Prevent additional whitespace before/after breakable characters in URLs
+%\setlength{\Urlmuskip}{0mu}
+\newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+% Change ``([sub]sub)section'' to ``Section'' in \autoref
+% and add na
+% ==>
+\addto\extrasamerican{%
+	\renewcommand{\chapterautorefname}{Chapter}%
+	\renewcommand{\sectionautorefname}{Section}%
+	\renewcommand{\subsectionautorefname}{Section}%
+	\renewcommand{\subsubsectionautorefname}{Section}%
+}
+\newcommand*{\Appendixautorefname}{Appendix}
+	% See https://tex.stackexchange.com/questions/207744/no-autoref-name-for-appendix
+\newcommand*{\hypothesisautorefname}{Hypothesis}
+\newcommand*{\resultautorefname}{Result}
+% <==
+% Enclose the back references in the bibliography to the pages on which a reference is cited in square brackets (Econometrica style):
+% (only applicable if using BibTeX instead of BibLaTeX)
+%\let \backrefold \backref
+%\renewcommand*{\backref}[1]{[\backrefold{#1}]}
+
+% \usepackage{cleveref}	% Provides \cref{...} etc. for flexible referencing.
+
+\usepackage{verbatim}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  GRAPHICS-RELATED PACKAGES  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{graphicx}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\usepackage{epstopdf}  % Has to be loaded after graphic{s,x}
+
+\usepackage[table]{xcolor}
+\definecolor{UBonnBlue}   {RGB}{0007,0082,0154}
+\definecolor{darkblue}    {rgb}{0.00,0.20,0.40}
+\definecolor{darkred}     {rgb}{0.80,0.00,0.00}
+\colorlet   {darkred25}   {darkred!25!white}
+\definecolor{customgreen} {rgb}{0.15,0.55,0.00}
+\definecolor{custompurple}{rgb}{0.15,0.00,0.75}
+
+\usepackage{pgf, pgfarrows, pgfnodes, pgfshade}
+\usepackage{pgfplots}
+
+\usepackage{tikz}
+\usetikzlibrary{mindmap, trees, patterns}
+
+\usepackage{pdflscape}
+% To set single pages in landscape ortientation
+
+\usepackage{afterpage}
+% To wrap text around landscape-oriented pages
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  ADVANCED TEXT FORMATTING  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[normalem]{ulem}  % Do NOT change \emph to \uline!!!
+
+\usepackage[full]{textcomp}  % ``full'' option tequired some packages (e.g., ``newtxtext'')
+\usepackage{xfrac}	% Provides \sfrac; loads textcomp (without ``full'' option)
+
+\usepackage{soul}  % Provides a~highlighting command: \hl{...}
+
+% Allow for fine-grained scaling of font sizes
+% ==>
+\usepackage{relsize}
+\renewcommand\RSpercentTolerance{1}
+% Enabling slightly reduced font for CAPS:
+\renewcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+% <==
+
+\frenchspacing	% Prevent excessively large whitespace after periods
+\sloppy
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  COMMANDS FOR TROUBLESHOOTING  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{printlen}  % Enables outputting the current values of lengths
+
+\usepackage[math]{blindtext}
+\makeatletter
+\def\blindtext@american{}
+\renewcommand{\blindmathpaper}{%
+	\blindtext
+	\blindtext@formula\par
+	\blindtext
+	\blindtext@formula
+	\blindtext
+	\blindtext@formula\par
+	\blindtext
+	\blindtext@formula
+	\blindtext
+	\blindtext@formula\par
+	\blindtext\relax%
+}
+\makeatother
+
+%\usepackage{showframe}
+%\renewcommand*\ShowFrameColor{\color{magenta}}
+%\usepackage[pagewise]{lineno}
+%\addtolength{\linenumbersep}{7.5pt}
+%\renewcommand{\linenumberfont}{\sffamily\tiny\color{gray}}
+%\linenumbers
+% An auxiliary command to display the current font settings -->
+\makeatletter
+\newcommand{\showfont}{{%
+	\color{magenta}
+	\textit{Encoding:} \f@encoding{},
+	\textit{family:}   \f@family{},
+	\textit{series:}   \f@series{},
+	\textit{shape:}    \f@shape{},
+	\textit{size:}     \f@size{}.
+}}
+\makeatother
+\newcommand{\showfamily}{\f@family{}}
+% <--
+
+\makeatletter
+\newcommand*{\checkgreekletters}{%
+	\@for\@tempa:=%
+	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+	\do{$\csname\@tempa\endcsname,$ }%
+}
+\makeatother
+
+\usepackage{fonttable}

@@ -1,0 +1,336 @@
+% !TeX program = pdflatex
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:compile = txs:///pdflatex/
+
+% !BIB program = bibtex
+% !BIB TS-program = bibtex
+% !TeX TXS-program:bibliography = txs:///bibtex
+
+
+
+
+\documentclass{beamer}
+
+
+\input{0_0_Preamble/Preamble_Poster}
+\input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
+\input{0_0_Preamble/Preamble_Sansserif_math}
+
+
+
+
+%%%%%%%%%%%%%%%%%%5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  DOCUMENT-SPECIFIC ADDITIONS TO THE PREAMBLE  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newlength{\blockOne}
+\newlength{\blockTwo}
+\newlength{\blockThree}
+\newlength{\blockFour}
+
+% Vertical positions
+\setlength{\blockOne}  { 12.00cm}
+\setlength{\blockTwo}  { 49.25cm}
+\setlength{\blockThree}{ 76.50cm}
+\setlength{\blockFour} {102.00cm}
+
+\title{\firasemibold The Title of This Poster Can Be Rather Long}
+\author{%
+	Adam Smith,\affilindicator{a,\,c}
+	% Set the name of the presenting coauthor in boldface:
+	{\bfseries Janet Smith},\affilindicator{b,\,c} and
+	Jeremiah Smith\affilindicator{a}
+} % Author(s)
+\institute{%
+	\affilindicator{a}\,University of Bonn, Germany;
+	\affilindicator{b}\,University of Cologne, Germany (\email{janet.smith@example.org});
+	\affilindicator{c}\,Collaborative Research Center Transregio~224%
+} % Institution(s)
+\date{}
+
+\usepackage{xspace}
+\newcommand{\balA}[1][1]{BAL$^\mathup{I}_{#1:#1}$\xspace}
+\newcommand{\unbalA}[1][n]{UNBAL$^\mathup{I}_{1:#1}$\xspace}
+\newcommand{\balB}[1][1]{BAL$^\mathup{II}_{#1:#1}$\xspace}
+\newcommand{\unbalB}[1][n]{UNBAL$^\mathup{II}_{#1:1}$\xspace}
+
+\newcommand{\mynum}[1]{\scalebox{1.075}{\firasemibold#1}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%  DOCUMENT BODY  %%
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+
+\begin{frame}[t]	% Entire poster is one large frame
+
+
+\TPshowboxestrue
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  BOX 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock*}{3\colwidth+2\colsep}(\leftmargin, \blockOne)
+
+\begin{alertblock}{%
+	\begin{minipage}[b]{55pt}
+		\RaggedRight
+		\noindent\VeryHuge 1
+	\end{minipage}
+	\begin{minipage}[b]{3\colwidth+2\colsep-145pt}
+		Figures Illustrating the Design of the Study.\;
+		{\mdseries These screenshots are taken from \cite{Dertwinkel-Kalt2017}.\; \textit{Balanced:} Both payoffs concentrated on single date (\balA, \balB).\; \textit{Unbalanced:} Later (\unbalA) or earlier payoff (\unbalB) dispersed over $n$~dates.}
+	\end{minipage}
+}
+	\vspace{10pt}\hspace{-50pt}
+	\begin{minipage}{0.475\textwidth}
+		\begin{beamercolorbox}[ht=29cm, center]{block body}
+			\textbf{Example~1.\; \balA vs. \unbalA[8]} \\[15pt]
+			\color{CMYKGray}\fbox{\includegraphics[width=0.9\textwidth]{1_Example_Content/Images/Screenshots/BS_inc_conc_2third.png}} \\[-5.5in]
+			\mbox{\hspace{60pt}}
+			\color{CMYKGray}\fbox{\includegraphics[width=0.9\textwidth]{1_Example_Content/Images/Screenshots/BS_inc_disp_2third.png}}
+		\end{beamercolorbox}
+	\end{minipage}
+	\hspace{40pt}
+	\begin{minipage}{0.475\textwidth}
+		\begin{beamercolorbox}[ht=29cm, center]{block body}
+			\textbf{Example~2.\; \balB vs. \unbalB[8]} \\[15pt]
+			\color{CMYKGray}\fbox{\includegraphics[width=0.9\textwidth]{1_Example_Content/Images/Screenshots/BS_dec_conc_2third.png}} \\[-5.5in]
+			\mbox{\hspace{60pt}}
+			\color{CMYKGray}\fbox{\includegraphics[width=0.9\textwidth]{1_Example_Content/Images/Screenshots/BS_dec_disp_2third.png}}
+		\end{beamercolorbox}
+	\end{minipage}
+	\vspace{10pt}
+\end{alertblock}
+
+\end{textblock*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  BOX 2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock*}{2\colwidth+\colsep}(\leftmargin, \blockTwo)
+
+\begin{alertblock}{%
+	\begin{minipage}[b]{55pt}
+		\RaggedRight
+		\noindent\VeryHuge 2
+	\end{minipage}
+	\begin{minipage}[b]{2\colwidth+\colsep-145pt}
+		Our Main Results.\;
+		{\mdseries The charts are taken from \cite{Dertwinkel-Kalt2017}.}\;
+		(A)~{\mdseries Difference between treatment and control condition.}\;
+		(B)~{\mdseries Heterogeneity.}
+	\end{minipage}
+}
+\begin{beamercolorbox}[ht=8.0in, center]{block body}
+	\begin{minipage}[t]{0.46\textwidth}
+		\Large\textbf{A} \textcolor{SpotColor}{\hspace{3.75in} {\firasemibold\small Result~1}} \\[15pt]
+		\includegraphics[width=9.13in, trim={3.75in 1.75in 3.75in 2in}, clip]
+			{1_Example_Content/Images/average_pb_fb.png}
+	\end{minipage}
+	\hspace{20pt}
+	\begin{minipage}[t]{0.46\textwidth}
+		\Large\textbf{B} \textcolor{SpotColor}{\hspace{3.9in} {\firasemibold\small Result~2}} \\[15pt]
+		\includegraphics[width=9.5in, trim={3.75in 1.75in 3.75in 2in}, clip]
+			{1_Example_Content/Images/average_8_4_2.png}
+	\end{minipage} \\[40pt]
+\end{beamercolorbox}
+\end{alertblock}
+
+\end{textblock*}
+
+
+\TPshowboxesfalse
+
+\begin{textblock*}{\colwidth}(\leftmargin+2.25in, \blockTwo+9.5in)
+	\centering \footnotesize \sffamily
+	$\text{\balA} - \text{\unbalA[\bullet]}$
+	\hspace{40pt}
+	$\text{\unbalB[\bullet]} - \text{\balB}$
+\end{textblock*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  BOX 3  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\TPshowboxestrue
+
+\begin{textblock*}{\colwidth}(\leftmargin+2\colwidth+2\colsep, \blockTwo)
+
+\begin{alertblock}{
+	\begin{minipage}[b]{53pt}
+		\RaggedRight
+		\noindent\hspace{-7pt}\VeryHuge 3
+	\end{minipage}
+	\begin{minipage}[b]{\colwidth-145pt}
+		Main vs. Control Experiment.\;
+		{\mdseries Rule out some alternative explanation.}
+	\end{minipage}
+}
+\begin{beamercolorbox}[ht=8.0in, center]{block body}
+	\Large\textcolor{SpotColor}{\textbf{~} \hspace{0.5in} {\firasemibold\small Result~3}} \\[15pt]
+	% trim={<left> <lower> <right> <upper>}
+	\includegraphics[width=9.13in, trim={3.75in 1.75in 3.75in 2in}, clip]
+		{1_Example_Content/Images/average_main_control.png} \\[59pt]
+\end{beamercolorbox}
+\end{alertblock}
+
+\end{textblock*}
+
+
+\TPshowboxesfalse
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  COLUMN 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock*}{\colwidth}(\leftmargin, \blockThree)
+
+\begin{block}{Introduction}
+\vspace{-0.333333\baselineskip}
+\begin{itemize}
+	\item Temporal discounting is key concept in economics.
+	\item Normative model: exponential discounting, but observed decisions are hard to explain \citep[e.g.,][]{Dohmen2012}.
+	\item The composition of latex and of typical rubbers is given below.
+	\item The trees are regularly tapped and the coagulated latex which exudes is collected and worked up into rubber \citep{Koszegi2013}.
+	\item There is no feasible method at present known of preventing the inclusion of the resin of the latex with the rubber during coagulation.
+	\item Although the separation of the resin from the solid caoutchouc by means of solvents is possible, it is not practicable or profitable commercially.
+\end{itemize}
+\end{block}
+
+\end{textblock*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  COLUMN 2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock*}{\colwidth}(\leftmargin+\colwidth+\colsep, \blockThree)
+
+\begin{block}{Design of the Study {\mdseries(Box 1)}}
+\vspace{-0.333333\baselineskip}
+\begin{itemize}
+	\item The latex of the best rubber plants furnishes from 20\% to 50\% of rubber.
+	\item As the removal of the impurities of the latex is one of the essential points to be aimed at, it was thought that the use of a centrifugal machine to separate the caoutchouc as a cream from the watery part of the latex would prove to be a satisfactory process.
+	\item The watery portion of the latex soaks into the trunk, and the soft spongy rubber which remains is kneaded and pressed into lumps or balls: \\[0.333333\baselineskip]
+	\highlight{\balA, \balB:} Each payment transferred on single day. \\[0.333333\baselineskip]
+	\highlight{\unbalA:} Earlier payoff concentrated, while later payoff dispersed over ${n = 2}$, 4, or 8~dates. \\[0.333333\baselineskip]
+	\highlight{\unbalB:} Earlier payoff dispersed over ${n = 2}$, 4, or 8 dates, while later payoff concentrated.
+\end{itemize}
+\end{block}
+
+\end{textblock*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  COLUMN 3  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock*}{\colwidth}(\leftmargin+2\colwidth+2\colsep, \blockThree)
+\begin{block}{Control Experiment}
+\vspace{-0.333333\baselineskip}
+\newlength{\disckern}
+\setlength{\disckern}{1pt}
+\begin{itemize} \justifying
+	\item Control for alternative explanations.
+	\item Many of the example sentences were taken from \url{http://sentence.yourdictionary.com/latex}.
+\end{itemize}
+\end{block}
+
+\end{textblock*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  COLUMN 3 cont.  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock*}{\colwidth}(\leftmargin+2\colwidth+2\colsep, \blockThree+252pt)
+
+\begin{block}{Results {\mdseries(Boxes 2 and 3)}}	
+\vspace{-0.333333\baselineskip}
+\begin{itemize} \justifying
+	\item[\mynum{1}] As a secondary function we may recognize the power of closing wounds, which results from the rapid coagulation of exuded latex in contact with the air.
+	\item[\mynum{2}] In some cases (Allium, Convolvulaceae, etc.) rows of cells with latex-like contents occur, but the walls separating the individual cells do not break down.
+	\item[\mynum{3}] The rows of cells from which the laticiferous vessels are formed can be distinguished (6.3~p.p. vs. 2.6~p.p.; ${p < 0.01}$).
+\end{itemize}
+\end{block}
+
+\end{textblock*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  COLUMNS 1 + 2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock*}{2\colwidth+\colsep}(\leftmargin, \blockFour)
+
+\begin{block}{~}
+\end{block}
+
+\end{textblock*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  COLUMN 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock*}{\colwidth}(\leftmargin, \blockFour)
+
+\begin{block}{Conclusion}
+\vspace{-0.333333\baselineskip}
+\begin{itemize}
+	\item The latex exhibits a neutral, acid, or alkaline reaction, depending on the plant from which it was obtained.
+	\item The latex is therefore usually allowed to coagulate on the tree \citep{Koszegi2013}.
+	\item See also \cite{Bordalo2013}.
+	\item The latex, which is usually coagulated by standing or by heating, is obtained from incisions.
+\end{itemize}	
+\end{block}
+
+\end{textblock*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  COLUMN 2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock*}{\colwidth}(\leftmargin+\colwidth+\colsep, \blockFour)
+
+\begin{block}{~}
+\vspace{-0.333333\baselineskip}
+\begin{itemize}
+	\item When exposed to air, the latex gradually undergoes putrefactive changes accompanied by coagulation.
+	\item The addition of a small quantity of ammonia or of formalin to some latices has the effect of preserving them.
+	\item There is, however, reason to believe the following.
+	\item The coagulation of latex into rubber is not mainly of this character.
+\end{itemize}	
+\end{block}
+
+\end{textblock*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  COLUMN 3  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{textblock*}{\colwidth}(\leftmargin+2\colwidth+2\colsep, \blockFour)
+
+\begin{block}{References}
+\vspace{-0.333333\baselineskip}
+\renewcommand{\harvardand}{\&}
+\setlength{\bibhang}{0pt}
+\setlength{\bibsep}{0\baselineskip}
+\renewcommand*{\bibfont}{\sffamily\small\baselineskip28.6pt}
+\renewcommand*{\bf}{\bfseries}
+\color{SpotColor}
+\bibliographystyle{0_0_Preamble/aea_doi_initials}
+\bibliography{Library}
+\end{block}
+
+\end{textblock*}
+
+
+\end{frame}
+
+
+\end{document}

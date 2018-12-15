@@ -1,0 +1,79 @@
+% !TeX program = pdflatex
+% !BIB program = biber
+
+
+
+\subsection{Predictions}
+\label{sec:Predictions}
+
+\blindtext
+
+Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages. Let's include a~really, really long footnote to check how it is split across two pages.\footnote{\blindmathfalse\blindtext[7]\blindmathtrue}
+
+By discounted utility we understand any intertemporal utility function that is time-separable and that values a~payment farther in the future at most as much as an~equal-sized payment closer in the future. Importantly, the predictions derived below hold for all three frequently used types of discounting---exponential, hyperbolic, and quasi-hyperbolic.
+
+In the following, we assume that individuals base their decisions on utility derived from receiving monetary payments $c_t$ at various dates~$t$.
+This is an~assumption that is frequently made in experiments on intertemporal decision making. One way to justify this assumption is that individuals anticipate to consume the payments they receive within a~short period around date~$t$. Given that the maximum payment was below \euro 20 and that any two payment dates were separated by at least two weeks, this assumption seems reasonable \citep[see the arguments in favor of this view in][]{Halevy2014}. \cite{Koszegi2013} themselves make the same assumption of ``money in the utility function'': ``in some applications we also assume that monetary transactions induce direct utility consequences, so that for instance an agent making a~payment experiences an~immediate utility loss. The idea that people experience monetary transactions as immediate utility is both intuitively compelling and supported in the literature: \dots\ some evidence on individuals' attitudes toward money, such as narrow bracketing (\dots) and laboratory evidence on hyperbolic discounting (\dots), is difficult to explain without it.'' Last but not least, the papers by \cite{McClure2004a, McClure2007} demonstrate that brain activation, as measured by functional magnetic resonance imaging, is similar for primary and monetary rewards.
+Additionally, we make the standard assumption that utility from money is increasing in its argument but not convex: $u'(c_t) \ge 0$ and $u''(c_t) \le 0$.
+
+% \subsubsection{Exponential Discounting}%
+\subsubsection{Discounted Utility}%
+\label{sec:predictions:DU}
+Individuals make their allocation decisions by comparing the aggregated consumption utility of each earnings sequence ${\cse \in \CS}$. Discounted utility assumes that the utility of each period enters overall utility additively. That is, utility derived from the payment to be received at future date $t$ can be expressed as ${u_t(c_t) \coloneqq D(t)\,u(c_t)}$. Here, $D(t)$ denotes the individual's discount function for conversion of future utility into present utility. The discount function satisfies ${0 \le D(t)}$ and  ${D'(t) \le 0}$, such that a~payment further in the future is valued at most as much as an~equal-sized payment closer in the future.\footnote{Normalization such that ${D(t) \le 1}$ is not necessary in our case. Provided that $t$ is a~metric time measure, where ${t = 0}$ stands for the present, examples are ${D(t) \coloneqq \delta^t}$ with some ${\delta > 0}$ for exponential discounting and ${D(t) \coloneqq (1 + \alpha\,t)^{-\gamma/\alpha}}$ with some ${\alpha, \gamma > 0}$ for generalized hyperbolic discounting.}
+
+The utility of earnings sequence $\cse$ with payments $c_t$ in periods $t = 1, \dots, T$ is
+\begin{equation}
+	\label{eq:exponentialutility}
+	U(\cse) = \sum_{t=1}^{T} u_t(c_t) = \sum_{t=1}^{T} D(t)\,u(c_t).
+\end{equation}
+Individuals choose how much to allocate to the different periods by maximizing their utility over all possible earnings sequences available within a~given budget set~$\CS$, see equation~\eqref{eq:exponentialutility}. We use the superscript $^\mathrm{DU}$ to indicate decisions based on discounted utility.
+
+\subparagraph{A~Subparagraph.}
+\Blindtext[2]
+
+\subparagraph{Another Subparagraph.}
+\blindtext
+
+\subsubsection{Focus-Weighted Utility}
+In this section, we extend the model of discounted utility through ``focus weights,'' as proposed by \cite{Koszegi2013}. Period-$t$ weights $g_{t}$ scale period-$t$ consumption utility $u_t$. Individuals are assumed to maximize focus-weighted utility, which is defined as follows:
+\begin{equation} \label{eq:focusutility}
+	\tilde{U}(\cse, \CS) \coloneqq \sum_{t=1}^{T} g_t(\CS)\,u_t(c_t).
+\end{equation}
+In contrast to discounted utility $U(\cse)$, focus-weighted utility $\tilde{U}(\cse, \CS)$ has two arguments: the earnings sequence $\cse$ and the choice set~$\CS$. The latter dependence is due to the weights $g_t$. These are given by a~strictly increasing weighting function $g$ that takes as its argument the difference between the maximum and the minimum attainable utility in period $t$ over all possible earnings sequences in set~$\CS$:
+\begin{equation} \label{eq:focusweight}
+	g_t(\CS) \coloneqq g[\Delta_t(\CS)] \quad
+	\text{with} \quad \Delta_t(\CS)
+	\coloneqq
+	\max\limits_{\cse \in \CS} u_t(c_t) - \min\limits_{\cse \in \CS} u_t(c_t).
+\end{equation}
+%\begin{equation} \label{eq:focusweight}
+%	g_t(\CS) \coloneqq g[\Delta_t(\CS)] \quad
+%	\text{with} \quad \Delta_t(\CS)
+%	\coloneqq
+%	\max\limits_{\cse' \in \CS} u_t(c'_t) - \min\limits_{\cse' \in \CS} u_t(c'_t).
+%\end{equation}
+If the underlying consumption utility function is characterized by discounted utility, then ${u_t(c_t) \coloneqq D(t)\,u(c_t)}$.
+That is, focused thinkers put more weight on period~$t$ than on period~$t'$ if the discounted-utility distance between the best and worst alternative is larger for period~$t$ than for period~$t'$.
+
+\subparagraph{A~Subparagraph.}
+\blindtext
+
+\subparagraph{Yet Another Subparagraph.}
+\blindtext
+
+\subsubsection{Hypotheses}
+\blindtext
+This gives rise to our first hypothesis:
+
+\begin{hypothesis} \label{hy:UNBAL}
+This environment can be used to clearly state your hypothesis and set them apart from the body text.
+\end{hypothesis}
+
+\blindtext
+Based on this, we can state our second hypothesis:
+
+\begin{hypothesis} \label{hy:UNBAL_2}
+This environment can be used to clearly state your hypothesis and set them apart from the body text.
+\end{hypothesis}
+
+\blindtext

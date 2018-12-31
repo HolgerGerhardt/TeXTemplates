@@ -1,0 +1,471 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !BIB program = bibtex
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FUNDAMENTAL PACKAGES  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{calc}
+
+\usepackage{tabularx}
+
+\ifxetex
+	\usepackage[protrusion=true, expansion=false]{microtype}
+\else
+	\usepackage[protrusion=true, expansion=false, kerning=true]{microtype}
+\fi
+\DisableLigatures[f]{encoding = *, family = *}
+
+\definecolor{darkgray}{rgb}{0.4,0.4,0.4}
+
+\usepackage[absolute, overlay]{textpos}
+\usepackage{graphicx}
+\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\usepackage[ngerman,english]{babel} %die beiden Packages sind notwendig um �,�,� und so zu sehen
+
+\usepackage{multirow}
+
+\usepackage{xcolor}
+\usepackage{pgf}%,pgfarrows,pgfnodes,pgfshade}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{mindmap, trees, patterns}
+
+\usepackage[hang, center last, footnotesize, bf]{caption}
+
+\usepackage[round]{natbib}
+\renewcommand{\bibfont}{\scriptsize}
+
+% Better-than-the-default table design
+\usepackage{booktabs}
+% \heavyrulewidth=.05em
+% \belowbottomsep=-2.5pt
+\usepackage{colortbl} % e.g., for colored rules
+\arrayrulecolor{SpotColor} % Color all table rules blue
+% <--
+
+\usepackage{xspace}
+
+\selectlanguage{english}
+% \usepackage{eurosym}
+
+%\usepackage{etoolbox}  % loaded automatically by beamer
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%  FONT SETTINGS  %%
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
+
+\DisableLigatures[f]{family = {rm*}}
+
+\newcommand{\serifbodyfont}{1}
+
+\ifnum \serifbodyfont=1
+	% If serif font for body text =>
+	\usefonttheme{serif}
+	\setbeamerfont{normal text}{family=\rmfamily}
+	\setbeamerfont{structure}{family=\sffamily, shape=\upshape, series=\bfseries}
+	\setbeamerfont{frametitle}{size=\large, parent=structure}
+	% <=
+\else
+	% If sansserif font for body text =>
+	\setbeamerfont{normal text}{family=\sffamily}
+	\renewcommand{\familydefault}{\savesffamily}
+	\renewcommand{\mddefault}{\savesfmdseries}
+	\renewcommand{\bfdefault}{\savesfbfseries}
+	\setbeamerfont{structure}{family=\rmfamily, shape=\upshape, series=\bfseries}
+	\setbeamerfont{frametitle}{size=\large, parent=structure}
+	% <=
+\fi
+% Make frame titles and headlines bold
+\usefonttheme{structurebold}
+\usefonttheme{professionalfonts}
+
+%% Use the bm (= boldmath) package for better support of setting math in bold ==>
+%% Prevent the "Too many math fonts used" error:
+\newcommand{\bmmax}{0}
+\newcommand{\hmmax}{0}
+\usepackage{bm}
+%% <==
+
+\usepackage{fontawesome}
+
+\usepackage{mathtools}
+%\mathtoolsset{centercolon}
+	% This makes the compilation fail in combination with tikz. See
+	% https://tex.stackexchange.com/questions/89467/why-does-pdftex-hang-on-this-file.
+%% Inspired by https://tex.stackexchange.com/questions/251460/how-to-put-symbols-of-equal-size-on-top-of-each-other
+\newcommand{\succeqq}{%
+  \mathrel{%
+    \vcenter{\offinterlineskip
+      \ialign{##\cr$\succ$\cr\noalign{\kern 1pt}$=$\cr}%
+    }%
+  }%
+}
+\newcommand{\nsucceqq}{\mathrel{\not\succeqq}}
+\newcommand*{\coloneqq}{\mathrel{%
+	\mathrel{%
+		\raisebox{0.15ex}{\scalebox{0.85}{\ensuremath{:}}}\hspace{-0.2pt}%
+	}%
+	=%
+}}
+
+\input{0_0_Preamble/Preamble_Sansserif_math}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  ADJUSTING THE DESIGN OF THE PRESENTATION  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamerfont{title}{size=\LARGE, parent=structure}
+
+\makeatletter
+% 4:3 aspect ratio:
+\@ifclasswith{beamer}{aspectratio=43}{%
+	\beamer@paperwidth 12.00cm%
+	\beamer@paperheight 9.00cm%
+	\setbeamerfont{frametitle}{size*={11}{14}, parent=structure}
+	\setbeamerfont{title}{size*={14}{20}, parent=structure}
+}{}
+% 16:9 aspect ratio:
+% Nothing needs to be changed
+%\@ifclasswith{beamer}{aspectratio=169}{%
+%	\beamer@paperwidth 16.00cm%
+%	\beamer@paperheight 9.00cm%
+%}{}
+% 16:10 aspect ratio:
+\@ifclasswith{beamer}{aspectratio=1610}{%
+	\beamer@paperwidth 14.40cm%
+	\beamer@paperheight 9.00cm%
+}{}
+\makeatother
+
+\setlength{\parskip}{\medskipamount}
+
+\AtBeginEnvironment{itemize}{\vspace{-\parskip}}
+\AtBeginEnvironment{enumerate}{\vspace{-\parskip}}
+
+% Make the title page left-aligned
+\setbeamertemplate{title page}[default][left]
+
+% Make frame titles and headlines bold
+\usefonttheme{structurebold}
+%\setbeamercolor{frametitle}{fg=black}
+\setbeamerfont{subtitle}{size=\normalsize, series=\bfseries, parent=structure}
+\setbeamerfont{author}{size=\large, series=\mdseries}
+\setbeamerfont{institute}{size=\small, series=\mdseries, shape=\itshape}
+%\setbeamercolor{institute}{fg=darkgray}
+\setbeamerfont{date}{size=\normalsize, series=\bfseries, parent=structure}
+%\setbeamercolor{date}{fg=darkgray}
+
+\usepackage[LY1, LGR, TS1, T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% Adjust spacing of lists ==>
+% Unfortunately, the ``enumitem'' package is incompatible with the ``beamer'' class.
+% Hence, we need to adjust left margins etc. manually:
+\setlength{\leftmargini}{0pt}
+\setlength{\leftmarginii}{18pt}
+%			\setlength{\rightmargin}{0in}
+%			\setlength{\itemindent}{0in}
+%\usepackage{enumitem}
+%\setlist[enumerate, 1]{
+%	leftmargin=-\parindent, listparindent=\parindent, labelsep=0.42\parindent, itemsep=\smallskipamount, parsep=0pt
+%}
+%
+%\setlist[itemize, 1]{
+%	leftmargin=0pt, listparindent=\parindent, labelsep=0.75em, itemsep=\smallskipamount, parsep=0pt, topsep=1.2ex, label=\usebeamerfont*{itemize item}	\usebeamercolor[fg]{itemize item} \usebeamertemplate{itemize item}, before={\RaggedRight \hyphenpenalty=1000}
+%}
+%\setlist[itemize, 2]{
+%	leftmargin=1.2em, listparindent=\parindent, labelsep=0.6em, itemsep=\smallskipamount, parsep=0pt, topsep=0.6ex, label=\usebeamercolor[fg]{itemize item} --, before={\RaggedRight \hyphenpenalty=1000}
+%}
+% <==
+
+% ``Medium'' as the bold series:
+%\makeatletter
+%\def\bfseries@sf{mb}
+%\makeatother
+
+%\useinnertheme{circles}
+
+% Lorenz Götte's color scheme:
+%\usecolortheme{whale}
+%\definecolor{beamer@blendedblue}{rgb}{0.137,0.466,0.741}
+%\setbeamercolor{structure}{fg=beamer@blendedblue}
+%\definecolor{SpotColor}{rgb}{0.1,0.4,0.7} % Lorenz' Blue
+\definecolor{darkgray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkred}{RGB}{204,0,0}
+\definecolor{nicegreen}{RGB}{51,204,0}
+\definecolor{SpotColor}{rgb}{0,0.25,0.55}
+\setbeamercolor{structure}{fg=SpotColor}
+\setbeamercolor{alerted text}{fg=SpotColor}
+\setbeamercolor{author in head/foot}{fg=white, bg=SpotColor}
+\setbeamercolor{button}{bg=SpotColor,fg=white}
+\newcommand{\highlight}[1]{\textcolor{SpotColor}{#1}}
+\hypersetup{%
+	pdfpagemode=FullScreen,
+	colorlinks, linkcolor=, urlcolor=SpotColor, citecolor=%
+	}
+\urlstyle{same}
+\newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+\setbeamerfont{alerted text}{series=\bfseries}
+\newcommand{\sigstar}{\highlight{*}}
+
+\renewcommand{\alert}[1]{\highlight{\textbf{#1}}}
+
+\newcommand{\margintop}{12.5pt}
+\newcommand{\marginleft}{27pt}
+\newcommand{\margincenter}{24pt}
+\newcommand{\marginright}{18pt}
+\setbeamersize{text margin left=\marginleft}
+\setbeamersize{text margin right=\marginright}
+
+
+\newlength{\rulelength}
+\setlength{\rulelength}{\paperwidth - \marginleft - \marginright}
+\newcommand{\sliderule}{%
+	\textcolor{SpotColor}{\rule{\rulelength}{.35pt}}%
+}
+
+%\renewenvironment{quote}
+%{\list{}{\leftmargin\parindent \rightmargin\parindent}%
+%	%\small
+%	\setlength{\baselineskip}{2.8ex}\item\relax}
+%{\endlist}
+%\newenvironment{tightitemize}{
+%	\begin{list}{\makebox(5.5,4.5)[t]{$\scriptstyle \bullet$}}{%
+%			\advance\partopsep  by \topsep
+%			\setlength{\topsep}{0.75ex}
+%			\setlength{\itemsep}{0in}
+%			\setlength{\parsep}{0em}
+%			\setlength{\leftmargin}{\parindent}
+%			\setlength{\rightmargin}{0in}
+%			\setlength{\itemindent}{0in}
+%		}
+%	}
+%	{\end{list}%
+%}
+% <--
+
+% Remove navigation symbols from the slide footer
+\beamertemplatenavigationsymbolsempty
+
+% Adjust layout of frametitle
+% \addtobeamertemplate{frametitle}{\vskip0.5ex}{}
+\setbeamertemplate{frametitle}{%
+	\vspace{\margintop}\vspace{-5pt}%
+	{\large\usebeamercolor{frametitle}\usebeamerfont{frametitle}\insertframetitle\\[-1.2ex]}%
+	\sliderule%
+}
+
+% Add a slide number (and [short]title) to the footer of each slide
+\BeforeBeginEnvironment{frame}{%
+	\setbeamertemplate{footline}{\vskip-15pt
+		\textcolor{SpotColor}{%
+			%\fontseries{rm}\selectfont%
+			\hspace{\marginleft}%
+			\sliderule \vspace{1.1ex} \linebreak
+			\mbox{\hspace{\marginleft}}%
+			\textmd{\insertshortauthor: ``\insertshorttitle''}
+			\hfill%
+			\insertframenumber/\inserttotalframenumber%
+			\hspace{\marginright}%
+		}%
+		\vspace{12pt}%
+	}
+}
+
+% See https://tex.stackexchange.com/questions/427257/how-to-remove-footer-for-specific-type-of-slides-frames:
+\makeatletter
+\define@key{beamerframe}{standout}[true]{%
+	\setbeamertemplate{footline}{\vskip-15pt
+		\textcolor{SpotColor}{%
+			%\fontseries{rm}\selectfont%
+			\hspace{\marginleft}%
+			\sliderule \vspace{1.1ex} \linebreak
+			\mbox{\hspace{\marginleft}}%
+			\textmd{\phantom{\insertshortauthor: ``\insertshorttitle''}}
+			\hfill%
+			\phantom{\insertframenumber/\inserttotalframenumber}%
+			\hspace{\marginright}%
+		}%
+		\vspace{12pt}%
+	}%
+}
+\makeatother
+
+
+% Enable hyphenation on Beamer slides:
+\usepackage{ragged2e}
+\let \raggedright \RaggedRight
+\sloppy
+\hyphenpenalty=500
+
+\frenchspacing % Prevent increased whitespace after periods and colons
+
+% Change the horizontal spacing in the ``Outline'' slides
+\useinnertheme{circles}
+\setbeamertemplate{section in toc}{%
+	\leavevmode\leftskip=0ex%
+	\llap{%
+		\usebeamerfont*{section number projected}%
+		\usebeamercolor{section number projected}%
+		\begin{pgfpicture}{-1ex}{0ex}{1ex}{2ex}
+			\color{bg}
+			\pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.2ex}
+			\pgfusepath{fill}
+			\pgftext[base]{\color{fg}\raisebox{0.07ex}{%
+					% \addfontfeatures{Numbers={Lining, Monospaced}}%
+					\usebeamerfont{structure}%
+					\small\inserttocsectionnumber}%
+			}
+		\end{pgfpicture}\kern1.5ex%
+	}%
+	\usebeamerfont{normal text}%
+	\inserttocsection\par%
+}
+\setbeamertemplate{subsection in toc}{%
+	\leavevmode\leftskip=2em$\bullet$\hskip1em\inserttocsubsection\par%
+}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}
+	{\vfill}
+	{\medskip}
+	{}
+	{}
+\makeatother
+
+\setbeamertemplate{button}{%
+	\tikz
+		\node[
+			inner xsep=3pt,
+			inner ysep=2pt,
+			draw=structure!100,
+			fill=structure!100,
+			rounded corners=1.5pt
+		]{\raisebox{1.5pt}{\usebeamerfont{structure}\insertbuttontext}};%
+}
+
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{enumerate subitem}{\alph{enumii}.}
+\setbeamertemplate{enumerate subsubitem}{\roman{enumiii}.}
+\setbeamertemplate{itemize item}{\textbf{\textbullet}}
+
+\setbeamerfont*{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
+\setbeamerfont*{itemize/enumerate subsubbody}{parent=itemize/enumerate body}
+
+%\renewcommand{\texteuro}{\fontencoding{TS1}\selectfont\char"BF\fontencoding{T1}\selectfont}
+%\newcommand{\euro}{\texteuro}
+
+% Adding framenumbers automatically to the frametitles
+\newcommand{\pageinsection}{\number\numexpr\insertpagenumber-\insertsectionstartpage+1}
+% From https://tex.stackexchange.com/questions/308343/how-to-create-mini-sections-mini-subsections-and-mini-frames-in-beamer-presenta
+% ==>
+%\usepackage{etoolbox}  % Automatically loaded by beamer
+\makeatletter
+\newcount\beamer@sectionstartframe
+\beamer@sectionstartframe=1
+\apptocmd{\beamer@section}{\addtocontents{nav}{\protect\headcommand{%
+			\protect\beamer@sectionframes{\the\beamer@sectionstartframe}{\the\c@framenumber}}}}{}{}
+\apptocmd{\beamer@section}{\beamer@sectionstartframe=\c@framenumber\advance\beamer@sectionstartframe by1\relax}{}{}
+\AtEndDocument{\immediate\write\@auxout{\string\@writefile{nav}%
+		{\noexpand\headcommand{\noexpand\beamer@sectionframes{\the\beamer@sectionstartframe}{\the\c@framenumber}}}}}{}{}
+\def\beamer@startframeofsection{1}
+\def\beamer@endframeofsection{1}
+\def\beamer@sectionframes#1#2{%
+	\ifnum\c@framenumber<#1%
+	\else%
+	\ifnum\c@framenumber>#2%
+	\else%
+	\gdef\beamer@startframeofsection{#1}%
+	\gdef\beamer@endframeofsection{#2}%
+	\fi%
+	\fi%
+}
+\newcommand\insertsectionstartframe{\beamer@startframeofsection}
+\newcommand\insertsectionendframe{\beamer@endframeofsection}
+\makeatother
+% <==
+\newcommand{\frameinsection}{\number\numexpr\insertframenumber-\insertsectionstartframe+1}
+% https://tex.stackexchange.com/questions/228684/two-counters-for-beamer-presentations
+%\newcommand{\titleprefix}{\insertsection~{\pageinsection}}
+\newcommand{\titleprefix}{\insertsection~{\frameinsection}}
+% <==
+
+% Continuation counter for frames with the ``allowframebreaks'' option.
+% See https://tex.stackexchange.com/questions/275044/how-do-i-insert-the-total-continuation-count-in-the-allowframbreaks-frame-title
+% ==>
+\newcounter{totalcontinuationcount}
+\makeatletter
+\setbeamertemplate{frametitle continuation}{%
+	\setcounter{totalcontinuationcount}{\beamer@endpageofframe}%
+	\addtocounter{totalcontinuationcount}{1}%
+	\addtocounter{totalcontinuationcount}{-\beamer@startpageofframe}%
+	\ifnum \value{totalcontinuationcount} > 1
+		\textmd{(\insertcontinuationcount/\arabic{totalcontinuationcount})}%
+	\fi
+}
+\makeatother
+% <==
+
+\usepackage{appendixnumberbeamer}
+
+\newcommand\Wider[2][0pt]{%
+	\makebox[\linewidth][c]{%
+		\hspace{-\marginleft}\hspace{\marginright}%
+		\begin{minipage}{\dimexpr\textwidth+\marginleft-\marginright\relax}
+			\raggedright%
+			\smallskip%
+			#2
+		\end{minipage}%
+	}%
+}
+
+\makeatletter
+\renewcommand{\beamer@insttitle}[1]{\highlight{\textsuperscript{\kern.75pt \textit{#1}}}}
+\renewcommand{\beamer@instinst}[1]{\beamer@insttitle{#1}\ignorespaces}
+\renewcommand{\beamer@andinst}{\\[0.33\baselineskip]}
+\makeatother
+\makeatother
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FOR DEBUGGING ONLY  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{blindtext}
+\blindmathtrue
+
+% An auxiliary command to display the current font settings ==>
+\makeatletter
+\newcommand{\showfont}{%
+	\textit{encoding:} \f@encoding{},
+	\textit{family:} \f@family{},
+	\textit{series:} \f@series{},
+	\textit{shape:} \f@shape{},
+	\textit{size:} \f@size{}
+}
+\makeatother
+% <==

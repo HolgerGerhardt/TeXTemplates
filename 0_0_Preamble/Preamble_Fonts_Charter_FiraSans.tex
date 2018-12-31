@@ -5,6 +5,7 @@
 
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  FONT SETTINGS AND TYPOGRAPHY  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -13,7 +14,8 @@
 % Use Fira Sans as the sansserif font
 % Load first because it otherwise doesn't work properly
 % ==>
-\usepackage[book, semibold, lining, tabular, scale=0.91]{FiraSans}[2018/05/23]
+\usepackage[lining, scale=0.88]{FiraMono}  % To match the x-height of the Charter serif font
+\usepackage[book, semibold, lining, tabular, scale=0.88]{FiraSans}[2018/05/23]
 \makeatletter
 \@ifpackagelater{FiraSans}{2017/05/23}
 	{}
@@ -37,7 +39,6 @@
 \newcommand{\savesfmdseries}{\mdseries@sf}
 \newcommand{\savesfbfseries}{\bfseries@sf}
 \makeatother
-\usepackage[lining, scale=0.91]{FiraMono}
 % <==
 
 % Use Bitstream Charter as the math font

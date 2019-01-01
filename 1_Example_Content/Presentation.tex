@@ -1,8 +1,14 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  MISCELLANEOUS SETTINGS/COMMANDS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \newcommand{\balA}[1][1]{BAL$^\mathup{I}_{#1:#1}$\xspace}
 \newcommand{\unbalA}[1][n]{UNBAL$^\mathup{I}_{1:#1}$\xspace}
 \newcommand{\balB}[1][1]{BAL$^\mathup{II}_{#1:#1}$\xspace}
 \newcommand{\unbalB}[1][n]{UNBAL$^\mathup{II}_{#1:1}$\xspace}
 
+%% Add separator slide to the beginning of each section ==>
 \AtBeginSection[]{
 	\begin{frame}[standout, c]{~}
 		%\vfill
@@ -12,13 +18,13 @@
 	\end{frame}%
 }
 
-%% Add ``Outline'' slide to the beginning of each section -->
+%% Alternativelyy, add ``Outline'' slide to the beginning of each section ==>
 %\AtBeginSection[]{
 %	\begin{frame}[plain]{Outline}
 %		\tableofcontents[currentsection]
 %	\end{frame}
 %}
-%% <--
+%% <==
 
 \title{A~Template for Academic Presentations}
 %\subtitle{}
@@ -50,8 +56,6 @@
 %%  TITLE SLIDE  %%
 %%%%%%%%%%%%%%%%%%%
 
-
-\renewcommand{\euro}{\texteuro}
 
 \begin{frame}[standout]{~}
 
@@ -89,7 +93,7 @@
 		\item The composition of latex and of typical rubbers is given below.
 		\item The trees are regularly tapped and the coagulated latex which exudes is collected and worked up into rubber \citep{Koszegi2013}.
 		\item There is no feasible method at present known of preventing the inclusion of the resin of the latex with the rubber during coagulation.
-		\item Although the separation of the resin from the solid caoutchouc by means of solvents is possible, it is not practicable or profitable commercially.
+		\item[$\Rightarrow$] Although the separation of the resin from the solid caoutchouc by means of solvents is possible, it is not practicable or profitable commercially.
 	\end{itemize}
 
 \end{frame}
@@ -99,6 +103,13 @@
 
 
 \begin{frame}{\titleprefix: Design of the Study}
+
+	\begin{quote}
+		Great Minds Discuss Ideas. \\
+		Average Minds Discuss Events. \\
+		Small Minds Discuss People. \\
+		\upshape ---\url{https://quoteinvestigator.com/2014/11/18/great-minds/}
+	\end{quote}
 
 	\begin{itemize}
 		\item The latex of the best rubber plants furnishes from 20\% to 50\% of rubber.
@@ -131,9 +142,16 @@
 \end{frame}
 
 
-\begin{frame}{\titleprefix: An~Example List}
+\begin{frame}{\titleprefix: An~Example \texttt{enumerate} List}
 
 	\blindlistlist[3]{enumerate}[4]
+
+\end{frame}
+
+
+\begin{frame}{\titleprefix: An~Example \texttt{itemize} List}
+
+	\blindlistlist[3]{itemize}[4]
 
 \end{frame}
 
@@ -167,7 +185,7 @@
 
 	\def\Pr{\ensuremath{\mathbb{P}}}
 	\def\rmd{\mathup{d}}
-	Only variables are set in italics according to ISO style---hence, we use upright shapes for ``$\rmd$,'' ``$\mathup{e}$,'' and ``$\mathup{\pi}$'' (\texttt{\textbackslash mathup\{d\}}, \texttt{\textbackslash mathup\{e\}}, and \texttt{\textbackslash mathup\{\textbackslash pi\}}, respectively).
+	Only variables are set in italics according to \caps{ISO} style---hence, we use upright ``$\rmd$,'' ``$\mathup{e}$,'' and ``$\mathup{\pi}$'' (\texttt{\textbackslash mathup\{d\}}, \texttt{\textbackslash mathup\{e\}}, and \texttt{\textbackslash mathup\{\textbackslash pi\}}, respectively).
 	
 	\begin{theorem}[Simplest form of the \emph{Central Limit Theorem}]
 		\ifnum \serifbodyfont=0
@@ -241,7 +259,7 @@
 
 \begin{frame}{\titleprefix: Main vs. Control Experiment}
 
-	Rule out some alternative explanation.
+	Rule out some alternative explanations.
 	
 	\bigskip
 	
@@ -257,19 +275,21 @@
 \section{Discussion}
 
 
-\begin{frame}{Conclusion}
+\begin{frame}{\titleprefix}
 
 	\begin{itemize}
 		\item The latex exhibits a neutral, acid, or alkaline reaction, depending on the plant from which it was obtained.
 		\item The latex is therefore usually allowed to coagulate on the tree \citep{Koszegi2013}.
+			\begin{itemize}
+				\item[$\Rightarrow$] The latex, which is usually coagulated by standing or by heating, is obtained from incisions.
+			\end{itemize}
 		\item See also \cite{Bordalo2013}.
-		\item The latex, which is usually coagulated by standing or by heating, is obtained from incisions.
 	\end{itemize}	
 
 \end{frame}
 
 
-\begin{frame}{\insertsection}
+\begin{frame}{\titleprefix: Conclusion}
 
 	\begin{itemize}
 		\item When exposed to air, the latex gradually undergoes putrefactive changes accompanied by coagulation.
@@ -281,7 +301,7 @@
 \end{frame}
 
 
-\begin{frame}{An Automated Animation}
+\begin{frame}{\titleprefix: An Automated Animation}
 
 The automated transition to the next slide (=~page in the PDF document) only works in full-screen mode.
 \begin{itemize}
@@ -337,12 +357,12 @@ The automated transition to the next slide (=~page in the PDF document) only wor
 \begin{appendix}
 
 
-\section{Appendix}
+\section[Appendix \\ \textmd{Backup Slides}]{Appendix}
 
 
 \begin{frame}[label=model]
 
-	\frametitle{Modeling Concentration Bias}
+	\frametitle{\insertsection: Modeling Concentration Bias}
 	
 	Subjects consider a sequences of consequences $\boldsymbol{c}$ from choice set $\boldsymbol{C}$.
 	

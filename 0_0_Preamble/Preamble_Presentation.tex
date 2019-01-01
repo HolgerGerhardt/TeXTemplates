@@ -11,6 +11,10 @@
 
 \usepackage{calc}
 
+\usepackage[LY1, LGR, TS1, T1]{fontenc}
+	% LGR (Greek) is needed to enable the ``sansserif math'' features.
+\usepackage[utf8]{inputenc}
+
 \usepackage{tabularx}
 
 \ifxetex
@@ -60,6 +64,13 @@
 
 %\usepackage{etoolbox}  % loaded automatically by beamer
 
+\hypersetup{%
+	pdfpagemode=FullScreen,
+	colorlinks, linkcolor=, urlcolor=SpotColor, citecolor=%
+}
+\urlstyle{same}
+\newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+
 
 
 
@@ -72,7 +83,7 @@
 
 \DisableLigatures[f]{family = {rm*}}
 
-\newcommand{\serifbodyfont}{0}
+\newcommand{\serifbodyfont}{1}
 
 \ifnum \serifbodyfont=1
 	% If serif font for body text =>
@@ -126,6 +137,18 @@
 
 \input{0_0_Preamble/Preamble_Sansserif_math}
 
+\AtBeginDocument{%
+	\renewcommand{\euro}{\texteuro}%
+}
+
+% Allow for fine-grained scaling of font sizes
+% ==>
+\usepackage{relsize}
+\renewcommand\RSpercentTolerance{1}
+% Enabling slightly reduced font for CAPS:
+\newcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+% <==
+
 
 
 
@@ -136,6 +159,8 @@
 
 \setbeamerfont{title}{size=\LARGE, parent=structure}
 
+% For convenience, let the ``paperheight'' of the slides be identical,
+% no matter what the aspect ratio of the slides ==>
 \makeatletter
 % 4:3 aspect ratio:
 \@ifclasswith{beamer}{aspectratio=43}{%
@@ -156,14 +181,25 @@
 	\beamer@paperheight 9.00cm%
 }{}
 \makeatother
+% <==
+
+% Margins ==>
+\newcommand{\margintop}{12.5pt}
+\newcommand{\marginleft}{27pt}
+\newcommand{\margincenter}{24pt}
+\newcommand{\marginright}{18pt}
+\setbeamersize{text margin left=\marginleft}
+\setbeamersize{text margin right=\marginright}
+% <==
 
 \setlength{\parskip}{\medskipamount}
+	% Inserts some space between paragraphs
 
-\AtBeginEnvironment{itemize}{\vspace{-\parskip}}
-\AtBeginEnvironment{enumerate}{\vspace{-\parskip}}
-
-% Make the title page left-aligned
-\setbeamertemplate{title page}[default][left]
+% Enable hyphenation on Beamer slides:
+\usepackage{ragged2e}
+\let \raggedright \RaggedRight
+\sloppy
+\hyphenpenalty=500
 
 % Make frame titles and headlines bold
 \usefonttheme{structurebold}
@@ -174,69 +210,26 @@
 %\setbeamercolor{institute}{fg=darkgray}
 \setbeamerfont{date}{size=\normalsize, series=\bfseries, parent=structure}
 %\setbeamercolor{date}{fg=darkgray}
+\setbeamerfont{alerted text}{series=\bfseries}
 
-\usepackage[LY1, LGR, TS1, T1]{fontenc}
-\usepackage[utf8]{inputenc}
-
-% Adjust spacing of lists ==>
-% Unfortunately, the ``enumitem'' package is incompatible with the ``beamer'' class.
-% Hence, we need to adjust left margins etc. manually:
-\setlength{\leftmargini}{0pt}
-\setlength{\leftmarginii}{18pt}
-%			\setlength{\rightmargin}{0in}
-%			\setlength{\itemindent}{0in}
-%\usepackage{enumitem}
-%\setlist[enumerate, 1]{
-%	leftmargin=-\parindent, listparindent=\parindent, labelsep=0.42\parindent, itemsep=\smallskipamount, parsep=0pt
-%}
-%
-%\setlist[itemize, 1]{
-%	leftmargin=0pt, listparindent=\parindent, labelsep=0.75em, itemsep=\smallskipamount, parsep=0pt, topsep=1.2ex, label=\usebeamerfont*{itemize item}	\usebeamercolor[fg]{itemize item} \usebeamertemplate{itemize item}, before={\RaggedRight \hyphenpenalty=1000}
-%}
-%\setlist[itemize, 2]{
-%	leftmargin=1.2em, listparindent=\parindent, labelsep=0.6em, itemsep=\smallskipamount, parsep=0pt, topsep=0.6ex, label=\usebeamercolor[fg]{itemize item} --, before={\RaggedRight \hyphenpenalty=1000}
-%}
-% <==
-
-% ``Medium'' as the bold series:
-%\makeatletter
-%\def\bfseries@sf{mb}
-%\makeatother
-
-%\useinnertheme{circles}
-
-% Lorenz Götte's color scheme:
+%% Lorenz Götte's color scheme:
 %\usecolortheme{whale}
 %\definecolor{beamer@blendedblue}{rgb}{0.137,0.466,0.741}
 %\setbeamercolor{structure}{fg=beamer@blendedblue}
 %\definecolor{SpotColor}{rgb}{0.1,0.4,0.7} % Lorenz' Blue
-\definecolor{darkgray}{rgb}{0.4,0.4,0.4}
-\definecolor{darkred}{RGB}{204,0,0}
-\definecolor{nicegreen}{RGB}{51,204,0}
-\definecolor{SpotColor}{rgb}{0,0.25,0.55}
+\definecolor{SpotColor}{rgb}{0.00, 0.25, 0.55}
+\definecolor{darkgray} {rgb}{0.40, 0.40, 0.40}
+\definecolor{darkred}  {RGB}{204, 0,    0}
+\definecolor{nicegreen}{RGB}{ 51, 204,  0}
 \setbeamercolor{structure}{fg=SpotColor}
 \setbeamercolor{alerted text}{fg=SpotColor}
 \setbeamercolor{author in head/foot}{fg=white, bg=SpotColor}
 \setbeamercolor{button}{bg=SpotColor,fg=white}
+
 \newcommand{\highlight}[1]{\textcolor{SpotColor}{#1}}
-\hypersetup{%
-	pdfpagemode=FullScreen,
-	colorlinks, linkcolor=, urlcolor=SpotColor, citecolor=%
-	}
-\urlstyle{same}
-\newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
-\setbeamerfont{alerted text}{series=\bfseries}
 \newcommand{\sigstar}{\highlight{*}}
 
 \renewcommand{\alert}[1]{\highlight{\textbf{#1}}}
-
-\newcommand{\margintop}{12.5pt}
-\newcommand{\marginleft}{27pt}
-\newcommand{\margincenter}{24pt}
-\newcommand{\marginright}{18pt}
-\setbeamersize{text margin left=\marginleft}
-\setbeamersize{text margin right=\marginright}
-
 
 \newlength{\rulelength}
 \setlength{\rulelength}{\paperwidth - \marginleft - \marginright}
@@ -244,38 +237,20 @@
 	\textcolor{SpotColor}{\rule{\rulelength}{.35pt}}%
 }
 
-%\renewenvironment{quote}
-%{\list{}{\leftmargin\parindent \rightmargin\parindent}%
-%	%\small
-%	\setlength{\baselineskip}{2.8ex}\item\relax}
-%{\endlist}
-%\newenvironment{tightitemize}{
-%	\begin{list}{\makebox(5.5,4.5)[t]{$\scriptstyle \bullet$}}{%
-%			\advance\partopsep  by \topsep
-%			\setlength{\topsep}{0.75ex}
-%			\setlength{\itemsep}{0in}
-%			\setlength{\parsep}{0em}
-%			\setlength{\leftmargin}{\parindent}
-%			\setlength{\rightmargin}{0in}
-%			\setlength{\itemindent}{0in}
-%		}
-%	}
-%	{\end{list}%
-%}
-% <--
-
 % Remove navigation symbols from the slide footer
 \beamertemplatenavigationsymbolsempty
 
 % Adjust layout of frametitle
-% \addtobeamertemplate{frametitle}{\vskip0.5ex}{}
+% ==>
 \setbeamertemplate{frametitle}{%
 	\vspace{\margintop}\vspace{-5pt}%
 	{\large\usebeamercolor{frametitle}\usebeamerfont{frametitle}\insertframetitle\\[-1.2ex]}%
 	\sliderule%
 }
+% <==
 
 % Add a slide number (and [short]title) to the footer of each slide
+% ==>
 \BeforeBeginEnvironment{frame}{%
 	\setbeamertemplate{footline}{\vskip-15pt
 		\textcolor{SpotColor}{%
@@ -291,8 +266,10 @@
 		\vspace{12pt}%
 	}
 }
+% <==
 
-% See https://tex.stackexchange.com/questions/427257/how-to-remove-footer-for-specific-type-of-slides-frames:
+% See https://tex.stackexchange.com/questions/427257/how-to-remove-footer-for-specific-type-of-slides-frames
+% ==>
 \makeatletter
 \define@key{beamerframe}{standout}[true]{%
 	\setbeamertemplate{footline}{\vskip-15pt
@@ -310,17 +287,118 @@
 	}%
 }
 \makeatother
+% <==
+
+\frenchspacing  % Prevent increased whitespace after periods and colons
+
+\setbeamertemplate{button}{%
+	\tikz
+		\node[
+			inner xsep=3pt,
+			inner ysep=2pt,
+			draw=structure!100,
+			fill=structure!100,
+			rounded corners=1.5pt
+		]{\raisebox{1.5pt}{\usebeamerfont{structure}\insertbuttontext}};%
+}
+
+%\renewcommand{\texteuro}{\fontencoding{TS1}\selectfont\char"BF\fontencoding{T1}\selectfont}
+%\newcommand{\euro}{\texteuro}
+
+% Adding framenumbers automatically to the frametitles
+\newcommand{\pageinsection}{\number\numexpr\insertpagenumber-\insertsectionstartpage+1}
+% From https://tex.stackexchange.com/questions/308343/how-to-create-mini-sections-mini-subsections-and-mini-frames-in-beamer-presenta
+% ==>
+%\usepackage{etoolbox}  % Automatically loaded by beamer
+\makeatletter
+\newcount\beamer@sectionstartframe
+\beamer@sectionstartframe=1
+\apptocmd{\beamer@section}{%
+	\addtocontents{nav}{\protect\headcommand{%
+		\protect\beamer@sectionframes{\the\beamer@sectionstartframe}{\the\c@framenumber}}}%
+}{}{}
+\apptocmd{\beamer@section}{%
+	\beamer@sectionstartframe=\c@framenumber\advance\beamer@sectionstartframe by1\relax%
+}{}{}
+\AtEndDocument{%
+	\immediate\write\@auxout{\string\@writefile{nav}%
+		{\noexpand\headcommand{\noexpand\beamer@sectionframes{\the\beamer@sectionstartframe}{\the\c@framenumber}}}}%
+}{}{}
+\def\beamer@startframeofsection{1}
+\def\beamer@endframeofsection{1}
+\def\beamer@sectionframes#1#2{%
+	\ifnum\c@framenumber<#1%
+	\else%
+		\ifnum\c@framenumber>#2%
+		\else%
+			\gdef\beamer@startframeofsection{#1}%
+			\gdef\beamer@endframeofsection{#2}%
+		\fi%
+	\fi%
+}
+\newcommand\insertsectionstartframe{\beamer@startframeofsection}
+\newcommand\insertsectionendframe{\beamer@endframeofsection}
+\makeatother
+% <==
+\newcommand{\frameinsection}{\number\numexpr\insertframenumber-\insertsectionstartframe+1}
+% https://tex.stackexchange.com/questions/228684/two-counters-for-beamer-presentations
+%\newcommand{\titleprefix}{\insertsection~{\pageinsection}}
+\newcommand{\titleprefix}{\insertsection~{\frameinsection}}
+% <==
+
+% Continuation counter for frames with the ``allowframebreaks'' option.
+% See https://tex.stackexchange.com/questions/275044/how-do-i-insert-the-total-continuation-count-in-the-allowframbreaks-frame-title
+% ==>
+\newcounter{totalcontinuationcount}
+\makeatletter
+\setbeamertemplate{frametitle continuation}{%
+	\setcounter{totalcontinuationcount}{\beamer@endpageofframe}%
+	\addtocounter{totalcontinuationcount}{1}%
+	\addtocounter{totalcontinuationcount}{-\beamer@startpageofframe}%
+	\ifnum \value{totalcontinuationcount} > 1
+		\textmd{(\insertcontinuationcount/\arabic{totalcontinuationcount})}%
+	\fi
+}
+\makeatother
+% <==
 
 
-% Enable hyphenation on Beamer slides:
-\usepackage{ragged2e}
-\let \raggedright \RaggedRight
-\sloppy
-\hyphenpenalty=500
 
-\frenchspacing % Prevent increased whitespace after periods and colons
 
-% Change the horizontal spacing in the ``Outline'' slides
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  LAYOUT OF THE TITLE SLIDE  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Make the title page left-aligned
+\setbeamertemplate{title page}[default][left]
+
+\newcommand\Wider[2][0pt]{%
+	\makebox[\linewidth][c]{%
+		\hspace{-\marginleft}\hspace{\marginright}%
+		\begin{minipage}{\dimexpr\textwidth+\marginleft-\marginright\relax}
+			\raggedright%
+			\smallskip%
+			#2
+		\end{minipage}%
+	}%
+}
+
+\makeatletter
+\renewcommand{\beamer@insttitle}[1]{\highlight{\textsuperscript{\kern.75pt \textit{#1}}}}
+\renewcommand{\beamer@instinst}[1]{\beamer@insttitle{#1}\ignorespaces}
+\renewcommand{\beamer@andinst}{\\[0.33\baselineskip]}
+\makeatother
+\makeatother
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  LAYOUT OF THE TABLE OF CONTENTS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \useinnertheme{circles}
 \setbeamertemplate{section in toc}{%
 	\leavevmode\leftskip=0ex%
@@ -353,99 +431,80 @@
 	{}
 \makeatother
 
-\setbeamertemplate{button}{%
-	\tikz
-		\node[
-			inner xsep=3pt,
-			inner ysep=2pt,
-			draw=structure!100,
-			fill=structure!100,
-			rounded corners=1.5pt
-		]{\raisebox{1.5pt}{\usebeamerfont{structure}\insertbuttontext}};%
-}
 
-\setbeamertemplate{enumerate items}[default]
-\setbeamertemplate{enumerate subitem}{\alph{enumii}.}
+
+
+%%%%%%%%%%%%%
+%%  LISTS  %%
+%%%%%%%%%%%%%
+
+
+\AtBeginEnvironment{itemize}{\vspace{-\parskip}\setlength{\labelsep}{0.55em}}
+\AtBeginEnvironment{enumerate}{\vspace{-\parskip}\setlength{\labelsep}{0.5em}}
+
+% Adjust spacing of lists ==>
+% Unfortunately, the ``enumitem'' package is incompatible with the ``beamer'' class.
+% Hence, we need to adjust left margins etc. manually:
+\setlength{\leftmargini}{0pt}
+\setlength{\leftmarginii}{15pt}
+\setlength{\leftmarginiii}{18pt}
+%\setlength{\rightmargin}{0in}
+%\setlength{\itemindent}{0in}
+%\usepackage{enumitem}
+%\setlist[enumerate, 1]{
+%	leftmargin=-\parindent, listparindent=\parindent, labelsep=0.42\parindent, itemsep=\smallskipamount, parsep=0pt
+%}
+%
+%\setlist[itemize, 1]{
+%	leftmargin=0pt, listparindent=\parindent, labelsep=0.75em, itemsep=\smallskipamount, parsep=0pt, topsep=1.2ex, label=\usebeamerfont*{itemize item}	\usebeamercolor[fg]{itemize item} \usebeamertemplate{itemize item}, before={\RaggedRight \hyphenpenalty=1000}
+%}
+%\setlist[itemize, 2]{
+%	leftmargin=1.2em, listparindent=\parindent, labelsep=0.6em, itemsep=\smallskipamount, parsep=0pt, topsep=0.6ex, label=\usebeamercolor[fg]{itemize item} --, before={\RaggedRight \hyphenpenalty=1000}
+%}
+% <==
+
+% ``Medium'' as the bold series:
+%\makeatletter
+%\def\bfseries@sf{mb}
+%\makeatother
+
+%\useinnertheme{circles}
+
+\setbeamertemplate{enumerate items}     [default]
+\setbeamertemplate{enumerate subitem}   {\alph{enumii}.}
 \setbeamertemplate{enumerate subsubitem}{\roman{enumiii}.}
-\setbeamertemplate{itemize item}{\textbf{\textbullet}}
+
+\setbeamertemplate{itemize item}        {\raisebox{-0.5pt}{\textrm{\textbf{\textbullet}}}}
+\setbeamertemplate{itemize subitem}     {\usebeamerfont{normal text}--}
+\setbeamertemplate{itemize subsubitem}  {\raisebox{1.5pt}{\tiny$\blacktriangleright$}}
 
 \setbeamerfont*{itemize/enumerate body}{size=\normalsize}
 \setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
 \setbeamerfont*{itemize/enumerate subsubbody}{parent=itemize/enumerate body}
 
-%\renewcommand{\texteuro}{\fontencoding{TS1}\selectfont\char"BF\fontencoding{T1}\selectfont}
-%\newcommand{\euro}{\texteuro}
-
-% Adding framenumbers automatically to the frametitles
-\newcommand{\pageinsection}{\number\numexpr\insertpagenumber-\insertsectionstartpage+1}
-% From https://tex.stackexchange.com/questions/308343/how-to-create-mini-sections-mini-subsections-and-mini-frames-in-beamer-presenta
-% ==>
-%\usepackage{etoolbox}  % Automatically loaded by beamer
-\makeatletter
-\newcount\beamer@sectionstartframe
-\beamer@sectionstartframe=1
-\apptocmd{\beamer@section}{\addtocontents{nav}{\protect\headcommand{%
-			\protect\beamer@sectionframes{\the\beamer@sectionstartframe}{\the\c@framenumber}}}}{}{}
-\apptocmd{\beamer@section}{\beamer@sectionstartframe=\c@framenumber\advance\beamer@sectionstartframe by1\relax}{}{}
-\AtEndDocument{\immediate\write\@auxout{\string\@writefile{nav}%
-		{\noexpand\headcommand{\noexpand\beamer@sectionframes{\the\beamer@sectionstartframe}{\the\c@framenumber}}}}}{}{}
-\def\beamer@startframeofsection{1}
-\def\beamer@endframeofsection{1}
-\def\beamer@sectionframes#1#2{%
-	\ifnum\c@framenumber<#1%
-	\else%
-	\ifnum\c@framenumber>#2%
-	\else%
-	\gdef\beamer@startframeofsection{#1}%
-	\gdef\beamer@endframeofsection{#2}%
-	\fi%
-	\fi%
+\renewenvironment{quote}{%
+	\list{}{\leftmargin\leftmarginii \rightmargin\leftmarginii}%
+	\RaggedLeft
+	\itshape%
+	\item\relax%
 }
-\newcommand\insertsectionstartframe{\beamer@startframeofsection}
-\newcommand\insertsectionendframe{\beamer@endframeofsection}
-\makeatother
-% <==
-\newcommand{\frameinsection}{\number\numexpr\insertframenumber-\insertsectionstartframe+1}
-% https://tex.stackexchange.com/questions/228684/two-counters-for-beamer-presentations
-%\newcommand{\titleprefix}{\insertsection~{\pageinsection}}
-\newcommand{\titleprefix}{\insertsection~{\frameinsection}}
-% <==
+{\endlist}
 
-% Continuation counter for frames with the ``allowframebreaks'' option.
-% See https://tex.stackexchange.com/questions/275044/how-do-i-insert-the-total-continuation-count-in-the-allowframbreaks-frame-title
-% ==>
-\newcounter{totalcontinuationcount}
-\makeatletter
-\setbeamertemplate{frametitle continuation}{%
-	\setcounter{totalcontinuationcount}{\beamer@endpageofframe}%
-	\addtocounter{totalcontinuationcount}{1}%
-	\addtocounter{totalcontinuationcount}{-\beamer@startpageofframe}%
-	\ifnum \value{totalcontinuationcount} > 1
-		\textmd{(\insertcontinuationcount/\arabic{totalcontinuationcount})}%
-	\fi
-}
-\makeatother
-% <==
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  APPENDIX-RELATED SETTINGS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \usepackage{appendixnumberbeamer}
-
-\newcommand\Wider[2][0pt]{%
-	\makebox[\linewidth][c]{%
-		\hspace{-\marginleft}\hspace{\marginright}%
-		\begin{minipage}{\dimexpr\textwidth+\marginleft-\marginright\relax}
-			\raggedright%
-			\smallskip%
-			#2
-		\end{minipage}%
-	}%
+\AtBeginEnvironment{appendix}{%
+	\let \insertframenumberorig \insertframenumber
+	\renewcommand{\insertframenumber}{Appendix Slide \insertframenumberorig}
+	%\let \inserttotalframenumberorig \inserttotalframenumber
+	%\renewcommand{\inserttotalframenumber}{A-\inserttotalframenumberorig}
 }
-
-\makeatletter
-\renewcommand{\beamer@insttitle}[1]{\highlight{\textsuperscript{\kern.75pt \textit{#1}}}}
-\renewcommand{\beamer@instinst}[1]{\beamer@insttitle{#1}\ignorespaces}
-\renewcommand{\beamer@andinst}{\\[0.33\baselineskip]}
-\makeatother
-\makeatother
 
 
 

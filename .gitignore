@@ -33,6 +33,7 @@
 *.snm
 *.sublime-*
 *.svn
+*.synctex*
 *.tco
 *.tcp
 *.tiw
@@ -50,7 +51,6 @@
 waf-*
 waf3-*
 *latexmk
-*synctex.gz
 .*
 .DS_Store
 !.env

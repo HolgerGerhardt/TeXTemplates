@@ -25,37 +25,52 @@
 \DeclareMathVersion{boldup}
 \DeclareMathVersion{sans}
 
-%\SetSymbolFont{operators}{sans}{OT1}{jkpss}{m}{n}   % From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
-\SetSymbolFont{operators}{sans}{OT1}{mdbch}{m}{n}
-\SetSymbolFont{letters}  {sans}{OML}{jkpss}{m}{it}  % From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
-%\SetSymbolFont{letters}  {sans}{OML}{cmbrm}{m}{it}
-%\SetSymbolFont{symbols}{sans}{OMS}{cmbrs}{m}{n}
-\SetSymbolFont{symbols}  {sans}{OMS}{jkp}  {m}{n}   % From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
-\SetMathAlphabet{\mathit}{sans}{OT1}{\savesffamily}{\savesfmdseries}{it}
-\SetMathAlphabet{\mathbf}{sans}{OT1}{\savesffamily}{\savesfbfseries}{n}
-\SetMathAlphabet{\mathtt}{sans}{OT1}{cmtl}{m}{n}
+%\SetSymbolFont{operators}{sans}{OT1}{jkpss}{m}{n}
+%	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+\SetSymbolFont{operators}   {sans}{OT1}{mdbch}{m}{n}
+\SetSymbolFont{letters}     {sans}{OML}{jkpss}{m}{it}
+	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+%\SetSymbolFont{letters}     {sans}{OML}{cmbrm}{m}{it}
+%\SetSymbolFont{symbols}     {sans}{OMS}{cmbrs}{m}{n}
+\SetSymbolFont{symbols}     {sans}{OMS}{jkp}  {m}{n}
+	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+\DeclareSymbolFont{extrasymbols}  {OMS}{cmbrs}{m}{n}
+\SetSymbolFont{extrasymbols}{sans}{OMS}{cmbrs}{m}{n}
+	% Some symbols (e.g., \prime) look weird in kpfonts.
+	% This provides the option to replace them by symbols from mathdesign-charter.
+
+\SetMathAlphabet{\mathit} {sans}{OT1}{\savesffamily}{\savesfmdseries}{it}
+\SetMathAlphabet{\mathbf} {sans}{OT1}{\savesffamily}{\savesfbfseries}{n}
+\SetMathAlphabet{\mathtt} {sans}{OT1}{cmtl}{m}{n}
 \SetMathAlphabet{\mathcal}{sans}{OMS}{ntxsy}{m}{n}
 	% See https://tex.stackexchange.com/questions/231583/import-mathcal-symbols-from-txfonts
-%\SetSymbolFont{largesymbols}{sans}{OMX}{jkpss}{m}{n}   % From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+%\SetSymbolFont{largesymbols}{sans}{OMX}{jkpss}{m}{n}
+%	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
 \SetSymbolFont{largesymbols} {sans}{OMX}{mdbch}{m}{n}
+	% Using symbols like \int, \left(, etc. from mathdesign-charter because they look better than the ones included in kpfonts
 
 \DeclareMathVersion{sansup}
 \SetSymbolFont{letters}  {sansup}{OML}{jkpss}{m}{it}
 \SetSymbolFont{symbols}  {sansup}{OMS}{jkp}  {m}{n}
 
 \DeclareMathVersion{boldsans}
-%\SetSymbolFont{operators}{boldsans}{OT1}{jkpss}{b}{n}   % From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+%\SetSymbolFont{operators}{boldsans}{OT1}{jkpss}{b}{n}
+%	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
 \SetSymbolFont{operators}{boldsans}{OT1}{mdbch}{bx}{n}
-\SetSymbolFont{letters}  {boldsans}{OML}{jkpss}{bx}{it}  % From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+\SetSymbolFont{letters}  {boldsans}{OML}{jkpss}{bx}{it}
+	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
 %\SetSymbolFont{letters}  {boldsans}{OML}{mdbch}{bx}{it}
 %\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
-\SetSymbolFont{symbols}  {boldsans}{OMS}{jkp}  {bx}{n}   % From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+\SetSymbolFont{symbols}  {boldsans}{OMS}{jkp}  {bx}{n}
+	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
 %\SetMathAlphabet{\mathrm}{boldsans}{OT1}{\savesffamily}{\savesfbfseries}{n}
-\SetMathAlphabet{\mathit}{boldsans}{OT1}{\savesffamily}{\savesfbfseries}{it}
-\SetMathAlphabet{\mathtt}{boldsans}{OT1}{cmtl}{b}{n}
+\SetMathAlphabet{\mathit} {boldsans}{OT1}{\savesffamily}{\savesfbfseries}{it}
+\SetMathAlphabet{\mathtt} {boldsans}{OT1}{cmtl}{b}{n}
 \SetMathAlphabet{\mathcal}{boldsans}{OMS}{ntxsy}{b}{n}
-%\SetSymbolFont{largesymbols}{boldsans}{OMX}{jkpss}{bx}{n}   % From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+%\SetSymbolFont{largesymbols}{boldsans}{OMX}{jkpss}{bx}{n}
+%	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
 \SetSymbolFont{largesymbols}{boldsans}{OMX}{mdbch}{bx}{n}
+	% Using symbols like \int, \left(, etc. from mathdesign-charter because they look better than the ones included in kpfonts
 
 \DeclareMathVersion{boldsansup}
 \SetSymbolFont{letters}{boldsansup}{OML}{jkpss}{bx}{it}
@@ -93,7 +108,7 @@
 % 6 or \mathpunct   Punctuation          ;
 % 7 or \mathalpha   Alphabet character   A
 % Example declaration:
-% \DeclareMathSymbol{b}{3}{letters}{`b}
+% \DeclareMathSymbol{b}{0}{letters}{`b}
 
 % Digits
 \DeclareMathSymbol{0}{\mathalpha}{uprightglyphs}{`0}
@@ -107,17 +122,22 @@
 \DeclareMathSymbol{8}{\mathalpha}{uprightglyphs}{`8}
 \DeclareMathSymbol{9}{\mathalpha}{uprightglyphs}{`9}
 % Operators and punctuation
-\DeclareMathSymbol{+}{\mathbin}  {operators}    {`+}  % Not from uprightglyphs due to bad spacing
-\DeclareMathSymbol{=}{\mathrel}  {operators}    {`=}  % Not from uprightglyphs due to bad spacing
+\DeclareMathSymbol{+}{\mathbin}  {operators}    {`+}
+	% Not from uprightglyphs due to bad spacing
+\DeclareMathSymbol{=}{\mathrel}  {operators}    {`=}
+	% Not from uprightglyphs due to bad spacing
 \DeclareMathSymbol{.}{\mathord}  {uprightglyphs}{`.}
 \DeclareMathSymbol{,}{\mathpunct}{uprightglyphs}{`,}
 \DeclareMathSymbol{;}{\mathpunct}{uprightglyphs}{`;}
 \DeclareMathSymbol{/}{\mathord}  {uprightglyphs}{`/}
-%\DeclareMathSymbol{/}{\mathop}   {uprightglyphs}{`/}  % Increase spacing around slash slightly
+%\DeclareMathSymbol{/}{\mathop}   {uprightglyphs}{`/}
+%	% This would icrease the spacing around the division slash slightly
 %\DeclareMathSymbol{(}{\mathopen} {uprightglyphs}{`(}
 %\DeclareMathSymbol{)}{\mathclose}{uprightglyphs}{`)}
 %\DeclareMathSymbol{[}{\mathopen} {uprightglyphs}{`[}
 %\DeclareMathSymbol{]}{\mathclose}{uprightglyphs}{`]}
+\DeclareMathSymbol{\prime}{\mathord}{extrasymbols}{"30}
+	% Use \prime from mathdesign-charter because it looks better than the one in kpfonts
 \DeclareMathDelimiter{(}      {\mathopen} {uprightglyphs}{`(} {largesymbols}{"00}
 \DeclareMathDelimiter{)}      {\mathclose}{uprightglyphs}{`)} {largesymbols}{"01}
 \DeclareMathDelimiter{[}      {\mathopen} {uprightglyphs}{`[} {largesymbols}{"02}

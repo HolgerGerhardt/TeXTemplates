@@ -83,7 +83,9 @@
 
 \DisableLigatures[f]{family = {rm*}}
 
-\newcommand{\serifbodyfont}{1}
+\newcommand{\serifbodyfont}{0}
+	% 0: Body is set in sans-serif font, ``structure'' (headings etc.) font is serif
+	% 1: Body is set in serif font, ``structure'' (headings etc.) font is sans-serif
 
 \ifnum \serifbodyfont=1
 	% If serif font for body text =>
@@ -227,6 +229,11 @@
 \setbeamercolor{button}{bg=SpotColor,fg=white}
 
 \newcommand{\highlight}[1]{\textcolor{SpotColor}{#1}}
+\newcommand{\heading}[1]{%
+	\par%
+	\textbf{\usebeamerfont{structure}\usebeamercolor[fg]{frametitle}#1}%
+	\par%
+}
 \newcommand{\sigstar}{\highlight{*}}
 
 \renewcommand{\alert}[1]{\highlight{\textbf{#1}}}

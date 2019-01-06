@@ -42,6 +42,13 @@
 %	% Earlier versions of the ``plex-sans'' package do not include support for LGR Greek.
 %% <==
 
+%% This template also works with the ``Alegreya'' and ``Alegreya Sans'' fonts,
+%% https://ctan.org/pkg/alegreya ==>
+%\usepackage[semibold, scale=0.89]{plex-mono}  % To match the x-height of the Charter serif font
+%\usepackage[lining, tabular, scale=1.02]{AlegreyaSans}[2018/08/02]
+%	% Earlier versions of the ``Alegreya'' package do not include support for LGR Greek.
+%% <==
+
 % Save the font family and font series definitions for later use: ==>
 \newcommand{\savesffamily}{\sfdefault}
 \makeatletter
@@ -53,6 +60,8 @@
 % Use Bitstream Charter as the math font
 % ==>
 \usepackage[charter, greeklowercase=italicized, greekuppercase=italicized, sfscaled=false, ttscaled=false]{mathdesign}
+%\usepackage[lining, tabular, scale=1.02]{Alegreya}[2018/08/02]
+%	% Use Alegreya as the text font
 % Save the font family and font series definitions for later use:
 \let \savermfamily   \rmdefault
 \let \savermmdseries \mddefault
@@ -61,7 +70,7 @@
 
 % Use Bitstream Charter as the text font
 % ==>
-\usepackage[scaled=.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport
+%\usepackage[scaled=.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport
 % Save the font family and font series definitions for later use:
 \let \savermdefaultfortext \rmdefault
 \let \savemddefaultfortext \mddefault

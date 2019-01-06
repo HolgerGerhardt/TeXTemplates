@@ -368,6 +368,9 @@
 %\newcommand{\timessf}{\mathbin{\text{\usefont{TS1}{\sfdefault}{\f@series}{n}\char"D6}}}
 %\newcommand{\divsf}  {\mathbin{\text{\usefont{TS1}{\sfdefault}{\f@series}{n}\char"F6}}}
 %\makeatother
+
+% Use LGR-encoded Greek letters for \mathversion{sans}
+% ==>
 \makeatletter
 \newcommand*{\sansmath}{%
 	\@for\@tempa:=%
@@ -383,6 +386,10 @@
 	%\renewcommand{\times}{\timessf}%
 	%\renewcommand{\div}{\divsf}%
 }
+% <==
+
+% Switch back to the original Greek letters for \mathversion{normal}, i.e., the serif font
+% ==>
 \newcommand*{\unsansmath}{%
 	\@for\@tempa:=%
 		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
@@ -397,6 +404,26 @@
 	%\renewcommand{\times}{\oldtimes}%
 	%\renewcommand{\div}{\olddiv}%
 }
+% <==
+
+%% If you would like to use LGR-encoded Greek letters also for the serif font
+%% ==>
+%\renewcommand*{\unsansmath}{%
+%	\@for\@tempa:=%
+%		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+%		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+%		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+%		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+%		\do{%
+%			\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa LGR\endcsname%
+%			\expandafter\let\csname\@tempa up\expandafter\endcsname\csname\@tempa upLGR\endcsname%
+%		}%
+%	%\renewcommand{\pm}{\pmsf}%
+%	%\renewcommand{\times}{\timessf}%
+%	%\renewcommand{\div}{\divsf}%
+%}
+%% <==
+
 \newcommand*{\upgreekletters}{%
 	\@for\@tempa:=%
 		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
@@ -541,6 +568,42 @@
 	\fi\relax%
 }
 % <==
+
+%% If you would like to redefine \mathup also for the serif font:
+%% ==>
+%\renewcommand{\mathup}[1]{%
+%	\IfInSansMode%
+%		{\textup{%
+%			\InUpModetrue%
+%			\IfInBoldMode%
+%				\mathversion{boldsansup}%
+%				\(#1\)%
+%			\else%
+%				\mathversion{sansup}%
+%				\(#1\)%
+%			\fi\relax%
+%		}}%
+%	\else%
+%		{\textup{%
+%			\InUpModetrue%
+%			\IfInBoldMode%
+%				\mathversion{boldup}%
+%				\(#1\)%
+%			\else%
+%				\mathversion{normalup}%
+%				\(#1\)%
+%			\fi\relax%
+%		}}%
+%	\fi\relax%
+%}
+%\renewcommand{\mathbfup}[1]{%
+%	\IfInSansMode%
+%		{\mathbf{\mathup{#1}}}%
+%	\else%
+%		{\upgreekletters\mathbf{\mathup{#1}}\itgreekletters}%
+%	\fi\relax%
+%}
+%% <==
 
 % Make the LaTeX-defined operators obey sansserif math
 % ==>

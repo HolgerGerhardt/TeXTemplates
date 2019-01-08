@@ -15,34 +15,35 @@
 \renewcommand*{\maketitle}{%
 	%\begin{titlepage}
 	\thispagestyle{bullshitheader}
-	\begin{center}\large\mbox{}
+	\begin{center}\selectlanguage{USenglish}\large\mbox{}
 		
 		\vfill
 		
 		{\LARGE\bfseries\@title\par}
 		
-		\selectlanguage{ngerman}
-		
 		\vfill%\vspace{3\baselineskip}
 		
-		{\Large\ifthenelse{\equal{\thesistype}{BA}}{Bachelorarbeit}{Masterarbeit}}
+		{\Large Term Paper}
 		
-		\vspace{2\baselineskip}
+		\vspace{1.5\baselineskip}
 		
-		zur Erlangung des Grades
-		\ifthenelse{\equal{\thesistype}{BA}}{Bachelor of Science (B.\,Sc.)}{Master of Science (M.\,Sc.)}
+		in Partial Fulfillment of the Requirements
 		
-		im Studiengang Volkswirtschaftslehre
+		for Course Credit in the Seminar
+
+		\vspace{1.5\baselineskip}
 		
-		an der Rheinischen Friedrich-Wilhelms-Universität Bonn
+		\textbf{``\seminartitle''}
 		
-		\vspace{2\baselineskip}
+		\vspace{1.5\baselineskip}
 		
-		Themensteller\ifthenelse{\equal{\advisorgender}{f}}{in}{}: \advisorname
+		Seminar Instructor:
+		
+		\advisorname
 		
 		\vfill%\vspace{2\baselineskip}
 		
-		Vorgelegt im \DTMgermanmonthname{\DTMfetchmonth{currentdate}}~\DTMfetchyear{currentdate}\ von
+		Submitted in \DTMenglishmonthname{\DTMfetchmonth{currentdate}}~\DTMfetchyear{currentdate}\ by
 		
 		\vspace{\baselineskip}
 		
@@ -50,11 +51,9 @@
 		
 		\vspace{1\baselineskip}
 		
-		Matrikelnummer: \studentID
+		Matriculation Number: \studentID
 		
 		\vfill
-		
-		\selectlanguage{USenglish}
 	\end{center}
 	%\end{titlepage}
 	\clearpage

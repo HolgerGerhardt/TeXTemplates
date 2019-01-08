@@ -14,14 +14,16 @@
 %%%%%%%%%%%%%%%%
 
 
-\newcommand{\thesistitle}{%
-	A\unskip\nobreak\ Template for Bachelor's\unskip\nobreak\ Theses and\unskip\nobreak\ Master's\unskip\nobreak\ Theses%
+\newcommand{\termpapertitle}{%
+	A\unskip\nobreak\ Template for a\unskip\nobreak\ Term\unskip\nobreak\ Paper in\unskip\nobreak\ an\unskip\nobreak\ Arbitrary\unskip\nobreak\ Field\unskip\nobreak\ of\unskip\nobreak\ Study%
 }
-\newcommand{\thesisauthor} {Lou~E. V{\"u}{\'i}-T{\o}n}
-\newcommand{\studentID}    {7654321}
-\newcommand{\thesistype}   {BA}  % BA for bachelor's, MA for master's thesis
-\newcommand{\advisorname}  {Prof.~Dr. Vae-Ree Smart}
-\newcommand{\advisorgender}{m}  % f for female, m for male
+\newcommand{\seminartitle}   {Theoretical and Empirical Microeconomics and \\
+                              Macroecoconomics with Implications for Social Policy \\
+                              All Around the World}
+\newcommand{\studentfullname}{Lou~E. V{\"u}{\'i}-T{\o}n}
+\newcommand{\studentID}      {7654321}
+\newcommand{\advisorname}    {Prof.~Dr. Vae-Ree Smart}
+\newcommand{\advisorgender}  {m}  % f for female, m for male
 
 % From https://www.vwlpamt.uni-bonn.de/pruefungsamt/pdfs/formulare/bachelorarbeitsmerkblatt-formalia and
 % https://www.vwlpamt.uni-bonn.de/pruefungsamt/pdfs/formulare/masterarbeitsmerkblatt-formalia:
@@ -53,8 +55,8 @@
 \bibliography{Library.bib}
 
 \hypersetup{
-	pdftitle  = {\thesistitle},
-	pdfauthor = {\thesisauthor}
+	pdftitle  = {\termpapertitle},
+	pdfauthor = {\studentfullname}
 }
 
 
@@ -68,11 +70,11 @@
 \begin{document}
 
 
-\title{\thesistitle}
-\author{\thesisauthor}
+\title{\termpapertitle}
+\author{\studentfullname}
 \date{\today}
-%\include{0_1_Frontmatter_Thesis_BA_MA/Thesis_frontmatter_DE}
-\include{0_1_Frontmatter_Thesis_BA_MA/Thesis_frontmatter_EN}
+%\include{0_1_Frontmatter_Thesis_Term_Paper/Term_Paper_frontmatter_DE}
+\include{0_1_Frontmatter_Thesis_Term_Paper/Term_Paper_frontmatter_EN}
 
 % \subimport enables execution of \input commands in subdocuments without having to adjust paths
 \subimport*{1_Example_Content/1_Introduction/}{Introduction_Thesis}
@@ -120,8 +122,6 @@
 \sloppy
 \printbibliography[heading=bibintoc]
 \end{refcontext}
-
-\include{9_Formal_Stuff/Declaration}
 
 
 \end{document}

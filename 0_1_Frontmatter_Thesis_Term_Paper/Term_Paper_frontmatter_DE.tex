@@ -7,7 +7,7 @@
 
 
 
-%\newdateformat{monthyeardate}{\monthname[\THEMONTH]~\THEYEAR}
+\selectlanguage{ngerman}
 
 \pagenumbering{roman}
 
@@ -15,47 +15,44 @@
 \renewcommand*{\maketitle}{%
 	%\begin{titlepage}
 	\thispagestyle{bullshitheader}
-	\begin{center}\large\mbox{}
-		
+	\begin{center}\selectlanguage{ngerman}\large\mbox{}
+
 		\vfill
-		
+
 		{\LARGE\bfseries\@title\par}
-		
-		\selectlanguage{ngerman}
-		
+
 		\vfill%\vspace{3\baselineskip}
-		
-		{\Large Seminararbeit}
-		
+
+		{\Large Hausarbeit}
+
 		\vspace{1.5\baselineskip}
-		
+
 		angefertigt im Rahmen des Seminars
-		
+
 		\vspace{1.5\baselineskip}
 
 		\textbf{"`\seminartitle"'}
-		
+
 		\vspace{1.5\baselineskip}
-		
+
 		Themensteller\ifthenelse{\equal{\advisorgender}{f}}{in}{}:
-		
+
 		\advisorname
-		
+
 		\vfill%\vspace{2\baselineskip}
-		
+
 		Vorgelegt im \DTMgermanmonthname{\DTMfetchmonth{currentdate}}~\DTMfetchyear{currentdate}\ von
-		
+
 		\vspace{\baselineskip}
-		
+
 		{\Large \@author}
-		
+
 		\vspace{1\baselineskip}
-		
+
 		Matrikelnummer: \studentID
-		
+
 		\vfill
-		
-		\selectlanguage{USenglish}
+
 	\end{center}
 	%\end{titlepage}
 	\clearpage

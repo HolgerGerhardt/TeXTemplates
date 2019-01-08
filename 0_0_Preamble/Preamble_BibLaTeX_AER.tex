@@ -132,8 +132,15 @@
 % Handling of newspaper articles
 \DeclareFieldFormat[newspaper]{journaltitle}{%
 	\mkbibemph{#1} \mkbibparens{\thefield{edition}}\addcomma\addspace%
-	\mkbibmonth{\thefield{month}}\addnbspace\thefield{day}\addcomma\addspace\thefield{year}%
+	\iflanguage{ngerman}{%
+		\addnbspace\thefield{day}\addperiod\addnbspace\mkbibmonth{\thefield{month}}\addspace\thefield{year}%
+	}{% else: default to the USenglish version
+		\mkbibmonth{\thefield{month}}\addnbspace\thefield{day}\addcomma\addspace\thefield{year}%
+	}%
 	\iffieldundef{volume}{\addcolon}{\addcomma}%
+}
+\DeclareFieldFormat[newspaper]{date}{%
+	\thefield{year}%
 }
 
 % Format the ``month'' field:
@@ -183,6 +190,10 @@
 \DefineBibliographyStrings{english}{%
 	backrefpage  = {},	% originally ``cit. on p.''
 	backrefpages = {}	% originally ``cit. on pp.''
+}
+\DefineBibliographyStrings{ngerman}{%
+	backrefpage  = {},	% originally ``Siehe Seite''
+	backrefpages = {}	% originally ``Siehe Seiten''
 }
 \renewcommand*{\finentrypunct}{}
 \renewbibmacro*{pageref}{%

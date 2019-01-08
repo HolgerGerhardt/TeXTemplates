@@ -96,10 +96,14 @@
 % and add na
 % ==>
 \addto\extrasamerican{%
-	\renewcommand{\chapterautorefname}{Chapter}%
-	\renewcommand{\sectionautorefname}{Section}%
-	\renewcommand{\subsectionautorefname}{Section}%
-	\renewcommand{\subsubsectionautorefname}{Section}%
+	\renewcommand{\chapterautorefname}{Chapter}%  instead of ``chapter''
+	\renewcommand{\sectionautorefname}{Section}%  instead of ``section''
+	\renewcommand{\subsectionautorefname}{Section}%  instead of ``subsection''
+	\renewcommand{\subsubsectionautorefname}{Section}%  instead of ``subsubsection''
+}
+\addto\extrasngerman{%
+	\renewcommand{\subsectionautorefname}{Abschnitt}%  instead of ``Unterabschnitt''
+	\renewcommand{\subsubsectionautorefname}{Abschnitt}%  instead of ``Unterunterabschnitt''
 }
 \newcommand*{\Appendixautorefname}{Appendix}
 	% See https://tex.stackexchange.com/questions/207744/no-autoref-name-for-appendix

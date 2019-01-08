@@ -34,7 +34,8 @@
 \AtBeginDocument{%
 	\setlength{\baselineskip}{\newbaselineskip}%
 	\setlength{\parindent}{\newparindent}
-	\setlength{\lineskiplimit}{0pt}  % Prevents increased line spacing in response to spacious inline formulas.
+	\setlength{\lineskiplimit}{0pt}
+		% Prevents increased line spacing in response to spacious inline formulas.
 }
 \newlength{\abovedisplayauxskip}
 \newlength{\belowdisplayauxskip}
@@ -159,10 +160,12 @@
 % Set margins of block quotes
 % ==>
 \renewenvironment{quote}%
-  {\list{}{\leftmargin=\parindent \rightmargin=\parindent}\item[]\itshape\small}%
+  {\list{}{\leftmargin=\parindent \rightmargin=\parindent}%
+   \linespread{\newbaselinestretch}\item[]\itshape\small}%
   {\endlist}
 \renewenvironment{quotation}%
-  {\list{}{\leftmargin=\parindent \rightmargin=\parindent}\item[]\small}%
+  {\list{}{\leftmargin=\parindent \rightmargin=\parindent}%
+   \linespread{\newbaselinestretch}\item[]\small}%	
   {\endlist}
 % <==
 

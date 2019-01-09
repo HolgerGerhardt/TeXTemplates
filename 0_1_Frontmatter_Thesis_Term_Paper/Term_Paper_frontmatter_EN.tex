@@ -7,8 +7,6 @@
 
 
 
-%\newdateformat{monthyeardate}{\monthname[\THEMONTH]~\THEYEAR}
-
 \pagenumbering{roman}
 
 \makeatletter
@@ -27,9 +25,7 @@
 
 		\vspace{1.5\baselineskip}
 
-		in Partial Fulfillment of the Requirements
-
-		for Course Credit in the Seminar
+		for the Seminar
 
 		\vspace{1.5\baselineskip}
 
@@ -37,19 +33,27 @@
 
 		\vspace{1.5\baselineskip}
 
-		Seminar Instructor:
+		Class Instructor:
 
 		\advisorname
 
+		\vspace{1.5\baselineskip}
+
+		Department of Economics
+
+		University of Bonn
+
 		\vfill%\vspace{2\baselineskip}
 
-		Submitted in \DTMenglishmonthname{\DTMfetchmonth{currentdate}}~\DTMfetchyear{currentdate}\ by
+		Submitted on \submittedon\ by
 
 		\vspace{\baselineskip}
 
 		{\Large \@author}
 
 		\vspace{1\baselineskip}
+
+		E-Mail: \email{\studentemail}
 
 		Matriculation Number: \studentID
 

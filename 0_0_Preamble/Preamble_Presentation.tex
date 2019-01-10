@@ -171,8 +171,12 @@
 	\setbeamerfont{frametitle}{size*={11}{14}, parent=structure}
 	\setbeamerfont{title}{size*={14}{20}, parent=structure}
 }{}
-% 16:9 aspect ratio:
-% Nothing needs to be changed
+%% 14:9 aspect ratio: Nothing needs to be changed
+%\@ifclasswith{beamer}{aspectratio=149}{%
+%	\beamer@paperwidth 14.00cm%
+%	\beamer@paperheight 9.00cm%
+%}{}
+%% 16:9 aspect ratio: Nothing needs to be changed
 %\@ifclasswith{beamer}{aspectratio=169}{%
 %	\beamer@paperwidth 16.00cm%
 %	\beamer@paperheight 9.00cm%

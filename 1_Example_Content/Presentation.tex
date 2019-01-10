@@ -82,6 +82,19 @@
 %%%%%%%%%%%%%%%%%
 
 
+\begin{frame}{Choice of a~Reasonable Aspect Ratio}
+
+	When preparing a~presentation, we often do not know whether the native aspect ratio of the projector in the seminar room/lecture hall will be $4 : 3$ or $16 : 9$ (or $16 : 10$).
+	
+	In this case, it may be a~good idea to choose an~\alert{intermediate aspect ratio}, see \url{https://github.com/josephwright/beamer/issues/497}. The idea behind this recommendation is that it minimizes the average loss of available space.
+	
+	Hence, these templates include a~presentation in the \alert{$14 : 9$ aspect ratio} (see \url{https://en.wikipedia.org/wiki/14:9_aspect_ratio}): while it is imperfect for probably every projector that you will encounter, it is good on average for all of them.
+	
+	(Please note that $14 : 9 \mathrel{\dot{=}} 1.556$, which is very close to the ``officially'' recommended $20 : 13 \mathrel{\dot{=}} 1.5385$.)
+	
+\end{frame}
+
+
 \section{Introduction}
 
 
@@ -211,7 +224,7 @@
 			\sffamily
 		\fi
 		Let $X_1, X_2, \cdots$ be a sequence of i.i.d. random variables with mean $0$ 
-		and variance $1$ on a probability space $(\Omega, \mathcal{F}, \Pr)$. Then
+		and variance $1$ on a~probability space $(\Omega, \mathcal{F}, \Pr)$. Then
 		\[
 			\Pr\left(\frac{X_1+\cdots+X_n}{\sqrt{n}}\le y\right) \to \mathfrak{N}(y) \coloneqq 
 			\int_{-\infty}^y \frac{\mathup{e}^{-v^2/2}}{\sqrt{2\mathup{\pi}}}\,

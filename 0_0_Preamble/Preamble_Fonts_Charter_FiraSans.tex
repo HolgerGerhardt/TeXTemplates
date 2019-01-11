@@ -60,8 +60,10 @@
 % Use Bitstream Charter as the math font
 % ==>
 \usepackage[charter, greeklowercase=italicized, greekuppercase=italicized, sfscaled=false, ttscaled=false]{mathdesign}
+%% Use Alegreya as the text font -->
 %\usepackage[lining, tabular, scale=1.02]{Alegreya}[2018/08/02]
-%	% Use Alegreya as the text font
+%\ifxetex \else \DisableLigatures[T]{family = {rm*}} \fi
+%% <--
 % Save the font family and font series definitions for later use:
 \let \savermfamily   \rmdefault
 \let \savermmdseries \mddefault
@@ -70,7 +72,7 @@
 
 % Use Bitstream Charter as the text font
 % ==>
-%\usepackage[scaled=.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport
+\usepackage[scaled=.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport
 % Save the font family and font series definitions for later use:
 \let \savermdefaultfortext \rmdefault
 \let \savemddefaultfortext \mddefault
@@ -83,7 +85,6 @@
 \makeatother
 % <==
 
-% The microtype package enables so-called hanging punctuation. That is, when a punctuation sign like ":", ".", "-", etc. is found at the beginning or end of a line, it is protruded a little into the page margin. This results in "optical margin alignment," because the protrusion makes the margin alignment look straighter.
 \ifxetex
 	% Do nothing.
 \else

@@ -22,7 +22,8 @@
 \else
 	\usepackage[protrusion=true, expansion=false, kerning=true]{microtype}
 \fi
-\DisableLigatures[f]{encoding = *, family = *}
+	% The microtype package enables so-called hanging punctuation. That is, when a punctuation sign like ":", ".", "-", etc. is found at the beginning or end of a line, it is protruded a little into the page margin. This results in "optical margin alignment," because the protrusion makes the margin alignment look straighter.
+
 
 \definecolor{darkgray}{rgb}{0.4,0.4,0.4}
 
@@ -34,7 +35,7 @@
 \usepackage{epstopdf}
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
-\usepackage[ngerman,english]{babel} %die beiden Packages sind notwendig um �,�,� und so zu sehen
+\usepackage[ngerman, english]{babel}
 
 \usepackage{multirow}
 
@@ -80,8 +81,6 @@
 
 
 \input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
-
-\DisableLigatures[f]{family = {rm*}}
 
 \newcommand{\serifbodyfont}{1}
 	% 0: Body is set in sans-serif font, ``structure'' (headings etc.) font is serif

@@ -36,7 +36,7 @@
 % <==
 
 %% This template also works with the ``IBM Plex Sans'' and ``IBM Plex Mono'' fonts,
-%% https://ctan.org/tex-archive/fonts/plex ==>
+%% https://ctan.org/pkg/plex ==>
 %\usepackage[semibold, scale=0.89]{plex-mono}  % To match the x-height of the Charter serif font
 %\usepackage[text, semibold, scale=0.89]{plex-sans}[2018/12/31]
 %	% Earlier versions of the ``plex-sans'' package do not include support for LGR Greek.
@@ -47,6 +47,13 @@
 %\usepackage[semibold, scale=0.89]{plex-mono}  % To match the x-height of the Charter serif font
 %\usepackage[lining, tabular, scale=1.02]{AlegreyaSans}[2018/08/02]
 %	% Earlier versions of the ``Alegreya'' package do not include support for LGR Greek.
+%% <==
+
+%% This template also works with the ``Google Noto'' fonts,
+%% https://ctan.org/pkg/noto ==>
+%\usepackage[scale=0.85]{noto-mono}
+%\usepackage[lining, tabular, scale=0.85]{noto-sans}[2019/01/11]
+%	% Earlier versions of the ``noto'' package do not include support for LGR Greek.
 %% <==
 
 % Save the font family and font series definitions for later use: ==>
@@ -63,6 +70,9 @@
 %% Use Alegreya as the text font -->
 %\usepackage[lining, tabular, scale=1.02]{Alegreya}[2018/08/02]
 %\ifxetex \else \DisableLigatures[T]{family = {rm*}} \fi
+%% <--
+%% Use Noto Serif as the text font -->
+%\usepackage[lining, tabular, scale=0.85]{noto-serif}[2019/01/11]
 %% <--
 % Save the font family and font series definitions for later use:
 \let \savermfamily   \rmdefault
@@ -88,16 +98,15 @@
 \ifxetex
 	% Do nothing.
 \else
-	\DisableLigatures[f]{family = {rm*}}
+	\DisableLigatures[f]{family = {rm*, tt*}}
 	% Disable the f* ligatures for Charter because the font does not provide sufficient support.
-	\DisableLigatures[f]{family = {tt*}}
-	% Disable the f* ligatures for Fira Mono because they make no sense for a monospaced font.
+	% Disable the f* ligatures for the ``typewriter'' font because they make no sense for a monospaced font.
 	\SetExtraKerning[unit=space]
-	{encoding=*, family=*, series=*, size={*, normalsize, footnotesize}, font = */*/*/*/*}
-	{\textemdash = {325, 325},
-		/ = {100, 100},
-		: = { 50,   0},
-		; = { 50,   0}}
+		{encoding=*, family=*, series=*, size={*, normalsize, footnotesize}, font = */*/*/*/*}
+		{\textemdash = {325, 325},
+		           / = {100, 100},
+		           : = { 50,   0},
+		           ; = { 50,   0}}
 \fi
 
 \usepackage{xfrac}	% Provides \sfrac

@@ -361,6 +361,31 @@ The automated transition to the next slide (=~page in the PDF document) only wor
 \end{frame}
 
 
+\begin{frame}[allowframebreaks]{\titleprefix: Testing the \texttt{allowframebreaks} option}
+
+Let's test automatic numbering with the \texttt{allowframebreaks} option.
+
+On this slide, \textbf{no} number should be included in the frame title.
+
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{\titleprefix: Testing the \texttt{allowframebreaks} option}
+
+\renewcommand{\blindmarkup}[1]{\emph{#1}}
+
+Let's test automatic numbering with the \texttt{allowframebreaks} option.
+
+On this slide, ``(1/3)'' should appear in the frame title.
+
+\blindtext
+
+\parstart{\framebreak}
+\Blindtext[2]
+
+\end{frame}
+
+
 
 
 %%%%%%%%%%%%%%%%%%

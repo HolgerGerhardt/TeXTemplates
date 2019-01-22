@@ -357,21 +357,31 @@
 % <==
 
 % Continuation counter for frames with the ``allowframebreaks'' option.
-% See https://tex.stackexchange.com/questions/275044/how-do-i-insert-the-total-continuation-count-in-the-allowframbreaks-frame-title
 % ==>
-\newcounter{totalcontinuationcount}
+%% Inspired by https://tex.stackexchange.com/questions/275044/how-do-i-insert-the-total-continuation-count-in-the-allowframbreaks-frame-title:
+%\newcounter{totalcontinuationcount}
+%\makeatletter
+%\setbeamertemplate{frametitle continuation}{%
+%	\setcounter{totalcontinuationcount}{\beamer@endpageofframe}%
+%	\addtocounter{totalcontinuationcount}{1}%
+%	\addtocounter{totalcontinuationcount}{-\beamer@startpageofframe}%
+%	\ifnum \value{totalcontinuationcount} > 1
+%		\textmd{(\insertcontinuationcount/\arabic{totalcontinuationcount})}%
+%	\fi
+%}
+%\makeatother
+% More elegant version based on https://github.com/josephwright/beamer/issues/423#issuecomment-456494500:
 \makeatletter
-\setbeamertemplate{frametitle continuation}{%
-	\setcounter{totalcontinuationcount}{\beamer@endpageofframe}%
-	\addtocounter{totalcontinuationcount}{1}%
-	\addtocounter{totalcontinuationcount}{-\beamer@startpageofframe}%
-	\ifnum \value{totalcontinuationcount} > 1
-		\textmd{(\insertcontinuationcount/\arabic{totalcontinuationcount})}%
-	\fi
+\defbeamertemplate*{frametitle continuation}{only if multiple}{%
+	\ifnum \numexpr\beamer@endpageofframe+1-\beamer@startpageofframe\relax > 1
+		\textmd{(%
+			\insertcontinuationcount/%
+			\the\numexpr\beamer@endpageofframe+1-\beamer@startpageofframe%
+		)}%
+	\fi%
 }
 \makeatother
 % <==
-
 
 
 

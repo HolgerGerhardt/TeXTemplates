@@ -82,27 +82,28 @@
 
 \input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
 
-\newcommand{\serifbodyfont}{1}
-	% 0: Body is set in sans-serif font, ``structure'' (headings etc.) font is serif
-	% 1: Body is set in serif font, ``structure'' (headings etc.) font is sans-serif
+\newcommand{\serifbodyfont}{0}
+	% 0: Body is set in sans-serif font
+	% 1: Body is set in serif font
+\newcommand{\serifheadingfont}{0}
+	% 0: Headings (``structure'') are set in sans-serif font
+	% 1: Headings (``structure'') are set in serif font
 
-\ifnum \serifbodyfont=1
-	% If serif font for body text =>
-	\usefonttheme{serif}
-	\setbeamerfont{normal text}{family=\rmfamily}
-	\setbeamerfont{structure}{family=\sffamily, shape=\upshape, series=\bfseries}
-	\setbeamerfont{frametitle}{size=\large, parent=structure}
-	% <=
-\else
-	% If sansserif font for body text =>
+\ifnum \serifbodyfont=0
 	\setbeamerfont{normal text}{family=\sffamily}
 	\renewcommand{\familydefault}{\savesffamily}
 	\renewcommand{\mddefault}{\savesfmdseries}
 	\renewcommand{\bfdefault}{\savesfbfseries}
-	\setbeamerfont{structure}{family=\rmfamily, shape=\upshape, series=\bfseries}
-	\setbeamerfont{frametitle}{size=\large, parent=structure}
-	% <=
+\else
+	\usefonttheme{serif}
+	\setbeamerfont{normal text}{family=\rmfamily}
 \fi
+\ifnum \serifheadingfont=0
+	\setbeamerfont{structure}{family=\sffamily, shape=\upshape, series=\bfseries}
+\else
+	\setbeamerfont{structure}{family=\rmfamily, shape=\upshape, series=\bfseries}
+\fi
+
 % Make frame titles and headlines bold
 \usefonttheme{structurebold}
 \usefonttheme{professionalfonts}
@@ -158,7 +159,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\setbeamerfont{title}{size=\LARGE, parent=structure}
+\setbeamerfont{title}
+	{parent=structure, size=\LARGE}
+\setbeamerfont{subtitle}
+	{parent=structure, size=\Large, series=\mdseries}
+\setbeamerfont{frametitle}
+	{parent=structure, size=\large}
 
 % For convenience, let the ``paperheight'' of the slides be identical,
 % no matter what the aspect ratio of the slides ==>
@@ -167,8 +173,12 @@
 \@ifclasswith{beamer}{aspectratio=43}{%
 	\beamer@paperwidth 12.00cm%
 	\beamer@paperheight 9.00cm%
-	\setbeamerfont{frametitle}{size*={11}{14}, parent=structure}
-	\setbeamerfont{title}{size*={14}{20}, parent=structure}
+	\setbeamerfont{title}
+		{parent=structure, size*={14}{20}}
+	\setbeamerfont{subtitle}
+		{parent=structure, size*={13}{20}}
+	\setbeamerfont{frametitle}
+		{parent=structure, size*={11}{14}}
 }{}
 %% 14:9 aspect ratio: Nothing needs to be changed
 %\@ifclasswith{beamer}{aspectratio=149}{%
@@ -190,11 +200,11 @@
 
 % Margins ==>
 \newcommand{\margintop}{12.5pt}
-\newcommand{\marginleft}{27pt}
-\newcommand{\margincenter}{24pt}
-\newcommand{\marginright}{18pt}
+\newcommand{\marginleft}{17.5pt}
+\newcommand{\marginright}{\marginleft}
 \setbeamersize{text margin left=\marginleft}
 \setbeamersize{text margin right=\marginright}
+\setlength{\textwidth}{\paperwidth-\marginleft-\marginright}
 % <==
 
 \setlength{\parskip}{\medskipamount}
@@ -209,12 +219,6 @@
 % Make frame titles and headlines bold
 \usefonttheme{structurebold}
 %\setbeamercolor{frametitle}{fg=black}
-\setbeamerfont{subtitle}{size=\normalsize, series=\bfseries, parent=structure}
-\setbeamerfont{author}{size=\large, series=\mdseries}
-\setbeamerfont{institute}{size=\small, series=\mdseries, shape=\itshape}
-%\setbeamercolor{institute}{fg=darkgray}
-\setbeamerfont{date}{size=\normalsize, series=\bfseries, parent=structure}
-%\setbeamercolor{date}{fg=darkgray}
 \setbeamerfont{alerted text}{series=\bfseries}
 
 %% Lorenz Götte's color scheme:
@@ -293,7 +297,7 @@
 			\phantom{\insertframenumber/\inserttotalframenumber}%
 			\hspace{\marginright}%
 		}%
-		\vspace{12pt}%
+		\vspace{15pt}%
 	}%
 }
 \makeatother
@@ -391,24 +395,63 @@
 
 
 % Make the title page left-aligned
-\setbeamertemplate{title page}[default][left]
+% ==>
+%\setbeamertemplate{title page}[default][left]
 
-\newcommand\Wider[2][0pt]{%
-	\makebox[\linewidth][c]{%
-		\hspace{-\marginleft}\hspace{\marginright}%
-		\begin{minipage}{\dimexpr\textwidth+\marginleft-\marginright\relax}
-			\raggedright%
-			\smallskip%
-			#2
-		\end{minipage}%
-	}%
+% \setbeamerfont{title} and \setbeamerfont{subtitle} already executed above!
+\setbeamerfont{author}
+	{parent=normal text, size=\large}
+\setbeamercolor{author}
+	{parent=normal text}
+\setbeamerfont{institute}
+	{parent=normal text, size=\small, series=\mdseries, shape=\itshape}
+\setbeamercolor{institute}
+	{parent=normal text}
+\setbeamerfont{date}
+	{parent=structure, size=\normalsize, series=\bfseries}
+\setbeamercolor{date}
+	{parent=normal text}
+
+\makeatletter
+\setbeamertemplate{title page}{
+	\begin{minipage}[c][6.75cm]{\textwidth}%
+		\raggedright%
+		\ifx\inserttitlegraphic\@empty\else%
+			\inserttitlegraphic%
+		\fi
+		\vfill
+		\begingroup
+		\ifx\inserttitle\@empty\else%
+			\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par%
+		\fi
+		\ifx\insertsubtitle\@empty\else%
+			\smallskip
+			\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par%
+		\fi
+		\ifx\beamer@shortauthor\@empty\else%
+			\vspace{\fill}
+			\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor%
+		\fi
+		\ifx\insertinstitute\@empty\else%
+			\vspace{\fill}
+			\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute%
+		\fi
+		\ifx\insertdate\@empty\else%
+			\vspace{\fill}
+			\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate%
+		\fi
+		\endgroup
+		\vfill
+		\vspace{0cm}  % For the \vfill to actually have an effect
+	\end{minipage}%
 }
+\makeatother
+% <==
 
 \makeatletter
 \renewcommand{\beamer@insttitle}[1]{\highlight{\textsuperscript{\kern.75pt \textit{#1}}}}
 \renewcommand{\beamer@instinst}[1]{\beamer@insttitle{#1}\ignorespaces}
 \renewcommand{\beamer@andinst}{\\[0.33\baselineskip]}
-\makeatother
 \makeatother
 
 
@@ -421,7 +464,7 @@
 
 \useinnertheme{circles}
 \setbeamertemplate{section in toc}{%
-	\leavevmode\leftskip=0ex%
+	\leavevmode\leftskip=3.3ex%
 	\llap{%
 		\usebeamerfont*{section number projected}%
 		\usebeamercolor{section number projected}%
@@ -465,9 +508,9 @@
 % Adjust spacing of lists ==>
 % Unfortunately, the ``enumitem'' package is incompatible with the ``beamer'' class.
 % Hence, we need to adjust left margins etc. manually:
-\setlength{\leftmargini}{0pt}
-\setlength{\leftmarginii}{15pt}
-\setlength{\leftmarginiii}{18pt}
+\setlength{\leftmargini}{\widthof{9.}+\labelsep}
+\setlength{\leftmarginii}{\widthof{g.}+\labelsep}
+\setlength{\leftmarginiii}{\widthof{iii.}+\labelsep}
 %\setlength{\rightmargin}{0in}
 %\setlength{\itemindent}{0in}
 %\usepackage{enumitem}
@@ -490,13 +533,19 @@
 
 %\useinnertheme{circles}
 
-\setbeamertemplate{enumerate items}     [default]
-\setbeamertemplate{enumerate subitem}   {\alph{enumii}.}
-\setbeamertemplate{enumerate subsubitem}{\roman{enumiii}.}
+\setbeamertemplate{enumerate items}
+	[default]
+\setbeamertemplate{enumerate subitem}
+	{\alph{enumii}.}
+\setbeamertemplate{enumerate subsubitem}
+	{\roman{enumiii}.}
 
-\setbeamertemplate{itemize item}        {\raisebox{-0.5pt}{\textrm{\textbf{\textbullet}}}}
-\setbeamertemplate{itemize subitem}     {\usebeamerfont{normal text}--}
-\setbeamertemplate{itemize subsubitem}  {\raisebox{1.5pt}{\tiny$\blacktriangleright$}}
+\setbeamertemplate{itemize item}
+	{\raisebox{-0.5pt}{\scalebox{0.95}{\textrm{\textbf{\textbullet}}}}\hspace{-0.06em}}
+\setbeamertemplate{itemize subitem}
+	{\usebeamerfont{normal text}--\hspace{0.15em}}
+\setbeamertemplate{itemize subsubitem}
+	{\raisebox{1.5pt}{\tiny$\blacktriangleright$}\hspace{0.15em}}
 
 \setbeamerfont*{itemize/enumerate body}{size=\normalsize}
 \setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}

@@ -5,6 +5,26 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FUNDAMENTAL SETTINGS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\serifbodyfont}{0}
+% 0: Body is set in sans-serif font
+% 1: Body is set in serif font
+\newcommand{\serifheadingfont}{0}
+% 0: Headings (``structure'') are set in sans-serif font
+% 1: Headings (``structure'') are set in serif font
+
+\newcommand{\showsectionnavigation}{0}
+% 0: ``Headline'' is disabled.
+% 1: ``Headline'' (at the very top of slides) is included and displays all sections of the presentation,
+%      with the current section being highlighted.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  FUNDAMENTAL PACKAGES  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -81,13 +101,6 @@
 
 
 \input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
-
-\newcommand{\serifbodyfont}{0}
-	% 0: Body is set in sans-serif font
-	% 1: Body is set in serif font
-\newcommand{\serifheadingfont}{0}
-	% 0: Headings (``structure'') are set in sans-serif font
-	% 1: Headings (``structure'') are set in serif font
 
 \ifnum \serifbodyfont=0
 	\setbeamerfont{normal text}{family=\sffamily}
@@ -226,14 +239,20 @@
 %\definecolor{beamer@blendedblue}{rgb}{0.137,0.466,0.741}
 %\setbeamercolor{structure}{fg=beamer@blendedblue}
 %\definecolor{SpotColor}{rgb}{0.1,0.4,0.7} % Lorenz' Blue
-\definecolor{SpotColor}{rgb}{0.00, 0.25, 0.55}
-\definecolor{darkgray} {rgb}{0.40, 0.40, 0.40}
-\definecolor{darkred}  {RGB}{204, 0,    0}
-\definecolor{nicegreen}{RGB}{ 51, 204,  0}
+\definecolor{UBonnBlue}  {RGB}{  7,  82, 154}
+\definecolor{UBonnYellow}{RGB}{234, 185, 12}
+\definecolor{UBonnGray}  {RGB}{144, 144, 133}
+\definecolor{darkgray}   {RGB}{102, 102, 102}
+\definecolor{darkred}    {RGB}{180, 0,     0}
+\definecolor{nicegreen}  {RGB}{ 51, 204,   0}
+
+\colorlet{SpotColor}{UBonnBlue}
 \setbeamercolor{structure}{fg=SpotColor}
 \setbeamercolor{alerted text}{fg=SpotColor}
 \setbeamercolor{author in head/foot}{fg=white, bg=SpotColor}
 \setbeamercolor{button}{bg=SpotColor,fg=white}
+\setbeamercolor{headline}{bg=SpotColor,fg=white}
+\setbeamercolor{headlinecover}{bg=white,fg=white}
 
 \newcommand{\highlight}[1]{\textcolor{SpotColor}{#1}}
 \newcommand{\heading}[1]{%
@@ -263,9 +282,10 @@
 }
 % <==
 
-% Add a slide number (and [short]title) to the footer of each slide
-% ==>
+\newlength{\navigationwidth}
 \BeforeBeginEnvironment{frame}{%
+	% Add a slide number (and [short]title) to the footer of each slide
+	% ==>
 	\setbeamertemplate{footline}{\vskip-15pt
 		\textcolor{SpotColor}{%
 			%\fontseries{rm}\selectfont%
@@ -278,9 +298,38 @@
 			\hspace{\marginright}%
 		}%
 		\vspace{12pt}%
-	}
+	}%
+	% <==
+	% Outline with current section highlighted in the ``headline'' ==>
+	\ifnum \showsectionnavigation=0
+		\setbeamertemplate{headline}{}
+	\else
+		\setbeamertemplate{headline}{%
+			\hspace{\marginleft}%
+			\begin{beamercolorbox}[wd=\linewidth, ht=5pt, dp=2pt]{headline}%
+				\insertsectionnavigationhorizontal{\linewidth}{\hspace{10pt}}{\hspace{10pt}}%
+			\end{beamercolorbox}%
+			\newline
+			\begin{beamercolorbox}[wd=\paperwidth, ht=15pt, dp=0pt]{headlinecover}%
+				% Adds a white bar to cover stuff that protrudes from the above color box.
+			\end{beamercolorbox}%
+		}
+		\setlength{\fboxrule}{0.25pt}\setlength{\fboxsep}{7.5pt}%
+		\setbeamertemplate{section in head/foot}{%
+			\settowidth{\navigationwidth}{\bfseries\insertsectionhead}%
+			\fcolorbox{SpotColor!25}{SpotColor}{%
+				\makebox[\navigationwidth]{\color{white}\bfseries\insertsectionhead}%
+			}%
+		}
+		\setbeamertemplate{section in head/foot shaded}{%
+			\settowidth{\navigationwidth}{\bfseries\insertsectionhead}%
+			\fcolorbox{SpotColor}{SpotColor}{%
+				\makebox[\navigationwidth]{\color{white}\mdseries\insertsectionhead}%
+			}
+		}
+	\fi
+	% <==
 }
-% <==
 
 % See https://tex.stackexchange.com/questions/427257/how-to-remove-footer-for-specific-type-of-slides-frames
 % ==>
@@ -299,6 +348,7 @@
 		}%
 		\vspace{15pt}%
 	}%
+	\setbeamertemplate{headline}{}%
 }
 \makeatother
 % <==
@@ -389,6 +439,7 @@
 
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  LAYOUT OF THE TITLE SLIDE  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -400,7 +451,7 @@
 
 % \setbeamerfont{title} and \setbeamerfont{subtitle} already executed above!
 \setbeamerfont{author}
-	{parent=normal text, size=\large}
+	{parent=normal text, size=\large, series=\mdseries, shape=\upshape}
 \setbeamercolor{author}
 	{parent=normal text}
 \setbeamerfont{institute}

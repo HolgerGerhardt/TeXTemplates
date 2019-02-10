@@ -372,6 +372,7 @@
 % Use LGR-encoded Greek letters for \mathversion{sans}
 % ==>
 \makeatletter
+
 \newcommand*{\sansmath}{%
 	\@for\@tempa:=%
 		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
@@ -444,6 +445,7 @@
 			\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa orig\endcsname%
 		}%
 }
+
 \makeatother
 
 %\makeatletter

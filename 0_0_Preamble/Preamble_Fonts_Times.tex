@@ -34,7 +34,11 @@
 	; = { 50,   0}}
 \renewcommand{\textellipsis}{\mbox{.{\kern.09em}.{\kern.09em}.}}
 
-\renewcommand{\bibfont}{\small} % Reduce font size for the bibliography, make the font sans-serif
+\renewcommand{\bibfont}{%
+	\normalsize%
+	\addtolength{\baselineskip}{0.05\baselineskip}%
+	%\setlength{\baselineskip}{\newbaselineskip}%
+}  % Use same size for bibliography as for body text.
 
 \captionsetup{footfont={rm, footnotesize}}  % Set font in \floatfoot to serif and footnotesize
 

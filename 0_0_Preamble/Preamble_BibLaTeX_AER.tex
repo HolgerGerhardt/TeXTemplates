@@ -13,9 +13,32 @@
 
 % AER/JEL/JEP style
 
-\usepackage[backend=biber, natbib=true, bibencoding=inputenc, bibstyle=authoryear, citestyle=authoryear-comp, mincitenames=1, maxcitenames=3, minbibnames=99, maxbibnames=99, uniquename=false, uniquelist=false, backref=true, backrefstyle=three, doi=true, isbn=false, dashed=false, sorting=ynt, sortcites=true, mergedate=true, dateabbrev=false, abbreviate=false]{biblatex}
+\usepackage[backend=biber, natbib=true, bibencoding=inputenc, bibstyle=authoryear, citestyle=authoryear-comp, mincitenames=1, maxcitenames=3, minbibnames=99, maxbibnames=99, uniquename=false, uniquelist=true, backref=true, backrefstyle=three, doi=true, isbn=false, dashed=false, sorting=ynt, sortcites=true, mergedate=true, dateabbrev=false, abbreviate=false, citetracker=true]{biblatex}
 % sortcites sorts the in-text citations by year of publication
 \DeclareBibliographyAlias{newspaper}{article}
+
+% Full author list on first citation, ``et al.'' only from second citation onwards:
+% https://tex.stackexchange.com/questions/48846/biblatex-et-al-beginning-from-second-citation
+% ==>
+\AtEveryCitekey{\ifciteseen{}{\clearfield{namehash}}}
+\xpatchbibmacro{cite}
+	{\printnames{labelname}}
+	{\ifciteseen
+		{\printnames{labelname}}
+		{\printnames[][1-5]{labelname}}%
+	}
+	{}
+	{}
+\xpatchbibmacro{textcite}
+	{\printnames{labelname}}
+	{\ifciteseen
+		{\printnames{labelname}}
+		{\printnames[][1-5]{labelname}}%
+	}
+	{}
+	{}
+% <==
+
 \let\citeorig\cite
 \renewcommand{\cite}{\citet}
 \renewcommand{\citealp}{\citeorig}

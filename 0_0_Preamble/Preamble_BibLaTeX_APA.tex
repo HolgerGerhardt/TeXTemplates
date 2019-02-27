@@ -1,0 +1,65 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TXS-program:bibliography = txs:///biber
+% !TeX program = pdflatex
+% !BIB program = biber
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  CITATION COMMANDS AND BIBLIOGRAPHY STYLE %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% For APA:
+\usepackage[style=apa, backend=biber, natbib=true, apabackref=true]{biblatex}
+
+\let\citeorig\cite
+\renewcommand{\cite}{\citet}
+\renewcommand{\citealp}{\citeorig}
+
+\renewcommand{\bibfont}{\sffamily\small}
+	% Reduce font size for the bibliography, make the font sans-serif.
+\AtBeginDocument{%
+	\setlength{\bibindent}{\parindent}%
+}
+\setlength{\bibitemsep}{0pt}
+
+\DefineBibliographyStrings{english}{%
+	backrefpage = {},	% originally ``cit. on p.''
+	backrefpages = {}	% originally ``cit. on pp.''
+}
+\DefineBibliographyStrings{ngerman}{%
+	backrefpage  = {},	% originally ``Siehe Seite''
+	backrefpages = {}	% originally ``Siehe Seiten''
+}
+
+\renewcommand*{\finentrypunct}{}
+\renewbibmacro*{pageref}{%
+	\addperiod
+	\iflistundef{pageref}
+	{}
+	{\printtext[brackets]{% NEW
+			\ifnumgreater{\value{pageref}}{1}
+			{\bibstring{backrefpages}}
+			{\bibstring{backrefpage}}%
+			\printlist[pageref][-\value{listtotal}]{pageref}%
+		}%
+	}%
+}% NEW
+
+% Link DOIs automatically to https://doi.org/DOI, in line with the
+% APA's DOI Display Guidelines Update from March 2017:
+% https://blog.apastyle.org/apastyle/digital-object-identifier-doi/
+% ==>
+\DeclareFieldFormat{doi}{%
+	% \setlength{\Urlmuskip}{0pt}%
+	\Urlmuskip = 0mu\relax
+	\url{https://doi.org/#1}%
+}
+% <==
+\DeclareFieldFormat{url}{%
+	% \setlength{\Urlmuskip}{0mu}%
+	\Urlmuskip = 0mu\relax%
+	\url{#1}%
+}

@@ -23,9 +23,9 @@
 	\usepackage[LGR, T1]{fontenc}  % LGR needed for sansserif math
 \fi
 
-\usepackage[ngerman, american]{babel}  % German and US English hyphenation and quotation marks
-\selectlanguage{american}
-\usepackage[ngerman, american]{isodate}
+\usepackage[ngerman, american, USenglish]{babel}  % German and US English hyphenation and quotation marks
+\selectlanguage{USenglish}
+\usepackage[ngerman, USenglish]{isodate}
 
 \usepackage[babel, german=quotes]{csquotes}  % Needed for correct German quotes via BibLaTeX's \mkbibquote{...}
 %\usepackage[babel, german=guillemets]{csquotes}  % Needed for correct German quotes via BibLaTeX's \mkbibquote{...}
@@ -95,7 +95,7 @@
 % Change ``([sub]sub)section'' to ``Section'' in \autoref
 % and add na
 % ==>
-\addto\extrasamerican{%
+\addto\extrasUSenglish{%
 	\renewcommand{\chapterautorefname}{Chapter}%  instead of ``chapter''
 	\renewcommand{\sectionautorefname}{Section}%  instead of ``section''
 	\renewcommand{\subsectionautorefname}{Section}%  instead of ``subsection''
@@ -204,6 +204,33 @@
 	\blindtext\relax%
 }
 \makeatother
+\setcounter{blindtext}{1}
+\setcounter{Blindtext}{1}
+% The ``blindtext'' package does not recognize ``USenglish'' as identical to ``american''.
+% Fix this -->
+\LetLtxMacro{\blindtextblindtext}{\blindtext}
+\LetLtxMacro{\blindtextBlindlist}{\Blindlist}
+\LetLtxMacro{\blindtextBlindtext}{\Blindtext}
+\RenewDocumentCommand{\blindtext}{O{\value{blindtext}}}{%
+	\begingroup%
+	\iflanguage{USenglish}{\selectlanguage{american}}{}%
+	\blindtextblindtext[#1]%
+	\endgroup%
+}
+\RenewDocumentCommand{\Blindtext}{O{\value{blindtext}} O{\value{Blindtext}}}{%
+	\begingroup%
+	\iflanguage{USenglish}{\selectlanguage{american}}{}%
+	\blindtextBlindtext[#1][#2]%
+	\endgroup%
+}
+\RenewDocumentCommand{\Blindlist}{m O{\value{blindlist}}}{%
+	\begingroup%
+	\iflanguage{USenglish}{\selectlanguage{american}}{}%
+	\blindtextBlindlist{#1}[#2]%
+	\endgroup%
+}
+% Based on https://tex.stackexchange.com/questions/299954/styling-blindtext-and-blindtext-aka-renewcommand-with-optional-arguments
+% <==
 
 %\usepackage{showframe}
 %\renewcommand*\ShowFrameColor{\color{magenta}}

@@ -51,12 +51,21 @@
 
 \graphicspath{{Thesis/images/}}
 
+% Remove the leader (dots) from the table of contents, see
+% https://tex.stackexchange.com/questions/73789/how-to-remove-the-dots-in-the-tableof-contents
+% ==>
+\makeatletter
+\renewcommand{\@dotsep}{10000} 
+\makeatother
+% <==
+
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  TYPOGRAPHICAL SETTINGS  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % Adjust the design of captions
 \DeclareCaptionLabelSeparator{periodlargespace}{.\:\:}

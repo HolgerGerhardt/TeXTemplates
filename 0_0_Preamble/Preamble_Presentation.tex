@@ -236,16 +236,19 @@
 %\definecolor{beamer@blendedblue}{rgb}{0.137,0.466,0.741}
 %\setbeamercolor{structure}{fg=beamer@blendedblue}
 %\definecolor{SpotColor}{rgb}{0.1,0.4,0.7} % Lorenz' Blue
-\definecolor{UBonnBlue}  {RGB}{  7,  82, 154}
-\definecolor{UBonnYellow}{RGB}{234, 185, 12}
-\definecolor{UBonnGray}  {RGB}{144, 144, 133}
-\definecolor{darkgray}   {RGB}{102, 102, 102}
-\definecolor{darkred}    {RGB}{180, 0,     0}
-\definecolor{nicegreen}  {RGB}{ 51, 204,   0}
+\definecolor{UBonnBlue}   {RGB}{  7,  82, 154}
+\definecolor{UBonnYellow} {RGB}{234, 185, 12}
+\definecolor{UBonnGray}   {RGB}{144, 144, 133}
+\definecolor{darkgray}    {RGB}{102, 102, 102}
+\definecolor{darkred}     {RGB}{191,   0,   0}
+\definecolor{neutralgreen}{RGB}{ 28, 179,   0}
 
-\colorlet{SpotColor}{UBonnBlue}
+\colorlet{SpotColor}   {UBonnBlue}
+\colorlet{AlertColor}  {darkred}
+\colorlet{ExampleColor}{neutralgreen}
+
 \setbeamercolor{structure}{fg=SpotColor}
-\setbeamercolor{alerted text}{fg=SpotColor}
+\setbeamercolor{alerted text}{fg=AlertColor}
 \setbeamercolor{author in head/foot}{fg=white, bg=SpotColor}
 \setbeamercolor{button}{bg=SpotColor,fg=white}
 \setbeamercolor{headline}{bg=SpotColor,fg=white}
@@ -541,6 +544,109 @@
 	{}
 	{}
 \makeatother
+
+
+
+
+%%%%%%%%%%%%%%
+%%  BLOCKS  %%
+%%%%%%%%%%%%%%
+
+
+% Put border around blokc, exampleblock, and alertblock
+% ==>
+
+\usepackage{mdframed}
+\usepackage{changepage}
+
+\newlength{\blockinnermargin}
+\setlength{\blockinnermargin}{4pt}
+
+\newcommand{\PutBorderAroundBlock}[2]{
+	\def\temp{#1}
+	\ifx\temp\empty
+		\def\blocktype{block }     % Trailing space is crucial!
+	\else
+		\def\temp{ #1}
+		\def\blocktype{block #1 }  % Trailing space is crucial!
+	\fi
+	\setbeamercolor*{block title\temp}{fg=white, bg=#2}
+	\setbeamercolor*{block body\temp} {fg=black, bg=}
+	\addtobeamertemplate{\blocktype begin}{%
+		\begin{mdframed}[linecolor=#2, linewidth=0.35pt, leftmargin=0pt, innerleftmargin=0.39em, innerrightmargin=0.39em, innertopmargin=-0.01ex, innerbottommargin=5pt]%
+		\let \insertblocktitleorig \insertblocktitle%
+		\renewcommand{\insertblocktitle}{%
+			\RaggedRight%
+			\leftskip=\blockinnermargin%
+			\rightskip=\blockinnermargin%
+			\insertblocktitleorig%
+		}%
+	}{%
+		\renewcommand{\insertblocktitle}{\insertblocktitleorig}%
+		\begin{adjustwidth}{\blockinnermargin}{\blockinnermargin}%
+		\RaggedRight%
+	}
+	\addtobeamertemplate{\blocktype end}{%
+		\end{adjustwidth}%
+	}{%
+		\end{mdframed}%
+	}
+}
+
+\PutBorderAroundBlock{}{SpotColor}
+\PutBorderAroundBlock{example}{ExampleColor}
+\PutBorderAroundBlock{alerted}{AlertColor}
+
+% <==
+
+% Style definition, theorem, lemma, corollary, and proof with out border
+% ==>
+
+% Inspired by https://github.com/schnorr/infufrgs/blob/master/slides/beamerthemeInf.sty
+\setbeamercolor{theorem title}{fg=SpotColor}
+\setbeamerfont{theorem title}{parent=structure}
+\setbeamercolor{theorem body}{fg=black}
+\setbeamerfont{theorem body}{parent=normal text, shape=\itshape, series=\mdseries}
+	% Body of theorem, lemma, and corollary are italicized
+\AtBeginEnvironment{definition}{%
+	\setbeamerfont{theorem body}{parent=normal text, shape=\upshape, series=\mdseries}
+	% Body of definition is typeset in upright font
+}
+
+\setbeamertemplate{theorem begin}{%
+	\usebeamerfont{theorem title}%
+	\usebeamercolor[fg]{theorem title}%
+	\inserttheoremname%~\inserttheoremnumber%
+	\ifx\inserttheoremaddition\empty\else\ (\inserttheoremaddition)\fi%
+	%\inserttheorempunctuation\hspace{1ex}%
+	\\[\smallskipamount]
+	\usebeamerfont{theorem body}%
+	\usebeamercolor[fg]{theorem body}%
+}
+\setbeamertemplate{theorem end}{}
+
+\setbeamercolor{proof title}{fg=SpotColor}
+\setbeamerfont{proof title}{parent=structure}
+\setbeamercolor{proof body}{fg=black}
+\setbeamerfont{proof body}{parent=normal text, shape=\upshape, series=\mdseries}
+% Remove period after ``Proof''
+% See https://tex.stackexchange.com/questions/31354/how-to-remove-the-in-the-proof-environment
+% -->
+\makeatletter
+\let\@addpunct\@gobble
+\makeatother
+% <--
+\renewcommand{\qedsymbol}{\small\textcolor{SpotColor}{$\blacksquare$}}
+\setbeamertemplate{proof begin}{%
+	\usebeamerfont{proof title}%
+	\usebeamercolor[fg]{theorem title}%
+	\insertproofname\\[\smallskipamount]
+	\usebeamerfont{proof body}%
+	\usebeamercolor[fg]{proof body}%
+}
+\setbeamertemplate{proof end}{}
+
+% <==
 
 
 

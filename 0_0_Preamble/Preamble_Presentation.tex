@@ -65,18 +65,8 @@
 \usepackage{pgfplots}
 \usetikzlibrary{mindmap, trees, patterns}
 
-\usepackage[hang, center last, footnotesize, bf]{caption}
-
 \usepackage[round]{natbib}
 \renewcommand{\bibfont}{\scriptsize}
-
-% Better-than-the-default table design
-\usepackage{booktabs}
-% \heavyrulewidth=.05em
-% \belowbottomsep=-2.5pt
-\usepackage{colortbl} % e.g., for colored rules
-\arrayrulecolor{SpotColor} % Color all table rules blue
-% <--
 
 \usepackage{xspace}
 
@@ -712,6 +702,61 @@
 	\item\relax%
 }
 {\endlist}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FIGURES AND TABLES  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{tabularx}	% Provides environment tabularx to adjust width of tables
+% \usepackage{tabulary}	% For some reason, tabulary doesn't obey the width argument ...
+% Emulate the "tabulary" column types:
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{J}{>{\arraybackslash}X}
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{R}{>{\RaggedLeft\arraybackslash}X}
+% \usepackage[flushleft]{threeparttable}	% Provides the tablenotes environment
+
+% Better-than-the-default table design
+\usepackage{booktabs}
+% \heavyrulewidth=.05em
+% \belowbottomsep=-2.5pt
+\usepackage{colortbl} % e.g., for colored rules
+\arrayrulecolor{SpotColor} % Color all table rules blue
+% <--
+
+\usepackage{siunitx}
+	% Allows, among others, for alignment of decimal numbers in tables at the decimal point.
+\sisetup{
+	detect-all,
+	round-integer-to-decimal = true,
+	group-digits             = true,
+	group-minimum-digits     = 5,
+	group-separator          = {\kern 1pt},
+	table-align-text-pre     = false,
+	table-align-text-post    = false,
+	input-signs              = + -,
+	input-symbols            = {*} {**} {***} \sigstar,
+	input-open-uncertainty 	 = ,
+	input-close-uncertainty  = ,
+	retain-explicit-plus
+}
+\newcolumntype{T}[1]
+	{@{}S[table-format = #1, table-space-text-pre = {***}, table-space-text-post = {***}]}
+% Loading the ``siunitx'' package generates a ``too many math alphabets'' used error.
+% See https://tex.stackexchange.com/questions/452682/limit-math-alphabets-created-by-siunitx?noredirect=1&lq=1 and
+%https://tex.stackexchange.com/questions/40874/kpfonts-siunitx-and-math-alphabets
+% Hence, redefine the (virtually) never used \mathtt command:
+\renewcommand{\mathtt}[1]{#1}
+
+\usepackage[center, small, bf, labelsep=period]{caption}
+%\setbeamerfont{caption}
+%	{parent=normal text, size=\small, series=\mdseries, shape=\itshape}
+
+\AtBeginEnvironment{table}{\small}  % Reduces font size in tables slightly
 
 
 

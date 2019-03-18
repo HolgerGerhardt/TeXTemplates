@@ -1,0 +1,83 @@
+\renewcommand*{\euro}{%
+	\relax\ifmmode\text{\texteuro}\else\texteuro\fi%
+}%
+\newcolumntype{E}{
+	>{{\euro} }  % Trailing space is crucial
+	S[table-figures-integer=2, table-figures-decimal=2, table-align-text-pre=true, table-space-text-pre={\euro}]%
+}%
+\newcolumntype{P}{
+	r <{\%}
+}%
+\footnotesize%
+\begin{tabularx}{\linewidth}{@{}
+	L @{\quad\qquad}
+	E @{\:}
+	P @{\qquad}
+	E @{\:}
+	P @{\quad\qquad}
+	E @{\:}
+	P @{\qquad}
+	E @{\:}
+	P
+@{}}
+	\toprule
+	& \multicolumn{4}{@{}c@{\quad\qquad}}{Alternative~$\mathbfit{A}$}
+	& \multicolumn{4}{@{}c@{}           }{Alternative~$\mathbfit{B}$} \\
+	\cmidrule(r{3em}){2-5}
+	\cmidrule{6-9}
+	& \mc{$c_{\mathbfit{A}, 1}$\phantom{\euro}}{@{\:}}
+	& \mc{$p_{\mathbfit{A}, 1}$}{@{\qquad}}
+	& \mc{$c_{\mathbfit{A}, 2}$\phantom{\euro}}{@{\:}}
+	& \mc{$p_{\mathbfit{A}, 2}$}{@{\quad\qquad}}
+	& \mc{$c_{\mathbfit{B}, 1}$\phantom{\euro}}{@{\:}}
+	& \mc{$p_{\mathbfit{B}, 1}$}{@{\qquad}}
+	& \mc{$c_{\mathbfit{B}, 2}$\phantom{\euro}}{@{\:}}
+	& \mc{$p_{\mathbfit{B}, 2}$}{@{}}	\\
+	\midrule
+	\multicolumn{9}{@{}l@{}}{\textit{Choice List I: risky/risky}
+		($x = {\euro}22.00$, $r = {\euro}7.50$, $k = {\euro}11.50$; 25~rows)} \\
+	Top row &
+	3.00	&  \phantom{0}50 &	22.00	&  \phantom{0}50 &	 3.00	& \phantom{0}50	&	 7.00	& \phantom{0}50	\\  % \phantom{0} added to make all percent columns equally wide
+	Center row &
+	3.00	&  50 &	22.00	&  50 &	 9.00	&  50	&	13.00	&  50	\\
+	Row with $m = 0$	&
+	3.00	&  50 &	22.00	&  50 &	10.50	&  50	&	14.50	&  50	\\
+	Bottom row			&
+	3.00	&  50 &	22.00	&  50 &	15.00	&  50	&	19.00	&  50	\\
+	\midrule
+	\multicolumn{9}{@{}l@{}}{\textit{Choice List II: safe/risky}
+		($x = {\euro}16.00$, $r = {\euro}5.00$, $k = {\euro}5.00$; 19~rows)} \\
+	Top row &
+	11.00	& 100 &	\mc{}{}	& \mc{}{}	&	11.00	&  50	&	21.00	&  50	\\
+	Center row &
+	11.00	& 100 &	\mc{}{}	& \mc{}{}	&	 6.50	&  50	&	16.50	&  50	\\
+	Row with $m = 0$ &
+	11.00	& 100 &	\mc{}{}	& \mc{}{}	&	 6.00	&  50	&	16.00	&  50	\\
+	Bottom row &
+	11.00	& 100 &	\mc{}{}	& \mc{}{}	&	 2.00	&  50	&	12.00	&  50	\\
+	\midrule
+	\multicolumn{9}{@{}l@{}}{\textit{Choice List III: ``long shot''}
+		($x = {\euro}14.00$, $r = -{\euro}36.00$, $k = {\euro}7.00$; 21~rows)} \\
+	Top row &
+	7.00	&  90 &	50.00	&  10 &	 7.00	&  90	&	10.00	&  10	\\
+	Row with $m = 0$ &
+	7.00	&  90 &	50.00	&  10 &	11.00	&  90	&	14.00	&  10	\\
+	Center row &
+	7.00	&  90 &	50.00	&  10 &	12.00	&  90	&	15.00	&  10	\\
+	Bottom row &
+	7.00	&  90 &	50.00	&  10 &	17.00	&  90	&	20.00	&  10	\\
+	\midrule
+	\multicolumn{9}{@{}l@{}}{\textit{Choice List IV: delayed payoffs}
+		($x = {\euro}18.00$, $r = {\euro}6.00$, $k = {\euro}8.50$, paid in one week; 20~rows)} \\
+	Top row &
+	9.50	&  50 &	12.00	&  50 &	 9.50	&  50	&	24.00	&  50	\\
+	Above-center row &
+	9.50	&  50 &	12.00	&  50 &	 5.00	&  50	&	19.50	&  50	\\
+	Below-center row &
+	9.50	&  50 &	12.00	&  50 &	 4.50	&  50	&	19.00	&  50	\\
+	Row with $m = 0$ &
+	9.50	&  50 &	12.00	&  50 &	 3.50	&  50	&	18.00	&  50	\\
+	Bottom row &
+	9.50	&  50 &	12.00	&  50 &	 0.00	&  50	&	14.50	&  50	\\
+	\bottomrule
+\end{tabularx}%

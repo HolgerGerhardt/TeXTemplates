@@ -19,9 +19,9 @@
 	{% odd-left
 	}
 	{% odd-center
-		\phantom{\textsf{~}}%
-		% We include a \textsf command, because for some weird reason,
-		% the command does not work otherwise when using \subimport*{...}
+		\phantom{\textsf{\texteuro $\mathit{x} \mathbfit{X}$}}%
+		% We include a \textsf plus math commands, because for some weird reason,
+		% they do not work otherwise when using \subimport*{...}
 		\phantom{\texteuro \textsu{12}}%
 		% We include a \euro sign and superscript digits because
 		% they do not work otherwise when using \subimport*{...}
@@ -68,8 +68,7 @@
 
 \newcommand{\appendixformat}[1][\currentname]{%
 	\titleformat{\section}[hang]%
-		{\RaggedRight\Large\sffamily\bfseries}%
-		{\appendixname~\thesection\quad}{0pt}{#1}[]%
+		{}{\textscale{1.3}{\textsf{\textbf{\appendixname~\thesection\quad}}}}{0pt}{\textscale{1.3}{\textsf{\textbf{#1}}}}[]%
 }
 \AtBeginEnvironment{appendices}{\appendixformat}
 

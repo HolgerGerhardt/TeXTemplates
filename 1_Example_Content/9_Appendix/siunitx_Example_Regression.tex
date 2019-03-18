@@ -1,0 +1,42 @@
+\footnotesize
+\newcolumntype{T}{S[table-format=+1.3, round-mode=places, round-precision=3, table-space-text-pre={**}, table-space-text-post={-**}, round-integer-to-decimal=false]}
+\begin{tabularx}
+	{\textwidth}
+	{@{} L @{\hspace{1.5em}} T @{\hspace{1em}} T @{\hspace{1em}} T @{\hspace{1em}} T @{\hspace{1em}} T @{}}
+\toprule
+&	{(1)}	&	{(2)}	&	{(3)}	&	{(4)}	&	{(5)} \\
+\midrule
+Treatment
+	&	-0.390	&	-0.228	&	-0.729*	&	-0.449*	&	-0.453**	\\
+	&	(+0.352)	&	(-0.205)	&	[+0.377]	&	[-0.245]	&	{\{}+0.204{\}}	\\
+Female
+	&	0.948***	&	0.0607	&	0.188	&	0.305	&	0.385*	\\
+	&	(0.354)	&	(0.233)	&	(0.372)	&	(0.226)	&	(0.222)	\\
+$\text{Female} \times \text{Treatment}$
+	&	0.169	&	0.251	&	0.892*	&	0.454	&	0.439	\\
+	&	(0.514)	&	(0.325)	&	(0.533)	&	(0.341)	&	(0.307)	\\
+Final high school grade
+	&	-0.101	&	0.0132	&	0.0759	&	0.117	&	0.0394	\\
+	&	(0.198)	&	(0.144)	&	(0.224)	&	(0.146)	&	(0.133)	\\
+Trait self-control
+	&	-0.0156	&	0.00214	&	-0.0160	&	-0.000122	&	-0.00678	\\
+	&	(0.0162)	&	(0.00994)	&	(0.0147)	&	(0.0104)	&	(0.00935)	\\
+Constant
+	&	2.357***	&	1.512***	&	-0.322	&	2.158***	&	1.437***	\\
+	&	(0.239)	&	(0.144)	&	(0.265)	&	(0.161)	&	(0.152)	\\
+\midrule
+Observations
+	&	{303}	&	{289}	&	{295}	&	{304}	&	{1191}	\\
+$R^2$
+	&	0.057	&	0.008	&	0.039	&	0.043	&	0.024	\\
+\midrule
+$\text{Treatment} \times \text{(1 + Female)}$
+	&	-0.221	&	0.0228	&	0.163	&	0.00435	&	-0.0138	\\
+$p_F[\text{Treatment} \times {}$ \newline\hspace{12pt}$(1 + \text{Female}) = 0]$
+	&	0.327	&	0.00767	&	0.192	&	0.000314	&	0.00343	\\
+\bottomrule
+\addlinespace
+\multicolumn{6}{@{} p{\textwidth} @{}}{%
+	\textit{Notes:} Dependent variable: $m_\sim$. Robust standard errors (cluster-corrected for column~5) in parentheses. ***\,${p < 0.01}$, **\,${p < 0.05}$, *\,${p < 0.1}$. Missing observations (${N < 308}$) due to exclusion of trials in which subjects behaved irrationally (i.e., chose a~dominated option). The regressors Final high school grade and Trait self-control are mean-centered.
+}
+\end{tabularx}

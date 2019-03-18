@@ -142,10 +142,6 @@
 
 \input{0_0_Preamble/Preamble_Sansserif_math}
 
-\AtBeginDocument{%
-	\renewcommand{\euro}{\texteuro}%
-}
-
 % Allow for fine-grained scaling of font sizes
 % ==>
 \usepackage{relsize}
@@ -227,11 +223,11 @@
 %\setbeamercolor{structure}{fg=beamer@blendedblue}
 %\definecolor{SpotColor}{rgb}{0.1,0.4,0.7} % Lorenz' Blue
 \definecolor{UBonnBlue}   {RGB}{  7,  82, 154}
-\definecolor{UBonnYellow} {RGB}{234, 185, 12}
+\definecolor{UBonnYellow} {RGB}{234, 185,  12}
 \definecolor{UBonnGray}   {RGB}{144, 144, 133}
 \definecolor{darkgray}    {RGB}{102, 102, 102}
 \definecolor{darkred}     {RGB}{191,   0,   0}
-\definecolor{neutralgreen}{RGB}{ 28, 179,   0}
+\definecolor{neutralgreen}{RGB}{ 28, 166,   0}
 
 \colorlet{SpotColor}   {UBonnBlue}
 \colorlet{AlertColor}  {darkred}
@@ -720,13 +716,18 @@
 \newcolumntype{R}{>{\RaggedLeft\arraybackslash}X}
 % \usepackage[flushleft]{threeparttable}	% Provides the tablenotes environment
 
-% Better-than-the-default table design
+
+% Packages for creating better-looking tables
 \usepackage{booktabs}
-% \heavyrulewidth=.05em
-% \belowbottomsep=-2.5pt
+\setlength{\cmidrulewidth}{.35pt}
+\setlength{\lightrulewidth}{.35pt}
+\setlength{\heavyrulewidth}{.70pt}
+\setlength{\abovetopsep}{-8pt}
+\addtolength{\aboverulesep}{1pt}	% Make tables a little more spacious
+\addtolength{\belowrulesep}{1pt}
+% \setlength{\belowbottomsep}{-2pt}
 \usepackage{colortbl} % e.g., for colored rules
 \arrayrulecolor{SpotColor} % Color all table rules blue
-% <--
 
 \usepackage{siunitx}
 	% Allows, among others, for alignment of decimal numbers in tables at the decimal point.
@@ -756,7 +757,9 @@
 %\setbeamerfont{caption}
 %	{parent=normal text, size=\small, series=\mdseries, shape=\itshape}
 
-\AtBeginEnvironment{table}{\small}  % Reduces font size in tables slightly
+\AtBeginEnvironment{table}{\vspace{-1.2ex}\small}
+	% Reduces font size in tables slightly and
+	% reduces excessive white space above tables
 
 
 

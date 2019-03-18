@@ -333,7 +333,7 @@ FUNCTION {format.note}
             { "URL: " "\url{" * URL * "}" *}
             if$
         }
-        { "DOI: " "\href{http://dx.doi.org/" * doi * "}{" * doi * "}" *}
+        { "DOI: " "\href{https://doi.org/" * doi * "}{" * doi * "}" *}
         if$
     }
     { doi empty$
@@ -342,7 +342,7 @@ FUNCTION {format.note}
             { note ". URL: " * "\url{" * URL * "}" *}
             if$
          }
-	  { note ". DOI: " * "\href{http://dx.doi.org/" * doi * "}{" * doi "}" *}
+	  { note ". DOI: " * "\href{https://doi.org/" * doi * "}{" * doi "}" *}
 	  if$
     }
     if$

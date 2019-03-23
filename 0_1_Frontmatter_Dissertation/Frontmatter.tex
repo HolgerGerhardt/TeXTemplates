@@ -12,6 +12,8 @@
 
 \frontmatter  % roman page numbering
 
+\pdfbookmark[0]{Front Page}{frontpage}
+
 \noindent%
 \begin{center}
 \begin{minipage}[t][0.99\textheight][t]{0.9\textwidth}
@@ -104,8 +106,11 @@
 
 \cleardoublepage
 
+\phantomsection
 \listoffigures
 \addcontentsline{toc}{chapter}{\listfigurename}
+
+\phantomsection
 \listoftables
 \addcontentsline{toc}{chapter}{\listtablename}
 

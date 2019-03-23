@@ -15,6 +15,7 @@
 \renewcommand*{\maketitle}{%
 	%\begin{titlepage}
 	\thispagestyle{bullshitheader}
+	\pdfbookmark[1]{Front page}{frontpage}
 	\begin{center}\selectlanguage{USenglish}\large\mbox{}
 		
 		\vfill
@@ -70,11 +71,14 @@
 
 {
 	\setlength{\baselineskip}{1.75\origbaselineskip}
+	\pdfbookmark[1]{\contentsname}{toc}
 	\tableofcontents
 	\clearpage
+	\phantomsection
 	\listoffigures
 	\addcontentsline{toc}{section}{\listfigurename}
 	\clearpage
+	\phantomsection
 	\listoftables
 	\addcontentsline{toc}{section}{\listtablename}
 }

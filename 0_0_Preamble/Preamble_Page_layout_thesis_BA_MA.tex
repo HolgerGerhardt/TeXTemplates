@@ -51,13 +51,10 @@
 
 \graphicspath{{Thesis/images/}}
 
-% Remove the leader (dots) from the table of contents, see
-% https://tex.stackexchange.com/questions/73789/how-to-remove-the-dots-in-the-tableof-contents
-% ==>
-\makeatletter
-\renewcommand{\@dotsep}{10000} 
-\makeatother
-% <==
+\usepackage[titles]{tocloft}
+\renewcommand{\cftdotsep}{\cftnodots}  % Remove the leader (dots) from the table of contents
+\setlength{\cftfigindent}{0pt}  % Remove indentation from list of figures
+\setlength{\cfttabindent}{0pt}  % Remove indentation from list of tables
 
 
 

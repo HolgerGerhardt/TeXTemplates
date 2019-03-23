@@ -60,6 +60,23 @@
 	 ~~|~~\textbf{\thepage}%
 	}%	odd-right
 }
+\newpagestyle{chapterleftappendixsectionright}[\small\sffamily\selectfont]{
+	\sethead%
+	[\textbf{\thepage}~~|~~%
+	 \ifthechapter{\thechapter~~}{}\ecapitalisewords{\chaptertitle}%
+	]% even-left
+	[]% even-center
+	[]% even-right
+	{}% odd-left
+	{}% odd-center
+	{\ifx\sectiontitle\empty%
+		\ifthechapter{\thechapter~~}{}\ecapitalisewords{\chaptertitle}%
+	 \else%
+		\appendixname~\ifthesection{\thesection~~}{}\ecapitalisewords{\sectiontitle}%
+	 \fi%
+	 ~~|~~\textbf{\thepage}%
+	}%	odd-right
+}
 \pagestyle{chapterleftsectionright}
 \definecolor{almostwhite}{RGB}{254,254,254}
 % Some printers skip completely empty pages. To avoid this, we put a tiny gray period in ``empty'' headers:
@@ -78,33 +95,53 @@
 
 % Remove indent from the list of figures and list of tables
 % ==>
-\usepackage{titletoc}
-\newcommand{\tocdots}{\titlerule*{\hspace{.8pc}.\hspace{-.45pc}}}
-\contentsmargin{2.55em}
-\titlecontents{chapter}
-	[1.5em]
-	{\addvspace{1ex}}
-	{\sffamily\bfseries\contentslabel{1.5em}}{\hspace*{-1.5em}\sffamily\bfseries}  % The latter ``outdents'' unnumbered sections; bold and sans-serif chapter entries in ToC
-	{\sffamily\bfseries\titlerule*{}\contentspage[\thecontentspage\hspace{-.12em}]}
-\titlecontents{section}
-	[3.8em] % = 1.5em + 2.3em, 1.5em reserved for chapter numbering
-	{\addvspace{0.25ex}}
-	{\contentslabel{2.3em}}{\hspace*{-2.3em}}  % The latter ``outdents'' unnumbered sections
-	{\tocdots\contentspage}
-\titlecontents{subsection}
-	[6.8em] % = 1.5em + 2.3em + 3em, 1.5em + 2.3em reserved for chapter and section numbering
-	{}{\contentslabel{3em}}{\hspace*{-3em}}  % The latter ``outdents'' unnumbered subsections
-	{\tocdots\contentspage}
-\newlength{\loflotleft} \setlength{\loflotleft}{3.5em}
-\titlecontents{figure}
-	[\loflotleft]
-	{}{\contentslabel{\loflotleft}}{}
-	{\tocdots\contentspage}
-\titlecontents{table}
-	[\loflotleft]
-	{}{\contentslabel{\loflotleft}}{}
-	{\tocdots\contentspage}
+%\usepackage{titletoc}
+%\newcommand{\tocdots}{\titlerule*{\hspace{.8pc}.\hspace{-.45pc}}}
+%\contentsmargin{2.55em}
+%\titlecontents{chapter}
+%	[1.5em]
+%	{\addvspace{1ex}}
+%	{\large\sffamily\bfseries\contentslabel{1.5em}}{\hspace*{-1.5em}\large\sffamily\bfseries}  % The latter ``outdents'' unnumbered sections; large wbold and sans-serif chapter entries in ToC
+%	{\large\sffamily\bfseries\titlerule*{}\contentspage[\thecontentspage\hspace{-.12em}]}
+%\titlecontents{section}
+%	[3.8em] % = 1.5em + 2.3em, 1.5em reserved for chapter numbering
+%	{\addvspace{0.25ex}}
+%	{\bfseries\contentslabel{2.3em}}{\hspace*{-2.3em}}  % The latter ``outdents'' unnumbered sections, bold section entries in ToC
+%	{\titlerule*{}\contentspage}%{\tocdots\contentspage}
+%\titlecontents{subsection}
+%	[6.8em] % = 1.5em + 2.3em + 3em, 1.5em + 2.3em reserved for chapter and section numbering
+%	{}{\contentslabel{3em}}{\hspace*{-3em}}  % The latter ``outdents'' unnumbered subsections
+%	{\titlerule*{}\contentspage}%{\tocdots\contentspage}
+%\newlength{\loflotleft} \setlength{\loflotleft}{3.5em}
+%\titlecontents{figure}
+%	[\loflotleft]
+%	{}{\contentslabel{\loflotleft}}{}
+%	{\titlerule*{}\contentspage}%{\tocdots\contentspage}
+%\titlecontents{table}
+%	[\loflotleft]
+%	{}{\contentslabel{\loflotleft}}{}
+%	{\titlerule*{}\contentspage}%{\tocdots\contentspage}
 % <==
+
+%% Remove the leader (dots) from the table of contents, see
+%% https://tex.stackexchange.com/questions/73789/how-to-remove-the-dots-in-the-tableof-contents
+%% ==>
+%\makeatletter
+%\renewcommand{\@dotsep}{10000} 
+%\makeatother
+%% <==
+
+\usepackage[titles]{tocloft}
+\renewcommand{\cftdotsep}{\cftnodots}  % Remove the leader (dots) from the table of contents
+\renewcommand{\cftchapfont}{\large\sffamily\bfseries}
+\renewcommand{\cftchappagefont}{\cftchapfont}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsecpagefont}{\cftsecfont}
+\setlength{\cftbeforesecskip}{\smallskipamount}
+\setlength{\cftfigindent}{0pt}  % Remove indentation from list of figures
+\setlength{\cfttabindent}{0pt}  % Remove indentation from list of tables
+\setlength{\cftfignumwidth}{3.75em}  % Make labels inf LoF wider
+\setlength{\cfttabnumwidth}{3.75em}  % Make labels inf LoT wider
 
 \setcounter{secnumdepth}{3}
 	% So that also 3rd-level headings are numbered.
@@ -122,14 +159,39 @@
 		#1%
 	 }%
 	}
+
+%\newlength{\appendixlabellength}
 \newcommand{\appendixformat}[1][\currentname]{%
+	\pagestyle{chapterleftappendixsectionright}%
 	\titleformat{\section}[hang]
-	{\raggedright\Large\sffamily\bfseries}{Appendix~\thesection\quad}{0pt}{%
-		\ecapitalisewords{%
-			#1%
-		}%
-	}[]
+		{\raggedright\Large\sffamily\bfseries}{\appendixname~\thesection\quad}{0pt}{%
+			\ecapitalisewords{%
+				#1%
+			}%
+		}[]%
+%	\setlength{\appendixlabellength}{\widthof{\textbf{\appendixname~}}+2.3em}%
+%	\titlecontents{section}
+%		[\appendixlabellength+1.5em] % = 1.5em + 2.3em, 1.5em reserved for chapter numbering
+%		{\addvspace{0.25ex}}
+%		{\bfseries\contentslabel[\appendixname~\thecontentslabel]{\appendixlabellength}}{}
+%		{\titlerule*{}\contentspage}%{\tocdots\contentspage}
 }
+\AtBeginEnvironment{appendix}{\appendixformat}
+\AtBeginEnvironment{appendices}{\appendixformat}
+\AtBeginEnvironment{subappendices}{\appendixformat}
+\AtEndEnvironment{appendix}{%
+%	\pagestyle{chapterleftsectionright}%
+	\thispagestyle{chapterleftappendixsectionright}%
+}
+\AtEndEnvironment{appendices}{%
+%	\pagestyle{chapterleftsectionright}%
+	\thispagestyle{chapterleftappendixsectionright}%
+}
+\AtEndEnvironment{subappendices}{%
+%	\pagestyle{chapterleftsectionright}%
+	\thispagestyle{chapterleftappendixsectionright}%
+}
+
 \titleformat{name=\section}[hang]
 	{\raggedright\Large\sffamily\bfseries}{\thesection\quad}{0pt}{%
 		\xcapitalisewords{%
@@ -143,41 +205,41 @@
 		}%
 	}[]
 \titleformat{name=\subsection}[hang]
-{\raggedright\large\sffamily\bfseries}{\thesubsection\quad}{0pt}{%
-	\xcapitalisewords{%
-		#1%
-	}%
-}[]
+	{\raggedright\large\sffamily\bfseries}{\thesubsection\quad}{0pt}{%
+		\xcapitalisewords{%
+			#1%
+		}%
+	}[]
 \titleformat{name=\subsection, numberless}[hang]
-{\raggedright\large\sffamily\bfseries}{}{0pt}{%
-	\xcapitalisewords{%
-		#1%
-	}%
-}[]
+	{\raggedright\large\sffamily\bfseries}{}{0pt}{%
+		\xcapitalisewords{%
+			#1%
+		}%
+	}[]
 \titleformat{name=\subsubsection}[hang]
-{\raggedright\normalsize\sffamily\bfseries}{\thesubsubsection\quad}{0pt}{%
-	\xcapitalisewords{%
-		#1%
-	}%
-}[]
+	{\raggedright\normalsize\sffamily\bfseries}{\thesubsubsection\quad}{0pt}{%
+		\xcapitalisewords{%
+			#1%
+		}%
+	}[]
 \titleformat{name=\subsubsection, numberless}[hang]
-{\raggedright\normalsize\sffamily\bfseries}{}{0pt}{%
-	\xcapitalisewords{%
-		#1%
-	}%
-}[]
+	{\raggedright\normalsize\sffamily\bfseries}{}{0pt}{%
+		\xcapitalisewords{%
+			#1%
+		}%
+	}[]
 \titleformat{name=\paragraph, numberless}[runin]
-{}{}{0pt}{%
-	\textbf{%
-		#1\iftextterm{#1}{}{.}%
-	}%
-}[]
+	{}{}{0pt}{%
+		\textbf{%
+			#1\iftextterm{#1}{}{.}%
+		}%
+	}[]
 \titleformat{name=\subparagraph, numberless}[runin]
-{}{}{0pt}{%
-	\textbf{%
-		#1\iftextterm{#1}{}{.}%
-	}%
-}[]
+	{}{}{0pt}{%
+		\textbf{%
+			#1\iftextterm{#1}{}{.}%
+		}%
+	}[]
 \titlespacing{\paragraph}
 	{0pt}{0.5\baselineskip plus 0.5\baselineskip}{3\wordsep}[]
 \titlespacing{\subparagraph}

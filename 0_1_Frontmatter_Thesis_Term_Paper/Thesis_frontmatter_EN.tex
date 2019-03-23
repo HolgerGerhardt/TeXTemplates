@@ -69,10 +69,15 @@
 \maketitle
 
 {
-	\linespread{1}
+	\setlength{\baselineskip}{1.75\origbaselineskip}
 	\tableofcontents
+	\clearpage
+	\listoffigures
+	\addcontentsline{toc}{section}{\listfigurename}
+	\clearpage
+	\listoftables
+	\addcontentsline{toc}{section}{\listtablename}
 }
-
 
 \clearpage
 

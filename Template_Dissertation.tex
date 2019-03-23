@@ -39,10 +39,7 @@
 	{11.~November~2018}
 
 \input{0_0_Preamble/Preamble_Fundamental_packages}
-\hypersetup{
-	pdftitle={\disstitle},
-	pdfauthor={\dissauthor}
-}
+\hypersetup{pdftitle={\disstitle}, pdfauthor={\dissauthor}}
 \input{0_0_Preamble/Preamble_Page_layout_dissertation}
 \input{0_0_Preamble/Preamble_Page_layout_general}
 \input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
@@ -74,8 +71,19 @@
 \begin{document}
 
 
+\begin{refsection}
+
 \input{0_1_Frontmatter_Dissertation/Frontmatter}
 	% use \input here, because \subimport prevents generation of the ToC
+
+% Any citation occurring in a figure or table caption has to be included here!
+% Otherwise it will not appear correctly in the list of figures/tables.
+% ==>
+\nocite{Gerhardt2017}
+% <==
+
+\end{refsection}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  INTRODUCTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -136,7 +144,6 @@
 
 \begin{subappendices}
 	\label{sec:appendix}
-	\appendixformat
 	\FloatBarrier
 	\subimport*{1_Example_Content/9_Appendix/}{Attention}
 	\FloatBarrier
@@ -144,9 +151,10 @@
 	\subimport*{1_Example_Content/9_Appendix/}{Additional_Figures}
 	\FloatBarrier
 	\subimport*{1_Example_Content/9_Appendix/}{siunitx_Examples}
+	\clearpage
+		% \clearpage must be issued INSIDE the subappendices environment
+		% for the pagestyle to be applied correctly
 \end{subappendices}
-
-\clearpage
 
 \begin{refcontext}[sorting=nyt]
 	% Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
@@ -194,7 +202,6 @@
 
 \begin{subappendices}
 	\label{sec:appendix}
-	\appendixformat
 	\FloatBarrier
 	\subimport*{1_Example_Content/9_Appendix/}{Attention}
 	\FloatBarrier
@@ -202,9 +209,10 @@
 	\subimport*{1_Example_Content/9_Appendix/}{Additional_Figures}
 	\FloatBarrier
 	\subimport*{1_Example_Content/9_Appendix/}{siunitx_Examples}
+	\clearpage
+		% \clearpage must be issued INSIDE the subappendices environment
+		% for the pagestyle to be applied correctly
 \end{subappendices}
-
-\clearpage
 
 \begin{refcontext}[sorting=nyt]
 	% Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)

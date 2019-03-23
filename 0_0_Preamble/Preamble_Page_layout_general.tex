@@ -12,6 +12,9 @@
 
 \flushbottom
 
+\newlength{\origbaselineskip}
+\setlength{\origbaselineskip}{\baselineskip}
+
 \ifdef{\linesperpagedesired}
 	{}% If already defined, do nothing.
 	{\newcommand{\linesperpagedesired}{42}}
@@ -188,6 +191,11 @@
 \usepackage[title, titletoc]{appendix}  % allows, e.g., for appendices within chapters
 \usepackage{chngcntr}  % to innclude section numbers/letters in the figure/table/equation counters
 \AtBeginEnvironment{appendices}{%
+	\counterwithin{figure}{section}%
+	\counterwithin{table}{section}%
+	\counterwithin{equation}{section}%
+}
+\AtBeginEnvironment{subappendices}{%
 	\counterwithin{figure}{section}%
 	\counterwithin{table}{section}%
 	\counterwithin{equation}{section}%

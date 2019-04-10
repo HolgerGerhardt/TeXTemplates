@@ -15,10 +15,14 @@
 
 \usepackage[LGR, T1]{fontenc}  % LGR needed for sansserif math
 
+\usepackage[ngerman, american, USenglish]{babel}  % German and US English hyphenation and quotation marks
+\selectlanguage{USenglish}
+
 \usepackage{calc}  % Enables calculations for lengths
 \usepackage[nomessages]{fp}	 % Enables calculations in LaTeX
 
-\usepackage{etoolbox}
+\usepackage{etoolbox}  % Enables manipulating LaTeX commmands via \preto, \appto, \patchcmd, etc.
+\usepackage{xpatch}  % Enables manipulating LaTeX commmands via \xpatchcmd etc.
 
 \PassOptionsToPackage{cmyk}{xcolor}
 \definecolor{UBonnBlue}  {cmyk}{1.00, 0.70, 0.00, 0.00}
@@ -225,7 +229,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\usepackage{natbib}
+%\usepackage{natbib}
+\newlength{\bibindent}
+\newlength{\bibitemsep}
+\newlength{\bibsep}
+
+\setbeamertemplate{bibliography item}{}
+\setbeamercolor{bibliography entry author}  {fg=SpotColor}
+\setbeamercolor{bibliography entry title}   {fg=SpotColor}
+\setbeamercolor{bibliography entry location}{fg=SpotColor}
+\setbeamercolor{bibliography entry note}    {fg=SpotColor}
 
 
 
@@ -240,6 +253,14 @@
 \makeatletter
 \def\blindtext@american{}
 \makeatother
+
+% Allow for fine-grained scaling of font sizes
+% ==>
+\usepackage{relsize}
+\renewcommand\RSpercentTolerance{1}
+% Enabling slightly reduced font for CAPS:
+\newcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+% <==
 
 
 

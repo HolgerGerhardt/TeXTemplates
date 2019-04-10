@@ -2,9 +2,9 @@
 % !TeX TS-program = pdflatex
 % !TeX TXS-program:compile = txs:///pdflatex/
 
-% !BIB program = bibtex
-% !BIB TS-program = bibtex
-% !TeX TXS-program:bibliography = txs:///bibtex
+% !BIB program = biber
+% !BIB TS-program = biber
+% !TeX TXS-program:bibliography = txs:///biber
 
 
 
@@ -13,8 +13,11 @@
 
 
 \input{0_0_Preamble/Preamble_Poster}
+\input{0_0_Preamble/Preamble_BibLaTeX_AER_Poster}
 \input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
 \input{0_0_Preamble/Preamble_Sansserif_math}
+
+\bibliography{Library}
 
 
 
@@ -284,7 +287,7 @@
 \begin{itemize}
 	\item The latex exhibits a neutral, acid, or alkaline reaction, depending on the plant from which it was obtained.
 	\item The latex is therefore usually allowed to coagulate on the tree \citep{Koszegi2013}.
-	\item See also \cite{Bordalo2013}.
+	\item See \cite{Bordalo2013, Dohmen2012}.
 	\item The latex, which is usually coagulated by standing or by heating, is obtained from incisions.
 \end{itemize}	
 \end{block}
@@ -315,16 +318,21 @@
 
 \begin{textblock*}{\colwidth}(\leftmargin+2\colwidth+2\colsep, \blockFour)
 
-\begin{block}{References}
+\begin{block}{\refname}
 \vspace{-0.333333\baselineskip}
-\renewcommand{\harvardand}{\&}
 \setlength{\bibhang}{0pt}
 \setlength{\bibsep}{0\baselineskip}
 \renewcommand*{\bibfont}{\sffamily\small\baselineskip28.6pt}
 \renewcommand*{\bf}{\bfseries}
 \color{SpotColor}
-\bibliographystyle{0_0_Preamble/aea_doi_initials}
-\bibliography{Library}
+\begin{refcontext}[sorting=nyt]  % Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
+\printbibliography[heading=none]
+\end{refcontext}
+%% Only when using BibTeX instead of BibLaTeX ==>
+%\bibliographystyle{0_0_Preamble/aea_doi_initials}
+%\renewcommand{\harvardand}{\&}
+%\bibliography{Library}
+%% <==
 \end{block}
 
 \end{textblock*}

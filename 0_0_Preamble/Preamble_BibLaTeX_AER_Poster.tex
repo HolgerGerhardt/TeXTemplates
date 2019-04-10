@@ -1,0 +1,300 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TXS-program:bibliography = txs:///biber
+% !TeX program = pdflatex
+% !BIB program = biber
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  CITATION COMMANDS AND BIBLIOGRAPHY STYLE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% AER/JEL/JEP style
+
+\usepackage[backend=biber, natbib=true, bibencoding=inputenc, bibstyle=authoryear, citestyle=authoryear-comp, mincitenames=1, maxcitenames=2, minbibnames=1, maxbibnames=7, uniquename=false, uniquelist=true, giveninits=true, backref=false, doi=false, url=false, isbn=false, dashed=false, sorting=ynt, sortcites=true, mergedate=true, dateabbrev=false, abbreviate=false, citetracker=true]{biblatex}
+% sortcites sorts the in-text citations by year of publication
+\DeclareBibliographyAlias{newspaper}{article}
+
+%% Full author list on first citation, ``et al.'' only from second citation onwards:
+%% https://tex.stackexchange.com/questions/48846/biblatex-et-al-beginning-from-second-citation
+%% ==>
+%\AtEveryCitekey{\ifciteseen{}{\clearfield{namehash}}}
+%\xpatchbibmacro{cite}
+%	{\printnames{labelname}}
+%	{\ifciteseen
+%		{\printnames{labelname}}
+%		{\printnames[][1-5]{labelname}}%
+%	}
+%	{}
+%	{}
+%\xpatchbibmacro{textcite}
+%	{\printnames{labelname}}
+%	{\ifciteseen
+%		{\printnames{labelname}}
+%		{\printnames[][1-5]{labelname}}%
+%	}
+%	{}
+%	{}
+%% <==
+
+\let\citeorig\cite
+\renewcommand{\cite}{\citet}
+\renewcommand{\citealp}{\citeorig}
+
+\defbibheading{subbibliography}[\refname]{%
+	\section*{#1}%
+	\sectionmark{#1}%
+	\addcontentsline{toc}{section}{#1}%
+}
+
+\renewcommand{\bibfont}{\sffamily\small}
+	% Reduce font size for the bibliography, make the font sans-serif.
+\setlength{\bibindent}{\parindent}
+\setlength{\bibitemsep}{0pt}
+
+\DefineBibliographyStrings{english}{%
+	andothers = {et~al\adddot},
+	volume = {vol\adddot}
+}
+
+% Remove parentheses from the date:
+\xpatchbibmacro{date+extradate}{%
+	\printtext[parens]%
+}{%
+	\setunit*{\mkbibbold{\addperiod\space}}%
+	\mdseries\selectfont\printtext%
+}{}{}
+% Make the author/editor name(s) bold ==>
+% See https://tex.stackexchange.com/questions/41468/biblatex-textcite-author-formatting-vs-bibliography-author-formatting
+\xpatchbibmacro{author}{\printnames{author}}{\mkbibbold{\printnames{author}\addperiod}}{}{}
+%\xpretobibmacro{author}{\mkbibbold\bgroup}{}{}
+%\xapptobibmacro{author}{\egroup}{}{}
+\xpretobibmacro{editor+others}{\mkbibbold\bgroup}{}{}%
+\xapptobibmacro{editor+others}{\egroup\clearname{editor}}{}{}%
+\xpretobibmacro{translator+others}{\mkbibbold\bgroup}{}{}%
+\xapptobibmacro{translator+others}{\egroup\clearname{translator}}{}{}
+% Set up page range compression (e.g., 1034-1067 => 1034-67)
+\setcounter{mincomprange}{100}
+\setcounter{maxcomprange}{100000}
+\setcounter{mincompwidth}{10}
+\DeclareFieldFormat{pages}{\mkcomprange{#1}}
+% Removes ``pp.'' from pages and compresses page ranges:
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, patent, thesis, unpublished, newspaper]{pages}{{\nopp\mkcomprange{#1}}} 
+% Include comma also after first name in the case of only two authors:
+\AtEveryBibitem{
+	\renewcommand*{\finalnamedelim}{\finalandcomma\addspace\bibstring{and}\space}
+	\renewcommand*{\finallistdelim}{\finalandcomma\addspace\bibstring{and}\space}
+}
+\xpretobibmacro{byeditor+others}  % Undo this for the listing of editors
+	{%
+		\renewcommand*{\finalnamedelim}{%
+			\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+			\addspace\bibstring{and}\space%
+		}%
+	}
+	{}
+	{\DoNotContinue}
+
+% \renewcommand*{\newunitpunct}{\addcomma\space}
+\renewcommand*{\bibnamedash}{---{\kern -2.25pt}---{\kern -2.25pt}---\addcomma\space}
+
+%\DeclareCiteCommand{\citejournal}
+%  {\usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%   \usebibmacro{journal}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}}
+
+% Remove ``in'' for journal and newspaper articles:
+\renewcommand*{\intitlepunct}{\space}
+\renewbibmacro{in:}{%
+	\ifentrytype{article}%
+		{}%
+		{\ifentrytype{newspaper}%
+			{}%
+			{\printtext{\bibstring{in}\intitlepunct}}%
+		}%
+}
+
+% How to handle DOIs and URLs
+% ==>
+%\renewbibmacro*{doi+eprint+url}
+%{%
+%	\iffieldundef{doi}
+%	{}
+%	{\printfield{doi}}
+%	\newunit\newblock
+%	\iftoggle{bbx:eprint}
+%	{\usebibmacro{eprint}}
+%	{}%
+%	\newunit\newblock
+%	\iffieldundef{doi}  % If no DOI provided, use URL
+%	{\usebibmacro{url+urldate}}
+%	{}
+%}
+%% Remove URLs to save space
+%\AtEveryBibitem{
+%	\ifentrytype{article}%
+%		{\clearfield{url}}% then
+%		{}% else
+%}
+\DeclareFieldFormat{url}{%
+	% \setlength{\Urlmuskip}{0mu}%
+	\Urlmuskip = 0mu\relax%
+	\caps{URL}\addcolon\space\url{#1}%
+}
+% Link DOIs automatically to https://dx.doi.org/DOI:
+\DeclareFieldFormat{doi}{%
+	% \setlength{\Urlmuskip}{0pt}%
+	\Urlmuskip = 0mu\relax
+	\caps{DOI}\addcolon\space\href{https://dx.doi.org/#1}{\nolinkurl{#1}}%
+}
+% <==
+
+% Make journal title italic:
+\DeclareFieldFormat[article]{journaltitle}{%
+	\mkbibemph{#1}%
+	\iffieldundef{volume}{\addcomma}{}%
+}
+
+% Handling of newspaper articles
+\DeclareFieldFormat[newspaper]{journaltitle}{%
+	\mkbibemph{#1} \mkbibparens{\thefield{edition}}\addcomma\addspace%
+	\iflanguage{ngerman}{%
+		\addnbspace\thefield{day}\addperiod\addnbspace\mkbibmonth{\thefield{month}}\addspace\thefield{year}%
+	}{% else: default to the USenglish version
+		\mkbibmonth{\thefield{month}}\addnbspace\thefield{day}\addcomma\addspace\thefield{year}%
+	}%
+	\iffieldundef{volume}{\addcolon}{\addcomma}%
+}
+\DeclareFieldFormat[newspaper]{date}{%
+	\thefield{year}%
+}
+
+% Format the ``month'' field:
+\DeclareFieldFormat{month}{\mkbibmonth{#1}}
+
+% Put the title of articles in quotation marks:
+\DeclareFieldFormat[thesis, unpublished, report, misc, newspaper]{title}{\mkbibquote{#1}}
+%% Make title of books italic:
+%\DeclareFieldFormat[book]{title}{\mkbibemph{#1}\nopunct}
+
+% Makes first character of document type uppercase:
+\DeclareFieldFormat[thesis, unpublished, report, misc]{type}{\MakeCapital{#1}}
+
+%% Remove punctuation after ``series'' field:
+%\DeclareFieldFormat[incollection]{series}{#1\nopunct}
+
+% Add ``vol.'' for books etc.:
+\DeclareFieldFormat[book, inbook, incollection, inproceedings]{volume}{\bibstring{volume}\addnbspace#1\addcomma}
+% Formatting VV\,(NN):
+\DeclareFieldFormat[article]{volume}{%
+	\iffieldundef{volume}{}{%
+		\addspace#1%
+		\iffieldundef{number}{\addcolon}{\nopunct}%
+	}
+}
+\DeclareFieldFormat[article]{number}{\addnbthinspace\mkbibparens{#1}\addcolon}
+\DeclareFieldFormat[article]{date}{#1}
+
+% \AtEveryCitekey{\clearfield{month}}
+% Replace number by month if number is undefined:
+% ==>
+\DeclareSourcemap{
+    \maps[datatype=bibtex]{
+        \map{
+            \pertype{article}
+			\step[notfield=number, final]
+			\step[fieldsource=month, fieldtarget=number]
+            \step[fieldset=month, null]
+            \step[fieldset=month_numeric, null]
+        }
+    }
+}
+% <==
+
+% Adjust formatting of back-references
+% ==>
+\DefineBibliographyStrings{english}{%
+	backrefpage  = {},	% originally ``cit. on p.''
+	backrefpages = {}	% originally ``cit. on pp.''
+}
+\DefineBibliographyStrings{ngerman}{%
+	backrefpage  = {},	% originally ``Siehe Seite''
+	backrefpages = {}	% originally ``Siehe Seiten''
+}
+\renewcommand*{\finentrypunct}{}
+\renewbibmacro*{pageref}{%
+	\addperiod
+	\iflistundef{pageref}
+	{}
+	{\printtext[brackets]{%
+			\ifnumgreater{\value{pageref}}{1}
+			{\bibstring{backrefpages}}
+			{\bibstring{backrefpage}}%
+			\printlist[pageref][-\value{listtotal}]{pageref}%
+		}%
+	}%
+}
+% <==
+
+% Move notes to the end of an entry by copying the ``note'' information into ``addendum'': -->
+\DeclareSourcemap{
+	\maps[datatype=bibtex]{
+		% Copy values of the Mendeley-created ``annote'' field to the ``note'' field:
+		\map[overwrite]{
+		 	\step[fieldsource=annote]
+		 	\step[fieldset=note, origfieldval, append]
+			\step[fieldset=annote, null]
+		}
+		\map{
+			\step[fieldsource=note, final]
+			\step[fieldset=addendum, origfieldval, final]
+			\step[fieldset=note, null]
+		}
+	}
+}
+% \DeclareFieldFormat{addendum}{(#1)} % Enclose addendum/note in parentheses.
+% <--
+
+\AtEveryBibitem{%
+	\ifentrytype{newspaper}%
+		{\clearfield{addendum}}% then
+		{\clearfield{month}}% else
+}
+
+% Add ``working paper'' as the default value for type of ``techreports'' ==>
+% see https://tex.stackexchange.com/questions/212362/how-to-use-declaresourcemap-to-add-default-value-to-a-field
+\DeclareSourcemap{
+	\maps[datatype=bibtex]{
+		\map{% Will overwrite fields without the ``overwrite'' option
+			\pertype{techreport}
+			\step[fieldset=type, fieldvalue={Working paper}]
+		}
+	}
+}
+% <==
+
+% Add “doctoral dissertation” as the default value for type of “phdthesis” ==>
+% see https://tex.stackexchange.com/questions/212362/how-to-use-declaresourcemap-to-add-default-value-to-a-field
+\DeclareSourcemap{
+	\maps[datatype=bibtex]{
+		\map{% Will overwrite fields without the ``overwrite'' option
+			\pertype{phdthesis}
+			\step[fieldset=type, fieldvalue={Doctoral dissertation}]
+		}
+	}
+}
+% <==
+
+% Remove superfluous ``The'' from journal names ==>
+\DeclareSourcemap{ 
+	\maps[datatype=bibtex]{
+		\map{
+			\step[fieldsource=journal, match={\regexp{^The\s}}, replace={}]
+		}
+	}      
+}
+% <==

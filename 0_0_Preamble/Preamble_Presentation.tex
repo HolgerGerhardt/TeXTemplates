@@ -1,5 +1,5 @@
 % !TeX TXS-program:compile = txs:///pdflatex/
-% !BIB program = bibtex
+% !BIB program = biber
 
 
 
@@ -55,7 +55,9 @@
 \usepackage{epstopdf}
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
-\usepackage[ngerman, english]{babel}
+\usepackage[ngerman, american, USenglish]{babel}
+	% German and US English hyphenation and quotation marks
+\selectlanguage{USenglish}
 
 \usepackage{multirow}
 
@@ -65,15 +67,15 @@
 \usepackage{pgfplots}
 \usetikzlibrary{mindmap, trees, patterns}
 
-\usepackage[round]{natbib}
-\renewcommand{\bibfont}{\scriptsize}
-
 \usepackage{xspace}
 
-\selectlanguage{english}
 % \usepackage{eurosym}
 
-%\usepackage{etoolbox}  % loaded automatically by beamer
+%\usepackage{etoolbox}
+%	% Enables manipulating LaTeX commmands via \preto, \appto, \patchcmd, etc.
+%	% loaded automatically by beamer
+\usepackage{xpatch}
+	% Enables manipulating LaTeX commmands via \xpatchcmd etc.
 
 \hypersetup{%
 	pdfpagemode=FullScreen,
@@ -612,9 +614,9 @@
 \setbeamertemplate{theorem end}{}
 
 \setbeamercolor{proof title}{fg=SpotColor}
-\setbeamerfont{proof title}{parent=structure}
-\setbeamercolor{proof body}{fg=black}
-\setbeamerfont{proof body}{parent=normal text, shape=\upshape, series=\mdseries}
+\setbeamerfont {proof title}{parent=structure}
+\setbeamercolor{proof body} {fg=black}
+\setbeamerfont {proof body} {parent=normal text, shape=\upshape, series=\mdseries}
 % Remove period after ``Proof''
 % See https://tex.stackexchange.com/questions/31354/how-to-remove-the-in-the-proof-environment
 % -->
@@ -760,6 +762,45 @@
 \AtBeginEnvironment{table}{\vspace{-1.2ex}\small}
 	% Reduces font size in tables slightly and
 	% reduces excessive white space above tables
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  BIBLIOGRAPHY SETTINGS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\usepackage[round]{natbib}
+
+\newlength{\bibindent}
+\newlength{\bibitemsep}
+\newlength{\bibsep}
+
+\input{0_0_Preamble/Preamble_BibLaTeX_AER}
+\bibliography{Library}
+
+\renewcommand{\bibfont}{\scriptsize}
+
+\setbeamertemplate{bibliography item}{}
+\setbeamercolor{bibliography entry author}  {fg=black}
+\setbeamercolor{bibliography entry title}   {fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}    {fg=black}
+
+\renewbibmacro*{pageref}{%
+	\addperiod
+	\iflistundef{pageref}
+	{}
+	{\color{UBonnGray}%
+	 \printtext[brackets]{\caps{PDF}~%
+			\ifnumgreater{\value{pageref}}{1}
+				{pp.}
+				{p.}~%
+			\printlist[pageref][-\value{listtotal}]{pageref}%
+		}%
+	}%
+}
 
 
 

@@ -252,6 +252,8 @@
 			\mathup{d}\gamma
 	\]
 	
+	\pause
+	
 	\heading{Let's also include some upright Latin letters: $\mathup{d}$, $\mathup{e}$}
 	\[
 		\int_{a}^{b} f(x)\,\mathup{d}x = F(b) - F(a)
@@ -313,12 +315,12 @@
 \begin{frame}{\titleprefix: Overview}
 
 	\begin{enumerate}
-		\item As a secondary function we may recognize the power of closing wounds, which results from the rapid coagulation of exuded latex in contact with the air:
+		\item<1-> As a secondary function we may recognize the power of closing wounds, which results from the rapid coagulation of exuded latex in contact with the air:
 		\begin{enumerate}
-			\item In some cases (Allium, Convolvulaceae, etc.) rows of cells with latex-like contents occur.
-			\item However, the walls separating the individual cells do not break down.
+			\item<2-> In some cases (Allium, Convolvulaceae, etc.) rows of cells with latex-like contents occur.
+			\item<2-> However, the walls separating the individual cells do not break down.
 		\end{enumerate}
-		\item The rows of cells from which the laticiferous vessels are formed can be distinguished (6.3~p.p. vs. 2.6~p.p.; ${p < 0.01}$).
+		\item<3-> The rows of cells from which the laticiferous vessels are formed can be distinguished (6.3~p.p. vs. 2.6~p.p.; ${p < 0.01}$).
 	\end{enumerate}
 
 \end{frame}
@@ -401,13 +403,13 @@
 
 \begin{frame}{\titleprefix}
 
-	\begin{itemize}
+	\begin{itemize}[<+->]
 		\item The latex exhibits a neutral, acid, or alkaline reaction, depending on the plant from which it was obtained.
 		\item The latex is therefore usually allowed to coagulate on the tree \citep{Koszegi2013}.
 			\begin{itemize}
-				\item[$\Rightarrow$] The latex, which is usually coagulated by standing or by heating, is obtained from incisions.
+				\item<.->[$\Rightarrow$] The latex, which is usually coagulated by standing or by heating, is obtained from incisions.
 			\end{itemize}
-		\item See also \cite{Bordalo2013}.
+		\item See also \cite{Bordalo2013, Dohmen2012}.
 	\end{itemize}	
 
 \end{frame}
@@ -486,12 +488,20 @@ On this slide, ``(1/3)'' should appear in the frame title.
 
 
 \section{\refname}
-\renewcommand\bibsection{}  % To prevent ``References'' from appearing twice in the navigation bar
+%\renewcommand\bibsection{}
+%	% To prevent ``References'' from appearing twice in the navigation bar
 
 \begin{frame}[allowframebreaks]{\insertsection}
-	
-	\bibliographystyle{0_0_Preamble/aea_doi_url_href}
-	\bibliography{Library}
+
+	\begin{refcontext}[sorting=nyt]
+		% Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
+	\printbibliography[heading=none]
+	\end{refcontext}
+
+	%% Only when using BibTeX instead of BibLaTeX ==>
+	%\bibliographystyle{0_0_Preamble/aea_doi_url_href}
+	%\bibliography{Library}
+	%% <==
 	
 \end{frame}
 

@@ -242,7 +242,7 @@
 
 \begin{frame}{\titleprefix: Some Example Formulas}
 
-	\heading{Let's include some additional Greek letters: $\gamma$, $\phi$}
+	\alert{Let's include some additional Greek letters: $\gamma$, $\phi$}
 	\[
 		p(R, \phi) \sim
 			\int_{-\infty}^\infty
@@ -254,9 +254,22 @@
 	
 	\pause
 	
-	\heading{Let's also include some upright Latin letters: $\mathup{d}$, $\mathup{e}$}
+	\alert{Let's also include some upright Latin letters: $\mathup{d}$, $\mathup{e}$}
 	\[
 		\int_{a}^{b} f(x)\,\mathup{d}x = F(b) - F(a)
+	\]
+
+	\pause
+	
+	\alert{Let's test the math bold style}
+	\[
+		\mathbfup{\Sigma} \coloneqq
+		\mathup{Cov}(\mathbf{X}) =
+		\begin{bmatrix}
+			\mathup{Var}(X_1)      & \cdots & \mathup{Cov}(X_1, X_n) \\[-2.5pt]
+			\vdots                 & \ddots & \vdots                 \\
+			\mathup{Cov}(X_n, X_1) & \cdots & \mathup{Var}(X_n)
+		\end{bmatrix}
 	\]
 
 \end{frame}

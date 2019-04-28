@@ -460,7 +460,6 @@
 % ==>
 \let \bmorig \bm
 \renewcommand{\bm}[1]{%
-	\InBoldModetrue%
 	\IfInSansMode%
 		\textbf{\mathversion{boldsans}\(#1\)}%
 	\else%

@@ -113,6 +113,11 @@
 \usefonttheme{structurebold}
 \usefonttheme{professionalfonts}
 
+\setbeamerfont{footline}
+	{parent=structure, size=\tiny, series=\mdseries}
+\setbeamercolor{footline}
+	{fg=SpotColor}
+
 %% Use the bm (= boldmath) package for better support of setting math in bold ==>
 %% Prevent the "Too many math fonts used" error:
 \newcommand{\bmmax}{0}
@@ -274,17 +279,14 @@
 \BeforeBeginEnvironment{frame}{%
 	% Add a slide number (and [short]title) to the footer of each slide
 	% ==>
-	\setbeamertemplate{footline}{\vskip-15pt
-		\textcolor{SpotColor}{%
-			%\fontseries{rm}\selectfont%
-			\hspace{\marginleft}%
-			\sliderule \vspace{1.1ex} \linebreak
-			\mbox{\hspace{\marginleft}}%
-			\textmd{\insertshortauthor: ``\insertshorttitle''}
-			\hfill%
-			\insertframenumber/\inserttotalframenumber%
-			\hspace{\marginright}%
-		}%
+	\setbeamertemplate{footline}{\vskip-15pt%
+		\hspace{\marginleft}%
+		\sliderule \vspace{1.1ex} \linebreak
+		\mbox{\hspace{\marginleft}}%
+		\textmd{\insertshortauthor: ``\insertshorttitle''}
+		\hfill%
+		\textbf{\insertframenumber/\inserttotalframenumber}%
+		\hspace{\marginright}%
 		\vspace{12pt}%
 	}%
 	% <==
@@ -323,17 +325,14 @@
 % ==>
 \makeatletter
 \define@key{beamerframe}{standout}[true]{%
-	\setbeamertemplate{footline}{\vskip-15pt
-		\textcolor{SpotColor}{%
-			%\fontseries{rm}\selectfont%
-			\hspace{\marginleft}%
-			\sliderule \vspace{1.1ex} \linebreak
-			\mbox{\hspace{\marginleft}}%
-			\textmd{\phantom{\insertshortauthor: ``\insertshorttitle''}}
-			\hfill%
-			\phantom{\insertframenumber/\inserttotalframenumber}%
-			\hspace{\marginright}%
-		}%
+	\setbeamertemplate{footline}{\vskip-15pt%
+		\hspace{\marginleft}%
+		\sliderule \vspace{1.1ex} \linebreak
+		\mbox{\hspace{\marginleft}}%
+		\textmd{\phantom{\insertshortauthor: ``\insertshorttitle''}}
+		\hfill%
+		\phantom{\insertframenumber/\inserttotalframenumber}%
+		\hspace{\marginright}%
 		\vspace{15pt}%
 	}%
 	\setbeamertemplate{headline}{}%

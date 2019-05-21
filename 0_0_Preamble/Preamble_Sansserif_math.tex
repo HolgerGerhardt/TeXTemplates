@@ -294,7 +294,9 @@
 \newcommand{\omicronLGR} {\mathord{\textformath{\fontencoding{LGR}\selectfont o}}}
 \newcommand{\piLGR}      {\mathord{\textformath{\fontencoding{LGR}\selectfont p}}}
 \newcommand{\rhoLGR}     {\mathord{\textformath{\fontencoding{LGR}\selectfont r}}}
-\newcommand{\sigmaLGR}   {\mathord{\textformath{\fontencoding{LGR}\selectfont s}}}
+\newcommand{\sigmaLGR}   {\mathord{\textformath{\fontencoding{LGR}\selectfont s\noboundary}}}
+	% \noboundary prevents sigma from being replaced by the word-end sigma (varsigma),
+	% see http://ftp.jaist.ac.jp/pub/CTAN//macros/latex/contrib/textgreek/textgreek.pdf
 \newcommand{\varsigmaLGR}{\mathord{\textformath{\fontencoding{LGR}\selectfont c}}}
 \newcommand{\tauLGR}     {\mathord{\textformath{\fontencoding{LGR}\selectfont t}}}
 \newcommand{\upsilonLGR} {\mathord{\textformath{\fontencoding{LGR}\selectfont u}}}
@@ -347,7 +349,9 @@
 \newcommand{\omicronupLGR} {\mathord{\textup{\fontencoding{LGR}\selectfont o}}}
 \newcommand{\piupLGR}      {\mathord{\textup{\fontencoding{LGR}\selectfont p}}}
 \newcommand{\rhoupLGR}     {\mathord{\textup{\fontencoding{LGR}\selectfont r}}}
-\newcommand{\sigmaupLGR}   {\mathord{\textup{\fontencoding{LGR}\selectfont s}}}
+\newcommand{\sigmaupLGR}   {\mathord{\textup{\fontencoding{LGR}\selectfont s\noboundary}}}
+	% \noboundary prevents sigma from being replaced by the word-end sigma (varsigma),
+	% see http://ftp.jaist.ac.jp/pub/CTAN//macros/latex/contrib/textgreek/textgreek.pdf
 \newcommand{\varsigmaupLGR}{\mathord{\textup{\fontencoding{LGR}\selectfont c}}}
 \newcommand{\tauupLGR}     {\mathord{\textup{\fontencoding{LGR}\selectfont t}}}
 \newcommand{\upsilonupLGR} {\mathord{\textup{\fontencoding{LGR}\selectfont u}}}

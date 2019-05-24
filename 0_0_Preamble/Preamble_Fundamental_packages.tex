@@ -300,3 +300,10 @@
 \makeatother
 
 \usepackage{fonttable}
+% Color slot numbers in \xfonttable gray instead of black -->
+\makeatletter
+\renewcommand*\f@placedecimal[2]{#1\ {\color{gray}\tiny #2}}
+\renewcommand*{\f@toct}[1]{\hbox{\color{gray}\rmfamily\'{}\kern-.2em\itshape#1\/\kern.05em}} % octal constant
+\renewcommand*{\f@thex}[1]{\hbox{\color{gray}\rmfamily\H{}\ttfamily#1}} % hexadecimal constant
+\makeatother
+% <--

@@ -481,27 +481,27 @@
 \newif\IfInSansMode
 \newif\IfInBoldMode
 \newif\IfInUpMode
-\let\oldsf\sffamily
+\let \oldsf \sffamily
 \renewcommand*{\sffamily}{%
 	\oldsf\sansmath\InSansModetrue%
 	\IfInBoldMode\mathversion{boldsans}\else\mathversion{sans}\fi\relax%
 }
-\let\oldbf\bfseries
+\let \oldbf \bfseries
 \renewcommand*{\bfseries}{%
 	\oldbf\InBoldModetrue%
 	\IfInSansMode\sansmath\mathversion{boldsans}\else\mathversion{bold}\fi\relax%
 }
-\let\oldmd\mdseries
+\let \oldmd \mdseries
 \renewcommand*{\mdseries}{%
 	\oldmd\InBoldModefalse%
 	\IfInSansMode\sansmath\mathversion{sans}\else\mathversion{normal}\fi\relax%
 }
-\let\oldnorm\normalfont
+\let \oldnorm \normalfont
 \renewcommand*{\normalfont}{%
 	\oldnorm\InSansModefalse\InBoldModefalse\mathversion{normal}%
 	\unsansmath%
 }
-\let\oldrm\rmfamily
+\let \oldrm \rmfamily
 \renewcommand*{\rmfamily}{%
 	\oldrm\InSansModefalse%
 	\IfInBoldMode\mathversion{bold}\else\mathversion{normal}\fi\relax%

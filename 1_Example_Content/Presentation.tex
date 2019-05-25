@@ -136,7 +136,7 @@
 
 \begin{frame}{\titleprefix: Beamer \texttt{block} Environments}
 
-	\begin{block}{Block title example: 0123456789 äöü ß ÄÖÜ officially finding flowers in fjords}
+	\begin{block}{Block title example: 0123456789 äöüß ÄÖÜ Often finding flowers in official fjords}
 		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle
 	\end{block}%
 	
@@ -245,6 +245,7 @@
 \begin{frame}{\titleprefix: Some Example Formulas}
 
 	\alert{Let's include some additional Greek letters: $\gamma$, $\phi$}
+	\vspace{-\smallskipamount}
 	\[
 		p(R, \phi) \sim
 			\int_{-\infty}^\infty
@@ -253,16 +254,14 @@
 					{ (k^2 a^2 - \gamma^2)^{3/4} {H'}_n^{(1)} \left( \sqrt{k^2 a^2 - \gamma^2} \right) }
 			\mathup{d}\gamma
 	\]
-	
 	\pause
-	
-	\alert{Let's also include some upright Latin letters: $\mathup{d}$, $\mathup{e}$}
+	\vspace{-\smallskipamount}
+	\alert{Let's also include some upright Latin letters in math mode: $\mathup{d}$, $\mathup{e}$ (\hyperlink{Eulers_number}{next slide})}
 	\[
 		\int_{a}^{b} f(x)\,\mathup{d}x = F(b) - F(a)
 	\]
-
 	\pause
-	
+	\vspace{-\medskipamount}
 	\alert{Let's test the math bold style}
 	\[
 		\mathbfup{\Sigma} \coloneqq
@@ -289,6 +288,7 @@
 		\fi
 		Let $X_1, X_2, \cdots$ be a sequence of i.i.d. random variables with mean $0$ 
 		and variance $1$ on a~probability space $(\Omega, \mathcal{F}, \Pr)$. Then
+		\hypertarget{Eulers_number}{}
 		\[
 			\Pr\left(\frac{X_1+\cdots+X_n}{\sqrt{n}}\le y\right) \to
 			\mathfrak{N}(y) \coloneqq 
@@ -344,29 +344,28 @@
 \begin{frame}{\titleprefix: Our Main Results}
 
 	The charts are taken from \cite{Dertwinkel-Kalt2017}.
-	
-	(A)~Difference between treatment and control condition.\\
-	(B)~Heterogeneity.
-	
-	\bigskip
-	
-	\begin{minipage}[t]{\textwidth}
-		\begin{minipage}[t]{0.46\textwidth}
-			\Large\textbf{A} \textcolor{SpotColor}{\hspace{0.375in} {\small \textbf{Result~1}}} \\[15pt]
-			\includegraphics[width=1.643in, trim={3.75in 1.75in 3.75in 2in}, clip]
-				{1_Example_Content/Images/average_pb_fb.png} \\
-			\centering \footnotesize \sffamily
-			$\text{\balA} - \text{\unbalA[\bullet]}$
+	\begin{figure}
+		\begin{minipage}[t]{\textwidth}
+			\begin{minipage}[t]{0.46\textwidth}
+				\Large\textbf{A} \textcolor{SpotColor}{\hspace{0.375in} {\small \textbf{Result~1}}} \\[15pt]
+				\includegraphics[width=1.643in, trim={3.75in 1.75in 3.75in 2in}, clip]
+					{1_Example_Content/Images/average_pb_fb.png} \\
+				\centering \footnotesize \sffamily
+				$\text{\balA} - \text{\unbalA[\bullet]}$
+			\end{minipage}
+			\hspace{2pt}
+			\begin{minipage}[t]{0.46\textwidth}
+				\Large\textbf{B} \textcolor{SpotColor}{\hspace{0.39in} {\small \textbf{Result~2}}} \\[15pt]
+				\includegraphics[width=1.710in, trim={3.75in 1.75in 3.75in 2in}, clip]
+					{1_Example_Content/Images/average_8_4_2.png} \\
+				\centering \footnotesize \sffamily
+				$\text{\unbalB[\bullet]} - \text{\balB}$
+			\end{minipage} \\
 		\end{minipage}
-		\hspace{2pt}
-		\begin{minipage}[t]{0.46\textwidth}
-			\Large\textbf{B} \textcolor{SpotColor}{\hspace{0.39in} {\small \textbf{Result~2}}} \\[15pt]
-			\includegraphics[width=1.710in, trim={3.75in 1.75in 3.75in 2in}, clip]
-				{1_Example_Content/Images/average_8_4_2.png} \\
-			\centering \footnotesize \sffamily
-			$\text{\unbalB[\bullet]} - \text{\balB}$
-		\end{minipage} \\
-	\end{minipage}
+		\caption{%
+			\textbf{(A)}~Difference between treatment and control condition. \textbf{(B)}~Heterogeneity.%
+		}
+	\end{figure}
 	
 \end{frame}
 
@@ -395,6 +394,7 @@
 	}
 	\label{tab:lin_reg_interactions}
 	\resizebox*{!}{0.59\textheight}{%
+		\mdseries\selectfont
 		\input{1_Example_Content/9_Appendix/siunitx_Example_Regression}
 	}
 	\end{table}
@@ -449,9 +449,6 @@ The automated transition to the next slide (=~page in the PDF document) only wor
 	\item The feature is available in Adobe Acrobat and Acrobat Reader.
 	\item Unfortunately, it is (currently, \today) not available in macOS Preview, Skim, and SumatraPDF.
 \end{itemize}
-
-\medskip
-
 \transduration{0.25}%
 \only<12>{\transduration{}}\hypertarget<1>{animation_start}{}%
 \foreach \n [evaluate=\n as \angle using \n * 30] in {0, ..., 12}{
@@ -465,6 +462,7 @@ The automated transition to the next slide (=~page in the PDF document) only wor
 		\end{figure}
 	}
 }%
+\vspace{-\bigskipamount}
 \hyperlink<12>{animation_start}{\beamerreturnbutton{Back to the start}}
 		
 \end{frame}

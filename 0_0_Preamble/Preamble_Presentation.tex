@@ -753,6 +753,21 @@
 %https://tex.stackexchange.com/questions/40874/kpfonts-siunitx-and-math-alphabets
 % Hence, redefine the (virtually) never used \mathtt command:
 \renewcommand{\mathtt}[1]{#1}
+% From https://tex.stackexchange.com/questions/213605/siunitx-does-not-detect-semi-bold-font
+% ==>
+\ExplSyntaxOn\makeatletter
+\cs_generate_variant:Nn \tl_if_in:nnTF { noTF }
+\cs_set_protected:Npn \__siunitx_detect_font_weight_text: {
+  \tl_if_in:noTF { sb bf xb } { \f@series }
+    {
+      \cs_set:Nn \__siunitx_font_weight: { \boldmath \use:c { \f@series series } }
+    }
+    {
+      \cs_set:Nn \__siunitx_font_weight: { \use:c { \f@series series } }
+    }
+}
+\makeatother\ExplSyntaxOff
+% <==
 
 \usepackage[center, small, bf, labelsep=period]{caption}
 %\setbeamerfont{caption}

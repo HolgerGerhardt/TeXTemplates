@@ -349,6 +349,21 @@
 	retain-explicit-plus
 }
 \newcolumntype{T}[1]{@{}S[table-format = #1, table-space-text-pre = {***}, table-space-text-post = {***}]}
+% From https://tex.stackexchange.com/questions/213605/siunitx-does-not-detect-semi-bold-font
+% ==>
+\ExplSyntaxOn\makeatletter
+\cs_generate_variant:Nn \tl_if_in:nnTF { noTF }
+\cs_set_protected:Npn \__siunitx_detect_font_weight_text: {
+  \tl_if_in:noTF { sb bf xb } { \f@series }
+    {
+      \cs_set:Nn \__siunitx_font_weight: { \boldmath \use:c { \f@series series } }
+    }
+    {
+      \cs_set:Nn \__siunitx_font_weight: { \use:c { \f@series series } }
+    }
+}
+\makeatother\ExplSyntaxOff
+% <==
 
 % Ability to add footnotes to tables:
 % ==>

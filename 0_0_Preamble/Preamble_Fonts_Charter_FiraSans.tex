@@ -15,10 +15,10 @@
 % Load first because it otherwise doesn't work properly.
 % ==>
 \usepackage[lining, scale=0.88]{FiraMono}  % To match the x-height of the Charter serif font
-%\usepackage[book, semibold, lining, tabular, scale=0.88]{FiraSans}[2018/05/23]
+\usepackage[book, semibold, lining, tabular, scale=0.88]{FiraSans}[2018/05/23]
 	% The book and semibold options currently (2019-05-25) do not work
 	% in comination with the siunitx package!
-\usepackage[lining, tabular, scale=0.88]{FiraSans}[2018/05/23]
+%\usepackage[lining, tabular, scale=0.88]{FiraSans}[2018/05/23]
 \makeatletter
 \@ifpackagelater{FiraSans}{2018/05/23}
 	{}
@@ -29,13 +29,13 @@
 	      This is a fatal error. I'm aborting now.}%
 	   \endinput}
 \makeatother
-%% In case you wish to use the ``light'' options of FiraSans: -->
-%\usepackage{afterpackage}
-%\AfterPackage{siunitx}{%
-%  \providecommand*{\lseries}{\fontseries{l}\selectfont}
-%}
-%% See https://tex.stackexchange.com/questions/164791/combination-of-siunitx-and-light-weight-font-fails-to-compile.
-%% <--
+\usepackage{afterpackage}
+% In case you wish to use the ``light'' options of FiraSans: -->
+\AfterPackage{siunitx}{%
+  \providecommand*{\lseries}{\fontseries{l}\selectfont}
+}
+% See https://tex.stackexchange.com/questions/164791/combination-of-siunitx-and-light-weight-font-fails-to-compile.
+% <--
 % <==
 
 %% This template also works with the ``IBM Plex Sans'' and ``IBM Plex Mono'' fonts,

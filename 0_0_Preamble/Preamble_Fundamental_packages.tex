@@ -207,7 +207,11 @@
 \usepackage{relsize}
 \renewcommand\RSpercentTolerance{1}
 % Enabling slightly reduced font for CAPS:
-\renewcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+\ifxetex
+	\newcommand{\caps}[1]{\textscale{0.96}{\addfontfeature{LetterSpace=5}\MakeUppercase{#1}}}
+\else
+	\newcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+\fi
 % <==
 
 \frenchspacing	% Prevent excessively large whitespace after periods

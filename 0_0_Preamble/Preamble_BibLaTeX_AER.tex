@@ -292,3 +292,24 @@
 	}      
 }
 % <==
+
+% Replace (Mendeley's) month strings (``jan'', ``feb'', etc.) by full names ==>
+\DeclareSourcemap{ 
+	\maps[datatype=bibtex]{
+		\map{
+			\step[fieldsource=number, match={\regexp{^jan$}}, replace=\regexp{\\mkbibmonth\{1\}}]
+			\step[fieldsource=number, match={\regexp{^feb$}}, replace=\regexp{\\mkbibmonth\{2\}}]
+			\step[fieldsource=number, match={\regexp{^mar$}}, replace=\regexp{\\mkbibmonth\{3\}}]
+			\step[fieldsource=number, match={\regexp{^apr$}}, replace=\regexp{\\mkbibmonth\{4\}}]
+			\step[fieldsource=number, match={\regexp{^may$}}, replace=\regexp{\\mkbibmonth\{5\}}]
+			\step[fieldsource=number, match={\regexp{^jun$}}, replace=\regexp{\\mkbibmonth\{6\}}]
+			\step[fieldsource=number, match={\regexp{^jul$}}, replace=\regexp{\\mkbibmonth\{7\}}]
+			\step[fieldsource=number, match={\regexp{^aug$}}, replace=\regexp{\\mkbibmonth\{8\}}]
+			\step[fieldsource=number, match={\regexp{^sep$}}, replace=\regexp{\\mkbibmonth\{9\}}]
+			\step[fieldsource=number, match={\regexp{^oct$}}, replace=\regexp{\\mkbibmonth\{10\}}]
+			\step[fieldsource=number, match={\regexp{^nov$}}, replace=\regexp{\\mkbibmonth\{11\}}]
+			\step[fieldsource=number, match={\regexp{^dec$}}, replace=\regexp{\\mkbibmonth\{12\}}]
+		}
+	}      
+}
+% <==

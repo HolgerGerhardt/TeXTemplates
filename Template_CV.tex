@@ -1,0 +1,368 @@
+% !TeX program = pdflatex
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:compile = txs:///pdflatex/
+
+% !BIB program = biber
+% !BIB TS-program = biber
+% !TeX TXS-program:bibliography = txs:///biber
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FUNDAMENTAL SETTINGS AND PACKAGES  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[11pt, a4paper, titleabove]{simplecv}
+
+\newcommand{\myname}{Dr. Holger Gerhardt}
+
+\usepackage{xpatch}
+\usepackage{ifxetex}  % Detect if engine is XeTeX/XeLaTeX
+\usepackage[utf8]{inputenc}  % so that umlauts can be input without having to use TeX code
+\usepackage[ngerman, USenglish]{babel}
+\usepackage{ragged2e}
+
+\usepackage{xcolor}
+\definecolor{UBonnBlue}{RGB}{  7,  82, 154}
+\definecolor{UBonnGray}{RGB}{144, 144, 133}
+\colorlet{SpotColor}{UBonnBlue}
+
+\usepackage{authoraftertitle}
+
+\usepackage[hyphens]{url}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	anchorcolor=black,
+	citecolor=black,
+	filecolor=black,
+	menucolor=black,
+	runcolor=black,
+	urlcolor=SpotColor,
+	bookmarks=true,
+	bookmarksnumbered=false,
+	bookmarksopenlevel=1,
+	pdfstartview=Fit,
+	pdfpagelayout=SinglePage,
+	plainpages=false,
+	pdfpagelabels=true,
+	pdfauthor=\myname,
+	pdftitle={\myname's Curriculum Vitae}
+}
+\urlstyle{same}
+\Urlmuskip = 0mu\relax  % Prevent additional whitespace before/after breakable characters in URLs
+\newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{#1}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%
+%%  PAGE LAYOUT  %%
+%%%%%%%%%%%%%%%%%%%
+
+\raggedbottom
+
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	left=5mm,
+	right=30mm,
+	top=30mm,
+	bottom=30mm
+}
+\renewcommand{\topicmargin}{65mm}
+% Make the label right-aligned:
+\makeatletter
+\renewcommand{\@topic@makelabel}[1]{\hfill\cv@tlab@fnt #1\quad}
+\renewcommand{\cv@do@title}{%
+	\par\bigskip
+	{\noindent\hspace{\topicmargin}\cv@tit@fnt\cv@tit}%
+}
+\makeatother
+
+% Footer ==>
+\usepackage{pageslts}
+\pagenumbering{arabic}
+\usepackage{fancyhdr}
+\AtBeginDocument{%
+	\title{\MyAuthor}%
+}
+\renewcommand{\headrulewidth}{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lfoot{%
+	\small\sffamily\color{SpotColor}%
+	\makebox[\topicmargin][r]{Page~\thepage\ of~\pageref*{LastPage}\enspace\quad}%
+	\textbf{\MyTitle}\enspace\quad%
+	\MyDate%
+}
+% <==
+
+\newenvironment{preventpagebreak}
+	{\par\begin{minipage}[t]{\dimexpr\textwidth - \topicmargin\relax}}
+	{\end{minipage}\par\vspace{\parskip}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%  FONT SETTINGS  %%
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\ifxetex
+	\usepackage[protrusion=true, expansion=false]{microtype}
+\else
+	\usepackage[protrusion=true, expansion=false, kerning=true]{microtype}
+	\DisableLigatures[f]{family = {rm*}}
+	% Disable the f* ligatures for Charter because the font does not provide sufficient support.
+	\DisableLigatures[f]{family = {tt*}}
+	% Disable the f* ligatures for Fira Mono because they make no sense for a monospaced font.
+	\SetExtraKerning[unit=space]
+	{encoding=*, family=*, series=*, size={*, normalsize, footnotesize}, font = */*/*/*/*}
+	{\textemdash = {325, 325},
+		/ = {100, 100},
+		: = { 50,   0},
+		; = { 50,   0}}
+\fi
+
+% Enabling slightly reduced font for CAPS:
+\usepackage{relsize}
+\renewcommand\RSpercentTolerance{1}
+\ifxetex
+	\newcommand{\caps}[1]{\textscale{0.96}{\addfontfeature{LetterSpace=5}\MakeUppercase{#1}}}
+\else
+	\newcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+\fi
+
+\titlefont{\Large\sffamily\bfseries\color{SpotColor}}
+\sectionfont{\large\sffamily\bfseries\color{SpotColor}}
+\topictitlefont{\rmfamily}
+
+\newcommand{\commabbrev}[1]{\textsf{#1}}
+
+\ifxetex
+	\usepackage{fontspec}
+	\setmainfont[Numbers={OldStyle, Proportional}]{Adobe Garamond Pro}
+	\newcommand{\sansseriffont}{MetaPro}
+	\setsansfont{\sansseriffont-Norm}[
+		Numbers={Proportional, OldStyle},
+		ItalicFont = {\sansseriffont-NormIta},
+		BoldFont = {\sansseriffont-Bold},
+		BoldItalicFont = {\sansseriffont-BoldIta},
+		Scale=0.95
+	]
+	\topiclabelfont{\small\sffamily\addfontfeature{BoldFont = {\sansseriffont-Medi}}}
+\else
+	\usepackage[book, semibold, lining, tabular, scale=0.93]{FiraSans}
+	\usepackage[charter, greeklowercase=italicized, greekuppercase=italicized, sfscaled=false, ttscaled=false]{mathdesign}
+	\topiclabelfont{\small\sffamily\renewcommand{\bfseries}{\fontseries{medium}\selectfont}}
+\fi
+
+\frenchspacing
+\sloppy
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  BIBLIOGRAPHY SETTINGS  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{0_0_Preamble/Preamble_BibLaTeX_AER}
+% Take back making the author names bold:
+\xpatchbibmacro{author}{\printnames{author}}{\textmd{\printnames{author}\addperiod}}{}{}
+\renewcommand{\bibfont}{\rmfamily}
+\setlength{\bibhang}{0pt}
+\setlength{\bibitemsep}{\medskipamount}
+
+\bibliography{Library.bib}
+%\addbibresource{.../filename.bib}  % Use to add further .bib files for the individual papers
+
+
+
+
+%%%%%%%%%%%%
+%%  BODY  %%
+%%%%%%%%%%%%
+
+
+\begin{document}
+
+\RaggedRight
+
+\author{\myname}
+\date{\today}
+\maketitle
+
+\setlength{\leftskip}{\topicmargin}
+
+\vspace{-\medskipamount}
+{\sffamily%
+\noindent Postdoctoral Researcher, Institute for Applied Microeconomics \\
+Lab Manager, Laboratory for Experimental Economics---BonnEconLab \\[\medskipamount]
+\textbf{\color{SpotColor}University of Bonn, Germany}%
+}
+\bigskip
+
+
+\begin{topic}
+
+	\item[Contact information]
+	Adenauerallee 24--42, 53113 Bonn, Germany \\
+	\commabbrev{M}~+49 151 67308659 · \commabbrev{E}~\email{holger.gerhardt@uni-bonn.de} \\
+	\commabbrev{\caps{WWW}}~\url{https://www.iame.uni-bonn.de/people/holger-gerhardt}
+
+\end{topic}
+
+
+\section{Professional experience}
+
+\begin{topic}
+
+	\item[\textbf{2011--present}]
+	Postdoctoral Researcher, Center for Economics and Neuroscience and Institute for Applied Microeconomics, and Lab Manager, Bonn\-Econ\-Lab, University of Bonn, Germany.
+
+	\item[2005--2011]
+	Research and Teaching Assistant, Institute of Economic Policy, {\selectlanguage{ngerman}Humboldt-Universität zu Berlin,} Germany.
+
+\end{topic}
+
+
+\section{Academic education}
+
+\begin{topic}
+
+	\item[\textbf{2005--2011}]
+	{\selectlanguage{ngerman}Humboldt-Universität zu Berlin,} School of Business and Economics and Berlin School of Mind and Brain, Dr.~rer.~pol. (Ph.D. in Economics), \textit{summa cum laude}. Dissertation: \textit{Essays in Experimental and Neuroeconomics}. Thesis advisors: Professor Lutz Weinke (economics) and Professor Hauke~R. Heekeren (neuroscience).
+
+	\item[1999--2004]
+	{\selectlanguage{ngerman}Humboldt-Universität zu Berlin,} School of Business and Economics, {\selectlanguage{ngerman}Diplom-Volkswirt} (Diploma in Economics, M.Sc.-equivalent). Diploma thesis: \textit{Reference-Dependent Consumer Preferences and Price Setting}. Awarded the \caps{WWG} Prize for the best diploma degree completed in the 2004/05 winter term.
+
+\end{topic}
+
+
+\section{Publications}
+
+\begin{topic}
+
+	%\begin{refcontext}[sorting=ydnt]
+		% Sort BIBLIOGRAPHY by YEAR
+	\begin{refcontext}[sorting=none]
+		% Sort BIBLIOGRAPHY by APPEARANCE
+	\nocite{Gerhardt2017}
+	\nocite{Marsh2017}
+	\nocite{Behrens2017}
+	\nocite{Strang2017}
+	\nocite{Schulreich2016}
+	\nocite{Marsh2015}
+	\nocite{Schulreich2014}
+
+	\item[\textbf{Peer-reviewed articles}]
+	\printbibliography[heading=none]
+	\end{refcontext}
+	
+	\item[Book chapter]
+	Antoine, Nadja M., and Holger Gerhardt. 2014. {\selectlanguage{ngerman}``Bestätigende und herausfordernde Impulse in der kokreativen Interaktion. Kokreative Wertschöpfung unter den Bedingungen von Koopetition am Beispiel der Ideenplattform jovoto,'' in: Klein, Inga and Sonja Windmüller (eds.), \textit{Kultur der Ökonomie. Zur Materialität und Performanz des Wirtschaft\-lichen, Edition Kulturwissenschaft}. transcript Verlag, Bielefeld,} Germany, \mbox{pp. 259--281}.
+	\item[Doctoral dissertation]
+	Gerhardt, Holger. 2013. \textit{Essays in Experimental and Neuro\-economics}. {\selectlanguage{ngerman}Humboldt-Universität zu Berlin,} School of Business and Economics. \url{https://edoc.hu-berlin.de/dissertationen/gerhardt-holger-2011-06-20}.
+
+\end{topic}
+
+
+\section{Current research projects}
+
+\begin{topic}
+
+	\item [\textbf{Job market paper}]
+	Dertwinkel-Kalt, Markus, Holger Gerhardt, Gerhard Riener, \mbox{Frederik} Schwerter, and Louis Strang. ``Concentration Bias in \mbox{Intertemporal} Choice.'' \url{https://www.dropbox.com/s/dv20mcu0qkygmjz/ Concentration_Bias_in_Intertemporal_Choice.pdf}. Revise and resubmit, \textit{Review of Economic Studies}.
+
+	\item[Work in progress]
+	Gerhardt, Holger, and Rafael Suchy: ``Estimating Time Preferences from Strictly Convex Budgets.''
+	
+	Gerhardt, Holger, Guido Biele, Hauke R. Heekeren, and Harald \mbox{Uhlig}. ``Cognitive Load Increases Risk Aversion.'' SFB~649 \mbox{Discussion} Paper No.~2016-011. \url{https://sfb649.wiwi.hu-berlin.de/papers/pdf/ SFB649DP2016-011.pdfs}.
+\end{topic}
+
+
+\section{Teaching experience}
+
+\begin{topic}
+
+	\item[University of Bonn]
+	Lecture ``Economics and Psychology'' (joint with Frederik Schwerter), 2015/16, M.Sc. level.
+	
+	Lecture {\selectlanguage{ngerman}``Experimentelle Wirtschaftsforschung''} (in German, ``Experimental Economics,'' joint with Sebastian Kube), 2014, B.Sc. level.
+	
+	Workshop ``Introduction to the software `PsychoPy','' 2019 (Master in Neuroscience program).
+
+	Workshop ``Introduction to the software `Presentation','' 2011, 2014--2018 (Master in Neuroscience program).
+
+	\item[Humboldt-Universität zu Berlin]
+
+	Exercise classes to the lecture {\selectlanguage{ngerman}``Makroökonomie~I''} (in German, ``Macro\-economics~I''), B.Sc. level, 2008, 2009/10, 2011.
+	
+	Exercise class to the lecture ``Monetary Economics,'' B.Sc. level, 2009/10.
+	
+	Exercise classes to the lecture ``Growth and Inequality in an International Perspective,'' M.Sc. level, 2008, 2009.
+	
+	Workshop on neuroeconomics: {\selectlanguage{ngerman}``Ökonomische Rationalität und das Gehirn''} (in German, ``Economic Rationality and the Brain'') as part of the 7\textsuperscript{th} symposium of the {\selectlanguage{ngerman}Humboldt-Forum Wirtschaft,} 2007.
+	
+	Exercise classes to the lecture {\selectlanguage{ngerman}``Konjunktur- und Wachstumspolitik/\hspace{0pt}Angewandte Makroökonomie''} (in German, ``Business Cycle and Growth Policy/\hspace{0pt}Applied Macroeconomics''), B.Sc. level, 2006, 2006/07, 2007/08.
+	
+	Seminar ``Bounded Rationality and Macroeconomics,'' M.Sc. level, winter 2005/06.
+
+\end{topic}
+	
+	
+\section{Services to the profession and community}
+
+\begin{topic}
+
+	\item[Referee for]
+	\textit{American Economic Review}; \textit{European Economic Review}; \textit{Frontiers in Decision Neuroscience}; \textit{Journal of Economic Psychology}; \textit{Journal of Institutional and Theoretical Economics}; \textit{Journal of Neurophysiology}; \textit{Journal of Neuroscience, Psychology, and Economics}; \textit{Quantitative Economics}.
+
+	\item[TeX templates]
+	Available at \url{https://github.com/HolgerGerhardt/TeXTemplates}.
+
+\end{topic}
+
+
+\section{Miscellaneous}
+
+\begin{topic}
+
+	\item[Language skills]
+	German---native. \\
+	English, Hebrew---fluent. \\
+	French, Latin---basic knowledge.
+	
+	\item [Software skills]	Mathematica, \caps{MATLAB}, R, Stata---advanced knowledge; Python---basic knowledge. \\
+	\caps{FSL} (tool for fMRI data analysis)---advanced knowledge. \\
+	z-Tree---expert knowledge; oTree, Presentation---advanced knowledge. \\
+	hroot, \caps{ORSEE}---expert knowledge.
+
+\end{topic}
+
+
+\section{References}
+
+\begin{topic}
+
+	\item[\textbf{Professor Armin Falk}]
+	University of Bonn and briq Institute, Bonn, Germany \\
+	\commabbrev{T}~+49 228 3894-701 (personal assistant) · \mbox{\commabbrev{E}~\email{armin.falk@briq-institute.org}}
+
+	\item[\textbf{Professor Sebastian Kube}]
+	University of Bonn, Germany \\
+	\commabbrev{T}~+49 228 73-9240 (secretary) · \commabbrev{E}~\email{kube@uni-bonn.de}
+
+\end{topic}
+
+
+
+\end{document}

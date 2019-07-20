@@ -24,6 +24,10 @@
 \usepackage[ngerman, USenglish]{babel}
 \usepackage{ragged2e}
 
+\usepackage{calc}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\usetikzlibrary{positioning}
 \usepackage{xcolor}
 \definecolor{UBonnBlue}{RGB}{  7,  82, 154}
 \definecolor{UBonnGray}{RGB}{144, 144, 133}
@@ -140,7 +144,8 @@
 \fi
 
 \titlefont{\Large\sffamily\bfseries\color{SpotColor}}
-\sectionfont{\large\sffamily\bfseries\color{SpotColor}}
+\newcommand{\mysectionfont}{\large\sffamily\bfseries}
+\sectionfont{\mysectionfont\color{SpotColor}}
 \topictitlefont{\rmfamily}
 
 \newcommand{\commabbrev}[1]{\textsf{#1}}
@@ -168,6 +173,30 @@
 	\usepackage[scaled=.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport
 	\topiclabelfont{\small\sffamily\renewcommand{\bfseries}{\fontseries{medium}\selectfont}}
 \fi
+
+\newcommand{\highlight}[1]{%
+	\tikz[overlay]
+	\node[fill=SpotColor, inner xsep=4pt, text height=0.85*height("Ä1g"), text depth=0.5*depth("Ä1g"), anchor=text, rectangle]{%
+		\textcolor{white}{\textbf{#1}}%
+		\hspace{-0.33pt}
+	};%
+	\phantom{\textbf{#1}}%
+}
+
+\newlength{\testwidth}
+\newcommand{\highlightsection}[1]{%
+	\setlength{\testwidth}{\widthof{\mysectionfont #1}}
+	\addtolength{\testwidth}{12pt}
+	\medskip
+	\begin{tcolorbox}[
+		colback=SpotColor, colframe=SpotColor,
+		width=1\testwidth,
+		arc=0pt, outer arc=0pt, boxrule=0pt,
+		left=6pt, right=6pt, top=4pt, bottom=4pt, boxsep=0pt
+	]%
+		\section{\textcolor{white}{\mbox{#1}}}%
+	\end{tcolorbox}%
+}
 
 \frenchspacing
 \sloppy
@@ -291,7 +320,7 @@ Lab Manager, Laboratory for Experimental Economics---BonnEconLab
 
 \begin{topic}
 
-	\item [\textbf{Job market paper}]
+	\item [\highlight{Job market paper}]
 	Dertwinkel-Kalt, Markus, Holger Gerhardt, Gerhard Riener, \mbox{Frederik} Schwerter, and Louis Strang. ``Concentration Bias in \mbox{Intertemporal} Choice.'' \url{https://www.dropbox.com/s/dv20mcu0qkygmjz/ Concentration_Bias_in_Intertemporal_Choice.pdf}. Revise and resubmit, \textit{Review of Economic Studies}.
 
 	\item[Work in progress]

@@ -10,7 +10,7 @@ This repository includes templates for
 * bachelor’s/master’s theses and term papers,
 * presentation slides,
 * conference posters, and
-* curricula vitae/résumés.
+* (academic) curricula vitae/résumés.
 
 
 ## Noteworthy Features

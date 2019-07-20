@@ -147,19 +147,25 @@
 
 \ifxetex
 	\usepackage{fontspec}
-	\setmainfont[Numbers={OldStyle, Proportional}]{Adobe Garamond Pro}
-	\newcommand{\sansseriffont}{MetaPro}
-	\setsansfont{\sansseriffont-Norm}[
-		Numbers={Proportional, OldStyle},
-		ItalicFont = {\sansseriffont-NormIta},
-		BoldFont = {\sansseriffont-Bold},
-		BoldItalicFont = {\sansseriffont-BoldIta},
-		Scale=0.95
+	\usepackage[proportional, oldstyle, scale=0.94]{sourceserifpro}
+	\newcommand{\sansseriffont}{WorkSans}
+		% Open-source font, available at https://github.com/weiweihuanghuang/Work-Sans
+	\setsansfont{\sansseriffont-Regular}[
+		ItalicFont = {\sansseriffont-Italic},
+		BoldFont ={\sansseriffont-SemiBold},
+		BoldItalicFont = {\sansseriffont-SemiBoldItalic},
+		Numbers = {Proportional, OldStyle},
+		Scale = 0.90,
+		LetterSpace = -2
 	]
-	\topiclabelfont{\small\sffamily\addfontfeature{BoldFont = {\sansseriffont-Medi}}}
+	\topiclabelfont{\small\sffamily}
 \else
-	\usepackage[book, semibold, lining, tabular, scale=0.93]{FiraSans}
+	%\usepackage[scale=0.88]{plex-sans}
+	%\usepackage[semibold, scale=0.88]{plex-serif}
+	%\topiclabelfont{\sffamily\renewcommand{\bfseries}{\fontseries{semibold}\selectfont}}
+	\usepackage[book, semibold, lining, tabular, scale=0.92]{FiraSans}
 	\usepackage[charter, greeklowercase=italicized, greekuppercase=italicized, sfscaled=false, ttscaled=false]{mathdesign}
+	\usepackage[scaled=.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport
 	\topiclabelfont{\small\sffamily\renewcommand{\bfseries}{\fontseries{medium}\selectfont}}
 \fi
 
@@ -204,11 +210,16 @@
 \setlength{\leftskip}{\topicmargin}
 
 \vspace{-\medskipamount}
-{\sffamily%
+{\ifxetex
+	\fontspec{\sansseriffont-Regular}[BoldFont={\sansseriffont-SemiBold}, WordSpace=0.85, LetterSpace=-2, Scale=0.875, Ligatures={TeX, Common}]
+\else
+	\sffamily
+\fi%
 \noindent Postdoctoral Researcher, Institute for Applied Microeconomics \\
-Lab Manager, Laboratory for Experimental Economics---BonnEconLab \\[\medskipamount]
-\textbf{\color{SpotColor}University of Bonn, Germany}%
-}
+Lab Manager, Laboratory for Experimental Economics---BonnEconLab
+
+\medskip
+\textbf{\color{SpotColor}University of Bonn, Germany}}%
 \bigskip
 
 
@@ -295,7 +306,7 @@ Lab Manager, Laboratory for Experimental Economics---BonnEconLab \\[\medskipamou
 \begin{topic}
 
 	\item[University of Bonn]
-	Lecture ``Economics and Psychology'' (joint with Frederik Schwerter), 2015/16, M.Sc. level.
+	Lecture ``Economics and Psychology'' (joint with Frederik Schwer\-ter), 2015/16, M.Sc. level.
 	
 	Lecture {\selectlanguage{ngerman}``Experimentelle Wirtschaftsforschung''} (in German, ``Experimental Economics,'' joint with Sebastian Kube), 2014, B.Sc. level.
 	

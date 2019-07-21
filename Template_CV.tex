@@ -83,7 +83,7 @@
 	top=30mm,
 	bottom=30mm
 }
-\renewcommand{\topicmargin}{60mm}
+\renewcommand{\topicmargin}{52.5mm}
 % Make the label right-aligned:
 \makeatletter
 \renewcommand{\@topic@makelabel}[1]{\hfill\cv@tlab@fnt #1\quad}
@@ -257,16 +257,29 @@
 \setlength{\leftskip}{\topicmargin}
 
 \vspace{-\medskipamount}
-{\ifxetex
+{%
+\ifxetex
 	\fontspec{\sansseriffont-Regular}[BoldFont={\sansseriffont-SemiBold}, WordSpace=0.85, LetterSpace=-2, Scale=0.875, Ligatures={TeX, Common}]
 \else
 	\sffamily
 \fi%
-\noindent Postdoctoral Researcher, Institute for Applied Microeconomics \\
-Lab Manager, Laboratory for Experimental Economics---BonnEconLab
-
-\medskip
-\textbf{\color{SpotColor}University of Bonn, Germany}}%
+	\noindent Postdoctoral Researcher, Institute for Applied Microeconomics \\
+	Lab Manager, Laboratory for Experimental Economics---BonnEconLab
+	
+	\medskip
+	\hspace{-15pt}%
+	\raisebox{-1pt}{%
+		\makebox(0,0)[rb]{%
+			\href{https://www.publicdomainpictures.net/en/view-image.php?image=236923&picture=cat-with-blue-eyes}{%
+				%\scalebox{-1}[1]{%
+					\includegraphics[height=30mm, trim=120mm 0mm 57.5mm 0mm, clip]{1_Example_Content/Images/cat-with-blue-eyes-15122819490rC.jpg}%
+				%}%
+			}%
+		}%
+	}%
+	\hspace{15pt}%
+	\textbf{\color{SpotColor}University of Bonn, Germany}
+}
 \bigskip
 
 
@@ -338,7 +351,7 @@ Lab Manager, Laboratory for Experimental Economics---BonnEconLab
 
 \begin{topic}
 
-	\item [\highlight{Job market paper}]
+	\item[\highlight{Job market paper}]
 	Dertwinkel-Kalt, Markus, Holger Gerhardt, Gerhard Riener, \mbox{Frederik} Schwerter, and Louis Strang. ``Concentration Bias in \mbox{Intertemporal} Choice.'' \url{https://www.dropbox.com/s/dv20mcu0qkygmjz/ Concentration_Bias_in_Intertemporal_Choice.pdf}. Revise and resubmit, \textit{Review of Economic Studies}.
 
 	\item[Work in progress]

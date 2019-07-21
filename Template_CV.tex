@@ -29,8 +29,13 @@
 \usepackage{tcolorbox}
 \usetikzlibrary{positioning}
 \usepackage{xcolor}
-\definecolor{UBonnBlue}{RGB}{  7,  82, 154}
-\definecolor{UBonnGray}{RGB}{144, 144, 133}
+\definecolor{UBonnBlue}   {RGB}{  7,  82, 154}
+\definecolor{UBonnYellow} {RGB}{234, 185,  12}
+\definecolor{UBonnGray}   {RGB}{144, 144, 133}
+\definecolor{darkgray}    {RGB}{102, 102, 102}
+\definecolor{darkred}     {RGB}{153,   0,   0}
+\definecolor{neutralgreen}{RGB}{ 28, 166,   0}
+
 \colorlet{SpotColor}{UBonnBlue}
 
 \usepackage{authoraftertitle}
@@ -73,12 +78,12 @@
 \usepackage{geometry}
 \geometry{
 	a4paper,
-	left=5mm,
+	left=10mm,
 	right=30mm,
 	top=30mm,
 	bottom=30mm
 }
-\renewcommand{\topicmargin}{65mm}
+\renewcommand{\topicmargin}{60mm}
 % Make the label right-aligned:
 \makeatletter
 \renewcommand{\@topic@makelabel}[1]{\hfill\cv@tlab@fnt #1\quad}
@@ -109,6 +114,15 @@
 \newenvironment{preventpagebreak}
 	{\par\begin{minipage}[t]{\dimexpr\textwidth - \topicmargin\relax}}
 	{\end{minipage}\par\vspace{\parskip}}
+
+% Allow for multiline topic labels:
+\newcommand{\multiline}[1]{%
+	\parbox[t][10pt][t]{\topicmargin-50pt}{\RaggedLeft%
+		#1%
+		\normalsize\par%
+			% So that \baselineskip is of the normal size, see https://tex.stackexchange.com/a/408544
+	}%
+}
 
 
 
@@ -163,7 +177,9 @@
 		Scale = 0.90,
 		LetterSpace = -2
 	]
-	\topiclabelfont{\small\sffamily}
+	\topiclabelfont{%
+		\small\sffamily% \bfseries\color{SpotColor}%
+	}
 \else
 	%\usepackage[scale=0.88]{plex-sans}
 	%\usepackage[semibold, scale=0.88]{plex-serif}
@@ -171,7 +187,9 @@
 	\usepackage[book, semibold, lining, tabular, scale=0.92]{FiraSans}
 	\usepackage[charter, greeklowercase=italicized, greekuppercase=italicized, sfscaled=false, ttscaled=false]{mathdesign}
 	\usepackage[scaled=.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport
-	\topiclabelfont{\small\sffamily\renewcommand{\bfseries}{\fontseries{medium}\selectfont}}
+	\topiclabelfont{%
+		\small\sffamily\renewcommand{\bfseries}{\fontseries{medium}\selectfont}%
+	}
 \fi
 
 \newcommand{\highlight}[1]{%
@@ -343,7 +361,7 @@ Lab Manager, Laboratory for Experimental Economics---BonnEconLab
 
 	Workshop ``Introduction to the software `Presentation','' 2011, 2014--2018 (Master in Neuroscience program).
 
-	\item[Humboldt-Universität zu Berlin]
+	\item[\multiline{Humboldt-Universität \\ zu~Berlin}]
 
 	Exercise classes to the lecture {\selectlanguage{ngerman}``Makroökonomie~I''} (in German, ``Macro\-economics~I''), B.Sc. level, 2008, 2009/10, 2011.
 	

@@ -78,12 +78,12 @@
 \usepackage{geometry}
 \geometry{
 	a4paper,
-	left=10mm,
+	left=5mm,
 	right=30mm,
 	top=30mm,
 	bottom=30mm
 }
-\renewcommand{\topicmargin}{52.5mm}
+\renewcommand{\topicmargin}{57.5mm}
 % Make the label right-aligned:
 \makeatletter
 \renewcommand{\@topic@makelabel}[1]{\hfill\cv@tlab@fnt #1\quad}
@@ -92,6 +92,9 @@
 	{\noindent\hspace{\topicmargin}\cv@tit@fnt\cv@tit}%
 }
 \makeatother
+
+% Slightly increase the line spacing
+\renewcommand{\baselinestretch}{1.03}
 
 % Footer ==>
 \usepackage{pageslts}
@@ -216,6 +219,11 @@
 	\end{tcolorbox}%
 }
 
+\usepackage[fixed]{fontawesome5}
+\newcommand{\icon}[1]{%
+	\footnotesize\textcolor{SpotColor}{\faIcon[regular]{#1}}
+}
+
 \frenchspacing
 \sloppy
 
@@ -268,11 +276,11 @@
 	
 	\medskip
 	\hspace{-15pt}%
-	\raisebox{-1pt}{%
+	\raisebox{-1.5pt}{%
 		\makebox(0,0)[rb]{%
 			\href{https://www.publicdomainpictures.net/en/view-image.php?image=236923&picture=cat-with-blue-eyes}{%
 				%\scalebox{-1}[1]{%
-					\includegraphics[height=30mm, trim=120mm 0mm 57.5mm 0mm, clip]{1_Example_Content/Images/cat-with-blue-eyes-15122819490rC.jpg}%
+					\includegraphics[height=27mm, trim=120mm 0mm 57.5mm 0mm, clip]{1_Example_Content/Images/cat-with-blue-eyes-15122819490rC.jpg}%
 				%}%
 			}%
 		}%
@@ -286,7 +294,8 @@
 \begin{topic}
 
 	%\item[\multiline{Mail {\normalsize\\} Phone · E-mail {\normalsize\\} WWW}]
-	\item
+	%\item
+	\item[\multiline{\icon{map} {\normalsize\\} \icon{comments} {\normalsize\\} \icon{address-card}}]
 	Adenauerallee~24--42, 53113~Bonn, Germany \\
 	+49~228~73-9288 · \email{holger.gerhardt@uni-bonn.de} \\
 	\url{https://www.iame.uni-bonn.de/people/holger-gerhardt}
@@ -428,11 +437,11 @@
 
 	\item[\textbf{Professor Armin Falk}]
 	University of Bonn and briq Institute, Bonn, Germany \\
-	\commabbrev{T}~+49~228~3894-701 (personal assistant) · \mbox{\commabbrev{E}~\email{armin.falk@briq-institute.org}}
+	+49~228~3894-701 (personal assistant) · \email{armin.falk@briq-institute.org}
 
 	\item[\textbf{Professor Sebastian Kube}]
 	University of Bonn, Germany \\
-	\commabbrev{T}~+49~228~73-9240 (secretary) · \commabbrev{E}~\email{kube@uni-bonn.de}
+	+49~228~73-9240 (secretary) · \email{kube@uni-bonn.de}
 
 \end{topic}
 

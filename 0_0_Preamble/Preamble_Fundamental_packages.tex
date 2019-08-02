@@ -124,6 +124,8 @@
 % \usepackage{cleveref}	% Provides \cref{...} etc. for flexible referencing.
 
 \usepackage{verbatim}
+\let\ignore=\comment
+\let\endignore=\endcomment
 
 %% Command to suppress text:
 %% See https://tex.stackexchange.com/questions/97347/selectively-suppress-generation-of-typeset-output
@@ -200,7 +202,7 @@
 \usepackage[full]{textcomp}  % ``full'' option tequired some packages (e.g., ``newtxtext'')
 \usepackage{xfrac}	% Provides \sfrac; loads textcomp (without ``full'' option)
 
-\usepackage{soul}  % Provides a~highlighting command: \hl{...}
+\usepackage{soul}  % Provides a~highlighting command, \hl{...}, and a \caps{...} command
 
 % Allow for fine-grained scaling of font sizes
 % ==>
@@ -208,9 +210,9 @@
 \renewcommand\RSpercentTolerance{1}
 % Enabling slightly reduced font for CAPS:
 \ifxetex
-	\newcommand{\caps}[1]{\textscale{0.96}{\addfontfeature{LetterSpace=5}\MakeUppercase{#1}}}
+	\renewcommand{\caps}[1]{\textscale{0.96}{\addfontfeature{LetterSpace=5}\MakeUppercase{#1}}}
 \else
-	\newcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+	\renewcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
 \fi
 % <==
 

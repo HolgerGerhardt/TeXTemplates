@@ -35,7 +35,15 @@
 %
 %\printlength{\baselineskip} \printlength{\textheight} \printlength{\topskip}
 
-This template uses the \href{https://en.wikipedia.org/wiki/Times_New_Roman}{Times Roman} typeface for the body text and headings. Times Roman is a~serif type\-face and was designed in 1931 by \href{https://en.wikipedia.org/wiki/Stanley_Morison}{Stanley Morison}. The page layout---the margins and the line spacing---is based on the design guidelines%
+This template uses the \href{https://en.wikipedia.org/wiki/Times_New_Roman}{Times Roman} typeface for the body text and headings.%
+\comment[id=HG]{
+	\textbf{Commenting is on!} \\
+	To~switch it off, activate
+	\texttt{\textbackslash PassOptionsToPackage\\
+		\{final\}\{changes\}} \\
+	in the master file.%
+}
+Times Roman is a~serif type\-face and was designed in 1931 by \href{https://en.wikipedia.org/wiki/Stanley_Morison}{Stanley Morison}. The page layout---the margins and the line spacing---is based on the design guidelines%
 \footnote{\url{https://www.vwlpamt.uni-bonn.de/pruefungsamt/pdfs/formulare/bachelorarbeitsmerkblatt-formalia} and \url{https://www.vwlpamt.uni-bonn.de/pruefungsamt/pdfs/formulare/masterarbeitsmerkblatt-formalia}.}
 of the examination office of the Department of Economics at the University of Bonn:
 \begin{quotation}\selectlanguage{ngerman}
@@ -44,13 +52,13 @@ of the examination office of the Department of Economics at the University of Bo
 	Es ist Papier im \caps{DIN}-A4-Format zu benutzen. Verwenden Sie den Schrifttyp \mbox{Times} New Roman oder eine Schriftart der gleichen Kategorie (Serifen), die Schriftgröße~12, anderthalbfachen Zeilenabstand und Blocksatz. Die Seitenränder sollen links 3~cm sowie rechts, oben und unten 2~cm betragen.
 \end{quotation}
 
-This makes for an~incredibly ugly layout. :-( But we follow the guidelines despite that. \blindtext
+This makes for an~\highlight[id=HG]{incredibly} ugly layout. :-( But we follow the guidelines despite that. \blindtext
 
-Let us cite some publications: \cite{Andersen2008, Andreoni2012, Balakrishnan2016, Koszegi2013}. With the options set for BibLaTeX in the preamble, citations in the body text are automatically sorted chronologically---irrespective of the order of the ``citekeys'' in your input. Of course, entries are sorted alphabetically by author surname in the list of references.
+Let us cite \replaced[id=LV]{a~few}{some} publications: \cite{Andersen2008, Andreoni2012, Balakrishnan2016, Koszegi2013}. With the options set for BibLaTeX in the preamble, citations in the body text are \added[id=LV]{automatically} sorted chronologically---irrespective of the order of the ``citekeys'' in your input. Of course, entries are sorted alphabetically by author surname in the list of references.
 
 \Blindtext[2]
 
-Some more references: See \cite{Sims2003, Gabaix2014} for models of ``rational inattention'' or ``goal-driven attention.'' See \cite{Bordalo2012, Bordalo2013, Koszegi2013, Taubinsky2014, Bushong2016} for models of ``stimulus-driven attention.''
+Some more\deleted[id=HG]{ additional} references: See \cite{Sims2003, Gabaix2014} for models of ``rational inattention'' or ``goal-driven attention.'' See \cite{Bordalo2012, Bordalo2013, Koszegi2013, Taubinsky2014, Bushong2016} for models of ``stimulus-driven attention.''
 
 \blindmathtrue
 

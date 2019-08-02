@@ -32,6 +32,7 @@
 		\phantom{\texteuro \textsu{12}}%
 		% We include a \euro sign and superscript digits because
 		% they do not work otherwise when using \subimport*{...}
+		\phantom{\texttt{abc}}%
 	}
 	{%	odd-right
 	}
@@ -55,6 +56,12 @@
 \renewcommand{\cftdotsep}{\cftnodots}  % Remove the leader (dots) from the table of contents
 \setlength{\cftfigindent}{0pt}  % Remove indentation from list of figures
 \setlength{\cfttabindent}{0pt}  % Remove indentation from list of tables
+
+% \marginpar settings for the commenting functions
+\setlength{\marginparwidth}{2.3cm}
+\setlength{\marginparsep}{0.3cm}
+\setlength{\marginparpush}{0.3cm}
+\AtBeginDocument{\reversemarginpar}
 
 
 

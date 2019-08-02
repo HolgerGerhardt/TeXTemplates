@@ -11,83 +11,81 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\usepackage{tcolorbox}
+\let\comment\relax  % in case \comment{...} is already defined, e.g., by verbatim
 
-\definecolor{blazeorange}{rgb}{1,0.40,0.00}
-\newcommand{\highlight}[1]{\textcolor{blazeorange}{#1}}
+\usepackage[todonotes={textsize=scriptsize}, authormarkuptext=name, authormarkup=none]{changes}
 
-\newlength{\boxheight}
-\newlength{\boxwidth}
-\newcommand{\trackchanges}[2][]{%
-	\highlight{#2}%
-	\settoheight{\boxheight}{\parbox{\textwidth}{#2}}%
-	\marginpar{\vspace{-2\boxheight}%
-		\begin{tcolorbox}[width=1.25in, height=2\boxheight, left=1.5mm, right=1.5mm, top=1.5mm, bottom=1.5mm, colback=blazeorange, boxrule=0pt, arc=0pt, opacityfill=0.5]
-			\tiny\RaggedRight%
-			\textcolor{white}{\textsf{%
-					\ifthenelse{\equal{#1}{}}{\textbf{Insertion}}{\textbf{Replaces:} ``#1''}%
-			}}
-		\end{tcolorbox}%
+\makeatletter
+% Make the ``changes'' boxes solid and less round:
+\tikzstyle{notestyleraw} = [
+	draw=\@todonotes@currentbordercolor,
+	fill=\@todonotes@currentbordercolor,
+	text=white,
+	line width = 0.35pt,
+	text width = \@todonotes@textwidth - 1.5ex - 1pt,
+	inner sep = 0.75ex,
+	rounded corners = 0.25pt
+]
+% Redefine default color (which is used when the author ID is omitted):
+\@namedef{Changes@AuthorColor}{magenta}
+\colorlet{Changes@Color}{magenta}
+% Decrease font size of the ``changes'' boxes and use sans-serif font:
+\renewcommand{\@todonotes@useSizeCommand}{\sffamily\scriptsize\baselineskip=2.25ex}
+% Decrease rule thickness slightly:
+\xpatchcmd{\@todonotes@drawLineToLeftMargin} {connectstyle}{connectstyle, line width=0.6pt}{}{}
+\xpatchcmd{\@todonotes@drawLineToRightMargin}{connectstyle}{connectstyle, line width=0.6pt}{}{}
+\makeatother
+
+\definecolor{electricultramarine}{rgb}{0.25, 0.0, 1.0}
+\definecolor{alizarin}{rgb}{0.82, 0.1, 0.26}
+\definecolor{dartmouthgreen}{rgb}{0.05, 0.5, 0.06}
+\definecolor{goldenpoppy}{HTML}{FCC200}
+\definecolor{internationalorange}{rgb}{1.0, 0.31, 0.0}
+\definechangesauthor[name={Holger}, color=alizarin]           {HG}
+\definechangesauthor[name={Lou~E.}, color=internationalorange]{LV}
+\definechangesauthor[name={U.~R.},  color=electricultramarine]{UR}
+% Make the \todo lines solid (instead of 70% opacity) and introduce a ``tickmark''
+\LetLtxMacro{\todoorig}{\todo}
+\renewcommand{\todo}[2][]{%
+	\todoorig[#1, tickmarkheight=1.5pt, linecolor=authorcolor]{#2}%
+}
+\LetLtxMacro{\commentorig}{\comment}
+\renewcommand{\comment}[2][]{%
+	\commentorig[#1]{%
+		\ifx&#2&%
+		% #1 is empty
+		\else%
+		\newline #2%
+		\fi%
 	}%
 }
-% To ``accept'' all changes in the document:
-% \renewcommand{\trackchanges}[2][]{#2}	% Sets changes in plain text.
-\newcommand{\XXX}[2][]{\trackchanges[#1]{#2}}
-
-\usepackage{marginnote}  % Customizable marginal paragraphs
-\setlength{\marginparwidth}{3.5cm}
-\setlength{\marginparsep}{0.6cm}
-\setlength{\marginparpush}{0.6cm}
-
-% \usepackage{soul} % Already loaded earlier
-% Provides a~highlighting command: \hl{...}
-% Change the highlighting color:
-\sethlcolor{darkred25}
-
-
-\newcommand{\remark}[4][0pt]{
-	\marginnote{\RaggedRight\sloppypar\sffamily%
-		%\fontseries{l}\selectfont
-		\vspace{-10pt}%
-		\scriptsize\setlength{\baselineskip}{2.35ex}\textcolor{darkred}{\textbf{%
-				%\fontseries{sb}\selectfont
-				#3}\\ #4}}[#1]%
-	\hl{#2}%
+\LetLtxMacro{\addedorig}{\added}
+\renewcommand{\added}[2][]{%
+	\addedorig[#1]{#2}%
+	\IfSubStr{#1}{comment}{}{\comment[#1]{\textit{Added text}}}%
 }
-
-\newcommand{\commentgeneric}[4][0pt]{%
-	\setbox99=\hbox{\textbf{\v{ }}}%
-	\makebox[0pt][l]{\hspace{-1.75pt}\textcolor{#4}{\textbf{\raisebox{1.75pt}{\v{ }}\hspace{-0.985\wd99}|}}}%
-	\marginnote{\RaggedRight\sloppypar\sffamily%
-		%\fontseries{l}\selectfont
-		\vspace{-10pt}%
-		\scriptsize\setlength{\baselineskip}{2.35ex}\textcolor{#4}{%
-			\textbf{#2} \\
-			#3%
-		}%
-	}[#1]%
+\LetLtxMacro{\replacedorig}{\replaced}
+\renewcommand{\replaced}[3][]{%
+	\replacedorig[#1, comment={\newline\textit{Replaced:} ``#3''}]{#2}{}%
 }
-\newcommand{\commentfreddie}[2][0pt]{%
-	\commentgeneric[#1]{Freddie says:}{#2}{darkblue}%
+\setdeletedmarkup{}
+\LetLtxMacro{\deletedorig}{\deleted}
+\renewcommand{\deleted}[2][]{%
+	\deletedorig[#1]{#2}%
+	\IfSubStr{#1}{comment}{}{\comment[#1]{\textit{Deleted:} ``#2''}}%
 }
-\newcommand{\commentholger}[2][0pt]{%
-	\commentgeneric[#1]{Holger says:}{#2}{customgreen}%
+\sethighlightmarkup{%
+	\ifthenelse{\isColored}{\sethlcolor{authorcolor}}{}\hl{#1}%
 }
-\newcommand{\commentlouis}[2][0pt]{%
-	\commentgeneric[#1]{Louis says:}{#2}{custompurple}%
+\LetLtxMacro{\highlightorig}{\highlight}
+\renewcommand{\highlight}[2][]{%
+	\highlightorig[#1]{#2}%
+	\IfSubStr{#1}{comment}{}{\comment[#1]{\vspace{-\baselineskip}}}%
 }
-\newcommand{\commentmarkus}[2][0pt]{%
-	\commentgeneric[#1]{Markus says:}{#2}{darkred}%
-}
-\newcommand{\commentgerhard}[2][0pt]{%
-	\commentgeneric[#1]{Gerhard says:}{#2}{blazeorange}%
-}
-% To suppress all comments in the document:
-% \renewcommand{\commentgeneric}[4][0pt]{}{}{}
 
 \usepackage{pdfcomment}
 \newenvironment{holgeradded}{%
-	\color{customgreen}%
+	\color{alizarin}%
 	\begin{pdfsidelinecomment}[color=customgreen,caption=inline,linebegin={/None},lineend={/None},linewidth=2bp,linesep=1cm]{Holger}\ignorespaces}%
 	{\end{pdfsidelinecomment}%
 }

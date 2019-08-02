@@ -15,6 +15,10 @@
 %%%%%%%%%%%%%%%%
 
 
+% To ``accept'' all changes in the document:
+%\PassOptionsToPackage{final}{changes}
+
+
 \documentclass[a4paper, 10pt]{article}
 % fleqn: flush-left aligned equations
 
@@ -31,13 +35,12 @@
 \input{0_0_Preamble/Preamble_Sansserif_math}
 \input{0_0_Preamble/Preamble_BibLaTeX_AER}
 \input{0_0_Preamble/Preamble_Commenting_and_highlighting}
-\input{0_0_Preamble/Preamble_Commenting_off}
 \input{0_0_Preamble/Preamble_Miscellaneous}
 
 % Add global hyphenation rules to avoid unwelcome linebreaks:
 \hyphenation{Bu-shong Della-Vigna inter-tem-po-ral K\H{o}-szegi Spren-ger Bala-krish-nan}
 
-\bibliography{Library}
+\bibliography{Library}	
 
 
 
@@ -78,7 +81,7 @@
 	\subimport*{1_Example_Content/9_Appendix/}{siunitx_Examples}
 	\FloatBarrier
 	\newpage
-	%\begin{comment}
+	%\begin{ignore}
 		{\setlength{\parindent}{0cm}
 		%\setlength{\mathindent}{0cm}  % Only for ``fleqn'' option
 
@@ -107,8 +110,8 @@
 			Sans Serif Bold%
 		}}
 		{\sffamily\bfseries\input{2_Math_Tests/mathtest}}
-	}
-	%\end{comment}
+		}
+	%\end{ignore}
 \end{appendices}
 
 \newpage

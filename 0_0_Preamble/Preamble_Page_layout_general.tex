@@ -349,18 +349,43 @@
 	retain-explicit-plus
 }
 \newcolumntype{T}[1]{@{}S[table-format = #1, table-space-text-pre = {***}, table-space-text-post = {***}]}
-% From https://tex.stackexchange.com/questions/213605/siunitx-does-not-detect-semi-bold-font
+% Fix incompatibility of siunitx (v2018-05-17) with FiraSans (v2019-06-06),
+% based on https://tex.stackexchange.com/questions/213605/siunitx-does-not-detect-semi-bold-font
 % ==>
 \ExplSyntaxOn\makeatletter
-\cs_generate_variant:Nn \tl_if_in:nnTF { noTF }
-\cs_set_protected:Npn \__siunitx_detect_font_weight_text: {
-  \tl_if_in:noTF { sb bf xb } { \f@series }
-    {
-      \cs_set:Nn \__siunitx_font_weight: { \boldmath \use:c { \f@series series } }
-    }
-    {
-      \cs_set:Nn \__siunitx_font_weight: { \use:c { \f@series series } }
-    }
+\newcommand{\thisseries}{\f@series}
+\cs_set_protected:Npn \__siunitx_detect_font_weight_text: {%
+	\let\origmdseries\mdseries@sf%
+	\let\origbfseries\bfseries@sf%
+	\let\currentseries\f@series%
+	\edef\XcurrentseriesX{/\f@series/}%
+		% Store the current fontseries but enclose it in some kind of delimiter,
+		% because otherwise one-letter fontseries may erroneously triger \boldmath
+		% (for instance, ``m'' is contained in ``semibold'')
+	% Use \boldmath for any weight above semibold:
+	\tl_if_in:noTF
+		{ /sb/ /b/ /bx/ /eb/ /ub/ /bold/ /extrabold/ /ultrabold/ /heavy/ /black/ /demibold/ /semibold/ }
+		{ \XcurrentseriesX }
+		{% if included in the above list: switch to \mathversion{bold}
+			\cs_set:Nn \__siunitx_font_weight: {%
+				\boldmath%
+				\let\bfseries@sf\currentseries%
+					% necessary because siunitx in some way accesses
+					% \bfseries@sf from the mweights package
+				\fontseries{\bfseries@sf}\selectfont%
+			}%
+			\let\bfseries@sf\origbfseries%  % restore \bfseries@sf
+		}
+		{% if not: use \mathversion{normal}
+			\cs_set:Nn \__siunitx_font_weight: {%
+				\unboldmath
+				\let\mdseries@sf\currentseries%
+					% necessary because siunitx in some way accesses
+					% \bfseries@sf from the mweights package
+				\fontseries{\mdseries@sf}\selectfont%
+			}%
+			\let\mdseries@sf\origmdseries%  % restore \mdseries@sf
+		}%
 }
 \makeatother\ExplSyntaxOff
 % <==

@@ -19,10 +19,6 @@
 	\vfill%
 	February 2016 \\
 	This version: \today%
-	\commentholger{\textbf{Commenting is on!} \\
-	\tiny To~switch it off, activate \texttt{\textbackslash input\{ \\
-	0\_0\_Preamble/Preamble\_commenting\_off\}} \\
-	in the master file.}
 }
 
 \maketitle
@@ -31,6 +27,13 @@
 
 \begin{abstract}%
 	\input{0_1_Titlepage_paper/Abstract}%
+	\!\comment[id=HG]{
+		\textbf{Commenting is on!} \\
+		To~switch it off, activate
+		\texttt{\textbackslash PassOptionsToPackage\\
+			\{final\}\{changes\}} \\
+		in the master file.%
+	}
 \end{abstract}
 
 \vfill

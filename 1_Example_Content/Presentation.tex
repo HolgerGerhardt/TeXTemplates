@@ -140,7 +140,7 @@
 		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle
 	\end{block}%
 	
-	\begin{exampleblock}{An~Exemplary Example}
+	\begin{exampleblock}{An~exemplary example}
 		I~am the \texttt{exampleblock} environment. Use me for examples. I~am really exemplary.
 	\end{exampleblock}
 	
@@ -157,7 +157,7 @@
 		The \texttt{definition} environment. Upright.
 	\end{definition}
 
-	\begin{theorem}[Theorem's Name]
+	\begin{theorem}[Theorem's mame]
 		The \texttt{theorem} environment. Italic.
 	\end{theorem}%
 
@@ -282,7 +282,7 @@
 	\def\rmd{\mathup{d}}
 	Only variables are set in italics according to \caps{ISO} style---hence, we use upright ``$\rmd$,'' ``$\mathup{e}$,'' and ``$\mathup{\pi}$'' (\texttt{\textbackslash mathup\{d\}}, \texttt{\textbackslash mathup\{e\}}, and \texttt{\textbackslash mathup\{\textbackslash pi\}}, respectively).
 	
-	\begin{theorem}[Simplest form of the \emph{Central Limit Theorem}]
+	\begin{theorem}[simplest form of the \emph{Central Limit Theorem}]
 		\ifnum \serifbodyfont=0
 			\sffamily
 		\fi
@@ -412,7 +412,6 @@
 \end{frame}
 
 
-
 \section{Discussion}
 
 
@@ -477,7 +476,7 @@ On this slide, \textbf{no} number should be included in the frame title.
 \end{frame}
 
 
-\begin{frame}[allowframebreaks]{\titleprefix: Testing the \texttt{allowframebreaks} option}
+\begin{frame}[allowframebreaks]{\titleprefix: Testing the \texttt{allowframebreaks} Option}
 
 \renewcommand{\blindmarkup}[1]{\emph{#1}}
 
@@ -489,6 +488,16 @@ On this slide, ``(1/3)'' should appear in the frame title.
 
 \parstart{\framebreak}
 \Blindtext[2]
+
+\end{frame}
+
+
+\section{Math ``Torture'' Test}
+
+
+\begin{frame}[allowframebreaks]{\insertsection}
+	
+\input{2_Math_Tests/mathtest_TeXbook_beamer}
 
 \end{frame}
 

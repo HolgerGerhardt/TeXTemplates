@@ -80,6 +80,26 @@
 \let \savermbfseries \bfdefault
 % <==
 
+% mathdesign provides upright Greek letters as \alphaup, \Betaup, etc. while other packages
+% (e.g., unicode-math) call these \upalpha, \upBeta, etc. We make also the latter available.
+% ==>
+\makeatletter
+\@for\@tempa:=%
+	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+	\do{%
+		\expandafter\let\csname up\@tempa\expandafter\endcsname\csname\@tempa up\endcsname%
+	}%
+\makeatother
+% <==
+
+% Provide a \nequiv symbol
+\ifx\nequiv\undefined
+	\newcommand{\nequiv}{\not\equiv}
+\fi
+
 % Use Bitstream Charter as the text font
 % ==>
 \usepackage[scaled=.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport

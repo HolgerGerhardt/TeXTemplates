@@ -82,7 +82,8 @@
 	\FloatBarrier
 	\newpage
 	%\begin{ignore}
-		{\setlength{\parindent}{0cm}
+	{%
+		\setlength{\parindent}{0cm}
 		%\setlength{\mathindent}{0cm}  % Only for ``fleqn'' option
 
 		\input{2_Math_Tests/mathtest_defs}
@@ -91,26 +92,42 @@
 		\renewcommand{\showfamily}{{\color{magenta}%
 			Serif%
 		}}
-		{\rmfamily\mdseries\input{2_Math_Tests/mathtest}}
+		{\rmfamily\mdseries%
+		 \input{2_Math_Tests/mathtest}%
+		 \subsection{Math ``Torture'' Test \showfamily}
+		 \input{2_Math_Tests/mathtest_TeXbook}%
+	 	}
 
 		\newpage
 		\renewcommand{\showfamily}{{\color{magenta}%
 			Serif Bold%
 		}}
-		{\rmfamily\bfseries\input{2_Math_Tests/mathtest}}
+		{\rmfamily\bfseries%
+		 \input{2_Math_Tests/mathtest}%
+		 \subsection{Math ``Torture'' Test \showfamily}
+		 \input{2_Math_Tests/mathtest_TeXbook}%
+		}
 
 		\newpage
 		\renewcommand{\showfamily}{{\color{magenta}%
 			Sans Serif%
 		}}
-		{\sffamily\mdseries\input{2_Math_Tests/mathtest}}
+		{\sffamily\mdseries%
+		 \input{2_Math_Tests/mathtest}%
+		 \subsection{Math ``Torture'' Test \showfamily}
+		 \input{2_Math_Tests/mathtest_TeXbook}%
+		}
 
 		\newpage
 		\renewcommand{\showfamily}{{\color{magenta}%
 			Sans Serif Bold%
 		}}
-		{\sffamily\bfseries\input{2_Math_Tests/mathtest}}
-		}
+		{\sffamily\bfseries%
+		 \input{2_Math_Tests/mathtest}%
+		 \subsection{Math ``Torture'' Test \showfamily}
+		 \input{2_Math_Tests/mathtest_TeXbook}%
+		}%
+	}
 	%\end{ignore}
 \end{appendices}
 

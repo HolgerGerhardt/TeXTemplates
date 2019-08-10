@@ -117,7 +117,11 @@
 	\renewcommand{\showfamily}{{\color{magenta}%
 		Serif%
 	}}
-	{\rmfamily\mdseries\input{2_Math_Tests/mathtest}}
+	{\rmfamily\mdseries%
+	 \input{2_Math_Tests/mathtest}%
+	 \subsection{Math ``Torture'' Test \showfamily}
+	 \input{2_Math_Tests/mathtest_TeXbook}%
+	}
 \end{appendices}
 
 \clearpage % Print References at a new page

@@ -1,0 +1,169 @@
+Most of the following examples are taken from \textit{The \TeX book} \citep[][see \url{https://ctan.org/pkg/texbook}]{Knuth1984} and were adapted for \LaTeX\ from Karl Berry's torture test for plain \TeX\ math fonts.
+
+\noindent $x + y - z$, \quad $x + y * z$, \quad $z * y / z$, \quad 
+$(x+y)(x-y) = x^2 - y^2$, 
+
+\noindent $x \times y \cdot z = [x\, y\, z]$, \quad $x\circ y \bullet z$, \quad
+$x\cup y \cap z$, \quad $x\sqcup y \sqcap z$, \quad
+
+\noindent $x \vee y \wedge z$, \quad $x\pm y\mp z$, \quad
+$x=y/z$, \;\; $x:=y$, \;\; $x\le y \ne z$, \;\; $x \sim y \simeq z$
+$x \equiv y \nequiv z$, \;\; $x\subset y \subseteq z$
+
+\noindent $\sin2\theta=2\sin\theta\cos\theta$, \quad
+$\hbox{O}(n\log n\log n)$, \quad
+$\Pr(X>x)=\exp(-x/\mu)$,
+
+\noindent $\bigl(x\in A(n)\bigm|x\in B(n)\bigr)$, \quad
+$\bigcup_n X_n\bigm\|\bigcap_n Y_n$
+
+% page 178
+
+\noindent In-text matrices $\binom{1\,1}{0\,1}$ and $\bigl(\genfrac{}{}{0pt}{}{a}{1}\genfrac{}{}{0pt}{}{b}{m}\genfrac{}{}{0pt}{}{c}{n}\bigr)$.
+
+\framebreak
+% page 142
+
+$$a_0+\frac1{\displaystyle a_1 +
+	{\strut \frac1{\displaystyle a_2 +
+			{\strut \frac1{\displaystyle a_3 +
+					{\strut \frac1{\displaystyle a_4}}}}}}}$$
+% page 143
+$$\binom{p}{2}x^2y^{p-2} - \frac1{1 - x}\frac{1}{1 - x^2}
+=
+\frac{a+1}{b}\bigg/\frac{c+1}{d}.$$
+%% page 145
+$$\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+x}}}}}$$
+$$\sqrt[n]{1+\sqrt[k]{1+\sqrt[5]{1+\sqrt[4]{1+\sqrt[3]{1+x}}}}}$$
+
+\framebreak
+%% page 147
+
+$$\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)
+\bigl|\varphi(x+iy)\bigr|^2=0$$
+
+%% page 149
+
+% $$\pi(n)=\sum_{m=2}^n\left\lfloor\biggl(\sum_{k=1}^{m-1}\bigl
+% \lfloor(m/k)\big/\lceil m/k\rceil\bigr\rfloor\biggr)^{-1}\right\rfloor.$$
+
+$$\pi(n)=\sum_{m=2}^n\left\lfloor\Biggl(\sum_{k=1}^{m-1}\bigl
+\lfloor(m/k)\big/\lceil m/k\rceil\bigr\rfloor\Biggr)^{-1}\right\rfloor.$$
+
+% page 168
+
+$$\int_0^\infty \frac{t - i b}{t^2 + b^2}e^{iat}\,\mathup{d}t=e^{ab}E_1(ab), \quad
+a,b > 0.$$
+
+% page 176
+
+$$\mathbf{A} \coloneq \begin{pmatrix}x-\lambda&1&0\\
+0&x-\lambda&1\\
+0&0&x-\lambda\end{pmatrix}.$$
+
+\framebreak
+
+$$\left\lgroup\begin{matrix}a&b&c\\ d&e&f\\\end{matrix}\right\rgroup
+\left\lgroup\begin{matrix}u&x\cr v&y\cr w&z\end{matrix}\right\rgroup$$
+% page 177
+$$\mathbf{A} = \begin{pmatrix}a_{11}&a_{12}&\ldots&a_{1n}\\
+a_{21}&a_{22}&\ldots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots\\
+a_{m1}&a_{m2}&\ldots&a_{mn}\end{pmatrix}$$
+$$\mathbf{M}=\bordermatrix{&C&I&C'\cr
+	C&1&0&0\cr I&b&1-b&0\cr C'&0&a&1-a}$$
+
+\framebreak
+%% page 186
+
+$$\sum_{n=0}^\infty a_nz^n\quad\hbox{converges if}\quad
+|z|<\Bigl(\limsup_{n\to\infty}\root n\of{|a_n|}\,\Bigr)^{-1}.$$
+
+$$\frac{f(x+\Delta x)-f(x)}{\Delta x}\to f'(x)
+\qquad \hbox{as $\Delta x\to0$.}$$
+
+$$\|u_i\|=1,\qquad u_i\cdot u_j=0\quad\hbox{if $i\ne j$.}$$
+
+%% page 191
+
+$$\hbox{The confluent image of}\quad
+\begin{Bmatrix}\hbox{an arc}\hfill\\\hbox{a circle}\hfill\\
+\hbox{a fan}\hfill\\\end{Bmatrix}
+\quad\hbox{is}\quad
+\begin{Bmatrix}\hbox{an arc}\hfill\\
+\hbox{an arc or a circle}\hfill\\
+\hbox{a fan or an arc}\hfill\end{Bmatrix}.$$
+
+\framebreak
+%% page 191
+
+\begin{align*}
+T(n)\le T(2^{\lceil\lg n\rceil})
+&\le c(3^{\lceil\lg n\rceil}-2^{\lceil\lg n\rceil})\\
+&<3c\cdot3^{\lg n}\\
+&=3c\,n^{\lg3}.
+\end{align*}
+%\begin{align*}
+%\left\{%
+%\begin{gathered}\alpha&=f(z)\\ \beta&=f(z^2)\\ \gamma&=f(z^3)
+%\end{gathered}
+%\right\}
+%\qquad
+%\left\{%
+%\begin{gathered}
+%x&=\alpha^2-\beta\\ y&=2\gamma
+%\end{gathered}
+%\right\}%
+%\end{align*}
+%$$\left\{
+%\begin{align}
+%\alpha&=f(z)\cr \beta&=f(z^2)\cr \gamma&=f(z^3)\\
+%%\end{align}
+%\right\}
+%\qquad
+%\left\{
+%%\begin{align}
+%x&=\alpha^2-\beta\cr y&=2\gamma\\
+%\end{align}
+%\right\}.$$
+%%% page 192
+\begin{align*}
+\begin{aligned}
+(x+y)(x-y)&=x^2-xy+yx-y^2\\
+&=x^2-y^2\\
+(x+y)^2&=x^2+2xy+y^2.
+\end{aligned}
+\end{align*}
+
+\framebreak
+%% page 192
+
+\begin{align*}
+\begin{aligned}
+\biggl(\int_{-\infty}^\infty e^{-x^2}\,\mathup{d}x\biggr)^2
+&=\int_{-\infty}^\infty\int_{-\infty}^\infty e^{-(x^2+y^2)}\,\mathup{d}x\,\mathup{d}y\\
+&=\int_0^{2\piup}\int_0^\infty e^{-r^2}\,\mathup{d}r\,\mathup{d}\theta\\
+&=\int_0^{2\piup}\biggl(e^{-\frac{r^2}{2}}
+\biggl|_{r=0}^{r=\infty}\,\biggr)\,\mathup{d}\theta\\
+&=\piup.
+\end{aligned}
+\end{align*}
+
+\framebreak
+%% page 197
+
+$$\prod_{k\ge0}\frac{1}{(1-q^kz)}=
+\sum_{n\ge0}z^n\bigg/\!\!\prod_{1\le k\le n}(1-q^k).$$
+
+$$\sum_{\substack{\scriptstyle 0< i\le m\\\scriptstyle0<j\le n}}p(i,j) \,\ne
+%
+% $$\sum_{i=1}^p \sum_{j=1}^q \sum_{k=1}^r a_{ij} b_{jk} c_{ki}$$
+%
+\sum_{i=1}^p \sum_{j=1}^q \sum_{k=1}^r a_{ij} b_{jk} c_{ki} \,\ne
+%
+\sum_{\substack{\scriptstyle 1\le i\le p \\ \scriptstyle 1\le j\le q\\
+		\scriptstyle 1\le k\le r}} a_{ij} b_{jk} c_{ki}$$
+
+$$\max_{1\le n\le m}\log_2P_n \quad \hbox{and} \quad
+\lim_{x\to0}\frac{\sin x}{x}=1$$
+$$p_1(n)=\lim_{m\to\infty}\sum_{\nu=0}^\infty\bigl(1-\cos^{2m}(\nu!^n\piup/n)\bigr)$$

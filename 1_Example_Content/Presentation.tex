@@ -137,16 +137,36 @@
 \begin{frame}{\titleprefix: Beamer \texttt{block} Environments}
 
 	\begin{block}{Block title example: 0123456789 äöüß ÄÖÜ Often finding flowers in official fjords}
-		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle
+		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
 	\end{block}%
 	
 	\begin{exampleblock}{An~exemplary example}
-		I~am the \texttt{exampleblock} environment. Use me for examples. I~am really exemplary.
+		I~am the \texttt{exampleblock} environment. Use me for examples.\strut  % \strut so that the bottom rule is not too close to the text
 	\end{exampleblock}
 	
 	\begin{alertblock}{Summary: Things to remember}
-		The \texttt{alertblock} environment. Use this environment for really important stuff. The \texttt{alertblock} environment.
+		The \texttt{alertblock} environment. Use this environment for really important stuff. The \texttt{alertblock} environment.\strut  % \strut so that the bottom rule is not too close to the text
 	\end{alertblock}
+
+\end{frame}
+
+
+\begin{frame}{\titleprefix: Beamer \texttt{block} Environment with Different Colors}
+
+	\begin{block}{A~\texttt{block} in the default color}
+		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
+	\end{block}%
+
+	{%
+	\renewcommand{\framedblockcolor}{UBonnYellow}%
+	\begin{block}{A~\texttt{block} in yellow}
+		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
+	\end{block}%
+	}
+
+	\begin{block}{A~\texttt{block} in the default color}
+		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
+	\end{block}%
 
 \end{frame}
 

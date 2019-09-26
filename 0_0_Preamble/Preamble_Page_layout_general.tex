@@ -465,14 +465,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 % General settings:
 \setlist{leftmargin=\parindent, listparindent=\parindent, itemsep=\smallskipamount, parsep=0pt}
 %\setlist[1]{topsep=\medskipamount, partopsep=0pt}
 % Type-specific settings
-\setlist[enumerate]{labelwidth=\parindent, labelindent=0pt, labelsep=!, align=left}
+%\setlist[enumerate]{labelwidth=\parindent, labelindent=0pt, labelsep=!, align=left}
+\setlist[enumerate]{leftmargin=\parindent, labelsep=*}
 	% Fine as long as the list does not include more than 9 items.
-\setlist[enumerate, 2]{label=\alph*.}
+\setlist[enumerate, 1]{label=(\arabic*), labelindent=-0.5pt}
+\setlist[enumerate, 2]{label=\alph*., align=right}
 	% Taken from the Chicago Manual of Style (16th ed., Section 6.126)
 \setlist[enumerate, 3]{label=\roman*., align=right, widest*=3, labelsep=0.3\parindent}
 \setlist[itemize]{labelsep=0.435\parindent}

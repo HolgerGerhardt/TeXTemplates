@@ -31,18 +31,20 @@
 
 \usepackage{calc}
 
+\usepackage{tcolorbox}
+
 \usepackage[LY1, LGR, TS1, T1]{fontenc}
-	% LGR (Greek) is needed to enable the ``sansserif math'' features.
+% LGR (Greek) is needed to enable the ``sansserif math'' features.
 \usepackage[utf8]{inputenc}
 
 \usepackage{tabularx}
 
 \ifxetex
-	\usepackage[protrusion=true, expansion=false]{microtype}
+\usepackage[protrusion=true, expansion=false]{microtype}
 \else
-	\usepackage[protrusion=true, expansion=false, kerning=true]{microtype}
+\usepackage[protrusion=true, expansion=false, kerning=true]{microtype}
 \fi
-	% The microtype package enables so-called hanging punctuation. That is, when a punctuation sign like ":", ".", "-", etc. is found at the beginning or end of a line, it is protruded a little into the page margin. This results in "optical margin alignment," because the protrusion makes the margin alignment look straighter.
+% The microtype package enables so-called hanging punctuation. That is, when a punctuation sign like ":", ".", "-", etc. is found at the beginning or end of a line, it is protruded a little into the page margin. This results in "optical margin alignment," because the protrusion makes the margin alignment look straighter.
 
 
 \definecolor{darkgray}{rgb}{0.4,0.4,0.4}
@@ -56,7 +58,7 @@
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 
 \usepackage[ngerman, american, USenglish]{babel}
-	% German and US English hyphenation and quotation marks
+% German and US English hyphenation and quotation marks
 \selectlanguage{USenglish}
 
 \usepackage{multirow}
@@ -75,7 +77,7 @@
 %	% Enables manipulating LaTeX commmands via \preto, \appto, \patchcmd, etc.
 %	% loaded automatically by beamer
 \usepackage{xpatch}
-	% Enables manipulating LaTeX commmands via \xpatchcmd etc.
+% Enables manipulating LaTeX commmands via \xpatchcmd etc.
 
 \hypersetup{%
 	pdfpagemode=FullScreen,
@@ -95,18 +97,18 @@
 \input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
 
 \ifnum \serifbodyfont=0
-	\setbeamerfont{normal text}{family=\sffamily}
-	\renewcommand{\familydefault}{\savesffamily}
-	\renewcommand{\mddefault}{\savesfmdseries}
-	\renewcommand{\bfdefault}{\savesfbfseries}
+\setbeamerfont{normal text}{family=\sffamily}
+\renewcommand{\familydefault}{\savesffamily}
+\renewcommand{\mddefault}{\savesfmdseries}
+\renewcommand{\bfdefault}{\savesfbfseries}
 \else
-	\usefonttheme{serif}
-	\setbeamerfont{normal text}{family=\rmfamily}
+\usefonttheme{serif}
+\setbeamerfont{normal text}{family=\rmfamily}
 \fi
 \ifnum \serifheadingfont=0
-	\setbeamerfont{structure}{family=\sffamily, shape=\upshape, series=\bfseries}
+\setbeamerfont{structure}{family=\sffamily, shape=\upshape, series=\bfseries}
 \else
-	\setbeamerfont{structure}{family=\rmfamily, shape=\upshape, series=\bfseries}
+\setbeamerfont{structure}{family=\rmfamily, shape=\upshape, series=\bfseries}
 \fi
 
 % Make frame titles and headings bold
@@ -114,9 +116,9 @@
 \usefonttheme{professionalfonts}
 
 \setbeamerfont{footline}
-	{parent=structure, size=\tiny, series=\mdseries}
+{parent=structure, size=\tiny, series=\mdseries}
 \setbeamercolor{footline}
-	{fg=SpotColor}
+{fg=SpotColor}
 
 %% Use the bm (= boldmath) package for better support of setting math in bold ==>
 %% Prevent the "Too many math fonts used" error:
@@ -129,22 +131,22 @@
 
 \usepackage{mathtools}
 %\mathtoolsset{centercolon}
-	% This makes the compilation fail in combination with tikz. See
-	% https://tex.stackexchange.com/questions/89467/why-does-pdftex-hang-on-this-file.
+% This makes the compilation fail in combination with tikz. See
+% https://tex.stackexchange.com/questions/89467/why-does-pdftex-hang-on-this-file.
 %% Inspired by https://tex.stackexchange.com/questions/251460/how-to-put-symbols-of-equal-size-on-top-of-each-other
 \newcommand{\succeqq}{%
-  \mathrel{%
-    \vcenter{\offinterlineskip
-      \ialign{##\cr$\succ$\cr\noalign{\kern 1pt}$=$\cr}%
-    }%
-  }%
+	\mathrel{%
+		\vcenter{\offinterlineskip
+			\ialign{##\cr$\succ$\cr\noalign{\kern 1pt}$=$\cr}%
+		}%
+	}%
 }
 \newcommand{\nsucceqq}{\mathrel{\not\succeqq}}
 \newcommand*{\coloneqq}{\mathrel{%
-	\mathrel{%
-		\raisebox{0.15ex}{\scalebox{0.85}{\ensuremath{:}}}\hspace{-0.2pt}%
-	}%
-	=%
+		\mathrel{%
+			\raisebox{0.15ex}{\scalebox{0.85}{\ensuremath{:}}}\hspace{-0.2pt}%
+		}%
+		=%
 }}
 
 \input{0_0_Preamble/Preamble_Sansserif_math}
@@ -166,11 +168,11 @@
 
 
 \setbeamerfont{title}
-	{parent=structure, size=\LARGE}
+{parent=structure, size=\LARGE}
 \setbeamerfont{subtitle}
-	{parent=structure, size=\Large, series=\mdseries}
+{parent=structure, size=\Large, series=\mdseries}
 \setbeamerfont{frametitle}
-	{parent=structure, size=\large}
+{parent=structure, size=\large}
 
 % For convenience, let the ``paperheight'' of the slides be identical,
 % no matter what the aspect ratio of the slides ==>
@@ -180,11 +182,11 @@
 	\beamer@paperwidth 12.00cm%
 	\beamer@paperheight 9.00cm%
 	\setbeamerfont{title}
-		{parent=structure, size*={14}{20}}
+	{parent=structure, size*={14}{20}}
 	\setbeamerfont{subtitle}
-		{parent=structure, size*={13}{20}}
+	{parent=structure, size*={13}{20}}
 	\setbeamerfont{frametitle}
-		{parent=structure, size*={11}{14}}
+	{parent=structure, size*={11}{14}}
 }{}
 %% 14:9 aspect ratio: Nothing needs to be changed
 %\@ifclasswith{beamer}{aspectratio=149}{%
@@ -214,7 +216,7 @@
 % <==
 
 \setlength{\parskip}{\medskipamount}
-	% Inserts some space between paragraphs
+% Inserts some space between paragraphs
 
 % Enable hyphenation on Beamer slides:
 \usepackage{ragged2e}
@@ -292,31 +294,31 @@
 	% <==
 	% Outline with current section highlighted in the ``headline'' ==>
 	\ifnum \showsectionnavigation=0
-		\setbeamertemplate{headline}{}
+	\setbeamertemplate{headline}{}
 	\else
-		\setbeamertemplate{headline}{%
-			\hspace{\marginleft}%
-			\begin{beamercolorbox}[wd=\linewidth, ht=5pt, dp=2pt]{headline}%
-				\insertsectionnavigationhorizontal{\linewidth}{\hspace{0.04\linewidth}}{\hspace{0.04\linewidth}}%
-			\end{beamercolorbox}%
-			\newline
-			\begin{beamercolorbox}[wd=\paperwidth, ht=15pt, dp=0pt]{headlinecover}%
-				% Adds a white bar to cover stuff that protrudes from the above color box.
-			\end{beamercolorbox}%
+	\setbeamertemplate{headline}{%
+		\hspace{\marginleft}%
+		\begin{beamercolorbox}[wd=\linewidth, ht=5pt, dp=2pt]{headline}%
+			\insertsectionnavigationhorizontal{\linewidth}{\hspace{0.04\linewidth}}{\hspace{0.04\linewidth}}%
+		\end{beamercolorbox}%
+		\newline
+		\begin{beamercolorbox}[wd=\paperwidth, ht=15pt, dp=0pt]{headlinecover}%
+			% Adds a white bar to cover stuff that protrudes from the above color box.
+		\end{beamercolorbox}%
+	}
+	\setlength{\fboxrule}{0.25pt}\setlength{\fboxsep}{7.5pt}%
+	\setbeamertemplate{section in head/foot}{%
+		\settowidth{\navigationwidth}{\bfseries\insertsectionhead}%
+		\fcolorbox{SpotColor!25}{SpotColor}{%
+			\makebox[\navigationwidth]{\color{white}\bfseries\insertsectionhead}%
+		}%
+	}
+	\setbeamertemplate{section in head/foot shaded}{%
+		\settowidth{\navigationwidth}{\bfseries\insertsectionhead}%
+		\fcolorbox{SpotColor}{SpotColor}{%
+			\makebox[\navigationwidth]{\color{white}\mdseries\insertsectionhead}%
 		}
-		\setlength{\fboxrule}{0.25pt}\setlength{\fboxsep}{7.5pt}%
-		\setbeamertemplate{section in head/foot}{%
-			\settowidth{\navigationwidth}{\bfseries\insertsectionhead}%
-			\fcolorbox{SpotColor!25}{SpotColor}{%
-				\makebox[\navigationwidth]{\color{white}\bfseries\insertsectionhead}%
-			}%
-		}
-		\setbeamertemplate{section in head/foot shaded}{%
-			\settowidth{\navigationwidth}{\bfseries\insertsectionhead}%
-			\fcolorbox{SpotColor}{SpotColor}{%
-				\makebox[\navigationwidth]{\color{white}\mdseries\insertsectionhead}%
-			}
-		}
+	}
 	\fi
 	% <==
 }
@@ -344,13 +346,13 @@
 
 \setbeamertemplate{button}{%
 	\tikz
-		\node[
-			inner xsep=3pt,
-			inner ysep=2pt,
-			draw=structure!100,
-			fill=structure!100,
-			rounded corners=1.5pt
-		]{\raisebox{1.5pt}{\usebeamerfont{structure}\insertbuttontext}};%
+	\node[
+	inner xsep=3pt,
+	inner ysep=2pt,
+	draw=structure!100,
+	fill=structure!100,
+	rounded corners=1.5pt
+	]{\raisebox{1.5pt}{\usebeamerfont{structure}\insertbuttontext}};%
 }
 
 %\renewcommand{\texteuro}{\fontencoding{TS1}\selectfont\char"BF\fontencoding{T1}\selectfont}
@@ -366,7 +368,7 @@
 \beamer@sectionstartframe=1
 \apptocmd{\beamer@section}{%
 	\addtocontents{nav}{\protect\headcommand{%
-		\protect\beamer@sectionframes{\the\beamer@sectionstartframe}{\the\c@framenumber}}}%
+			\protect\beamer@sectionframes{\the\beamer@sectionstartframe}{\the\c@framenumber}}}%
 }{}{}
 \apptocmd{\beamer@section}{%
 	\beamer@sectionstartframe=\c@framenumber\advance\beamer@sectionstartframe by1\relax%
@@ -380,11 +382,11 @@
 \def\beamer@sectionframes#1#2{%
 	\ifnum\c@framenumber<#1%
 	\else%
-		\ifnum\c@framenumber>#2%
-		\else%
-			\gdef\beamer@startframeofsection{#1}%
-			\gdef\beamer@endframeofsection{#2}%
-		\fi%
+	\ifnum\c@framenumber>#2%
+	\else%
+	\gdef\beamer@startframeofsection{#1}%
+	\gdef\beamer@endframeofsection{#2}%
+	\fi%
 	\fi%
 }
 \newcommand\insertsectionstartframe{\beamer@startframeofsection}
@@ -415,9 +417,9 @@
 \makeatletter
 \defbeamertemplate*{frametitle continuation}{only if multiple}{%
 	\ifnum \numexpr\beamer@endpageofframe+1-\beamer@startpageofframe\relax > 1
-		\textmd{(%
-			\insertcontinuationcount/%
-			\the\numexpr\beamer@endpageofframe+1-\beamer@startpageofframe%
+	\textmd{(%
+		\insertcontinuationcount/%
+		\the\numexpr\beamer@endpageofframe+1-\beamer@startpageofframe%
 		)}%
 	\fi%
 }
@@ -438,45 +440,45 @@
 
 % \setbeamerfont{title} and \setbeamerfont{subtitle} already executed above!
 \setbeamerfont{author}
-	{parent=normal text, size=\large, series=\mdseries, shape=\upshape}
+{parent=normal text, size=\large, series=\mdseries, shape=\upshape}
 \setbeamercolor{author}
-	{parent=normal text}
+{parent=normal text}
 \setbeamerfont{institute}
-	{parent=normal text, size=\small, series=\mdseries, shape=\itshape}
+{parent=normal text, size=\small, series=\mdseries, shape=\itshape}
 \setbeamercolor{institute}
-	{parent=normal text}
+{parent=normal text}
 \setbeamerfont{date}
-	{parent=structure, size=\normalsize, series=\bfseries}
+{parent=structure, size=\normalsize, series=\bfseries}
 \setbeamercolor{date}
-	{parent=normal text}
+{parent=normal text}
 
 \makeatletter
 \setbeamertemplate{title page}{
 	\begin{minipage}[c][6.75cm]{\textwidth}%
 		\raggedright%
 		\ifx\inserttitlegraphic\@empty\else%
-			\inserttitlegraphic%
+		\inserttitlegraphic%
 		\fi
 		\vfill
 		\begingroup
 		\ifx\inserttitle\@empty\else%
-			\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par%
+		\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par%
 		\fi
 		\ifx\insertsubtitle\@empty\else%
-			\smallskip
-			\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par%
+		\smallskip
+		\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par%
 		\fi
 		\ifx\beamer@shortauthor\@empty\else%
-			\vspace{\fill}
-			\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor%
+		\vspace{\fill}
+		\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor%
 		\fi
 		\ifx\insertinstitute\@empty\else%
-			\vspace{\fill}
-			\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute%
+		\vspace{\fill}
+		\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute%
 		\fi
 		\ifx\insertdate\@empty\else%
-			\vspace{\fill}
-			\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate%
+		\vspace{\fill}
+		\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate%
 		\fi
 		\endgroup
 		\vfill
@@ -526,10 +528,10 @@
 
 \makeatletter
 \patchcmd{\beamer@sectionintoc}
-	{\vfill}
-	{\medskip}
-	{}
-	{}
+{\vfill}
+{\medskip}
+{}
+{}
 \makeatother
 
 
@@ -540,7 +542,7 @@
 %%%%%%%%%%%%%%
 
 
-% Put border around blokc, exampleblock, and alertblock
+% Put border around block, exampleblock, and alertblock
 % ==>
 
 \usepackage{mdframed}
@@ -549,8 +551,37 @@
 \newlength{\blockinnermargin}
 \setlength{\blockinnermargin}{4pt}
 
+\newcommand{\framedblockcolor}{SpotColor}  % This allows us to change the color mid-presentation
 \newcommand{\PutBorderAroundBlock}[2]{
-	\def\temp{#1}
+	\renewcommand{\framedblockcolor}{#2}%
+	\setbeamercolor*{block title}{fg=white, bg=\framedblockcolor}%
+	\setbeamercolor*{block body} {fg=black, bg=}%
+	\addtobeamertemplate{block begin}{%
+		\setbeamercolor*{item}{fg=\framedblockcolor}%
+		\begin{mdframed}[linecolor=\framedblockcolor, linewidth=0.35pt, leftmargin=0pt, innerleftmargin=0.375em, innerrightmargin=0.375em, innertopmargin=-0.01ex, innerbottommargin=4pt]%
+			\let \insertblocktitleorig \insertblocktitle%
+			\renewcommand{\insertblocktitle}{%
+				\RaggedRight%
+				\leftskip=\blockinnermargin%
+				\rightskip=\blockinnermargin%
+				\insertblocktitleorig\strut\vspace{-1.5pt}%
+					% \strut\vspace{-1.5pt} so that all single-line block titles have identical hight
+			}%
+	}{%
+		\renewcommand{\insertblocktitle}{\insertblocktitleorig}%
+		\begin{adjustwidth}{\blockinnermargin}{\blockinnermargin}%
+			\RaggedRight%
+	}%
+	\addtobeamertemplate{block end}{%
+		\end{adjustwidth}%
+	}{%
+		\end{mdframed}%
+	}%
+}
+\PutBorderAroundBlock{}{SpotColor}  % Default color of blocks is SpotColor
+
+\newcommand{\PutBorderAroundBlockExAlert}[2]{%
+	\def\temp{#1}%
 	\ifx\temp\empty
 		\def\blocktype{block }     % Trailing space is crucial!
 	\else
@@ -560,29 +591,28 @@
 	\setbeamercolor*{block title\temp}{fg=white, bg=#2}
 	\setbeamercolor*{block body\temp} {fg=black, bg=}
 	\addtobeamertemplate{\blocktype begin}{%
-		\begin{mdframed}[linecolor=#2, linewidth=0.35pt, leftmargin=0pt, innerleftmargin=0.39em, innerrightmargin=0.39em, innertopmargin=-0.01ex, innerbottommargin=5pt]%
-		\let \insertblocktitleorig \insertblocktitle%
-		\renewcommand{\insertblocktitle}{%
-			\RaggedRight%
-			\leftskip=\blockinnermargin%
-			\rightskip=\blockinnermargin%
-			\insertblocktitleorig%
-		}%
+		\begin{mdframed}[linecolor=#2, linewidth=0.35pt, leftmargin=0pt, innerleftmargin=0.375em, innerrightmargin=0.375em, innertopmargin=-0.01ex, innerbottommargin=4pt]%
+			\let \insertblocktitleorig \insertblocktitle%
+			\renewcommand{\insertblocktitle}{%
+				\RaggedRight%
+				\leftskip=\blockinnermargin%
+				\rightskip=\blockinnermargin%
+				\insertblocktitleorig\strut\vspace{-1.5pt}%
+					% \strut\vspace{-1.5pt} so that all single-line block titles have identical hight
+			}%
 	}{%
 		\renewcommand{\insertblocktitle}{\insertblocktitleorig}%
 		\begin{adjustwidth}{\blockinnermargin}{\blockinnermargin}%
-		\RaggedRight%
-	}
+			\RaggedRight%
+	}%
 	\addtobeamertemplate{\blocktype end}{%
 		\end{adjustwidth}%
 	}{%
 		\end{mdframed}%
-	}
+	}%
 }
-
-\PutBorderAroundBlock{}{SpotColor}
-\PutBorderAroundBlock{example}{ExampleColor}
-\PutBorderAroundBlock{alerted}{AlertColor}
+\PutBorderAroundBlockExAlert{example}{ExampleColor}
+\PutBorderAroundBlockExAlert{alerted}{AlertColor}
 
 % <==
 
@@ -594,7 +624,7 @@
 \setbeamerfont{theorem title}{parent=structure}
 \setbeamercolor{theorem body}{fg=black}
 \setbeamerfont{theorem body}{parent=normal text, shape=\itshape, series=\mdseries}
-	% Body of theorem, lemma, and corollary are italicized
+% Body of theorem, lemma, and corollary are italicized
 \AtBeginEnvironment{definition}{%
 	\setbeamerfont{theorem body}{parent=normal text, shape=\upshape, series=\mdseries}
 	% Body of definition is typeset in upright font
@@ -675,18 +705,18 @@
 %\useinnertheme{circles}
 
 \setbeamertemplate{enumerate items}
-	[default]
+[default]
 \setbeamertemplate{enumerate subitem}
-	{\alph{enumii}.}
+{\alph{enumii}.}
 \setbeamertemplate{enumerate subsubitem}
-	{\roman{enumiii}.}
+{\roman{enumiii}.}
 
 \setbeamertemplate{itemize item}
-	{\raisebox{-0.5pt}{\scalebox{0.95}{\textrm{\textbf{\textbullet}}}}\hspace{-0.06em}}
+{\raisebox{-0.5pt}{\scalebox{0.95}{\textrm{\textbf{\textbullet}}}}\hspace{-0.06em}}
 \setbeamertemplate{itemize subitem}
-	{\usebeamerfont{normal text}--\hspace{0.15em}}
+{\usebeamerfont{normal text}--\hspace{0.15em}}
 \setbeamertemplate{itemize subsubitem}
-	{\raisebox{1.5pt}{\tiny$\blacktriangleright$}\hspace{0.15em}}
+{\raisebox{1.5pt}{\tiny$\blacktriangleright$}\hspace{0.15em}}
 
 \setbeamerfont*{itemize/enumerate body}{size=\normalsize}
 \setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
@@ -731,7 +761,7 @@
 \arrayrulecolor{SpotColor} % Color all table rules blue
 
 \usepackage{siunitx}
-	% Allows, among others, for alignment of decimal numbers in tables at the decimal point.
+% Allows, among others, for alignment of decimal numbers in tables at the decimal point.
 \sisetup{
 	detect-all,
 	round-integer-to-decimal = true,
@@ -747,7 +777,7 @@
 	retain-explicit-plus
 }
 \newcolumntype{T}[1]
-	{@{}S[table-format = #1, table-space-text-pre = {***}, table-space-text-post = {***}]}
+{@{}S[table-format = #1, table-space-text-pre = {***}, table-space-text-post = {***}]}
 % Loading the ``siunitx'' package generates a ``too many math alphabets'' used error.
 % See https://tex.stackexchange.com/questions/452682/limit-math-alphabets-created-by-siunitx?noredirect=1&lq=1 and
 %https://tex.stackexchange.com/questions/40874/kpfonts-siunitx-and-math-alphabets
@@ -758,13 +788,13 @@
 \ExplSyntaxOn\makeatletter
 \cs_generate_variant:Nn \tl_if_in:nnTF { noTF }
 \cs_set_protected:Npn \__siunitx_detect_font_weight_text: {
-  \tl_if_in:noTF { sb bf xb } { \f@series }
-    {
-      \cs_set:Nn \__siunitx_font_weight: { \boldmath \use:c { \f@series series } }
-    }
-    {
-      \cs_set:Nn \__siunitx_font_weight: { \use:c { \f@series series } }
-    }
+	\tl_if_in:noTF { sb bf xb } { \f@series }
+	{
+		\cs_set:Nn \__siunitx_font_weight: { \boldmath \use:c { \f@series series } }
+	}
+	{
+		\cs_set:Nn \__siunitx_font_weight: { \use:c { \f@series series } }
+	}
 }
 \makeatother\ExplSyntaxOff
 % <==
@@ -774,8 +804,8 @@
 %	{parent=normal text, size=\small, series=\mdseries, shape=\itshape}
 
 \AtBeginEnvironment{table}{\vspace{-1.2ex}\small}
-	% Reduces font size in tables slightly and
-	% reduces excessive white space above tables
+% Reduces font size in tables slightly and
+% reduces excessive white space above tables
 
 
 
@@ -807,10 +837,10 @@
 	\iflistundef{pageref}
 	{}
 	{\color{UBonnGray}%
-	 \printtext[brackets]{\caps{PDF}~%
+		\printtext[brackets]{\caps{PDF}~%
 			\ifnumgreater{\value{pageref}}{1}
-				{pp.}
-				{p.}~%
+			{pp.}
+			{p.}~%
 			\printlist[pageref][-\value{listtotal}]{pageref}%
 		}%
 	}%

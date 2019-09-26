@@ -83,14 +83,14 @@
 % In various journals, third-level headings are run-in headings:
 % AER, QJE, REStud, JEEA (not Econometrica)
 \titleformat{name=\subsubsection}[runin]%
-	{}{}{0pt}{\textsf{\textbf{\thesubsubsection\quad #1\iftextterm{#1}{}{.}}}}[]
+	{}{}{0pt}{\textsf{\textbf{\thesubsubsection\quad #1\iftextterm{#1}{}{\unskip.}}}}[]
 \titleformat{name=\subsubsection, numberless}[runin]%
-	{}{}{0pt}{\textsf{\textbf{#1\iftextterm{#1}{}{.}}}}[]
+	{}{}{0pt}{\textsf{\textbf{#1\iftextterm{#1}{}{\unskip.}}}}[]
 	% for the starred version
 \titleformat{name=\paragraph, numberless}[runin]%
-	{}{}{0pt}{\textbf{#1\iftextterm{#1}{}{.}}}[]
+	{}{}{0pt}{\textbf{#1\iftextterm{#1}{}{\unskip.}}}[]
 \titleformat{name=\subparagraph, numberless}[runin]%
-	{}{}{0pt}{\textbf{#1\iftextterm{#1}{}{.}}}[]
+	{}{}{0pt}{\textbf{#1\iftextterm{#1}{}{\unskip.}}}[]
 
 \titlespacing*{\section}%  % Starred version kills indentation of the following paragraph
 	{0pt}{2\baselineskip plus 0.67\baselineskip}{1\baselineskip plus 0.5\baselineskip minus 0.33\baselineskip}

@@ -147,7 +147,7 @@
 	% So that also 3rd-level headings are numbered.
 	% Note: chapter is level 0, hence \subsubsection is actually on the 4th level.
 
-\newcommand{\TestForPunct}[1]{\iftextterm{#1}{#1}{#1.}}
+\newcommand{\TestForPunct}[1]{\iftextterm{#1}{#1}{#1\unskip.}}
 	% Adds a period if no punctuation mark is present yet
 
 \titleformat{\chapter}[display]
@@ -231,13 +231,13 @@
 \titleformat{name=\paragraph, numberless}[runin]
 	{}{}{0pt}{%
 		\textbf{%
-			#1\iftextterm{#1}{}{.}%
+			#1\iftextterm{#1}{}{\unskip.}%
 		}%
 	}[]
 \titleformat{name=\subparagraph, numberless}[runin]
 	{}{}{0pt}{%
 		\textbf{%
-			#1\iftextterm{#1}{}{.}%
+			#1\iftextterm{#1}{}{\unskip.}%
 		}%
 	}[]
 \titlespacing{\paragraph}

@@ -1,0 +1,15 @@
+\ChangesListline {comment}{Kommentiert~(UR)}{\newline \textbf {Commenting is on!} \\ To~switch it off, activate \texttt {\textbackslash PassOptionsToPackage\\ \{final\}\{changes\}} \\ in the master file.}{iii}
+\ChangesListline {deleted}{Gel\"oscht~(HG)}{, very}{5}
+\ChangesListline {comment}{Kommentiert~(HG)}{\newline \textit {Deleted:} ``, very''}{5}
+\ChangesListline {replaced}{Ersetzt~(LV)}{Of course, e}{5}
+\ChangesListline {added}{Eingef\"ugt~(HG)}{ more}{6}
+\ChangesListline {comment}{Kommentiert~(HG)}{\newline \textit {Added text}}{6}
+\ChangesListline {highlight}{Hervorgehoben~(LV)}{design}{7}
+\ChangesListline {comment}{Kommentiert~(LV)}{\newline \vspace {-\baselineskip }}{7}
+\ChangesListline {deleted}{Gel\"oscht~(HG)}{, very}{35}
+\ChangesListline {comment}{Kommentiert~(HG)}{\newline \textit {Deleted:} ``, very''}{35}
+\ChangesListline {replaced}{Ersetzt~(LV)}{Of course, e}{35}
+\ChangesListline {added}{Eingef\"ugt~(HG)}{ more}{36}
+\ChangesListline {comment}{Kommentiert~(HG)}{\newline \textit {Added text}}{36}
+\ChangesListline {highlight}{Hervorgehoben~(LV)}{design}{37}
+\ChangesListline {comment}{Kommentiert~(LV)}{\newline \vspace {-\baselineskip }}{37}

@@ -60,6 +60,7 @@
 \usepackage[ngerman, american, USenglish]{babel}
 % German and US English hyphenation and quotation marks
 \selectlanguage{USenglish}
+\usepackage[autostyle=true]{csquotes}
 
 \usepackage{multirow}
 
@@ -168,11 +169,11 @@
 
 
 \setbeamerfont{title}
-{parent=structure, size=\LARGE}
+	{parent=structure, size=\LARGE}
 \setbeamerfont{subtitle}
-{parent=structure, size=\Large, series=\mdseries}
+	{parent=structure, size=\Large, series=\mdseries}
 \setbeamerfont{frametitle}
-{parent=structure, size=\large}
+	{parent=structure, size=\large}
 
 % For convenience, let the ``paperheight'' of the slides be identical,
 % no matter what the aspect ratio of the slides ==>
@@ -182,11 +183,11 @@
 	\beamer@paperwidth 12.00cm%
 	\beamer@paperheight 9.00cm%
 	\setbeamerfont{title}
-	{parent=structure, size*={14}{20}}
+		{parent=structure, size*={16}{20}}
 	\setbeamerfont{subtitle}
-	{parent=structure, size*={13}{20}}
+		{parent=structure, size*={13.5}{17}}
 	\setbeamerfont{frametitle}
-	{parent=structure, size*={11}{14}}
+		{parent=structure, size*={11}{14}}
 }{}
 %% 14:9 aspect ratio: Nothing needs to be changed
 %\@ifclasswith{beamer}{aspectratio=149}{%
@@ -285,7 +286,7 @@
 		\hspace{\marginleft}%
 		\sliderule \vspace{1.1ex} \linebreak
 		\mbox{\hspace{\marginleft}}%
-		\textmd{\insertshortauthor: ``\insertshorttitle''}
+		\textmd{\insertshortauthor: \enquote{\insertshorttitle}}
 		\hfill%
 		\textbf{\insertframenumber/\inserttotalframenumber}%
 		\hspace{\marginright}%
@@ -331,7 +332,7 @@
 		\hspace{\marginleft}%
 		\sliderule \vspace{1.1ex} \linebreak
 		\mbox{\hspace{\marginleft}}%
-		\textmd{\phantom{\insertshortauthor: ``\insertshorttitle''}}
+		\textmd{\phantom{\insertshortauthor: \enquote{\insertshorttitle}}}
 		\hfill%
 		\phantom{\insertframenumber/\inserttotalframenumber}%
 		\hspace{\marginright}%
@@ -440,46 +441,46 @@
 
 % \setbeamerfont{title} and \setbeamerfont{subtitle} already executed above!
 \setbeamerfont{author}
-{parent=normal text, size=\large, series=\mdseries, shape=\upshape}
+	{parent=normal text, size=\large, series=\mdseries, shape=\upshape}
 \setbeamercolor{author}
-{parent=normal text}
+	{parent=normal text}
 \setbeamerfont{institute}
-{parent=normal text, size=\small, series=\mdseries, shape=\itshape}
+	{parent=normal text, size=\small, series=\mdseries, shape=\itshape}
 \setbeamercolor{institute}
-{parent=normal text}
+	{parent=normal text}
 \setbeamerfont{date}
-{parent=structure, size=\normalsize, series=\bfseries}
+	{parent=structure, size=\normalsize, series=\bfseries}
 \setbeamercolor{date}
-{parent=normal text}
+	{parent=normal text}
 
 \makeatletter
 \setbeamertemplate{title page}{
 	\begin{minipage}[c][6.75cm]{\textwidth}%
 		\raggedright%
 		\ifx\inserttitlegraphic\@empty\else%
-		\inserttitlegraphic%
+			\inserttitlegraphic%
 		\fi
 		\vfill
 		\begingroup
-		\ifx\inserttitle\@empty\else%
-		\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par%
-		\fi
-		\ifx\insertsubtitle\@empty\else%
-		\smallskip
-		\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par%
-		\fi
-		\ifx\beamer@shortauthor\@empty\else%
-		\vspace{\fill}
-		\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor%
-		\fi
-		\ifx\insertinstitute\@empty\else%
-		\vspace{\fill}
-		\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute%
-		\fi
-		\ifx\insertdate\@empty\else%
-		\vspace{\fill}
-		\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate%
-		\fi
+			\ifx\inserttitle\@empty\else%
+				\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par%
+			\fi
+			\ifx\insertsubtitle\@empty\else%
+				\medskip
+				\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par%
+			\fi
+			\ifx\beamer@shortauthor\@empty\else%
+				\vspace{\fill}
+				\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par%
+			\fi
+			\ifx\insertinstitute\@empty\else%
+				\vspace{\fill}
+				\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par%
+			\fi
+			\ifx\insertdate\@empty\else%
+				\vspace{\fill}
+				\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate%
+			\fi
 		\endgroup
 		\vfill
 		\vspace{0cm}  % For the \vfill to actually have an effect

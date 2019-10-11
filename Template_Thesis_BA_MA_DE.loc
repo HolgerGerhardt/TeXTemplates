@@ -1,0 +1,8 @@
+\ChangesListline {comment}{Kommentiert~(HG)}{\newline \textbf {Commenting is on!} \\ To~switch it off, activate \texttt {\textbackslash PassOptionsToPackage\\ \{final\}\{changes\}} \\ in the master file.}{1}
+\ChangesListline {highlight}{Hervorgehoben~(HG)}{incredibly}{1}
+\ChangesListline {comment}{Kommentiert~(HG)}{\newline \vspace {-\baselineskip }}{1}
+\ChangesListline {replaced}{Ersetzt~(LV)}{a~few}{1}
+\ChangesListline {added}{Eingef\"ugt~(LV)}{automatically}{1}
+\ChangesListline {comment}{Kommentiert~(LV)}{\newline \textit {Added text}}{1}
+\ChangesListline {deleted}{Gel\"oscht~(HG)}{ additional}{2}
+\ChangesListline {comment}{Kommentiert~(HG)}{\newline \textit {Deleted:} `` additional''}{2}

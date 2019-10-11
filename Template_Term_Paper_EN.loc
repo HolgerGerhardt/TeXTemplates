@@ -1,8 +1,0 @@
-\ChangesListline {comment}{Commented~(HG)}{\newline \textbf {Commenting is on!} \\ To~switch it off, activate \texttt {\textbackslash PassOptionsToPackage\\ \{final\}\{changes\}} \\ in the master file.}{1}
-\ChangesListline {highlight}{Highlighted~(HG)}{incredibly}{1}
-\ChangesListline {comment}{Commented~(HG)}{\newline \vspace {-\baselineskip }}{1}
-\ChangesListline {replaced}{Replaced~(LV)}{a~few}{1}
-\ChangesListline {added}{Added~(LV)}{automatically}{1}
-\ChangesListline {comment}{Commented~(LV)}{\newline \textit {Added text}}{1}
-\ChangesListline {deleted}{Deleted~(HG)}{ additional}{2}
-\ChangesListline {comment}{Commented~(HG)}{\newline \textit {Deleted:} `` additional''}{2}

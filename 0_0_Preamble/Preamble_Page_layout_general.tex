@@ -190,6 +190,7 @@
 
 \usepackage[title, titletoc]{appendix}  % allows, e.g., for appendices within chapters
 \usepackage{chngcntr}  % to innclude section numbers/letters in the figure/table/equation counters
+
 \AtBeginEnvironment{appendices}{%
 	\counterwithin{figure}{section}%
 	\counterwithin{table}{section}%
@@ -200,6 +201,29 @@
 	\counterwithin{table}{section}%
 	\counterwithin{equation}{section}%
 }
+
+% Revoke the changes at the end of the (sub)appendices environment
+% if we are compiling the dissertation template:
+\makeatletter
+\@ifclassloaded{book}{%
+	\AfterEndEnvironment{appendices}{%
+		\counterwithout{figure}{section}%
+		\counterwithin{figure}{chapter}%
+		\counterwithout{table}{section}%
+		\counterwithin{table}{chapter}%
+		\counterwithout{equation}{section}%
+		\counterwithin{equation}{chapter}%
+	}%
+	\AfterEndEnvironment{subappendices}{%
+		\counterwithout{figure}{section}%
+		\counterwithin{figure}{chapter}%
+		\counterwithout{table}{section}%
+		\counterwithin{table}{chapter}%
+		\counterwithout{equation}{section}%
+		\counterwithin{equation}{chapter}%
+	}%
+}{}
+\makeatother
 
 
 
@@ -541,40 +565,42 @@
 \gMFUnocap{without}
 
 \ifcase 0
-% 0 for disabling auto-capitalization, 1 for enabling auto-capitalization of headings, 2 for headings + figure/table captions
-\renewcommand{\capitalisewords}[1]{#1}
-\renewcommand{\ecapitalisewords}[1]{#1}
-\renewcommand{\xcapitalisewords}[1]{#1}
+	% 0 for disabling auto-capitalization, 1 for enabling auto-capitalization of headings, 2 for headings + figure/table captions
+	% Case 0: Make capitalization commands ineffective
+	\renewcommand{\capitalisewords}[1]{#1}
+	\renewcommand{\ecapitalisewords}[1]{#1}
+	\renewcommand{\xcapitalisewords}[1]{#1}
 \or
-% Add auto-capitalization to table of contents -->
-\let\SavedContentsline\contentsline
-\renewcommand{\contentsline}[4]{%
-	\SavedContentsline{#1}{\capitalisewords{#2}}{#3}{#4}%
-}
-% <--
+	% Case 1:
+	% Add auto-capitalization to table of contents -->
+	\let\SavedContentsline\contentsline
+	\renewcommand{\contentsline}[4]{%
+		\SavedContentsline{#1}{\capitalisewords{#2}}{#3}{#4}%
+	}
+	% <--
 \else
-% Add auto-capitalization to table of contents -->
-\let\SavedContentsline\contentsline
-\renewcommand{\contentsline}[4]{%
-	\SavedContentsline{#1}{\capitalisewords{#2}}{#3}{#4}%
-}
-% <--	
-% Case 2: Also auto-capitalize figure and table captions:
-\LetLtxMacro{\SavedCaption}{\caption}
-\RenewDocumentCommand{\caption}{ O{\shortcaption} m }{%
-	\def\shortcaption{%
-		\xcapitalisewords{%
-			% \TestForPunct{%
-			#2%
-			% }%
+	% Case 2: Also auto-capitalize figure and table captions:
+	% Add auto-capitalization to table of contents -->
+	\let\SavedContentsline\contentsline
+	\renewcommand{\contentsline}[4]{%
+		\SavedContentsline{#1}{\capitalisewords{#2}}{#3}{#4}%
+	}
+	% <--
+	\LetLtxMacro{\SavedCaption}{\caption}
+	\RenewDocumentCommand{\caption}{ O{\shortcaption} m }{%
+		\def\shortcaption{%
+			\xcapitalisewords{%
+				% \TestForPunct{%
+				#2%
+				% }%
+			}%
 		}%
-	}%
-	\SavedCaption[#1]{%
-		\xcapitalisewords{%
-			% \TestForPunct{%
-			#2%
-			% }%
+		\SavedCaption[#1]{%
+			\xcapitalisewords{%
+				% \TestForPunct{%
+				#2%
+				% }%
+			}%
 		}%
-	}%
-}
+	}
 \fi

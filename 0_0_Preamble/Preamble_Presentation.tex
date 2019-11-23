@@ -98,18 +98,18 @@
 \input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
 
 \ifnum \serifbodyfont=0
-\setbeamerfont{normal text}{family=\sffamily}
-\renewcommand{\familydefault}{\savesffamily}
-\renewcommand{\mddefault}{\savesfmdseries}
-\renewcommand{\bfdefault}{\savesfbfseries}
+	\setbeamerfont{normal text}{family=\sffamily}
+	\renewcommand{\familydefault}{\savesffamily}
+	\renewcommand{\mddefault}{\savesfmdseries}
+	\renewcommand{\bfdefault}{\savesfbfseries}
 \else
-\usefonttheme{serif}
-\setbeamerfont{normal text}{family=\rmfamily}
+	\usefonttheme{serif}
+	\setbeamerfont{normal text}{family=\rmfamily}
 \fi
 \ifnum \serifheadingfont=0
-\setbeamerfont{structure}{family=\sffamily, shape=\upshape, series=\bfseries}
+	\setbeamerfont{structure}{family=\sffamily, shape=\upshape, series=\bfseries}
 \else
-\setbeamerfont{structure}{family=\rmfamily, shape=\upshape, series=\bfseries}
+	\setbeamerfont{structure}{family=\rmfamily, shape=\upshape, series=\bfseries}
 \fi
 
 % Make frame titles and headings bold
@@ -117,9 +117,9 @@
 \usefonttheme{professionalfonts}
 
 \setbeamerfont{footline}
-{parent=structure, size=\tiny, series=\mdseries}
+	{parent=structure, size=\tiny, series=\mdseries}
 \setbeamercolor{footline}
-{fg=SpotColor}
+	{fg=SpotColor}
 
 %% Use the bm (= boldmath) package for better support of setting math in bold ==>
 %% Prevent the "Too many math fonts used" error:
@@ -739,6 +739,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{. }
+\usepackage[justification=centering]{caption}
+\ifnum \serifheadingfont=0
+	\captionsetup{font={sf, small}}
+\else
+	\captionsetup{font={rm, small}}
+\fi
+
 \usepackage{tabularx}	% Provides environment tabularx to adjust width of tables
 % \usepackage{tabulary}	% For some reason, tabulary doesn't obey the width argument ...
 % Emulate the "tabulary" column types:
@@ -799,10 +808,6 @@
 }
 \makeatother\ExplSyntaxOff
 % <==
-
-\usepackage[center, small, bf, labelsep=period]{caption}
-%\setbeamerfont{caption}
-%	{parent=normal text, size=\small, series=\mdseries, shape=\itshape}
 
 \AtBeginEnvironment{table}{\vspace{-1.2ex}\small}
 % Reduces font size in tables slightly and

@@ -8,16 +8,28 @@
 \newcommand{\balB}[1][1]{BAL$^\mathup{II}_{#1:#1}$\xspace}
 \newcommand{\unbalB}[1][n]{UNBAL$^\mathup{II}_{#1:1}$\xspace}
 
-%% Add separator slide to the beginning of each section ==>
-\AtBeginSection[]{
+% Add separator slide to the beginning of each section ==>
+%% Blue on white:
+%\AtBeginSection[]{%
+%	\begin{frame}[standout, c]{~}
+%		%\vfill
+%		\usebeamerfont{title}%
+%		\textcolor{SpotColor}{\insertsectionhead}
+%		%\vfill
+%	\end{frame}%
+%}
+% White on blue:
+\AtBeginSection[]{{%
+	\setbeamercolor{background canvas}{bg=UBonnBlue, fg=white}%
+	\colorlet{SpotColor}{white}%
 	\begin{frame}[standout, c]{~}
 		%\vfill
-		\usebeamerfont{title}%
-		\textcolor{SpotColor}{\insertsectionhead}
+		\usebeamerfont{title}\hypersetup{linkcolor=white}%
+		\insertsection
 		%\vfill
 	\end{frame}%
-}
-
+	\colorlet{SpotColor}{UBonnBlue}%
+}}
 %% Alternativelyy, add ``Outline'' slide to the beginning of each section ==>
 %\AtBeginSection[]{
 %	\begin{frame}[plain]{Outline}
@@ -410,7 +422,7 @@
 	\begin{table}
 	\caption{%
 		Example of a~regression table \citep[adapted from][]{Gerhardt2017}.
-		Never forget to mention the dependent variable!%
+		Never forget to mention the dependent variable (here, $m_\sim$)!%
 	}
 	\label{tab:lin_reg_interactions}
 	\resizebox*{!}{0.59\textheight}{%

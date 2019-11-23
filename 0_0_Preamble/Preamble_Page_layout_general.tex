@@ -183,51 +183,6 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%
-%%  APPENDIX STYLE  %%
-%%%%%%%%%%%%%%%%%%%%%%
-
-
-\usepackage[title, titletoc]{appendix}  % allows, e.g., for appendices within chapters
-\usepackage{chngcntr}  % to innclude section numbers/letters in the figure/table/equation counters
-
-\AtBeginEnvironment{appendices}{%
-	\counterwithin{figure}{section}%
-	\counterwithin{table}{section}%
-	\counterwithin{equation}{section}%
-}
-\AtBeginEnvironment{subappendices}{%
-	\counterwithin{figure}{section}%
-	\counterwithin{table}{section}%
-	\counterwithin{equation}{section}%
-}
-
-% Revoke the changes at the end of the (sub)appendices environment
-% if we are compiling the dissertation template:
-\makeatletter
-\@ifclassloaded{book}{%
-	\AfterEndEnvironment{appendices}{%
-		\counterwithout{figure}{section}%
-		\counterwithin{figure}{chapter}%
-		\counterwithout{table}{section}%
-		\counterwithin{table}{chapter}%
-		\counterwithout{equation}{section}%
-		\counterwithin{equation}{chapter}%
-	}%
-	\AfterEndEnvironment{subappendices}{%
-		\counterwithout{figure}{section}%
-		\counterwithin{figure}{chapter}%
-		\counterwithout{table}{section}%
-		\counterwithin{table}{chapter}%
-		\counterwithout{equation}{section}%
-		\counterwithin{equation}{chapter}%
-	}%
-}{}
-\makeatother
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  FORMATTING OF FOOTNOTES  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -528,14 +483,28 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{result}{Result}
 \newtheorem{hypothesis}{Hypothesis}
+\newtheorem{result}{Result}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{conjecture}[theorem]{Conjecture}
 
+% Make numbering chapter-specific if we are compiling the dissertation template:
+\makeatletter
+\@ifclassloaded{book}{%
+	\numberwithin{theorem}{chapter}%
+	%\numberwithin{corollary}{chapter}%
+	%\numberwithin{lemma}{chapter}%
+	%\numberwithin{proposition}{chapter}%
+	\numberwithin{hypothesis}{chapter}%
+	\numberwithin{result}{chapter}%
+	%\numberwithin{definition}{chapter}%
+	%\numberwithin{example}{chapter}%
+	%\numberwithin{conjecture}{chapter}%
+}
+\makeatother
 
 
 
@@ -604,3 +573,48 @@
 		}%
 	}
 \fi
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%  APPENDIX STYLE  %%
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[title, titletoc]{appendix}  % allows, e.g., for appendices within chapters
+\usepackage{chngcntr}  % to innclude section numbers/letters in the figure/table/equation counters
+
+\AtBeginEnvironment{appendices}{%
+	\counterwithin{figure}{section}%
+	\counterwithin{table}{section}%
+	\counterwithin{equation}{section}%
+}
+\AtBeginEnvironment{subappendices}{%
+	\counterwithin{figure}{section}%
+	\counterwithin{table}{section}%
+	\counterwithin{equation}{section}%
+}
+
+% Revoke the changes at the end of the (sub)appendices environment
+% if we are compiling the dissertation template:
+\makeatletter
+\@ifclassloaded{book}{%
+	\AfterEndEnvironment{appendices}{%
+		\counterwithout{figure}{section}%
+		\counterwithin{figure}{chapter}%
+		\counterwithout{table}{section}%
+		\counterwithin{table}{chapter}%
+		\counterwithout{equation}{section}%
+		\counterwithin{equation}{chapter}%
+	}%
+	\AfterEndEnvironment{subappendices}{%
+		\counterwithout{figure}{section}%
+		\counterwithin{figure}{chapter}%
+		\counterwithout{table}{section}%
+		\counterwithin{table}{chapter}%
+		\counterwithout{equation}{section}%
+		\counterwithin{equation}{chapter}%
+	}%
+}{}
+\makeatother

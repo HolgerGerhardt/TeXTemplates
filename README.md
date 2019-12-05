@@ -3,7 +3,7 @@
 
 ## General Information
 
-This repository includes templates for
+This repository includes LaTeX templates for
 
 * manuscripts to be submitted to academic journals,
 * dissertations,

@@ -80,7 +80,9 @@
 \include{0_1_Frontmatter_Thesis_Term_Paper/Thesis_frontmatter_DE}
 
 % \subimport enables execution of \input commands in subdocuments without having to adjust paths
-\subimport*{1_Example_Content/1_Introduction/}{Introduction_Thesis}
+% Do not use \subimport{...} (i.e., the asterisk version), since this will lead to
+% font issues.
+\subimport{1_Example_Content/1_Introduction/}{Introduction_Thesis}
 % Avoid that the line spacing in tikzpictures becomes too large
 % as a consequence of the 1.5 line spacing of the body text
 % ==>
@@ -91,24 +93,24 @@
 	}
 }
 % <==
-\subimport*{1_Example_Content/2_Methods/}{Design}
-\subimport*{1_Example_Content/2_Methods/}{Predictions}
-\subimport*{1_Example_Content/3_Results/}{Results}
-\subimport*{1_Example_Content/3_Results/}{Structural_Estimation}
-\subimport*{1_Example_Content/4_Discussion/}{Discussion}
-\subimport*{1_Example_Content/5_Conclusion/}{Conclusion}
+\subimport{1_Example_Content/2_Methods/}{Design}
+\subimport{1_Example_Content/2_Methods/}{Predictions}
+\subimport{1_Example_Content/3_Results/}{Results}
+\subimport{1_Example_Content/3_Results/}{Structural_Estimation}
+\subimport{1_Example_Content/4_Discussion/}{Discussion}
+\subimport{1_Example_Content/5_Conclusion/}{Conclusion}
 
 \clearpage
 
 \begin{appendices}
 	\label{sec:appendix}
 	\FloatBarrier
-	\subimport*{1_Example_Content/9_Appendix/}{Attention}
+	\subimport{1_Example_Content/9_Appendix/}{Attention}
 	\FloatBarrier
 	\clearpage
-	\subimport*{1_Example_Content/9_Appendix/}{Additional_Figures}
+	\subimport{1_Example_Content/9_Appendix/}{Additional_Figures}
 	\FloatBarrier
-	\subimport*{1_Example_Content/9_Appendix/}{siunitx_examples}
+	\subimport{1_Example_Content/9_Appendix/}{siunitx_examples}
 	\clearpage
 	\input{2_Math_Tests/mathtest_defs}
 	\renewcommand{\showfamily}{{\color{magenta}%

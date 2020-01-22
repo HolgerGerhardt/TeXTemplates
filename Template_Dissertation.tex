@@ -139,23 +139,26 @@
 \setcounter{footnote}{0}
 
 \graphicspath{{1_Example_Content/}}
-\subimport*{1_Example_Content/1_Introduction/}{Introduction}
-\subimport*{1_Example_Content/2_Methods/}{Design}
-\subimport*{1_Example_Content/2_Methods/}{Predictions}
-\subimport*{1_Example_Content/3_Results/}{Results}
-\subimport*{1_Example_Content/3_Results/}{Structural_Estimation}
-\subimport*{1_Example_Content/4_Discussion/}{Discussion}
-\subimport*{1_Example_Content/5_Conclusion/}{Conclusion}
+% \subimport enables execution of \input commands in subdocuments without having to adjust paths
+% Do not use \subimport*{...} (i.e., the asterisk version), since this will lead to
+% font issues.
+\subimport{1_Example_Content/1_Introduction/}{Introduction}
+\subimport{1_Example_Content/2_Methods/}{Design}
+\subimport{1_Example_Content/2_Methods/}{Predictions}
+\subimport{1_Example_Content/3_Results/}{Results}
+\subimport{1_Example_Content/3_Results/}{Structural_Estimation}
+\subimport{1_Example_Content/4_Discussion/}{Discussion}
+\subimport{1_Example_Content/5_Conclusion/}{Conclusion}
 
 \begin{subappendices}
 	\label{sec:appendix}
 	\FloatBarrier
-	\subimport*{1_Example_Content/9_Appendix/}{Attention}
+	\subimport{1_Example_Content/9_Appendix/}{Attention}
 	\FloatBarrier
 	\newpage
-	\subimport*{1_Example_Content/9_Appendix/}{Additional_Figures}
+	\subimport{1_Example_Content/9_Appendix/}{Additional_Figures}
 	\FloatBarrier
-	\subimport*{1_Example_Content/9_Appendix/}{siunitx_Examples}
+	\subimport{1_Example_Content/9_Appendix/}{siunitx_Examples}
 	\clearpage
 		% \clearpage must be issued INSIDE the subappendices environment
 		% for the pagestyle to be applied correctly
@@ -198,23 +201,23 @@
 \vspace{-\bigskipamount}\textsf{\textit{Joint with Adam Smith, Janet Smith, and Jeremiah Smith}} \bigskip
 
 \graphicspath{{1_Example_Content/}}
-\subimport*{1_Example_Content/1_Introduction/}{Introduction}
-\subimport*{1_Example_Content/2_Methods/}{Design}
-\subimport*{1_Example_Content/2_Methods/}{Predictions}
-\subimport*{1_Example_Content/3_Results/}{Results}
-\subimport*{1_Example_Content/3_Results/}{Structural_Estimation}
-\subimport*{1_Example_Content/4_Discussion/}{Discussion}
-\subimport*{1_Example_Content/5_Conclusion/}{Conclusion}
+\subimport{1_Example_Content/1_Introduction/}{Introduction}
+\subimport{1_Example_Content/2_Methods/}{Design}
+\subimport{1_Example_Content/2_Methods/}{Predictions}
+\subimport{1_Example_Content/3_Results/}{Results}
+\subimport{1_Example_Content/3_Results/}{Structural_Estimation}
+\subimport{1_Example_Content/4_Discussion/}{Discussion}
+\subimport{1_Example_Content/5_Conclusion/}{Conclusion}
 
 \begin{subappendices}
 	\label{sec:appendix}
 	\FloatBarrier
-	\subimport*{1_Example_Content/9_Appendix/}{Attention}
+	\subimport{1_Example_Content/9_Appendix/}{Attention}
 	\FloatBarrier
 	\newpage
-	\subimport*{1_Example_Content/9_Appendix/}{Additional_Figures}
+	\subimport{1_Example_Content/9_Appendix/}{Additional_Figures}
 	\FloatBarrier
-	\subimport*{1_Example_Content/9_Appendix/}{siunitx_Examples}
+	\subimport{1_Example_Content/9_Appendix/}{siunitx_Examples}
 	\clearpage
 		% \clearpage must be issued INSIDE the subappendices environment
 		% for the pagestyle to be applied correctly

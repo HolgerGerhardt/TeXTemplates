@@ -18,26 +18,6 @@
 	{0pt}{0.5\baselineskip plus 0.5\baselineskip}{3\wordsep}[]
 \titlespacing{\subparagraph}
 	{\parindent}{0pt}{3\wordsep}[]
-	
-% Bullshit page header
-% ==>
-\newpagestyle{bullshitheader}[\small\rmfamily\selectfont]{
-	\sethead%
-	{% odd-left
-	}
-	{% odd-center
-		\phantom{\textsf{~}}%
-		% We include a \textsf command, because for some weird reason,
-		% the command does not work otherwise when using \subimport*{...}
-		\phantom{\texteuro \textsu{12}}%
-		% We include a \euro sign and superscript digits because
-		% they do not work otherwise when using \subimport*{...}
-		\phantom{\texttt{abc}}%
-	}
-	{%	odd-right
-	}
-}
-% <==
 
 \usepackage{epigraph}
 \makeatletter

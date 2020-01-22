@@ -20,27 +20,6 @@
 % <==
 
 \usepackage[sf, bf, raggedright, explicit]{titlesec}	% Sansserif font for the headings
-% Bullshit page header
-% ==>
-\newpagestyle{bullshitheader}[\small\rmfamily\selectfont]{
-	\sethead%
-	{% odd-left
-	}
-	{% odd-center
-		\phantom{\textsf{\texteuro $\mathit{x} \mathbfit{X}$}}%
-		% We include a \textsf plus math commands, because for some weird reason,
-		% they do not work otherwise when using \subimport*{...}
-		\phantom{\texteuro \textsu{12}}%
-		% We include a \euro sign and superscript digits because
-		% they do not work otherwise when using \subimport*{...}
-	}
-	{%	odd-right
-	}
-}
-\appto\maketitle{%
-	\thispagestyle{bullshitheader}
-}
-% <==
 % Page headers
 % ==>
 \newpagestyle{chapterleftsectionright}[\small\sffamily\selectfont]{

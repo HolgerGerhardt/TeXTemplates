@@ -24,10 +24,11 @@
 	     {Upgrade to FiraSans 2018/05/23 or newer!\MessageBreak
 	      Otherwise the sans-serif font may not work properly, or the compilation might fail.\MessageBreak
 	      This is a fatal error. I'm aborting now.}%
-	   \endinput}
+	\endinput%
+   }
 \makeatother
-\usepackage{afterpackage}
 % In case you wish to use the ``light'' options of FiraSans: -->
+\ifthenelse{\isundefined{\AfterPackage}}{\usepackage{afterpackage}}{}
 \AfterPackage{siunitx}{%
   \providecommand*{\lseries}{\fontseries{l}\selectfont}
 }

@@ -20,7 +20,7 @@
 % Full author list on first citation, ``et al.'' only from second citation onwards:
 % https://tex.stackexchange.com/questions/48846/biblatex-et-al-beginning-from-second-citation
 % ==>
-\AtEveryCitekey{\ifciteseen{}{\clearfield{namehash}}}
+%\AtEveryCitekey{\ifciteseen{}{\clearfield{namehash}}}  % Uncomment this ``so that an entry won't be part of a compact citation list the first time it is cited.''
 \xpatchbibmacro{cite}
 	{\printnames{labelname}}
 	{\ifciteseen

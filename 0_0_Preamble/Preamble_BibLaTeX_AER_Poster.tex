@@ -145,11 +145,11 @@
 	\Urlmuskip = 0mu\relax%
 	\caps{URL}\addcolon\space\url{#1}%
 }
-% Link DOIs automatically to https://dx.doi.org/DOI:
+% Link DOIs automatically to https://doi.org/<DOI>:
 \DeclareFieldFormat{doi}{%
 	% \setlength{\Urlmuskip}{0pt}%
 	\Urlmuskip = 0mu\relax
-	\caps{DOI}\addcolon\space\href{https://dx.doi.org/#1}{\nolinkurl{#1}}%
+	\caps{DOI}\addcolon\space\href{https://doi.org/#1}{\nolinkurl{#1}}%
 }
 % <==
 

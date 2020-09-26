@@ -273,6 +273,13 @@
 \setlength{\leftmargin}{4cm}
 \setlength{\rightmargin}{4cm}
 
+\newenvironment{parblock}[1]%
+	{\begin{block}{#1}%
+	 \setlength{\parindent}{\baselinestretch\baselineskip}%
+	 \noindent\ignorespaces%
+	}%
+	{\end{block}}
+
 \newcommand{\numcols}{3}
 \FPeval{\numcolsminusone}{\numcols-1}
 

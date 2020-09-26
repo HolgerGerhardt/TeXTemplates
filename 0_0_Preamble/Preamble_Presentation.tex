@@ -676,8 +676,16 @@
 %%%%%%%%%%%%%
 
 
-\AtBeginEnvironment{itemize}{\vspace{-\parskip}\setlength{\labelsep}{0.55em}}
-\AtBeginEnvironment{enumerate}{\vspace{-\parskip}\setlength{\labelsep}{0.5em}}
+\AtBeginEnvironment{itemize}{%
+	\vspace{-\parskip}%
+	\setlength{\labelsep}{0.55em}%
+	\setlength{\labelwidth}{\widthof{9.}}%
+}
+\AtBeginEnvironment{enumerate}{%
+	\vspace{-\parskip}%
+	\setlength{\labelsep}{0.5em}%
+	\setlength{\labelwidth}{\widthof{9.}}%
+}
 
 % Adjust spacing of lists ==>
 % Unfortunately, the ``enumitem'' package is incompatible with the ``beamer'' class.

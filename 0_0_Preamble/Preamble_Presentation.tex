@@ -98,8 +98,23 @@
 
 
 \input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
+\makeatletter
+\renewcommand{\bfseries@tt}{b}%
+\let\savettmdseries\mdseries@tt
+\let\savettbfseries\bfseries@tt
+\let \textbforig \textbf
+\renewcommand{\textbf}[1]{{%
+	\textbforig{%
+		\renewcommand{\bfseries@tt}{\savettbfseries}%
+		\renewcommand{\bfseries@rm}{\savebfdefaultfortext}%
+			% For some reason, LaTeX resets these series to semibold instead of bold.
+		#1%
+	}%
+}}
+\makeatother
 
 \ifnum \serifbodyfont=0
+	\AtBeginDocument{\sffamily}
 	\setbeamerfont{normal text}{family=\sffamily}
 	\renewcommand{\familydefault}{\savesffamily}
 	\renewcommand{\mddefault}{\savesfmdseries}
@@ -107,6 +122,8 @@
 \else
 	\usefonttheme{serif}
 	\setbeamerfont{normal text}{family=\rmfamily}
+	\renewcommand{\mddefault}{\savemddefaultfortext}
+	\renewcommand{\bfdefault}{\savebfdefaultfortext}
 \fi
 \ifnum \serifheadingfont=0
 	\setbeamerfont{structure}{family=\sffamily, shape=\upshape, series=\bfseries}
@@ -275,7 +292,7 @@
 % ==>
 \setbeamertemplate{frametitle}{%
 	\vspace{\margintop}\vspace{-5pt}%
-	{\large\usebeamercolor{frametitle}\usebeamerfont{frametitle}\insertframetitle\\[-1.2ex]}%
+	{\large\usebeamercolor{frametitle}\textbf{\usebeamerfont{frametitle}\insertframetitle}\\[-1.2ex]}%
 	\sliderule%
 }
 % <==
@@ -288,9 +305,9 @@
 		\hspace{\marginleft}%
 		\sliderule \vspace{1.1ex} \linebreak
 		\mbox{\hspace{\marginleft}}%
-		\textmd{\insertshortauthor: \enquote{\insertshorttitle}}
+		\textmd{\usebeamerfont{structure}\insertshortauthor: \enquote{\insertshorttitle}}
 		\hfill%
-		\textbf{\insertframenumber/\inserttotalframenumber}%
+		\textbf{\usebeamerfont{structure}\insertframenumber/\inserttotalframenumber}%
 		\hspace{\marginright}%
 		\vspace{12pt}%
 	}%
@@ -567,7 +584,7 @@
 				\RaggedRight%
 				\leftskip=\blockinnermargin%
 				\rightskip=\blockinnermargin%
-				\insertblocktitleorig\strut\vspace{-1.5pt}%
+				\textbf{\usebeamerfont{structure}\insertblocktitleorig}\strut\vspace{-1.5pt}%
 					% \strut\vspace{-1.5pt} so that all single-line block titles have identical hight
 			}%
 	}{%
@@ -600,7 +617,7 @@
 				\RaggedRight%
 				\leftskip=\blockinnermargin%
 				\rightskip=\blockinnermargin%
-				\insertblocktitleorig\strut\vspace{-1.5pt}%
+				\textbf{\usebeamerfont{structure}\insertblocktitleorig}\strut\vspace{-1.5pt}%
 					% \strut\vspace{-1.5pt} so that all single-line block titles have identical hight
 			}%
 	}{%

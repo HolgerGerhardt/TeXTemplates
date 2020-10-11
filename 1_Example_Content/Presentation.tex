@@ -38,7 +38,11 @@
 %}
 %% <==
 
-\title{Academic Presentations}
+\title[Academic Presentations]{%
+	\textbf{\usebeamerfont{structure}%
+		Academic Presentations%
+	}%
+}
 
 \subtitle{A~LaTeX Template Using the \texttt{beamer} Class}
 
@@ -287,13 +291,13 @@
 			\mathup{d}\gamma
 	\]
 	\pause
-	\vspace{-\smallskipamount}
+	\vspace{-\smallskipamount}%
 	\alert{Let's also include some upright Latin letters in math mode: $\mathup{d}$, $\mathup{e}$ (\hyperlink{Eulers_number}{next slide})}
 	\[
 		\int_{a}^{b} f(x)\,\mathup{d}x = F(b) - F(a)
 	\]
 	\pause
-	\vspace{-\medskipamount}
+	\vspace{-\medskipamount}%
 	\alert{Let's test the math bold style}
 	\[
 		\mathbfup{\Sigma} \coloneqq
@@ -417,7 +421,7 @@
 \end{frame}
 
 
-\begin{frame}{\titleprefix: Another \texttt{siunitx} Example Table}
+\begin{frame}{\titleprefix: Another \textbf{\texttt{siunitx}} Example Table}
 
 	\begin{table}
 	\caption{%
@@ -514,7 +518,7 @@ On this slide, \textbf{no} number should be included in the frame title.
 
 Let's test automatic numbering with the \texttt{allowframebreaks} option.
 
-On this slide, ``(1/3)'' should appear in the frame title.
+On this slide, \textbf{``(1/3)''} should appear in the frame title.
 
 \blindtext
 

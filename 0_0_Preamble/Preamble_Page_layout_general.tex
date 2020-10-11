@@ -44,36 +44,59 @@
 \newlength{\belowdisplayauxskip}
 \setlength{\abovedisplayauxskip}{0pt plus 0.5\baselineskip}
 \setlength{\belowdisplayauxskip}{0pt plus 0.5\baselineskip}
-\newcommand{\predisplaycmd}{\nopagebreak[2]\vspace{\abovedisplayauxskip}}
-\newcommand{\postdisplaycmd}{\vskip\belowdisplayauxskip\noindent}
-\AtBeginEnvironment {align}     {\predisplaycmd}
-\AfterEndEnvironment{align}     {\postdisplaycmd}
-\AtBeginEnvironment {align*}    {\predisplaycmd}
-\AfterEndEnvironment{align*}    {\postdisplaycmd}
-\AtBeginEnvironment {alignat}   {\predisplaycmd}
-\AfterEndEnvironment{alignat}   {\postdisplaycmd}
-\AtBeginEnvironment {alignat*}  {\predisplaycmd}
-\AfterEndEnvironment{alignat*}  {\postdisplaycmd}
-\AtBeginEnvironment {eqnarray}  {\predisplaycmd}
-\AfterEndEnvironment{eqnarray}  {\postdisplaycmd}
-\AtBeginEnvironment {eqnarray*} {\predisplaycmd}
-\AfterEndEnvironment{eqnarray*} {\postdisplaycmd}
-\AtBeginEnvironment {equation}  {\predisplaycmd}
-\AfterEndEnvironment{equation}  {\postdisplaycmd}
-\AtBeginEnvironment {equation*} {\predisplaycmd}
-\AfterEndEnvironment{equation*} {\postdisplaycmd}
-\AtBeginEnvironment {flalign}   {\predisplaycmd}
-\AfterEndEnvironment{flalign}   {\postdisplaycmd}
-\AtBeginEnvironment {flalign*}  {\predisplaycmd}
-\AfterEndEnvironment{flalign*}  {\postdisplaycmd}
-\AtBeginEnvironment {gather}    {\predisplaycmd}
-\AfterEndEnvironment{gather}    {\postdisplaycmd}
-\AtBeginEnvironment {gather*}   {\predisplaycmd}
-\AfterEndEnvironment{gather*}   {\postdisplaycmd}
-\AtBeginEnvironment {multiline} {\predisplaycmd}
-\AfterEndEnvironment{multiline} {\postdisplaycmd}
-\AtBeginEnvironment {multiline*}{\predisplaycmd}
-\AfterEndEnvironment{multiline*}{\postdisplaycmd}
+\newcommand{\predisplaycmd}{%
+	\ifvmode\else\unskip\fi%
+	\nopagebreak[2]%
+	\vspace{\abovedisplayauxskip}%
+}
+\makeatletter
+\def\@itemize@name{itemize}
+\def\@enumerate@name{enumerate}
+\def\@description@name{description}
+\newcommand{\postdisplaycmd}{%
+	\ifx\@currenvir\@itemize@name%
+	\else%
+		\ifx\@currenvir\@enumerate@name%
+		\else%
+			\ifx\@currenvir\@description@name%
+			\else%
+				\vskip\belowdisplayauxskip%
+			\fi%
+		\fi%
+	\fi%
+	\noindent%
+}
+\makeatother
+\AtBeginEnvironment {align}      {\predisplaycmd}
+\AfterEndEnvironment{align}      {\postdisplaycmd}
+\AtBeginEnvironment {align*}     {\predisplaycmd}
+\AfterEndEnvironment{align*}     {\postdisplaycmd}
+\AtBeginEnvironment {alignat}    {\predisplaycmd}
+\AfterEndEnvironment{alignat}    {\postdisplaycmd}
+\AtBeginEnvironment {alignat*}   {\predisplaycmd}
+\AfterEndEnvironment{alignat*}   {\postdisplaycmd}
+\AtBeginEnvironment {displaymath}{\predisplaycmd}
+\AfterEndEnvironment{displaymath}{\postdisplaycmd}
+\AtBeginEnvironment {eqnarray}   {\predisplaycmd}
+\AfterEndEnvironment{eqnarray}   {\postdisplaycmd}
+\AtBeginEnvironment {eqnarray*}  {\predisplaycmd}
+\AfterEndEnvironment{eqnarray*}  {\postdisplaycmd}
+\AtBeginEnvironment {equation}   {\predisplaycmd}
+\AfterEndEnvironment{equation}   {\postdisplaycmd}
+\AtBeginEnvironment {equation*}  {\predisplaycmd}
+\AfterEndEnvironment{equation*}  {\postdisplaycmd}
+\AtBeginEnvironment {flalign}    {\predisplaycmd}
+\AfterEndEnvironment{flalign}    {\postdisplaycmd}
+\AtBeginEnvironment {flalign*}   {\predisplaycmd}
+\AfterEndEnvironment{flalign*}   {\postdisplaycmd}
+\AtBeginEnvironment {gather}     {\predisplaycmd}
+\AfterEndEnvironment{gather}     {\postdisplaycmd}
+\AtBeginEnvironment {gather*}    {\predisplaycmd}
+\AfterEndEnvironment{gather*}    {\postdisplaycmd}
+\AtBeginEnvironment {multiline}  {\predisplaycmd}
+\AfterEndEnvironment{multiline}  {\postdisplaycmd}
+\AtBeginEnvironment {multiline*} {\predisplaycmd}
+\AfterEndEnvironment{multiline*} {\postdisplaycmd}
 % \setlength{\topskip}{\newbaselineskip pt}
 
 \setlength{\parskip}{0pt}  % Prevents whitespace from being added between paragraphs
@@ -90,31 +113,31 @@
 
 %\setlength{\mathindent}{\newparindent}  % Only for option ``fleqn''
 
-% Reduce/prevent stretching of spaces around operators in inline formulae ==>
-% See http://tex.stackexchange.com/questions/83746/keeping-the-distance-between-mathematical-symbols-consistent
+% Reduce/prevent stretching of spaces around operators in inline formulae; see ==>
+%  http://tex.stackexchange.com/questions/83746/keeping-the-distance-between-mathematical-symbols-consistent
 % \thinmuskip=3.0mu (already without glue)
 \medmuskip=1\medmuskip	% Formerly 4.0mu plus 2.0mu minus 4.0mu -> 4.0mu
 \thickmuskip=1\thickmuskip	% Formerly 5.0mu plus 5.0mu -> 5.0mu
 % <==
-\spaceskip=\fontdimen2\font plus \fontdimen3\font minus 0.75\fontdimen4\font	% Reduce by how much an interword space can shrink
-% See http://tex.stackexchange.com/questions/19236/how-to-change-the-interword-spacing and http://tex.stackexchange.com/questions/88991/what-do-different-fontdimennum-mean
 
 % Increase spacing around relational symbols (<, =, >, \le, \ge, \equiv; +, -, \times, etc.) in display formulae ==>
-\newcommand{\thickmu}{\thickmuskip=12mu \medmuskip=6mu}
-\AtBeginEnvironment{align}     {\thickmu}
-\AtBeginEnvironment{align*}    {\thickmu}
-\AtBeginEnvironment{alignat}   {\thickmu}
-\AtBeginEnvironment{alignat*}  {\thickmu}
-\AtBeginEnvironment{eqnarray}  {\thickmu}
-\AtBeginEnvironment{eqnarray*} {\thickmu}
-\AtBeginEnvironment{equation}  {\thickmu}
-\AtBeginEnvironment{equation*} {\thickmu}
-\AtBeginEnvironment{flalign}   {\thickmu}
-\AtBeginEnvironment{flalign*}  {\thickmu}
-\AtBeginEnvironment{gather}    {\thickmu}
-\AtBeginEnvironment{gather*}   {\thickmu}
-\AtBeginEnvironment{multiline} {\thickmu}
-\AtBeginEnvironment{multiline*}{\thickmu}
+\newcommand{\regularmu}{\thickmuskip= 5mu \medmuskip=4mu}
+\newcommand{\thickmu}  {\thickmuskip=10mu \medmuskip=5mu}
+\AtBeginEnvironment{align}      {\thickmu}
+\AtBeginEnvironment{align*}     {\thickmu}
+\AtBeginEnvironment{alignat}    {\thickmu}
+\AtBeginEnvironment{alignat*}   {\thickmu}
+\AtBeginEnvironment{displaymath}{\thickmu}
+\AtBeginEnvironment{eqnarray}   {\thickmu}
+\AtBeginEnvironment{eqnarray*}  {\thickmu}
+\AtBeginEnvironment{equation}   {\thickmu}
+\AtBeginEnvironment{equation*}  {\thickmu}
+\AtBeginEnvironment{flalign}    {\thickmu}
+\AtBeginEnvironment{flalign*}   {\thickmu}
+\AtBeginEnvironment{gather}     {\thickmu}
+\AtBeginEnvironment{gather*}    {\thickmu}
+\AtBeginEnvironment{multiline}  {\thickmu}
+\AtBeginEnvironment{multiline*} {\thickmu}
 % <==
 
 % Use the bm (= boldmath) package for better support of setting math in bold ==>
@@ -153,6 +176,10 @@
 \else
 	\usepackage[protrusion=true, expansion=false, kerning=true]{microtype}
 \fi
+
+% Reduce by how much an interword space can shrink; see
+% http://tex.stackexchange.com/questions/19236/how-to-change-the-interword-spacing and http://tex.stackexchange.com/questions/88991/what-do-different-fontdimennum-mean:
+\spaceskip=\fontdimen2\font plus \fontdimen3\font minus 0.75\fontdimen4\font
 
 % Let even relatively big floats (long tables, spacious figures) be placed on text pages ==>
 \renewcommand{\textfraction}{0.05}

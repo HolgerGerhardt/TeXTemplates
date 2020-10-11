@@ -67,7 +67,7 @@
 
 % Use Bitstream Charter as the math font
 % ==>
-\usepackage[charter, greeklowercase=italicized, greekuppercase=italicized, sfscaled=false, ttscaled=false]{mathdesign}
+\usepackage[charter, greeklowercase=italicized, greekuppercase=italicized, sfscaled=false, ttscaled=false, euro=false]{mathdesign}
 %% Use Alegreya as the text font -->
 %\usepackage[lining, tabular, scale=1.02]{Alegreya}[2018/08/02]
 %\ifxetex \else \DisableLigatures[T]{family = {rm*}} \fi
@@ -135,8 +135,6 @@
 % Since math mode uses a different font encoding, issuing \euro/\texteuro in math mode
 % produces an incorrect sign. We fix this. ==>
 \AtBeginDocument{%
-	\renewcommand*{\euro}[1]{%
-		\relax\ifmmode\text{\texteuro}#1\else\texteuro #1\fi%
-	}%
+	\providecommand{\euro}[1]{\relax\ifmmode\text{\texteuro}#1\else\texteuro #1\fi}%
 }
 % <==

@@ -12,10 +12,11 @@
 \documentclass{beamer}
 
 
-\input{0_0_Preamble/Preamble_Poster}
-\input{0_0_Preamble/Preamble_BibLaTeX_AER_Poster}  %\input{0_0_Preamble/Preamble_BibLaTeX_APA}
-\input{0_0_Preamble/Preamble_Fonts_Charter_FiraSans}
-\input{0_0_Preamble/Preamble_Sansserif_math}
+\usepackage{import}
+\input    {0_0_Preamble/Preamble_Poster}
+\input    {0_0_Preamble/Preamble_BibLaTeX_AER_Poster}  %\input{0_0_Preamble/Preamble_BibLaTeX_APA}
+\subimport{0_0_Preamble/}{Preamble_Fonts_Charter_FiraSans}
+\input    {0_0_Preamble/Preamble_Sansserif_math}
 
 \bibliography{Library}
 

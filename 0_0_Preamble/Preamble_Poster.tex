@@ -136,6 +136,8 @@
 \setbeamertemplate{itemize item}{\raisebox{-1.5pt}{\textbf{\textbullet}}}
 \setbeamercolor{item}{fg=SpotColor}
 
+\setbeamerfont{structure}{family=\sffamily, shape=\upshape, series=\bfseries}
+
 \setbeamerfont{title}{series=\bfseries}
 \setbeamercolor{title}{fg=SpotColor}
 
@@ -187,7 +189,7 @@
 }
 
 % Alert block definition (with frame)
-\setbeamerfont{block alerted title}{family=\sffamily, series=\bfseries}
+\setbeamerfont{block alerted title}{parent=structure, series=\fontseries{\savesfbfseries}\selectfont}
 \newlength{\inboxwd}
 \newlength{\iinboxwd}
 \newlength{\inboxrule}

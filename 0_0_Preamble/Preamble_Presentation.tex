@@ -84,6 +84,7 @@
 
 \hypersetup{%
 	pdfpagemode=FullScreen,
+	breaklinks=true,
 	colorlinks, linkcolor=, urlcolor=SpotColor, citecolor=%
 }
 \urlstyle{same}
@@ -278,7 +279,7 @@
 \setbeamertemplate{frametitle}{%
 	\vspace{\margintop}\vspace{-5pt}%
 	{\large\usebeamercolor{frametitle}\usebeamerfont{frametitle}\insertframetitle\\[-1.2ex]}%
-	\sliderule%
+	\sliderule\vspace{-2.5pt}%
 }
 % <==
 
@@ -679,12 +680,12 @@
 
 
 \AtBeginEnvironment{itemize}{%
-	\vspace{-\parskip}%
+	\setlength{\partopsep}{-\smallskipamount}%
 	\setlength{\labelsep}{0.55em}%
 	\setlength{\labelwidth}{\widthof{9.}}%
 }
 \AtBeginEnvironment{enumerate}{%
-	\vspace{-\parskip}%
+	\setlength{\partopsep}{-\smallskipamount}%
 	\setlength{\labelsep}{0.5em}%
 	\setlength{\labelwidth}{\widthof{9.}}%
 }
@@ -839,16 +840,17 @@
 \newlength{\bibitemsep}
 \newlength{\bibsep}
 
-\input{0_0_Preamble/Preamble_BibLaTeX_AER}  %\input{0_0_Preamble/Preamble_BibLaTeX_APA}
-\bibliography{Library}
-
-\renewcommand{\bibfont}{\scriptsize}
-
 \setbeamertemplate{bibliography item}{}
 \setbeamercolor{bibliography entry author}  {fg=black}
 \setbeamercolor{bibliography entry title}   {fg=black}
 \setbeamercolor{bibliography entry location}{fg=black}
 \setbeamercolor{bibliography entry note}    {fg=black}
+
+\input{0_0_Preamble/Preamble_BibLaTeX_AER}
+%\input{0_0_Preamble/Preamble_BibLaTeX_APA}
+\bibliography{Library}
+
+\renewcommand{\bibfont}{\scriptsize}
 
 \renewbibmacro*{pageref}{%
 	\addperiod
@@ -863,6 +865,9 @@
 		}%
 	}%
 }
+
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
 
 
 

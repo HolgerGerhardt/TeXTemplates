@@ -137,12 +137,18 @@
 \DeclareFieldFormat{url}{%
 	% \setlength{\Urlmuskip}{0mu}%
 	\Urlmuskip = 0mu\relax%
+	\mathchardef\UrlBigBreakPenalty=1\relax%
+	\mathchardef\UrlBreakPenalty=2\relax%
+		% See https://tex.stackexchange.com/questions/22854/url-line-breaks-with-biblatex
 	\caps{URL}\addcolon\space\url{#1}%
 }
 % Link DOIs automatically to https://doi.org/<DOI>:
 \DeclareFieldFormat{doi}{%
 	% \setlength{\Urlmuskip}{0pt}%
 	\Urlmuskip = 0mu\relax
+	\mathchardef\UrlBigBreakPenalty=1\relax%
+	\mathchardef\UrlBreakPenalty=2\relax%
+		% See https://tex.stackexchange.com/questions/22854/url-line-breaks-with-biblatex
 	\caps{DOI}\addcolon\space\href{https://doi.org/#1}{\nolinkurl{#1}}%
 }
 % <==

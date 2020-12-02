@@ -12,7 +12,7 @@
 
 
 % For APA:
-\usepackage[style=apa, backend=biber, natbib=true, apabackref=true]{biblatex}
+\usepackage[style=apa, backend=biber, natbib=true, backref=true]{biblatex}
 
 \let\citeorig\cite
 \renewcommand{\cite}{\citet}
@@ -53,13 +53,17 @@
 % https://blog.apastyle.org/apastyle/digital-object-identifier-doi/
 % ==>
 \DeclareFieldFormat{doi}{%
-	% \setlength{\Urlmuskip}{0pt}%
-	\Urlmuskip = 0mu\relax
+	\Urlmuskip = 0mu\relax%
+	\mathchardef\UrlBigBreakPenalty=1\relax%
+	\mathchardef\UrlBreakPenalty=2\relax%
+		% See https://tex.stackexchange.com/questions/22854/url-line-breaks-with-biblatex
 	\url{https://doi.org/#1}%
 }
 % <==
 \DeclareFieldFormat{url}{%
-	% \setlength{\Urlmuskip}{0mu}%
 	\Urlmuskip = 0mu\relax%
+	\mathchardef\UrlBigBreakPenalty=1\relax%
+	\mathchardef\UrlBreakPenalty=2\relax%
+		% See https://tex.stackexchange.com/questions/22854/url-line-breaks-with-biblatex
 	\url{#1}%
 }

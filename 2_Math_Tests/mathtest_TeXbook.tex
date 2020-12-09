@@ -43,7 +43,7 @@ $$\sqrt[n]{1+\sqrt[k]{1+\sqrt[5]{1+\sqrt[4]{1+\sqrt[3]{1+x}}}}}$$
 %% page 147
 
 $$\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)
-\bigl|\varphi(x+iy)\bigr|^2=0$$
+\bigl|\varphi(x+\mathup{i}y)\bigr|^2=0$$
 
 %% page 149
 
@@ -55,12 +55,12 @@ $$\pi(n)=\sum_{m=2}^n\left\lfloor\Biggl(\sum_{k=1}^{m-1}\bigl
 
 % page 168
 
-$$\int_0^\infty \frac{t - i b}{t^2 + b^2}e^{iat}\,\mathup{d}t=e^{ab}E_1(ab), \quad
+$$\int_0^\infty \frac{t - \mathup{i} b}{t^2 + b^2}e^{\mathup{i}at}\,\mathup{d}t=e^{ab}E_1(ab), \quad
 a,b > 0.$$
 
 % page 176
 
-$$\mathbf{A} \coloneq \begin{pmatrix}x-\lambda&1&0\\
+$$\mathbf{A} \coloneqq \begin{pmatrix}x-\lambda&1&0\\
 0&x-\lambda&1\\
 0&0&x-\lambda\end{pmatrix}.$$
 
@@ -82,8 +82,8 @@ $$\mathbf{M}=\bordermatrix{&C&I&C'\cr
 $$\sum_{n=0}^\infty a_nz^n\quad\hbox{converges if}\quad
 |z|<\Bigl(\limsup_{n\to\infty}\root n\of{|a_n|}\,\Bigr)^{-1}.$$
 
-$$\frac{f(x+\Delta x)-f(x)}{\Delta x}\to f'(x)
-\qquad \hbox{as $\Delta x\to0$.}$$
+$$\frac{f(x+\mathup{\Delta} x)-f(x)}{\mathup{\Delta} x}\to f'(x)
+\qquad \hbox{as $\mathup{\Delta} x\to0$.}$$
 
 $$\|u_i\|=1,\qquad u_i\cdot u_j=0\quad\hbox{if $i\ne j$.}$$
 
@@ -144,11 +144,10 @@ T(n)\le T(2^{\lceil\lg n\rceil})
 
 \begin{align*}
 \begin{aligned}
-\biggl(\int_{-\infty}^\infty e^{-x^2}\,\mathup{d}x\biggr)^2
-&=\int_{-\infty}^\infty\int_{-\infty}^\infty e^{-(x^2+y^2)}\,\mathup{d}x\,\mathup{d}y\\
-&=\int_0^{2\piup}\int_0^\infty e^{-r^2}\,\mathup{d}r\,\mathup{d}\theta\\
-&=\int_0^{2\piup}\biggl(e^{-\frac{r^2}{2}}
-\biggl|_{r=0}^{r=\infty}\,\biggr)\,\mathup{d}\theta\\
+\left( \int\limits_{-\infty}^\infty \mathup{e}^{-x^2}\,\mathup{d}x \right)^2
+&=\int_{-\infty}^\infty\int_{-\infty}^\infty \mathup{e}^{-(x^2+y^2)}\,\mathup{d}x\,\mathup{d}y\\
+&=\int_0^{2\piup}\int_0^\infty \mathup{e}^{-r^2}\,\mathup{d}r\,\mathup{d}\theta\\
+&=\int_0^{2\piup}\biggl(\mathup{e}^{-\frac{r^2}{2}}\biggl|_{r=0}^{r=\infty}\,\biggr)\,\mathup{d}\theta\\
 &=\piup.
 \end{aligned}
 \end{align*}
@@ -170,5 +169,9 @@ $$\sum_{\substack{\scriptstyle 0< i\le m\\\scriptstyle0<j\le n}}p(i,j) \,\ne
 
 $$\max_{1\le n\le m}\log_2P_n \quad \hbox{and} \quad
 \lim_{x\to0}\frac{\sin x}{x}=1$$
-
+Inline math:
+$\max_{1\le n\le m}\log_2P_n \quad \hbox{and} \quad
+\lim_{x\to0}\frac{\sin x}{x}=1$
 $$p_1(n)=\lim_{m\to\infty}\sum_{\nu=0}^\infty\bigl(1-\cos^{2m}(\nu!^n\piup/n)\bigr)$$
+Inline math:
+$p_1(n)=\lim_{m\to\infty}\sum_{\nu=0}^\infty\bigl(1-\cos^{2m}(\nu!^n\piup/n)\bigr)$

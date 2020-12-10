@@ -1,3 +1,28 @@
+\makeatletter
+\newcommand*{\checkgreekletters}{%
+	\@for\@tempa:=%
+	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+	\do{$\csname\@tempa\endcsname,$ }%
+}
+\makeatother
+
+\noindent%
+{\rmfamily\selectfont\checkgreekletters}
+
+\noindent%
+{\rmfamily\bfseries\selectfont\checkgreekletters}
+
+\noindent%
+{\sffamily\selectfont\checkgreekletters}
+
+\noindent%
+{\sffamily\bfseries\selectfont\checkgreekletters}
+
+\framebreak
+
 Most of the following examples are taken from \textit{The \TeX book} \citep[][see \url{https://ctan.org/pkg/texbook}]{Knuth1984} and were adapted for \LaTeX\ from Karl Berry's torture test for plain \TeX\ math fonts.
 
 \noindent $x + y - z$, \quad $x + y * z$, \quad $z * y / z$, \quad 

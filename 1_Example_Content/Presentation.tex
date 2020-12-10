@@ -314,26 +314,24 @@
 
 \begin{frame}{\titleprefix: Additional Example Formulas (with upright $\mathup{\pi}$)}
 
-	\def\Pr{\ensuremath{\mathbb{P}}}
-	\def\rmd{\mathup{d}}
-	Only variables are set in italics according to \caps{ISO} style---hence, we use upright ``$\rmd$,'' ``$\mathup{e}$,'' and ``$\mathup{\pi}$'' (\texttt{\textbackslash mathup\{d\}}, \texttt{\textbackslash mathup\{e\}}, and \texttt{\textbackslash mathup\{\textbackslash pi\}}, respectively).
+	Only variables are set in italics according to \caps{ISO} style---hence, we use upright ``$\mathup{d}$,'' ``$\mathup{e}$,'' and ``$\mathup{\pi}$'' (\texttt{\textbackslash mathup\{d\}}, \texttt{\textbackslash mathup\{e\}}, and \texttt{\textbackslash mathup\{\textbackslash pi\}}, respectively).
 	
 	\begin{theorem}[simplest form of the \emph{Central Limit Theorem}]
 		\ifnum \serifbodyfont=0
 			\sffamily
 		\fi
-		Let $X_1, X_2, \cdots$ be a sequence of i.i.d. random variables with mean $0$ 
-		and variance $1$ on a~probability space $(\Omega, \mathcal{F}, \Pr)$. Then
+		Let $X_1, X_2, \ldots, X_n$ be a~sequence of i.i.d. random variables with mean $0$ 
+		and variance $1$ on a~probability space $(\Omega, \mathcal{F}, \mathbb{P})$. Then
 		\hypertarget{Eulers_number}{}
 		\[
-			\Pr\left(\frac{X_1+\cdots+X_n}{\sqrt{n}}\le y\right) \to
+			\mathbb{P}{\left(\frac{X_1+\cdots+X_n}{\sqrt{n}}\le y\right)} \to
 			\mathfrak{N}(y) \coloneqq 
 			\int_{-\infty}^y \frac{\mathup{e}^{-v^2/2}}{\sqrt{2\mathup{\pi}}}\,\mathup{d}v
 			\quad\text{as} \quad n\to\infty,
 		\]
 		or, equivalently, letting $S_n \coloneqq \sum_1^n X_k$,
 		\[
-			\mathbb{E} f\left(S_n/\sqrt{n}\right) \to
+			\mathbb{E} f(S_n/\sqrt{n}) \to
 			\int_{-\infty}^\infty f(v) \frac{\mathup{e}^{-v^2/2}}{\sqrt{2\piup}}\,\mathup{d}v
 			\quad \mbox{as $n\to\infty$, for every $f \in \mathup{b}\mathcal{C}(\mathbb{R})$.}
 		\]

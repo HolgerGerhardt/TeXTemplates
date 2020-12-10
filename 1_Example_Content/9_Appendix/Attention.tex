@@ -17,16 +17,18 @@
 The typeset math below follows the ISO recommendations that only variables be set in italic. Note the use of upright shapes for ``$\mathup{d}$,'' ``$\mathup{e}$,'' and ``$\piup$.'' (These are entered as \texttt{\textbackslash mathup\{d\}}, \texttt{\textbackslash mathup\{e\}}, and \texttt{\textbackslash mathup\{\textbackslash pi\}}, respectively.)
 
 \begin{theorem}[Simplest form of the \emph{Central Limit Theorem}]
-	Let $X_1, X_2, \cdots$ be a sequence of i.i.d. random variables with mean $0$ 
-	and variance $1$ on a probability space $(\Omega,\mathcal{F},\Pr)$. Then
-	\[\mathbb{P}\left(\frac{X_1+\cdots+X_n}{\sqrt{n}}\le y\right)\to\mathfrak{N}(y) \coloneqq 
-	\int_{-\infty}^y \frac{\mathup{e}^{-v^2/2}}{\sqrt{2\mathup{\pi}}}\,
-	\mathup{d}v\quad\mbox{as $n\to\infty$,}\]
+	Let $X_1, X_2, \ldots, X_n$ be a sequence of i.i.d. random variables with mean $0$ 
+	and variance $1$ on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$. Then
+	\[
+		\mathbb{P} {\left( \frac{X_1+\cdots+X_n}{\sqrt{n}} ~{\le}~ y \right)} \to \mathfrak{N}(y) \coloneqq 
+		\int_{-\infty}^y \frac{\mathup{e}^{-v^2/2}}{\sqrt{2\mathup{\pi}}}\,
+		\mathup{d}v\quad\mbox{\regularmu as $n\to\infty$,}
+	\]
 	or, equivalently, letting $S_n \coloneqq \sum_1^n X_k$,
-	\[\mathbb{E} f\left(S_n/\sqrt{n}\right)\to \int_{-\infty}^\infty f(v)
+	\[\mathbb{E}f(S_n/\sqrt{n})\to \int_{-\infty}^\infty f(v)
 	\frac{\mathup{e}^{-v^2/2}}{\sqrt{2\mathup{\pi}}}\,\mathup{d}v
 	\quad
-	\text{\regularmu as ${n\to\infty}$, for every ${f\in\mathup{b}\mathcal{C}(\mathbb{R})}$.}\]
+	\mbox{\regularmu as ${n\to\infty}$, for every ${f\in\mathup{b}\mathcal{C}(\mathbb{R})}$.}\]
 \end{theorem}
 
 \subsection{Salience}

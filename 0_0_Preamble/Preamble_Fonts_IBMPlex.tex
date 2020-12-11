@@ -1,0 +1,149 @@
+% !TeX TXS-program:compile = txs:///pdflatex/
+% !TeX TS-program = pdflatex
+% !TeX TXS-program:bibliography = txs:///biber
+% !BIB program = biber
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  FONT SETTINGS AND TYPOGRAPHY  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Use Fira Sans as the sans-serif font.
+% Load first because it otherwise doesn't work properly.
+% ==>
+%\usepackage[lining, scale=0.88]{FiraMono}  % To match the x-height of the Charter serif font
+%\usepackage[book, semibold, lining, tabular, scale=0.88]{FiraSans}[2018/05/23]
+%\makeatletter
+%\@ifpackagelater{FiraSans}{2018/05/23}
+%	{}
+%	{\PackageError{FiraSans}
+%	     {Outdated 'FiraSans' package}
+%	     {Upgrade to FiraSans 2018/05/23 or newer!\MessageBreak
+%	      Otherwise the sans-serif font may not work properly, or the compilation might fail.\MessageBreak
+%	      This is a fatal error. I'm aborting now.}%
+%	\endinput%
+%   }
+%\makeatother
+%% In case you wish to use the ``light'' options of FiraSans: -->
+%\ifthenelse{\isundefined{\AfterPackage}}{\usepackage{afterpackage}}{}
+%\AfterPackage{siunitx}{%
+%  \providecommand*{\lseries}{\fontseries{l}\selectfont}
+%}
+% See https://tex.stackexchange.com/questions/164791/combination-of-siunitx-and-light-weight-font-fails-to-compile.
+% <--
+% <==
+
+\usepackage[xcharter, slantedGreek, scaled=1.055, upint]{newtxmath}
+%\usepackage[xcharter, slantedGreek, scaled=1.09]{newtxmath}
+% This template also works with the ``IBM Plex Sans'' and ``IBM Plex Mono'' fonts,
+% https://ctan.org/pkg/plex ==>
+\usepackage[textmd, semibold, scale=0.91]{plex-mono}  % To match the x-height of the Charter serif font
+\usepackage[textmd, semibold, scale=0.91]{plex-sans}[2018/12/31]
+% Earlier versions of the ``plex-sans'' package do not include support for LGR Greek.
+% <==
+
+%% This template also works with the ``Alegreya'' and ``Alegreya Sans'' fonts,
+%% https://ctan.org/pkg/alegreya ==>
+%\usepackage[semibold, scale=0.89]{plex-mono}  % To match the x-height of the Charter serif font
+%\usepackage[lining, tabular, scale=1.02]{AlegreyaSans}[2018/08/02]
+%	% Earlier versions of the ``Alegreya'' package do not include support for LGR Greek.
+%% <==
+
+%% This template also works with the ``Google Noto'' fonts,
+%% https://ctan.org/pkg/noto ==>
+%\usepackage[scale=0.85]{noto-mono}
+%\usepackage[lining, tabular, scale=0.85]{noto-sans}[2019/01/11]
+%	% Earlier versions of the ``noto'' package do not include support for LGR Greek.
+%% <==
+
+% Save the font family and font series definitions for later use: ==>
+\newcommand{\savesffamily}{\sfdefault}
+\makeatletter
+\newcommand{\savesfmdseries}{\mdseries@sf}
+\newcommand{\savesfbfseries}{\bfseries@sf}
+\makeatother
+% <==
+
+% Use Bitstream Charter as the math font
+% ==>
+%\usepackage[charter, greeklowercase=italicized, greekuppercase=italicized, sfscaled=false, ttscaled=false]{mathdesign}
+%% Use Alegreya as the text font -->
+%\usepackage[lining, tabular, scale=1.02]{Alegreya}[2018/08/02]
+%\ifxetex \else \DisableLigatures[T]{family = {rm*}} \fi
+%% <--
+%% Use Noto Serif as the text font -->
+%\usepackage[lining, tabular, scale=0.85]{noto-serif}[2019/01/11]
+%% <--
+% Use IBM Plex as the text font -->
+\usepackage[textmd, semibold, scale=0.94]{plex-serif}
+% <--
+% Save the font family and font series definitions for later use:
+\let \savermfamily \rmdefault
+\makeatletter
+\newcommand{\savermmdseries}{\mdseries@rm}
+\newcommand{\savermbfseries}{\bfseries@rm}
+\makeatother
+% <==
+
+% mathdesign provides upright Greek letters as \alphaup, \Betaup, etc. while other packages
+% (e.g., unicode-math) call these \upalpha, \upBeta, etc. We make also the latter available.
+% ==>
+\makeatletter
+\@for\@tempa:=%
+	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,varphi,chi,psi,omega,digamma,%
+	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+\do{%
+	\expandafter\let\csname up\@tempa\expandafter\endcsname\csname\@tempa up\endcsname%
+}%
+\makeatother
+% <==
+
+% Provide a \nequiv symbol
+\ifx\nequiv\undefined
+	\newcommand{\nequiv}{\not\equiv}
+\fi
+
+% Use Bitstream Charter as the text font
+% ==>
+%\usepackage[scaled=.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport
+% Save the font family and font series definitions for later use:
+\let \savermdefaultfortext \rmdefault
+\let \savemddefaultfortext \mddefault
+\let \savebfdefaultfortext \bfdefault
+\renewcommand{\textellipsis}{\mbox{.{\kern.09em}.{\kern.09em}.}}
+%\makeatletter
+%\newcommand{\@makefnmarkorig}{%
+%	\hbox{\sufigures\hspace*{.04em}\@thefnmark\hspace*{.04em}}%
+%}  % Copied from XCharter.sty
+%\makeatother
+% <==
+
+\ifxetex
+	% Do nothing.
+\else
+	\DisableLigatures[f]{family = {rm*, sf*, tt*}}
+	% Disable the f* ligatures for the Plex fonts because the fonts do not provide sufficient support.
+	% Disable the f* ligatures for the ``typewriter'' font because they make no sense for a monospaced font.
+	\SetExtraKerning[unit=space]
+		{encoding=*, family=*, series=*, size={*, normalsize, footnotesize}, font = */*/*/*/*}
+		{\textemdash = {325, 325},
+			/ = {100, 100},
+			: = { 50,   0},
+			; = { 50,   0}}
+\fi
+
+\usepackage{xfrac}	% Provides \sfrac
+
+% Since math mode uses a different font encoding, issuing \euro/\texteuro in math mode
+% produces an incorrect sign. We fix this. ==>
+\AtBeginDocument{%
+	\providecommand{\euro}[1]{%
+		\relax\ifmmode\text{\texteuro}#1\else\texteuro #1\fi%
+	}%
+}
+% <==

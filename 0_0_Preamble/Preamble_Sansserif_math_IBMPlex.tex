@@ -1,8 +1,5 @@
-% !TeX program = pdflatex
 % !TeX TXS-program:compile = txs:///pdflatex/
-% !TeX TS-program = pdflatex
-% !BIB program = biber
-% !TeX TXS-program:bibliography = txs:///biber
+% !TeX program = pdflatex
 
 
 
@@ -28,59 +25,84 @@
 \DeclareMathVersion{boldup}
 \DeclareMathVersion{sans}
 
+%\DeclareSymbolFont{operators}{OT1}{ntxtlf}{m}{n}
+
+%\SetSymbolFont{operators}{normal}{OT1}{ntxtlf}{m}{n}
+%\SetSymbolFont{operators}{bold}  {OT1}{ntxtlf}{bx}{n}
+
 %\SetSymbolFont{operators}{sans}{OT1}{jkpss}{m}{n}
 %	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
-\SetSymbolFont{operators}   {sans}{OT1}{mdbch}{m}{n}
-\SetSymbolFont{letters}     {sans}{OML}{jkpss}{m}{it}
-	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+%\SetSymbolFont{operators}   {sans}{OT1}{ntxtlf}{m}{n}
+%\SetSymbolFont{letters}     {sans}{OML}{jkpss}{m}{it}
+% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
 %\SetSymbolFont{letters}     {sans}{OML}{cmbrm}{m}{it}
 %\SetSymbolFont{symbols}     {sans}{OMS}{cmbrs}{m}{n}
-\SetSymbolFont{symbols}     {sans}{OMS}{jkp}  {m}{n}
-	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
-\DeclareSymbolFont{extrasymbols}  {OMS}{cmbrs}{m}{n}
-\SetSymbolFont{extrasymbols}{sans}{OMS}{cmbrs}{m}{n}
-	% Some symbols (e.g., \prime) look weird in kpfonts.
-	% This provides the option to replace them by symbols from mathdesign-charter.
+%\SetSymbolFont{symbols}     {sans}{OMS}{jkp}  {m}{n}
+% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+%\SetSymbolFont{symbols}{sans}{LMS}{ntxsy}{m}{n}
+	% From http://mirrors.ctan.org/fonts/newtx/tex/newtxmath.sty
+%\DeclareSymbolFont{extrasymbols}  {OMS}{cmbrs}{m}{n}
+%\SetSymbolFont{extrasymbols}{sans}{OMS}{cmbrs}{m}{n}
+% Some symbols (e.g., \prime) look weird in kpfonts.
+% This provides the option to replace them by symbols from mathdesign-charter.
 
 \SetMathAlphabet{\mathit} {sans}{OT1}{\savesffamily}{\savesfmdseries}{it}
 \SetMathAlphabet{\mathbf} {sans}{OT1}{\savesffamily}{\savesfbfseries}{n}
 \SetMathAlphabet{\mathtt} {sans}{OT1}{cmtl}{m}{n}
-\SetMathAlphabet{\mathcal}{sans}{OMS}{ntxsy}{m}{n}
-	% See https://tex.stackexchange.com/questions/231583/import-mathcal-symbols-from-txfonts
+\SetMathAlphabet{\mathcal}{sans}{LMS}{ntxsy}{m}{n}
+% See https://tex.stackexchange.com/questions/231583/import-mathcal-symbols-from-txfonts
 %\SetSymbolFont{largesymbols}{sans}{OMX}{jkpss}{m}{n}
 %	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
-\SetSymbolFont{largesymbols} {sans}{OMX}{mdbch}{m}{n}
-	% Using symbols like \int, \left(, etc. from mathdesign-charter because they look better than the ones included in kpfonts
+%\SetSymbolFont{largesymbols} {sans}{OMX}{mdbch}{m}{n}
+% Using symbols like \int, \left(, etc. from mathdesign-charter because they look better than the ones included in kpfonts
+% Using symbols like \int, \left(, etc. from newtxmath:
+%\DeclareSymbolFont{largesymbols}{LMX}{ntxexx}{m}{n}
+\SetSymbolFont{largesymbols}{sans}{LMX}{ntxexx}{m}{n}
 
 \DeclareMathVersion{sansup}
-\SetSymbolFont{letters}  {sansup}{OML}{jkpss}{m}{it}
-\SetSymbolFont{symbols}  {sansup}{OMS}{jkp}  {m}{n}
+%\SetSymbolFont{letters}  {sansup}{OML}{jkpss}{m}{it}
+%\SetSymbolFont{symbols}  {sansup}{OMS}{jkp}  {m}{n}
+%\SetSymbolFont{symbols}{sansup}{LMS}{ntxsy}{m}{n}
+	% From http://mirrors.ctan.org/fonts/newtx/tex/newtxmath.sty
+
 
 \DeclareMathVersion{boldsans}
 %\SetSymbolFont{operators}{boldsans}{OT1}{jkpss}{b}{n}
 %	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
-\SetSymbolFont{operators}{boldsans}{OT1}{mdbch}{bx}{n}
-\SetSymbolFont{letters}  {boldsans}{OML}{jkpss}{bx}{it}
-	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+%\SetSymbolFont{operators}{boldsans}{OT1}{ntxtlf}{bx}{n}
+%\SetSymbolFont{letters}  {boldsans}{OML}{jkpss}{bx}{it}
+% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
 %\SetSymbolFont{letters}  {boldsans}{OML}{mdbch}{bx}{it}
 %\SetSymbolFont{letters}{boldsans}{OML}{cmbrm}{b}{it}
-\SetSymbolFont{symbols}  {boldsans}{OMS}{jkp}  {bx}{n}
-	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+%\SetSymbolFont{symbols}  {boldsans}{OMS}{jkp}  {bx}{n}
+% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
+\SetSymbolFont{letters} {boldsans}{OML}{nxlmi} {b}{it}
+\SetSymbolFont{lettersA}{boldsans}{U}  {ntxmia}{b}{it}
+\SetSymbolFont{symbols} {boldsans}{LMS}{ntxsy} {b}{n}
+	% From http://mirrors.ctan.org/fonts/newtx/tex/newtxmath.sty
 %\SetMathAlphabet{\mathrm}{boldsans}{OT1}{\savesffamily}{\savesfbfseries}{n}
 \SetMathAlphabet{\mathit} {boldsans}{OT1}{\savesffamily}{\savesfbfseries}{it}
 \SetMathAlphabet{\mathtt} {boldsans}{OT1}{cmtl}{b}{n}
-\SetMathAlphabet{\mathcal}{boldsans}{OMS}{ntxsy}{b}{n}
+\SetMathAlphabet{\mathcal}{boldsans}{LMS}{ntxsy}{b}{n}
 %\SetSymbolFont{largesymbols}{boldsans}{OMX}{jkpss}{bx}{n}
 %	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
-\SetSymbolFont{largesymbols}{boldsans}{OMX}{mdbch}{bx}{n}
-	% Using symbols like \int, \left(, etc. from mathdesign-charter because they look better than the ones included in kpfonts
+%\SetSymbolFont{largesymbols}{boldsans}{OMX}{mdbch}{bx}{n}
+% Using symbols like \int, \left(, etc. from mathdesign-charter because they look better than the ones included in kpfonts
+% Using symbols like \int, \left(, etc. from newtxmath:
+\SetSymbolFont{largesymbols}{boldsans}{LMX}{ntxexx}{b}{n}
 
 \DeclareMathVersion{boldsansup}
-\SetSymbolFont{letters}{boldsansup}{OML}{jkpss}{bx}{it}
-\SetSymbolFont{symbols}{boldsansup}{OMS}{jkp}  {bx}{n}
+%\SetSymbolFont{letters}{boldsansup}{OML}{jkpss}{bx}{it}
+%\SetSymbolFont{symbols}{boldsansup}{OMS}{jkp}  {bx}{n}
+\SetSymbolFont{letters} {boldsans}  {OML}{nxlmi} {b}{it}
+\SetSymbolFont{lettersA}{boldsansup}{U}  {ntxmia}{b}{it}
+\SetSymbolFont{symbols} {boldsansup}{LMS}{ntxsy} {b}{n}
+	% From http://mirrors.ctan.org/fonts/newtx/tex/newtxmath.sty
 
 % Using glyphs for math mode from the custom sansserif font
 \DeclareSymbolFont{uprightglyphs}{T1}{\savermfamily}{\savermmdseries}{n}
+%\DeclareSymbolFontAlphabet{\mathrm}{uprightglyphs}
+%\SetMathAlphabet{\mathrm}{normal}{OT1}{\savermfamily}{\savermmdseries}{n}
 \SetSymbolFont{uprightglyphs}{normal}    {T1}{\savermfamily}{\savermmdseries}{n}
 \SetSymbolFont{uprightglyphs}{normalup}  {T1}{\savermfamily}{\savermmdseries}{n}
 \SetSymbolFont{uprightglyphs}{bold}      {T1}{\savermfamily}{\savermbfseries}{n}
@@ -125,22 +147,39 @@
 \DeclareMathSymbol{8}{\mathalpha}{uprightglyphs}{`8}
 \DeclareMathSymbol{9}{\mathalpha}{uprightglyphs}{`9}
 % Operators and punctuation
-\DeclareMathSymbol{+}{\mathbin}  {operators}    {`+}
-	% Not from uprightglyphs due to bad spacing
-\DeclareMathSymbol{=}{\mathrel}  {operators}    {`=}
-	% Not from uprightglyphs due to bad spacing
+%\DeclareMathSymbol{+}{\mathbin}  {operators}    {`+}
+%\DeclareMathSymbol{+}{\mathbin}{symbols}{207}
+	% From http://mirrors.ctan.org/fonts/newtx/tex/newtxmath.sty
+% Not from uprightglyphs due to bad spacing
+%\DeclareMathSymbol{=}{\mathrel}  {operators}    {`=}
+% Not from uprightglyphs due to bad spacing
+\DeclareMathSymbol{-}{\mathbin}{symbols}{0}
+\DeclareMathSymbol{\leq}{\mathrel}{symbols}{20}
+%   \let\le=\leq
+\DeclareMathSymbol{\geq}{\mathrel}{symbols}{21}
+%   \let\ge=\geq
+	% From http://mirrors.ctan.org/fonts/newtx/tex/newtxmath.sty
 \DeclareMathSymbol{.}{\mathord}  {uprightglyphs}{`.}
 \DeclareMathSymbol{,}{\mathpunct}{uprightglyphs}{`,}
+\DeclareMathSymbol{:}{\mathrel}  {uprightglyphs}{`:}
+\let\colon\relax
+\DeclareMathSymbol{\colon}{\mathpunct}{uprightglyphs}{`;}
 \DeclareMathSymbol{;}{\mathpunct}{uprightglyphs}{`;}
 \DeclareMathSymbol{/}{\mathord}  {uprightglyphs}{`/}
 %\DeclareMathSymbol{/}{\mathop}   {uprightglyphs}{`/}
 %	% This would icrease the spacing around the division slash slightly
+\DeclareMathSymbol{!}{\mathord}  {uprightglyphs}{`!}
+\DeclareMathSymbol{\mathdollar}{\mathord}{uprightglyphs}{`\$}
+\DeclareRobustCommand{\$}{\ifmmode\mathdollar\else\symbol{`\$}\fi}
+\DeclareMathSymbol{\mathpercent}{\mathord}{uprightglyphs}{`\%}
+\DeclareRobustCommand{\%}{\ifmmode\mathpercent\else\symbol{`\%}\fi}
+\DeclareMathSymbol{&}{\mathbin}{uprightglyphs}{`&}
 %\DeclareMathSymbol{(}{\mathopen} {uprightglyphs}{`(}
 %\DeclareMathSymbol{)}{\mathclose}{uprightglyphs}{`)}
 %\DeclareMathSymbol{[}{\mathopen} {uprightglyphs}{`[}
 %\DeclareMathSymbol{]}{\mathclose}{uprightglyphs}{`]}
-\DeclareMathSymbol{\prime}{\mathord}{extrasymbols}{"30}
-	% Use \prime from mathdesign-charter because it looks better than the one in kpfonts
+%\DeclareMathSymbol{\prime}{\mathord}{extrasymbols}{"30}
+% Use \prime from mathdesign-charter because it looks better than the one in kpfonts
 \DeclareMathDelimiter{(}      {\mathopen} {uprightglyphs}{`(} {largesymbols}{"00}
 \DeclareMathDelimiter{)}      {\mathclose}{uprightglyphs}{`)} {largesymbols}{"01}
 \DeclareMathDelimiter{[}      {\mathopen} {uprightglyphs}{`[} {largesymbols}{"02}
@@ -202,6 +241,20 @@
 \DeclareMathSymbol{y}{\mathalpha}{italicglyphs}{`y}
 \DeclareMathSymbol{z}{\mathalpha}{italicglyphs}{`z}
 
+% Redefine \cdots so that its appearance matches \ldots, \ddots, and \vdots:
+%%% Use math italic, not text, version of dot, in \vdots and \ddots definitions
+\makeatletter
+\def\cdots{\mathinner{\mkern1mu\raise2.5\p@
+    \vbox{\kern7\p@\hbox{$\m@th.$}}\mkern4mu
+    \raise2.5\p@\hbox{$\m@th.$}\mkern4mu\raise2.5\p@\hbox{$\m@th.$}\mkern1mu}}
+    % \raise2.5\p@ instead of \raise4\p@ to match \cdot
+    % \mkern4mu  instead of \mkern2mu  to match \ldots
+% Inspired by:
+% \def\ddots{\mathinner{\mkern1mu\raise7\p@
+%     \vbox{\kern7\p@\hbox{$\m@th.$}}\mkern2mu
+%     \raise4\p@\hbox{$\m@th.$}\mkern2mu\raise\p@\hbox{$\m@th.$}\mkern1mu}}
+\makeatother
+	% Based on http://mirrors.ctan.org/fonts/newtx/tex/newtxmath.sty
 %% Sansserif Greek letters
 %\DeclareSymbolFont{lgrgreek}{LGR}{\savesffamily}{\savesfmdseries}{it}
 %\SetSymbolFont{lgrgreek}{sans}    {LGR}{\savesffamily}{\savesfmdseries}{it}
@@ -233,14 +286,14 @@
 % ==>
 \makeatletter
 \@for\@tempa:=%
-	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
-	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
-	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
-	\do{%
-		\expandafter\let\csname\@tempa orig\expandafter\endcsname\csname\@tempa\endcsname%
-		\expandafter\let\csname\@tempa uporig\expandafter\endcsname\csname\@tempa up\endcsname%
-	}%
+alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+\do{%
+	\expandafter\let\csname\@tempa orig\expandafter\endcsname\csname\@tempa\endcsname%
+	\expandafter\let\csname\@tempa uporig\expandafter\endcsname\csname\@tempa up\endcsname%
+}%
 \makeatother
 % <==
 
@@ -248,9 +301,9 @@
 % ==>
 \newcommand{\textformath}[1]{%
 	\IfInBoldMode%
-		\IfInUpMode\textbf{#1}\else\textit{\bfseries #1}\fi\relax%
+	\IfInUpMode\textbf{#1}\else\textit{\bfseries #1}\fi\relax%
 	\else
-		\IfInUpMode\textup{#1}\else\textit{#1}\fi\relax%
+	\IfInUpMode\textup{#1}\else\textit{#1}\fi\relax%
 	\fi\relax%
 }
 % The double curly braces in this section are necessary to be able to use Greek letters
@@ -301,8 +354,8 @@
 \newcommand{\piLGR}      {{\mathord{\textformath{\fontencoding{LGR}\selectfont p}}}}
 \newcommand{\rhoLGR}     {{\mathord{\textformath{\fontencoding{LGR}\selectfont r}}}}
 \newcommand{\sigmaLGR}   {{\mathord{\textformath{\fontencoding{LGR}\selectfont s\noboundary}}}}
-	% \noboundary prevents sigma from being replaced by the word-end sigma (varsigma),
-	% see http://mirrors.ctan.org/macros/latex/contrib/textgreek/textgreek.pdf
+% \noboundary prevents sigma from being replaced by the word-end sigma (varsigma),
+% see http://mirrors.ctan.org/macros/latex/contrib/textgreek/textgreek.pdf
 \newcommand{\varsigmaLGR}{{\mathord{\textformath{\fontencoding{LGR}\selectfont c}}}}
 \newcommand{\tauLGR}     {{\mathord{\textformath{\fontencoding{LGR}\selectfont t}}}}
 \newcommand{\upsilonLGR} {{\mathord{\textformath{\fontencoding{LGR}\selectfont u}}}}
@@ -356,8 +409,8 @@
 \newcommand{\piupLGR}      {{\mathord{\textup{\fontencoding{LGR}\selectfont p}}}}
 \newcommand{\rhoupLGR}     {{\mathord{\textup{\fontencoding{LGR}\selectfont r}}}}
 \newcommand{\sigmaupLGR}   {{\mathord{\textup{\fontencoding{LGR}\selectfont s\noboundary}}}}
-	% \noboundary prevents sigma from being replaced by the word-end sigma (varsigma),
-	% see http://mirrors.ctan.org/macros/latex/contrib/textgreek/textgreek.pdf
+% \noboundary prevents sigma from being replaced by the word-end sigma (varsigma),
+% see http://mirrors.ctan.org/macros/latex/contrib/textgreek/textgreek.pdf
 \newcommand{\varsigmaupLGR}{{\mathord{\textup{\fontencoding{LGR}\selectfont c}}}}
 \newcommand{\tauupLGR}     {{\mathord{\textup{\fontencoding{LGR}\selectfont t}}}}
 \newcommand{\upsilonupLGR} {{\mathord{\textup{\fontencoding{LGR}\selectfont u}}}}
@@ -385,17 +438,17 @@
 
 % Save original definition of \varepsilon etc.
 \@for\@tempa:=%
-epsilon,theta,pi,rho,phi%
+	epsilon,theta,pi,rho,phi%
 \do{%
 	\expandafter\let\csname var\@tempa orig\expandafter\endcsname\csname var\@tempa\endcsname%
 }
 
 \newcommand*{\sansmath}{%
 	\@for\@tempa:=%
-		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
-		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
-		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 	\do{%
 		\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa LGR\endcsname%
 		\expandafter\let\csname\@tempa up\expandafter\endcsname\csname\@tempa upLGR\endcsname%
@@ -416,10 +469,10 @@ epsilon,theta,pi,rho,phi%
 % ==>
 \newcommand*{\unsansmath}{%
 	\@for\@tempa:=%
-		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
-		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
-		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 	\do{%
 		\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa orig\endcsname%
 		\expandafter\let\csname\@tempa up\expandafter\endcsname\csname\@tempa uporig\endcsname%
@@ -457,23 +510,23 @@ epsilon,theta,pi,rho,phi%
 
 \newcommand*{\upgreekletters}{%
 	\@for\@tempa:=%
-		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
-		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
-		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
-		\do{%
-			\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa up\endcsname%
-		}%
+	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+	\do{%
+		\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa up\endcsname%
+	}%
 }
 \newcommand*{\itgreekletters}{%
 	\@for\@tempa:=%
-		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
-		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
-		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
-		\do{%
-			\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa orig\endcsname%
-		}%
+	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+	\do{%
+		\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa orig\endcsname%
+	}%
 }
 
 \makeatother
@@ -500,7 +553,8 @@ epsilon,theta,pi,rho,phi%
 \renewcommand{\mathbf}[1]{\bm{#1}}
 \renewcommand{\boldsymbol}[1]{\bm{#1}}
 \newcommand{\mathbfit}[1]{\mathbf{\mathit{#1}}}
-\renewcommand{\mathcal}[1]{\mathscr{#1}}
+%\renewcommand{\mathcal}[1]{\mathscr{#1}}
+\renewcommand{\mathscr}[1]{\mathcal{#1}}
 
 % Apply sansmath etc. automagically
 % ==>
@@ -555,6 +609,7 @@ epsilon,theta,pi,rho,phi%
 % Adjust \mathrm to the curretly active \mathversion.
 % We set it up such that also in sansserif mode, \mathrm activates the serif font.
 % ==>
+%\DeclareMathAlphabet{\mathrm}{OT1}{\savermfamily}{\savermmdseries}{n}
 \let \mathrmorig \mathrm
 \renewcommand{\mathrm}[1]{%
 	\IfInSansMode%
@@ -580,7 +635,7 @@ epsilon,theta,pi,rho,phi%
 	\IfInSansMode%
 		{\textup{%
 			\InUpModetrue%
-			\IfInBoldMode%
+				\IfInBoldMode%
 				\mathversion{boldsansup}%
 				\(#1\)%
 			\else%
@@ -601,41 +656,59 @@ epsilon,theta,pi,rho,phi%
 }
 % <==
 
-%% If you would like to redefine \mathup also for the serif font:
-%% ==>
-%\renewcommand{\mathup}[1]{%
-%	\IfInSansMode%
-%		{\textup{%
-%			\InUpModetrue%
-%			\IfInBoldMode%
-%				\mathversion{boldsansup}%
-%				\(#1\)%
-%			\else%
-%				\mathversion{sansup}%
-%				\(#1\)%
-%			\fi\relax%
-%		}}%
-%	\else%
-%		{\textup{%
-%			\InUpModetrue%
-%			\IfInBoldMode%
-%				\mathversion{boldup}%
-%				\(#1\)%
-%			\else%
-%				\mathversion{normalup}%
-%				\(#1\)%
-%			\fi\relax%
-%		}}%
-%	\fi\relax%
-%}
-%\renewcommand{\mathbfup}[1]{%
-%	\IfInSansMode%
-%		{\mathbf{\mathup{#1}}}%
-%	\else%
-%		{\upgreekletters\mathbf{\mathup{#1}}\itgreekletters}%
-%	\fi\relax%
-%}
-%% <==
+% If you would like to redefine \mathup also for the serif font:
+% ==>
+\renewcommand{\mathup}[1]{%
+	\IfInSansMode%
+		{\textup{%
+			\InUpModetrue%
+			\IfInBoldMode%
+				\mathversion{boldsansup}%
+				\(#1\)%
+			\else%
+				\mathversion{sansup}%
+				\(#1\)%
+			\fi\relax%
+		}}%
+	\else%
+		{\textup{%
+			\InUpModetrue%
+			\upgreekletters%
+			\IfInBoldMode%
+				\mathversion{boldup}%
+				\(#1\)%
+			\else%
+				\mathversion{normalup}%
+				\(#1\)%
+			\fi\relax%
+		}}%
+	\fi\relax%
+}
+\renewcommand{\mathbfup}[1]{%
+	\IfInSansMode%
+		{\mathbf{\mathup{#1}}}%
+	\else%
+		{\upgreekletters\mathbf{\mathup{#1}}\itgreekletters}%
+	\fi\relax%
+}
+% <==
+
+%\SetMathAlphabet{\mathrm}{normal}{OT1}{\savermfamily}{\savermmdseries}{n}
+%\DeclareMathAlphabet{\mathrm}{OT1}{\savermfamily}{\savermmdseries}{n}
+\renewcommand{\mathrm}[1]{%
+	{\textup{%
+		\protect\InUpModetrue%
+		\IfInBoldMode%
+			\mathversion{boldup}%
+			\protect\upgreekletters%
+			\(#1\)%
+		\else%
+			\mathversion{normalup}%
+			\protect\upgreekletters%
+			\(#1\)%
+		\fi\relax%
+	 }}%
+}
 
 % Make the LaTeX-defined operators obey sansserif math
 % ==>
@@ -648,9 +721,9 @@ epsilon,theta,pi,rho,phi%
 	arccos,arccot,arccsc,arcsec,arcsin,arctan,arg,cos,cosh,cot,coth,csc,%
 	deg,det,dim,exp,gcd,hom,inf,ker,lg,lim,liminf,limsup,ln,log,max,min,%
 	Pr,sec,sin,sinh,sup,tan,tanh%
-	\do{%
-		\expandafter\let\csname\@tempa\endcsname\relax%
-	}%
+\do{%
+	\expandafter\let\csname\@tempa\endcsname\relax%
+}%
 \makeatother
 \DeclareMathOperator {\arccos}{\mathup{arccos}}
 \DeclareMathOperator {\arccot}{\mathup{arccot}}
@@ -673,7 +746,7 @@ epsilon,theta,pi,rho,phi%
 \DeclareMathOperator*{\inf}   {\mathup{inf}}
 \DeclareMathOperator {\ker}   {\mathup{ker}}
 \DeclareMathOperator {\lg}    {\mathup{lg}}
-\DeclareMathOperator*{\lim}   {\mathup{lim}}
+\DeclareMathOperator {\lim}   {\mathup{lim}}
 \DeclareMathOperator*{\liminf}{\mathup{lim\,inf}}
 \DeclareMathOperator*{\limsup}{\mathup{lim\,sup}}
 \DeclareMathOperator {\ln}    {\mathup{ln}}

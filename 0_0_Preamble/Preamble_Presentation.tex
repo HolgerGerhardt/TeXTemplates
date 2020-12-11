@@ -758,10 +758,15 @@
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{. }
 \usepackage[justification=centering]{caption}
-\ifnum \serifheadingfont=0
+\ifnum \serifbodyfont=0
 	\captionsetup{font={sf, small}}
 \else
 	\captionsetup{font={rm, small}}
+\fi
+\ifnum \serifheadingfont=0
+	\captionsetup{labelfont={sf, small, bf, color=SpotColor}}
+\else
+	\captionsetup{labelfont={rm, small, bf, color=SpotColor}}
 \fi
 
 \usepackage{tabularx}	% Provides environment tabularx to adjust width of tables

@@ -42,8 +42,8 @@
 	% Some symbols (e.g., \prime) look weird in kpfonts.
 	% This provides the option to replace them by symbols from mathdesign-charter.
 
-\SetMathAlphabet{\mathit} {sans}{OT1}{\savesffamily}{\savesfmdseries}{it}
-\SetMathAlphabet{\mathbf} {sans}{OT1}{\savesffamily}{\savesfbfseries}{n}
+\SetMathAlphabet{\mathit} {sans}{T1}{\savesffamily}{\savesfmdseries}{it}
+\SetMathAlphabet{\mathbf} {sans}{T1}{\savesffamily}{\savesfbfseries}{n}
 \SetMathAlphabet{\mathtt} {sans}{OT1}{cmtl}{m}{n}
 \SetMathAlphabet{\mathcal}{sans}{OMS}{ntxsy}{m}{n}
 	% See https://tex.stackexchange.com/questions/231583/import-mathcal-symbols-from-txfonts
@@ -67,8 +67,8 @@
 \SetSymbolFont{symbols}  {boldsans}{OMS}{jkp}  {bx}{n}
 	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
 %\SetMathAlphabet{\mathrm}{boldsans}{OT1}{\savesffamily}{\savesfbfseries}{n}
-\SetMathAlphabet{\mathit} {boldsans}{OT1}{\savesffamily}{\savesfbfseries}{it}
-\SetMathAlphabet{\mathtt} {boldsans}{OT1}{cmtl}{b}{n}
+\SetMathAlphabet{\mathit} {boldsans}{T1}{\savesffamily}{\savesfbfseries}{it}
+\SetMathAlphabet{\mathtt} {boldsans}{T1}{cmtl}{b}{n}
 \SetMathAlphabet{\mathcal}{boldsans}{OMS}{ntxsy}{b}{n}
 %\SetSymbolFont{largesymbols}{boldsans}{OMX}{jkpss}{bx}{n}
 %	% From http://mirrors.ctan.org/fonts/kpfonts/latex/kpfonts.sty
@@ -184,7 +184,9 @@
 \DeclareMathSymbol{g}{\mathalpha}{italicglyphs}{`g}
 \DeclareMathSymbol{h}{\mathalpha}{italicglyphs}{`h}
 \DeclareMathSymbol{i}{\mathalpha}{italicglyphs}{`i}
+\DeclareMathSymbol{\imath}{\mathalpha}{italicglyphs}{"19}
 \DeclareMathSymbol{j}{\mathalpha}{italicglyphs}{`j}
+\DeclareMathSymbol{\jmath}{\mathalpha}{italicglyphs}{"1A}
 \DeclareMathSymbol{k}{\mathalpha}{italicglyphs}{`k}
 \DeclareMathSymbol{l}{\mathalpha}{italicglyphs}{`l}
 \DeclareMathSymbol{m}{\mathalpha}{italicglyphs}{`m}

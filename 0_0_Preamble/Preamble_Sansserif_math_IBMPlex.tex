@@ -46,6 +46,9 @@
 % Some symbols (e.g., \prime) look weird in kpfonts.
 % This provides the option to replace them by symbols from mathdesign-charter.
 
+\SetMathAlphabet{\mathit} {normal}{T1}{\savermfamily}{\savermmdseries}{it}
+\SetMathAlphabet{\mathit} {bold}  {T1}{\savermfamily}{\savermbfseries}{it}
+
 \SetMathAlphabet{\mathit} {sans}{T1}{\savesffamily}{\savesfmdseries}{it}
 \SetMathAlphabet{\mathbf} {sans}{T1}{\savesffamily}{\savesfbfseries}{n}
 \SetMathAlphabet{\mathtt} {sans}{OT1}{cmtl}{m}{n}
@@ -64,7 +67,6 @@
 %\SetSymbolFont{symbols}  {sansup}{OMS}{jkp}  {m}{n}
 %\SetSymbolFont{symbols}{sansup}{LMS}{ntxsy}{m}{n}
 	% From http://mirrors.ctan.org/fonts/newtx/tex/newtxmath.sty
-
 
 \DeclareMathVersion{boldsans}
 %\SetSymbolFont{operators}{boldsans}{OT1}{jkpss}{b}{n}
@@ -97,7 +99,10 @@
 \SetSymbolFont{letters} {boldsans}  {OML}{nxlmi} {b}{it}
 \SetSymbolFont{lettersA}{boldsansup}{U}  {ntxmia}{b}{it}
 \SetSymbolFont{symbols} {boldsansup}{LMS}{ntxsy} {b}{n}
+\SetSymbolFont{lettersA}{normalup}  {U}  {ntxmia}{m}{it}
+\SetSymbolFont{lettersA}{boldup}    {U}  {ntxmia}{b}{it}
 	% From http://mirrors.ctan.org/fonts/newtx/tex/newtxmath.sty
+	% Upright Greek characters are taken from the lettersA font.
 
 % Using glyphs for math mode from the custom sansserif font
 \DeclareSymbolFont{uprightglyphs}{T1}{\savermfamily}{\savermmdseries}{n}
@@ -282,16 +287,31 @@
 \newcommand{\Rho}    {P}
 \newcommand{\Tau}    {T}
 \newcommand{\Chi}    {X}
+\newcommand{\omicronup}{\mathup{o}}
+\newcommand{\Digammaup}{\mathup{F}}
+\newcommand{\Alphaup}  {\mathup{A}}
+\newcommand{\Betaup}   {\mathup{B}}
+\newcommand{\Epsilonup}{\mathup{E}}
+\newcommand{\Zetaup}   {\mathup{Z}}
+\newcommand{\Etaup}    {\mathup{H}}
+\newcommand{\Iotaup}   {\mathup{I}}
+\newcommand{\Kappaup}  {\mathup{K}}
+\newcommand{\Muup}     {\mathup{M}}
+\newcommand{\Nuup}     {\mathup{N}}
+\newcommand{\Omicronup}{\mathup{O}}
+\newcommand{\Rhoup}    {\mathup{P}}
+\newcommand{\Tauup}    {\mathup{T}}
+\newcommand{\Chiup}    {\mathup{X}}
 % <==
 
 % Save original definitions of the Greek letters
 % ==>
 \makeatletter
 \@for\@tempa:=%
-alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
-Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
-Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 \do{%
 	\expandafter\let\csname\@tempa orig\expandafter\endcsname\csname\@tempa\endcsname%
 	\expandafter\let\csname\@tempa uporig\expandafter\endcsname\csname\@tempa up\endcsname%
@@ -548,13 +568,13 @@ Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 	\IfInSansMode%
 		\textbf{\mathversion{boldsans}\(#1\)}%
 	\else%
-		\bmorig{#1}%
+		{\InBoldModetrue\bmorig{#1}}%
 	\fi\relax%
 }
 % <==
 \renewcommand{\mathbf}[1]{\bm{#1}}
 \renewcommand{\boldsymbol}[1]{\bm{#1}}
-\newcommand{\mathbfit}[1]{\mathbf{\mathit{#1}}}
+\newcommand{\mathbfit}[1]{\bm{#1}}
 %\renewcommand{\mathcal}[1]{\mathscr{#1}}
 \renewcommand{\mathscr}[1]{\mathcal{#1}}
 
@@ -650,11 +670,7 @@ Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 	\fi\relax%
 }
 \newcommand{\mathbfup}[1]{%
-	\IfInSansMode%
-		{\mathbf{\mathup{#1}}}%
-	\else%
-		{\upgreekletters\mathbf{\mathrm{#1}}\itgreekletters}%
-	\fi\relax%
+	\mathbf{\mathup{#1}}
 }
 % <==
 
@@ -686,13 +702,14 @@ Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 		}}%
 	\fi\relax%
 }
-\renewcommand{\mathbfup}[1]{%
+\renewcommand{\mathbfup}[1]{{%
+	\InBoldModetrue%
 	\IfInSansMode%
 		{\mathbf{\mathup{#1}}}%
 	\else%
 		{\upgreekletters\mathbf{\mathup{#1}}\itgreekletters}%
 	\fi\relax%
-}
+}}
 % <==
 
 %\SetMathAlphabet{\mathrm}{normal}{OT1}{\savermfamily}{\savermmdseries}{n}

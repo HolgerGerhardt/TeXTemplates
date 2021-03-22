@@ -12,7 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\let\comment\relax  % in case \comment{...} is already defined, e.g., by verbatim
+\let\comment\undefined  % in case \comment{...} is already defined, e.g., by verbatim
 
 \usepackage[todonotes={textsize=scriptsize}, authormarkuptext=name, authormarkup=none]{changes}
 
@@ -48,7 +48,7 @@
 % Make the \todo lines solid (instead of 70% opacity) and introduce a ``tickmark''
 \LetLtxMacro{\todoorig}{\todo}
 \renewcommand{\todo}[2][]{%
-	\todoorig[#1, tickmarkheight=1.5pt, linecolor=authorcolor]{#2}%
+	\todoorig[#1, tickmarkheight=1.5pt]{#2}%
 }
 \LetLtxMacro{\commentorig}{\comment}
 \renewcommand{\comment}[2][]{%
@@ -60,28 +60,41 @@
 		\fi%
 	}%
 }
+% Workaround for bug in the changes package (as of 2021-03-21, see https://gitlab.com/ekleinod/changes/-/issues/97): -->
+\newsavebox{\addedbox}
+\newsavebox{\replacedbox}
+\newsavebox{\deletedbox}
+\makeatletter
+\savebox{\addedbox}{\@todonotes@useSizeCommand\textit{\color{white}Added text}}
+\savebox{\replacedbox}{\@todonotes@useSizeCommand\textit{\color{white}Replaced:}}
+\savebox{\deletedbox}{\@todonotes@useSizeCommand\textit{\color{white}Deleted:}}
+\makeatother
+% <--
+
 \LetLtxMacro{\addedorig}{\added}
 \renewcommand{\added}[2][]{%
 	\addedorig[#1]{#2}%
-	\IfSubStr{#1}{comment}{}{\comment[#1]{\textit{Added text}}}%
+	\IfSubStr{#1}{comment}{}{\comment[#1]{\usebox{\addedbox}}}%
 }
 \LetLtxMacro{\replacedorig}{\replaced}
 \renewcommand{\replaced}[3][]{%
-	\replacedorig[#1, comment={\newline\textit{Replaced:} ``#3''}]{#2}{}%
+	\replacedorig[#1, comment={\newline\usebox{\replacedbox} ``#3''}]{#2}{}%
 }
 \setdeletedmarkup{}
 \LetLtxMacro{\deletedorig}{\deleted}
 \renewcommand{\deleted}[2][]{%
 	\deletedorig[#1]{#2}%
-	\IfSubStr{#1}{comment}{}{\comment[#1]{\textit{Deleted:} ``#2''}}%
+	\IfSubStr{#1}{comment}{}{\comment[#1]{\usebox{\deletedbox} ``#2''}}%
 }
 \sethighlightmarkup{%
-	\ifthenelse{\isColored}{\sethlcolor{authorcolor}}{}\hl{#1}%
+	%\ifthenelse{\isColored}{\sethlcolor{authorcolor}}{}%
+	\sethlcolor{authorcolor}%
+	\hl{#1}%
 }
 \LetLtxMacro{\highlightorig}{\highlight}
 \renewcommand{\highlight}[2][]{%
 	\highlightorig[#1]{#2}%
-	\IfSubStr{#1}{comment}{}{\comment[#1]{\vspace{-\baselineskip}}}%
+	\IfSubStr{#1}{comment}{}{\comment[#1]{\\[-30pt]}}%
 }
 
 \usepackage{pdfcomment}

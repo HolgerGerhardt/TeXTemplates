@@ -27,7 +27,7 @@
 % The same applies to the ``Tag der Promotion'' note on the title page.
 
 \newcommand{\disstitle}
-	{Essays in Theoretical and Empirical Microeconomics and Macroecoconomics with\unskip\nobreak\ Implications for Social Policy All\unskip\nobreak\ Around\unskip\nobreak\ the\unskip\nobreak\ World}
+	{Essays in Theoretical Microeconomics and\unskip\nobreak\ Empirical\unskip\nobreak\  Macroecoconomics with\unskip\nobreak\ Implications for Social Policy All\unskip\nobreak\ around\unskip\nobreak\ the\unskip\nobreak\ World}
 \newcommand{\dissauthor}
 	{U.~R.~B{\'e}ta Zane-{\AA}l}
 \newcommand{\dissbornin}
@@ -89,7 +89,6 @@
 \end{refsection}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  INTRODUCTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -115,6 +114,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  CHAPTER 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\newcommand{\currentchapter}{Ch1}
+
+% Redefine the referencing commands to be chapter-specific in order to
+% avoid erroneous cross-references from one chapter to another ==>
+\let \labelorig \label
+\renewcommand{\label}[1]{\labelorig{\currentchapter #1}}
+\let \reforig \ref
+\renewcommand{\ref}[1]{\reforig{\currentchapter #1}}
+\let \eqreforig \eqref
+\renewcommand{\eqref}[1]{(\ref{#1})}
+\let \autoreforig \autoref
+\renewcommand{\autoref}[1]{\autoreforig{\currentchapter #1}}
+\let \hyperreforig \hyperref
+\renewcommand{\hyperref}[2][]{\hyperreforig[\currentchapter #1]{#2}}
+\let \pagereforig \pageref
+\renewcommand{\pageref}[1]{\pagereforig{\currentchapter #1}}
+% <==
 \begin{refsection}
 
 % Save old footnote definition
@@ -144,7 +160,7 @@
 % font issues.
 \subimport{1_Example_Content/1_Introduction/}{Introduction}
 \subimport{1_Example_Content/2_Methods/}{Design}
-\subimport{1_Example_Content/2_Methods/}{Predictions}
+\subimport{1_Example_Content/2_Methods/}{Predictions_dissertation}
 \subimport{1_Example_Content/3_Results/}{Results}
 \subimport{1_Example_Content/3_Results/}{Structural_Estimation}
 \subimport{1_Example_Content/4_Discussion/}{Discussion}
@@ -176,6 +192,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  CHAPTER 2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\renewcommand{\currentchapter}{Ch2}
+
 \begin{refsection}
 
 % Save old footnote definition
@@ -203,7 +221,7 @@
 \graphicspath{{1_Example_Content/}}
 \subimport{1_Example_Content/1_Introduction/}{Introduction}
 \subimport{1_Example_Content/2_Methods/}{Design}
-\subimport{1_Example_Content/2_Methods/}{Predictions}
+\subimport{1_Example_Content/2_Methods/}{Predictions_dissertation}
 \subimport{1_Example_Content/3_Results/}{Results}
 \subimport{1_Example_Content/3_Results/}{Structural_Estimation}
 \subimport{1_Example_Content/4_Discussion/}{Discussion}

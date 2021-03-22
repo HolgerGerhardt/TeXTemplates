@@ -31,7 +31,8 @@
 \@namedef{Changes@AuthorColor}{magenta}
 \colorlet{Changes@Color}{magenta}
 % Decrease font size of the ``changes'' boxes and use sans-serif font:
-\renewcommand{\@todonotes@useSizeCommand}{\sffamily\scriptsize\baselineskip=2.25ex}
+\newcommand{\changesfontsettings}{\sffamily\scriptsize\baselineskip=2.25ex}
+\renewcommand{\@todonotes@useSizeCommand}{\changesfontsettings}
 % Decrease rule thickness slightly:
 \xpatchcmd{\@todonotes@drawLineToLeftMargin} {connectstyle}{connectstyle, line width=0.6pt}{}{}
 \xpatchcmd{\@todonotes@drawLineToRightMargin}{connectstyle}{connectstyle, line width=0.6pt}{}{}
@@ -45,46 +46,64 @@
 \definechangesauthor[name={Holger}, color=alizarin]           {HG}
 \definechangesauthor[name={Lou~E.}, color=internationalorange]{LV}
 \definechangesauthor[name={U.~R.},  color=electricultramarine]{UR}
+
 % Make the \todo lines solid (instead of 70% opacity) and introduce a ``tickmark''
 \LetLtxMacro{\todoorig}{\todo}
+\makeatletter
 \renewcommand{\todo}[2][]{%
-	\todoorig[#1, tickmarkheight=1.5pt]{#2}%
+	\todoorig[color=Changes@Color, bordercolor=Changes@Color, #1, tickmarkheight=1.5pt]{#2}%
 }
+\makeatother
+
 \LetLtxMacro{\commentorig}{\comment}
-\renewcommand{\comment}[2][]{%
+% Workaround for bug in the changes package (as of 2021-03-22, see https://gitlab.com/ekleinod/changes/-/issues/97): -->
+\newsavebox{\commentbox}
+\newlength{\commentboxwidth}
+\makeatletter
+\setlength{\commentboxwidth}{\@todonotes@textwidth - 1.5ex - 1pt}
+\newcommand{\commentpatched}[2][]{%
+	\savebox{\commentbox}[\commentboxwidth][t]{%
+		\parbox{\commentboxwidth}{%
+			\changesfontsettings\color{white}\RaggedRight%
+			\hrule\smallskip%
+			#2%
+		}%
+	}%
 	\commentorig[#1]{%
-		\ifx&#2&%
-		% #1 is empty
-		\else%
-		\newline #2%
-		\fi%
+		\strut\newline%
+		\usebox{\commentbox}%
 	}%
 }
-% Workaround for bug in the changes package (as of 2021-03-21, see https://gitlab.com/ekleinod/changes/-/issues/97): -->
-\newsavebox{\addedbox}
-\newsavebox{\replacedbox}
-\newsavebox{\deletedbox}
-\makeatletter
-\savebox{\addedbox}{\@todonotes@useSizeCommand\textit{\color{white}Added text}}
-\savebox{\replacedbox}{\@todonotes@useSizeCommand\textit{\color{white}Replaced:}}
-\savebox{\deletedbox}{\@todonotes@useSizeCommand\textit{\color{white}Deleted:}}
-\makeatother
 % <--
+\makeatother
+\renewcommand{\comment}[2][]{%
+	\commentpatched[#1]{#2}%
+}
+%\renewcommand{\comment}[2][]{%
+%	\commentpatched[#1]{%
+%		\ifx&#2&%
+%		% #1 is empty
+%		\else%
+%		\newline #2%
+%		\fi%
+%	}%
+%}
 
 \LetLtxMacro{\addedorig}{\added}
 \renewcommand{\added}[2][]{%
 	\addedorig[#1]{#2}%
-	\IfSubStr{#1}{comment}{}{\comment[#1]{\usebox{\addedbox}}}%
+	\IfSubStr{#1}{comment}{}{\commentpatched[#1]{\textit{Added text.}}}%
 }
 \LetLtxMacro{\replacedorig}{\replaced}
 \renewcommand{\replaced}[3][]{%
-	\replacedorig[#1, comment={\newline\usebox{\replacedbox} ``#3''}]{#2}{}%
+	\replacedorig[#1]{#2}{}%
+	\IfSubStr{#1}{comment}{}{\commentpatched[#1]{\textit{Replaced:} ``#3''}}%
 }
 \setdeletedmarkup{}
 \LetLtxMacro{\deletedorig}{\deleted}
 \renewcommand{\deleted}[2][]{%
 	\deletedorig[#1]{#2}%
-	\IfSubStr{#1}{comment}{}{\comment[#1]{\usebox{\deletedbox} ``#2''}}%
+	\IfSubStr{#1}{comment}{}{\commentpatched[#1]{\textit{Removed:} ``#2''}}%
 }
 \sethighlightmarkup{%
 	%\ifthenelse{\isColored}{\sethlcolor{authorcolor}}{}%
@@ -94,7 +113,7 @@
 \LetLtxMacro{\highlightorig}{\highlight}
 \renewcommand{\highlight}[2][]{%
 	\highlightorig[#1]{#2}%
-	\IfSubStr{#1}{comment}{}{\comment[#1]{\\[-30pt]}}%
+	\IfSubStr{#1}{comment}{}{\commentorig[#1]{~}}%
 }
 
 \usepackage{pdfcomment}

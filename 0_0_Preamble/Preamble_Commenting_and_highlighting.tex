@@ -25,7 +25,7 @@
 	line width = 0.35pt,
 	text width = \@todonotes@textwidth - 1.5ex - 1pt,
 	inner sep = 0.75ex,
-	rounded corners = 0.25pt
+	rounded corners = 0pt
 ]
 % Redefine default color (which is used when the author ID is omitted):
 \colorlet{authorcolor}{magenta}
@@ -52,7 +52,7 @@
 \LetLtxMacro{\todoorig}{\todo}
 \makeatletter
 \renewcommand{\todo}[2][]{%
-	\todoorig[color=Changes@Color, bordercolor=Changes@Color, #1, tickmarkheight=1.5pt, linecolor=authorcolor]{#2}%
+	\todoorig[color=Changes@Color, bordercolor=Changes@Color, #1, tickmarkheight=0.1cm, linecolor=authorcolor]{#2}%
 }
 \makeatother
 
@@ -118,7 +118,8 @@
 	%\ifthenelse{\isColored}{\sethlcolor{authorcoloraux}}{}%
 	\IfIsColored{%
 		\sethlcolor{authorcoloraux}%
-		\makebox[0pt][l]{\coloruline{authorcolor}{\phantom{#1}}}\hl{#1}%
+		%\makebox[0pt][l]{\coloruline{authorcolor}{\phantom{#1}}}
+		\hl{#1}%
 	}{}%
 }
 \LetLtxMacro{\highlightorig}{\highlight}
@@ -130,7 +131,7 @@
 \usepackage{pdfcomment}
 \newenvironment{holgeradded}{%
 	\color{alizarin}%
-	\begin{pdfsidelinecomment}[color=customgreen,caption=inline,linebegin={/None},lineend={/None},linewidth=2bp,linesep=1cm]{Holger}\ignorespaces}%
+	\begin{pdfsidelinecomment}[color = alizarin, caption = inline, linebegin = {/None}, lineend = {/None}, linewidth = 2bp, linesep = 1cm]{Holger}\ignorespaces}%
 	{\end{pdfsidelinecomment}%
 }
 % To ``accept'' all insertions in the document:

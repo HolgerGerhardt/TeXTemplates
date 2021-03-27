@@ -28,6 +28,7 @@
 	rounded corners = 0.25pt
 ]
 % Redefine default color (which is used when the author ID is omitted):
+\colorlet{authorcolor}{magenta}
 \@namedef{Changes@AuthorColor}{magenta}
 \colorlet{Changes@Color}{magenta}
 % Decrease font size of the ``changes'' boxes and use sans-serif font:
@@ -51,7 +52,7 @@
 \LetLtxMacro{\todoorig}{\todo}
 \makeatletter
 \renewcommand{\todo}[2][]{%
-	\todoorig[color=Changes@Color, bordercolor=Changes@Color, #1, tickmarkheight=1.5pt]{#2}%
+	\todoorig[color=Changes@Color, bordercolor=Changes@Color, #1, tickmarkheight=1.5pt, linecolor=authorcolor]{#2}%
 }
 \makeatother
 
@@ -105,10 +106,20 @@
 	\deletedorig[#1]{#2}%
 	\IfSubStr{#1}{comment}{}{\commentpatched[#1]{\textit{Removed:} ``#2''}}%
 }
+\newcommand{\coloruline}[2]{%
+    \newcommand{\tempuline}{%
+    	\bgroup\markoverwith{\textcolor{#1}{\rule[-1ex]{1.5pt}{0.25ex}}}%
+    	\ULon%
+    }%
+    \tempuline{#2}%
+}
 \sethighlightmarkup{%
-	%\ifthenelse{\isColored}{\sethlcolor{authorcolor}}{}%
-	\sethlcolor{authorcolor}%
-	\hl{#1}%
+	\colorlet{authorcoloraux}{authorcolor!33}%
+	%\ifthenelse{\isColored}{\sethlcolor{authorcoloraux}}{}%
+	\IfIsColored{%
+		\sethlcolor{authorcoloraux}%
+		\makebox[0pt][l]{\coloruline{authorcolor}{\phantom{#1}}}\hl{#1}%
+	}{}%
 }
 \LetLtxMacro{\highlightorig}{\highlight}
 \renewcommand{\highlight}[2][]{%

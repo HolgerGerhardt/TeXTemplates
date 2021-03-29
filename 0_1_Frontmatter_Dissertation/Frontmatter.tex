@@ -100,6 +100,10 @@
 
 \cleardoublepage
 
+% Disable optical marginal alignment for the table of contents etc.
+% so that the page numbers are aligned properly:
+\microtypesetup{protrusion = false}
+
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents
 
@@ -112,6 +116,9 @@
 \phantomsection
 \listoftables
 \addcontentsline{toc}{chapter}{\listtablename}
+
+% Re-enable optical marginal alignment:
+\microtypesetup{protrusion = true}
 
 \cleardoublepage
 

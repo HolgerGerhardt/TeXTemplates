@@ -120,8 +120,12 @@
 \setlength{\cftbeforesecskip}{\smallskipamount}
 \setlength{\cftfigindent}{0pt}  % Remove indentation from list of figures
 \setlength{\cfttabindent}{0pt}  % Remove indentation from list of tables
-\setlength{\cftfignumwidth}{3.75em}  % Make labels inf LoF wider
-\setlength{\cfttabnumwidth}{3.75em}  % Make labels inf LoT wider
+\setlength{\cftfignumwidth}{3.75em}  % Make labels in LoF wider
+\setlength{\cfttabnumwidth}{3.75em}  % Make labels in LoT wider
+% Prevent unwanted optical marginal alignment of page numbers by microtype:
+\newlength{\cftaux}
+\renewcommand{\cftfigafterpnum}{\phantom{\,}\settowidth{\cftaux}{\,}\hspace{-\cftaux}}
+\renewcommand{\cfttabafterpnum}{\phantom{\,}\settowidth{\cftaux}{\,}\hspace{-\cftaux}}
 
 \setcounter{secnumdepth}{3}
 	% So that also 3rd-level headings are numbered.

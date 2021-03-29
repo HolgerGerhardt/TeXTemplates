@@ -68,6 +68,10 @@
 \maketitle
 
 {
+	% Disable optical marginal alignment for the table of contents etc.
+	% so that the page numbers are aligned properly:
+	\microtypesetup{protrusion = false}
+	
 	\setlength{\baselineskip}{1.25\origbaselineskip}
 	\pdfbookmark[1]{\contentsname}{toc}
 	\tableofcontents

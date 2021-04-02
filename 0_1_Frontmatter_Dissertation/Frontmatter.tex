@@ -17,37 +17,41 @@
 \noindent%
 \begin{center}
 \begin{minipage}[t][0.99\textheight][t]{0.9\textwidth}
-\title{\sffamily\bfseries\linespread{0.95}\LARGE%
+\title{\sffamily\bfseries\linespread{0.975}\LARGE\scalefont{1.11}%
 	~\\[-10ex]
 	\disstitle%
 }
 \author{\large\selectlanguage{ngerman}%
-	\\[5ex]%	
+	\\[10ex]%	
 	% \textsf{% Sans-serif font
-		{\Large Inaugural-Dissertation}%
+		{\Large Inauguraldissertation}%
 	% }
-	\\[2ex]%
+	\\[3ex]%
 	zur Erlangung des Grades eines Doktors \\%
-	der Wirtschafts- und Gesellschaftswissenschaften \\[1.25ex]%
-	durch \\[1.25ex]%
+	der Wirtschaftswissenschaften \\[1.55ex]%
+	durch \\[1.5ex]%
 	die Rechts- und Staatswissenschaftliche Fakultät der \\%
-	Rheinischen Friedrich-Wilhelms-Universität Bonn \\[2ex]%
+	Rheinischen Friedrich-Wilhelms-Universität Bonn \\[3ex]%
 	vorgelegt von \\[3ex]%
 	\textbf{% Bold font
 		{\Large \dissauthor}
 	}
-	\\[2ex]%
+	\\[3ex]%
 	aus \dissbornin
 }
-\date{{\Large\dissyear}%
-	% Include only after defense: -->
-	\ifnum \dissafterdefense=1
-		\vfill
-		\noindent \rule{\textwidth}{0.5pt} \\[1.25ex]
-		\noindent\selectlanguage{ngerman} Tag der Promotion: \dissdatedefense
-	\fi
-	% <--
-}
+% Include date only after defense: -->
+\ifnum \dissafterdefense=1%
+	\date{%
+		\vspace{15ex}%
+		{\Large\dissyear}%
+		\vfill%
+	}%
+\else%
+	\date{%
+		\vfill%
+	}%
+\fi
+% <--
 
 \maketitle
 \end{minipage}
@@ -75,9 +79,9 @@
 	
 	\noindent\selectlanguage{ngerman}
 	\begin{tabular}{@{}l@{\quad}l@{}}
-		Dekan:                          & \dissdean             \\
+		Dekan:                          & \dissdean             \\[\medskipamount]
 		Erstreferent:                   & \dissfirstsupervisor  \\
-		Zweitreferent:                  & \disssecondsupervisor \\
+		Zweitreferent:                  & \disssecondsupervisor \\[\medskipamount]
 		Tag der m\"undlichen Pr\"ufung: & \dissdatedefense
 	\end{tabular}
 \else

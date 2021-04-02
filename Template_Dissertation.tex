@@ -23,8 +23,10 @@
 % Use option ``fleqn'' for left-aligned display formulae
 
 \newcommand{\dissafterdefense}{1}
+% See https://www.rsf.uni-bonn.de/dekanat/Formulare/vorgaben-pflichtexemplare-wiwi/:
 % Set to 1 for the final version AFTER the defense, because only after the defense is the second page (which lists the date of the defense and the names of the supervisors) to be included!
 % The same applies to the ``Tag der Promotion'' note on the title page.
+% Also the CV at the end of the disseration is to be included only after the defense.
 
 \newcommand{\disstitle}
 	{Essays in Theoretical Microeconomics and\unskip\nobreak\ Empirical\unskip\nobreak\  Macroecoconomics with\unskip\nobreak\ Implications for Social Policy All\unskip\nobreak\ around\unskip\nobreak\ the\unskip\nobreak\ World}
@@ -32,16 +34,18 @@
 	{U.~R.~B{\'e}ta Zane-{\AA}l}
 \newcommand{\dissbornin}
 	{Summacumlaudeville}
-\newcommand{\dissyear}
-	{2018}
+\newcommand{\disssubmitdate}
+	{December~2020}
 \newcommand{\dissdean}
 	{Prof.~Dr. Jürgen von Hagen}
 \newcommand{\dissfirstsupervisor}
 	{Prof.~Dr. Armin Falk}
 \newcommand{\disssecondsupervisor}
 	{Prof.~Dr. Hans-Martin von Gaudecker}
+\newcommand{\dissyear}
+	{2021}
 \newcommand{\dissdatedefense}
-	{11.~November~2018}
+	{1.~April~\dissyear}
 
 \input    {0_0_Preamble/Preamble_Fundamental_packages}
 \hypersetup{pdftitle={\disstitle}, pdfauthor={\dissauthor}}
@@ -201,8 +205,8 @@
 \renewcommand{\@makefntext}[1]{\@makefntextorig{#1}}
 \makeatother
 \chapter
-	[My Second Paper]
-	{My Second Paper%
+	[My Second Paper Has a~Long Title That\nolinebreak\  Spans Two Lines]
+	{My Second Paper Has a\nolinebreak\ Long Title That\nolinebreak\  Spans Two Lines%
 	 \setcounter{footnote}{1}\textsuperscript{\Large\fnsymbol{footnote}}%
 	}
 \label{diss:MySecondPaper}
@@ -307,20 +311,19 @@
 %\end{comment}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  FORMAL STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  FORMAL STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{refsection}
-
-\selectlanguage{ngerman}
-
-\chapter*{%
-	Lebenslauf%
-	%	\setcounter{footnote}{1}\textsuperscript{\fnsymbol{footnote}}
-}
-\input{9_Formal_Stuff/CV}
-
-\end{refsection}
+\ifnum \dissafterdefense=1
+	\begin{refsection}
+		\selectlanguage{ngerman}
+		\chapter*{%
+			Lebenslauf%
+			%	\setcounter{footnote}{1}\textsuperscript{\fnsymbol{footnote}}
+		}
+		\input{9_Formal_Stuff/CV}
+	\end{refsection}
+\fi
 
 
 \end{document}

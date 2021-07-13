@@ -88,33 +88,33 @@
 \makeatletter
 % Save original definitions of the Greek letters
 \@for\@tempa:=%
-	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+	alpha,beta,gamma,delta,epsilon,varepsilon,zeta,eta,theta,vartheta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,varpi,rho,varrho,sigma,varsigma,tau,upsilon,phi,varphi,chi,psi,omega,digamma,%
 	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
 	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
-	\do{%
-		\expandafter\let\csname\@tempa orig\expandafter\endcsname\csname\@tempa\endcsname%
-		\expandafter\let\csname\@tempa uporig\expandafter\endcsname\csname\@tempa up\endcsname%
-	}%
+\do{%
+	\expandafter\let\csname\@tempa orig\expandafter\endcsname\csname\@tempa\endcsname%
+	\expandafter\let\csname\@tempa uporig\expandafter\endcsname\csname\@tempa up\endcsname%
+}%
 \newcommand*{\upgreekletters}{%
 	\@for\@tempa:=%
-		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+		alpha,beta,gamma,delta,epsilon,varepsilon,zeta,eta,theta,vartheta,iota,kappa,lambda,mu,nu,xi,%
+		omicron,pi,varpi,rho,varrho,sigma,varsigma,tau,upsilon,phi,varphi,chi,psi,omega,digamma,%
 		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
 		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
-		\do{%
-			\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa up\endcsname%
-		}%
+	\do{%
+		\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa up\endcsname%
+	}%
 }
 \newcommand*{\itgreekletters}{%
 	\@for\@tempa:=%
-		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+		alpha,beta,gamma,delta,epsilon,varepsilon,zeta,eta,theta,vartheta,iota,kappa,lambda,mu,nu,xi,%
+		omicron,pi,varpi,rho,varrho,sigma,varsigma,tau,upsilon,phi,varphi,chi,psi,omega,digamma,%
 		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
 		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
-		\do{%
-			\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa orig\endcsname%
-		}%
+	\do{%
+		\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa orig\endcsname%
+	}%
 }
 \makeatother
 % <==

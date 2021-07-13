@@ -198,7 +198,7 @@
 \renewenvironment{quotation}%
   {\list{}{\leftmargin=\parindent \rightmargin=\parindent
            \listparindent=\parindent \parsep=0pt}%
-   \item[]}%	
+   \item[]}%
   {\endlist}
 % <==
 
@@ -300,7 +300,7 @@
 
 % Referencing ``subfigures'' (i.e., individual panels of which a figure is comprised):
 %\usepackage{subfigure}
-%\usepackage{subfig} 
+%\usepackage{subfig}
 % Justus says this is the newer and preferable package.
 % However, see https://tex.stackexchange.com/questions/13625/subcaption-vs-subfig-best-package-for-referencing-a-subfigure:
 \usepackage{subcaption}
@@ -340,7 +340,7 @@
 	\endoldtabularx%
 }
 
-\usepackage{siunitx}
+\usepackage{siunitx}[=v2]
 	% Allows, among others, for alignment of decimal numbers in tables at the decimal point.
 \sisetup{
 	detect-all,
@@ -505,7 +505,7 @@
 	{.}          % Punctuation after theorem head
 	{.5em}       % Space after theorem head: " " = normal interword space; \newline = linebreak
 	{\thmname{#1}\thmnumber{\:#2}\thmnote{\bfseries\upshape\ (#3)}}
-		% Theorem head spec (changed such that also the ``theorem note'' is printed in boldface) 
+		% Theorem head spec (changed such that also the ``theorem note'' is printed in boldface)
 
 \theoremstyle{Standard}
 \newtheorem{theorem}{Theorem}

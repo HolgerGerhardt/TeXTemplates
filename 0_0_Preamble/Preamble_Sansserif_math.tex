@@ -250,8 +250,8 @@
 % ==>
 \makeatletter
 \@for\@tempa:=%
-	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+	alpha,beta,gamma,delta,epsilon,varepsilon,zeta,eta,theta,vartheta,iota,kappa,lambda,mu,nu,xi,%
+	omicron,pi,varpi,rho,varrho,sigma,varsigma,tau,upsilon,phi,varphi,chi,psi,omega,digamma,%
 	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
 	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 	\do{%
@@ -402,7 +402,7 @@
 
 % Save original definition of \varepsilon etc.
 \@for\@tempa:=%
-epsilon,theta,pi,rho,phi%
+	epsilon,theta,pi,rho,sigma,phi%
 \do{%
 	\expandafter\let\csname var\@tempa orig\expandafter\endcsname\csname var\@tempa\endcsname%
 }
@@ -474,8 +474,8 @@ epsilon,theta,pi,rho,phi%
 
 \newcommand*{\upgreekletters}{%
 	\@for\@tempa:=%
-		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+		alpha,beta,gamma,delta,epsilon,varepsilon,zeta,eta,theta,vartheta,iota,kappa,lambda,mu,nu,xi,%
+		omicron,pi,varpi,rho,varrho,sigma,varsigma,tau,upsilon,phi,varphi,chi,psi,omega,digamma,%
 		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
 		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 		\do{%
@@ -484,8 +484,8 @@ epsilon,theta,pi,rho,phi%
 }
 \newcommand*{\itgreekletters}{%
 	\@for\@tempa:=%
-		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+		alpha,beta,gamma,delta,epsilon,varepsilon,zeta,eta,theta,vartheta,iota,kappa,lambda,mu,nu,xi,%
+		omicron,pi,varpi,rho,varrho,sigma,varsigma,tau,upsilon,phi,varphi,chi,psi,omega,digamma,%
 		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
 		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 		\do{%
@@ -562,7 +562,7 @@ epsilon,theta,pi,rho,phi%
 		\else%
 			\mathversion{sans}%
 			{\textmd{\(#1\)}}%
-		\fi\relax%	
+		\fi\relax%
 	\else%
 		\mathnormalorig{#1}%
 	\fi\relax%

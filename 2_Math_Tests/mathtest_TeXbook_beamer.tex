@@ -39,8 +39,8 @@
 
 Most of the following examples are taken from \textit{The \TeX book} \citep[][see \url{https://ctan.org/pkg/texbook}]{Knuth1984} and were adapted for \LaTeX\ from Karl Berry's torture test for plain \TeX\ math fonts.
 
-\noindent $x + y - z$, \quad $x + y * z$, \quad $z * y / z$, \quad 
-$(x+y)(x-y) = x^2 - y^2$, 
+\noindent $x + y - z$, \quad $x + y * z$, \quad $z * y / z$, \quad
+$(x+y)(x-y) = x^2 - y^2$,
 
 \noindent $x \times y \cdot z = [x\, y\, z]$, \quad $x\circ y \bullet z$, \quad
 $x\cup y \cap z$, \quad $x\sqcup y \sqcap z$, \quad
@@ -132,6 +132,30 @@ $$\hbox{The confluent image of}\quad
 \begin{Bmatrix}\hbox{an arc}\hfill\\
 \hbox{an arc or a circle}\hfill\\
 \hbox{a fan or an arc}\hfill\end{Bmatrix}.$$
+
+\framebreak
+%% page 186
+
+\bgroup
+\mathversion{bold}\bfseries
+$$\sum_{n=0}^\infty a_nz^n\quad\hbox{converges if}\quad
+|z|<\Bigl(\limsup_{n\to\infty}\root n\of{|a_n|}\,\Bigr)^{-1}.$$
+
+$$\frac{f(x+\mathup{\Delta} x)-f(x)}{\mathup{\Delta} x}\to f'(x)
+\qquad \hbox{as $\mathup{\Delta} x\to0$.}$$
+
+$$\|u_i\|=1,\qquad u_i\cdot u_j=0\quad\hbox{if $i\ne j$.}$$
+
+%% page 191
+
+$$\hbox{The confluent image of}\quad
+\begin{Bmatrix}\hbox{an arc}\hfill\\\hbox{a circle}\hfill\\
+\hbox{a fan}\hfill\\\end{Bmatrix}
+\quad\hbox{is}\quad
+\begin{Bmatrix}\hbox{an arc}\hfill\\
+\hbox{an arc or a circle}\hfill\\
+\hbox{a fan or an arc}\hfill\end{Bmatrix}.$$
+\egroup
 
 \framebreak
 %% page 191

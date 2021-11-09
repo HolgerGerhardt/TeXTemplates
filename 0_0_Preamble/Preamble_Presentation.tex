@@ -49,7 +49,7 @@
 \else
 	\usepackage[protrusion=true, expansion=false, kerning=true]{microtype}
 \fi
-% The microtype package enables so-called hanging punctuation. That is, when a punctuation sign like ":", ".", "-", etc. is found at the beginning or end of a line, it is protruded a little into the page margin. This results in "optical margin alignment," because the protrusion makes the margin alignment look straighter.
+% The microtype package enables so-called hanging punctuation. That is, when punctuation like ":", ".", "-", etc. is found at the beginning or end of a line, it is protruded a little into the page margin. This results in "optical margin alignment": the protrusion makes the margin look straighter.
 
 
 \definecolor{darkgray}{rgb}{0.4,0.4,0.4}
@@ -537,10 +537,10 @@
 
 \makeatletter
 \patchcmd{\beamer@sectionintoc}
-{\vfill}
-{\medskip}
-{}
-{}
+	{\vfill}
+	{\medskip}
+	{}
+	{}
 \makeatother
 
 
@@ -807,8 +807,7 @@
 	input-close-uncertainty  = ,
 	retain-explicit-plus
 }
-\newcolumntype{T}[1]
-{@{}S[table-format = #1, table-space-text-pre = {***}, table-space-text-post = {***}]}
+\newcolumntype{T}[1]{@{}S[table-format = #1, table-space-text-pre = {***}, table-space-text-post = {***}]}
 % Loading the ``siunitx'' package generates a ``too many math alphabets'' used error.
 % See https://tex.stackexchange.com/questions/452682/limit-math-alphabets-created-by-siunitx?noredirect=1&lq=1 and
 %https://tex.stackexchange.com/questions/40874/kpfonts-siunitx-and-math-alphabets

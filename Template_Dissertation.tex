@@ -124,6 +124,12 @@
 % avoid erroneous cross-references from one chapter to another ==>
 \let \labelorig \label
 \renewcommand{\label}[1]{\labelorig{\currentchapter #1}}
+% Based on https://tex.stackexchange.com/a/135995: -->
+\makeatletter
+\let \label@in@display@orig \label@in@display%
+\renewcommand{\label@in@display}[1]{\label@in@display@orig{\currentchapter #1}}
+\makeatother
+% <--
 \let \reforig \ref
 \renewcommand{\ref}[1]{\reforig{\currentchapter #1}}
 \let \eqreforig \eqref

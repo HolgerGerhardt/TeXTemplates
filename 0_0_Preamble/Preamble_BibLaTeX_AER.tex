@@ -119,22 +119,20 @@
 		}%
 }
 
-% How to handle DOIs and URLs
+% How to handle DOIs, eprints, and URLs
 % ==>
-\renewbibmacro*{doi+eprint+url}
-{%
-	\iffieldundef{doi}
-	{}
-	{\printfield{doi}}
-	\newunit\newblock
-	\iftoggle{bbx:eprint}
-	{\usebibmacro{eprint}}
-	{}%
-	\newunit\newblock
-	\iffieldundef{doi}  % If no DOI provided, use URL
-	{\usebibmacro{url+urldate}}
-	{}
-}
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{eprint}}}  % If DOI provided, remove eprint
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{url}}}  % If DOI provided, remove URL
+% This works, too:
+%\renewbibmacro*{doi+eprint+url}
+%{%
+%	\iffieldundef{doi}
+%		{\iftoggle{bbx:eprint}
+%			{\usebibmacro{eprint}}% If no DOI provided, use eprint
+%			{\usebibmacro{url+urldate}}}  % If no DOI provided, use URL
+%		{\printfield{doi}}
+%	\newunit\newblock%
+%}
 \DeclareFieldFormat{url}{%
 	% \setlength{\Urlmuskip}{0mu}%
 	\Urlmuskip = 0mu\relax%

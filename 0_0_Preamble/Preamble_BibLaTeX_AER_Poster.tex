@@ -14,7 +14,7 @@
 
 % AER/JEL/JEP style
 
-\usepackage[backend=biber, natbib=true, bibencoding=inputenc, bibstyle=authoryear, citestyle=authoryear-comp, mincitenames=1, maxcitenames=2, minbibnames=1, maxbibnames=7, uniquename=false, uniquelist=true, giveninits=true, backref=false, doi=false, url=false, isbn=false, dashed=false, sorting=ynt, sortcites=true, mergedate=true, dateabbrev=false, abbreviate=false, citetracker=true]{biblatex}
+\usepackage[backend=biber, natbib=true, bibencoding=inputenc, bibstyle=authoryear, citestyle=authoryear-comp, mincitenames=1, maxcitenames=2, minbibnames=1, maxbibnames=7, uniquename=false, uniquelist=true, giveninits=true, backref=false, doi=false, eprint=false, url=false, isbn=false, dashed=false, sorting=ynt, sortcites=true, mergedate=true, dateabbrev=false, abbreviate=false, citetracker=true]{biblatex}
 % sortcites sorts the in-text citations by year of publication
 \DeclareBibliographyAlias{newspaper}{article}
 
@@ -121,20 +121,8 @@
 
 % How to handle DOIs and URLs
 % ==>
-%\renewbibmacro*{doi+eprint+url}
-%{%
-%	\iffieldundef{doi}
-%	{}
-%	{\printfield{doi}}
-%	\newunit\newblock
-%	\iftoggle{bbx:eprint}
-%	{\usebibmacro{eprint}}
-%	{}%
-%	\newunit\newblock
-%	\iffieldundef{doi}  % If no DOI provided, use URL
-%	{\usebibmacro{url+urldate}}
-%	{}
-%}
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{eprint}}}  % If DOI provided, remove eprint
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{url}}}  % If DOI provided, remove URL
 %% Remove URLs to save space
 %\AtEveryBibitem{
 %	\ifentrytype{article}%

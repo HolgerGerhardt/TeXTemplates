@@ -23,10 +23,15 @@
 \usepackage[sf, bf, raggedright, explicit]{titlesec}	% Sansserif font for the headings
 % Page headers
 % ==>
+\addtolength{\topmargin}{-14.25pt}
+\addtolength{\headsep}{14.25pt}
+	% Move header up so that the distance to the body text increases;
+	% it should be approximately as large as the largest space above a heading.
 \newpagestyle{chapterleftsectionright}[\small\sffamily\selectfont]{
 	\sethead%
 	[\textbf{\thepage}~~|~~%
 	 \ifthechapter{\thechapter~~}{}\ecapitalisewords{\chaptertitle}%
+	 \strut%
 	]% even-left
 	[]% even-center
 	[]% even-right
@@ -38,12 +43,14 @@
 		\ifthesection{\thesection~~}{}\ecapitalisewords{\sectiontitle}%
 	 \fi%
 	 ~~|~~\textbf{\thepage}%
+	 \strut%
 	}%	odd-right
 }
 \newpagestyle{chapterleftappendixsectionright}[\small\sffamily\selectfont]{
 	\sethead%
 	[\textbf{\thepage}~~|~~%
 	 \ifthechapter{\thechapter~~}{}\ecapitalisewords{\chaptertitle}%
+	 \strut%
 	]% even-left
 	[]% even-center
 	[]% even-right
@@ -55,6 +62,7 @@
 		\appendixname~\ifthesection{\thesection~~}{}\ecapitalisewords{\sectiontitle}%
 	 \fi%
 	 ~~|~~\textbf{\thepage}%
+	 \strut%
 	}%	odd-right
 }
 \pagestyle{chapterleftsectionright}

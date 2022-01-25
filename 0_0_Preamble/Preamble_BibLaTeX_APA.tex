@@ -68,3 +68,5 @@
 		% See https://tex.stackexchange.com/questions/22854/url-line-breaks-with-biblatex
 	\url{#1}%
 }
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{eprint}}}  % If DOI provided, remove eprint
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{url}}}  % If DOI provided, remove URL

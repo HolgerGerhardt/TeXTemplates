@@ -287,6 +287,7 @@
 % <==
 
 \newlength{\navigationwidth}
+\makeatletter
 \BeforeBeginEnvironment{frame}{%
 	% Add a slide number (and [short]title) to the footer of each slide
 	% ==>
@@ -294,8 +295,14 @@
 		\hspace{\marginleft}%
 		\sliderule \vspace{1.1ex} \linebreak
 		\mbox{\hspace{\marginleft}}%
-		\textmd{\insertshortauthor: \enquote{\insertshorttitle}}
+		\strut% to ensure identical height of all footlines
+		\textmd{%
+			\insertshortauthor%
+			\ifdefempty{\beamer@shortdate}{}{~(\insertshortdate)}%
+			\ifdefempty{\beamer@shorttitle}{}{: \enquote{\insertshorttitle}}%
+		}
 		\hfill%
+		\strut%
 		\textbf{\insertframenumber/\inserttotalframenumber}%
 		\hspace{\marginright}%
 		\vspace{12pt}%
@@ -331,6 +338,7 @@
 	\fi
 	% <==
 }
+\makeatother
 
 % See https://tex.stackexchange.com/questions/427257/how-to-remove-footer-for-specific-type-of-slides-frames
 % ==>
@@ -340,9 +348,9 @@
 		\hspace{\marginleft}%
 		\sliderule \vspace{1.1ex} \linebreak
 		\mbox{\hspace{\marginleft}}%
-		\textmd{\phantom{\insertshortauthor: \enquote{\insertshorttitle}}}
+		\strut% to ensure identical height with regular footline
 		\hfill%
-		\phantom{\insertframenumber/\inserttotalframenumber}%
+		\strut%
 		\hspace{\marginright}%
 		\vspace{15pt}%
 	}%

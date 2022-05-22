@@ -14,9 +14,18 @@
 
 \usepackage{import}
 \input    {0_0_Preamble/Preamble_Poster}
-\input    {0_0_Preamble/Preamble_BibLaTeX_AER_Poster}  %\input{0_0_Preamble/Preamble_BibLaTeX_APA}
+\input    {0_0_Preamble/Preamble_BibLaTeX_AER}  %\input{0_0_Preamble/Preamble_BibLaTeX_APA}
 \subimport{0_0_Preamble/}{Preamble_Fonts_Charter_FiraSans}
 \input    {0_0_Preamble/Preamble_Sansserif_math}
+
+% Set up desired deviations from the default bibliography settings here:
+\ExecuteBibliographyOptions{
+	backref = false, giveninits = true,
+	uniquename = false, uniquelist = false
+}
+\AtEveryBibitem{\clearfield{doi}}
+\AtEveryBibitem{\clearfield{url}}
+\AtEveryBibitem{\clearfield{eprint}}
 
 \bibliography{Library}
 
@@ -34,7 +43,7 @@
 \newlength{\blockFour}
 
 % Vertical positions
-\setlength{\blockOne}  { 12.00cm} 
+\setlength{\blockOne}  { 12.00cm}
 \setlength{\blockTwo}  { 49.25cm}
 \setlength{\blockThree}{ 76.50cm}
 \setlength{\blockFour} {102.00cm}
@@ -291,7 +300,7 @@ Normative model: exponential discounting. However, observed decisions are hard t
 	\item The latex is therefore usually allowed to coagulate on the tree \citep{Koszegi2013}.
 	\item See \cite{Lisi1995, Dohmen2012}.
 	\item The latex, which is usually coagulated by standing or by heating, is obtained from incisions.
-\end{itemize}	
+\end{itemize}
 \end{block}
 
 \end{textblock*}
@@ -321,10 +330,10 @@ Normative model: exponential discounting. However, observed decisions are hard t
 \begin{textblock*}{\colwidth}(\leftmargin+2\colwidth+2\colsep, \blockFour)
 
 \begin{block}{\refname}
-\vspace{-0.333333\baselineskip}
+\vspace{-0.25\baselineskip}
 \setlength{\bibhang}{0pt}
 \setlength{\bibsep}{0\baselineskip}
-\renewcommand*{\bibfont}{\sffamily\small\baselineskip25.9pt}
+\renewcommand*{\bibfont}{\sffamily\small\baselineskip28.35pt}
 \renewcommand*{\bf}{\bfseries}
 \color{SpotColor}
 \begin{refcontext}[sorting=nyt]

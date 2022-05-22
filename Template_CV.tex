@@ -41,30 +41,25 @@
 \usepackage{authoraftertitle}
 
 \usepackage[hyphens]{url}
-\usepackage[unicode=true]{hyperref}
+\usepackage[unicode = true]{hyperref}
 \hypersetup{
-	colorlinks=true,
-	linkcolor=black,
-	anchorcolor=black,
-	citecolor=black,
-	filecolor=black,
-	menucolor=black,
-	runcolor=black,
-	urlcolor=SpotColor,
-	bookmarks=true,
-	bookmarksnumbered=false,
-	bookmarksopenlevel=1,
-	pdfstartview=Fit,
-	pdfpagelayout=SinglePage,
-	plainpages=false,
-	pdfpagelabels=true,
-	pdfauthor=\myname,
-	pdftitle={\myname's Curriculum Vitae}
+	colorlinks = true,
+	allcolors = black,
+	urlcolor = SpotColor,
+	bookmarks = true,
+	bookmarksnumbered = false,
+	bookmarksopenlevel = 1,
+	pdfstartview = Fit,
+	pdfpagelayout = SinglePage,
+	plainpages = false,
+	pdfpagelabels = true,
+	pdfauthor = \myname,
+	pdftitle = {\myname's Curriculum Vitae}
 }
 \urlstyle{same}
 \Urlmuskip = 0mu\relax  % Prevent additional whitespace before/after breakable characters in URLs
 \newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
-\newcommand{\doi}[1]{\href{https://doi.org/#1}{#1}}
+\newcommand{\doi}[1]{\url{https://doi.org/#1}}
 
 
 
@@ -107,7 +102,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \lfoot{%
-	\small\sffamily\color{SpotColor}%
+	\small\sffamily\color{SpotColor}\\%
 	\makebox[\topicmargin][r]{Page~\thepage\ of~\pageref*{LastPage}\enspace\quad}%
 	\textbf{\MyTitle}\enspace\quad%
 	\MyDate%
@@ -238,10 +233,15 @@
 
 
 \input{0_0_Preamble/Preamble_BibLaTeX_AER}
-% Take back making the author names bold:
-\xpatchbibmacro{author}{\printnames{author}}{\textmd{\printnames{author}\addperiod}}{}{}
+% Undo making the author names bold:
+\xpatchbibmacro{author}{\usebibmacro{justauthor}}{\textmd{\usebibmacro{justauthor}\addperiod}}{}{}
+\xpatchbibmacro{author}{\usebibmacro{moreauthor}}{\textmd{\usebibmacro{moreauthor}\addperiod}}{}{}
+\DeclareNameAlias{sortname}{given-family}
+	% Make also first author's name givenname-familyname, since the list of publications is sorted
+	% by date rather than alphabetically.
+
 \renewcommand{\bibfont}{\rmfamily}
-\setlength{\bibhang}{0pt}
+\AtBeginDocument{\setlength{\bibhang}{0pt}}%\setlength{\bibhang}{0pt}
 \setlength{\bibitemsep}{\medskipamount}
 
 \bibliography{Library.bib}
@@ -328,7 +328,7 @@
 \begin{topic}
 
 	\item[\textbf{2005--2011}]
-	{\selectlanguage{ngerman}Humboldt-Universität zu Berlin,} School of Business and Economics and~Berlin School of Mind and Brain, Dr.~rer.~pol. (Ph.D. in Economics), \textit{summa cum laude}. Dissertation: \textit{Essays in Experimental and Neuro\-economics}. Thesis advisors: Professor Lou~E. Vu{\"i}-T{\o}n (economics) and Professor \v{S}ih-Iz B{\'e}ta Zane-\r{A}l (neuroscience).
+	{\selectlanguage{ngerman}Humboldt-Universität zu Berlin,} School of Business and Economics and~Berlin School of Mind and Brain, Dr.~rer.~pol. (Ph.D. in Economics), \textit{summa cum laude}. Dissertation: \textit{Essays in Experimental and Neuro\-economics}. Thesis advisors: Professor Lou~E. Vu{\"i}-T{\o}n (economics) and Professor \c{S}{\`i}h-\v{I}z B{\'e}ta Zane-\r{A}l (neuroscience).
 
 	\item[1999--2004]
 	{\selectlanguage{ngerman}Humboldt-Universität zu Berlin,} School of Business and Economics, {\selectlanguage{ngerman}Diplom-Volkswirt} (Diploma in Economics, M.Sc.-equivalent). Diploma thesis: \textit{Reference-Dependent Consumer Preferences and Price Setting}. Awarded the \caps{WWG} Prize for the best diploma degree completed in the 2004/05 winter term.
@@ -356,9 +356,9 @@
 	\end{refcontext}
 
 	\item[Book chapter]
-	Antoine, Nadja M., and Holger Gerhardt. 2014. {\selectlanguage{ngerman}``Bestätigende und herausfordernde Impulse in der kokreativen Interaktion. Kokreative Wertschöpfung unter den Bedingungen von Koopetition am Beispiel der Ideenplattform jovoto,'' in: Klein, Inga and Sonja Windmüller (eds.), \textit{Kultur der Ökonomie. Zur Materialität und Performanz des Wirtschaft\-lichen, Edition Kulturwissenschaft}. transcript Verlag, Bielefeld,} Germany, \mbox{pp. 259--281}.
+	Nadja~M. Antoine and Holger Gerhardt. 2014. {\selectlanguage{ngerman}``Bestätigende und herausfordernde Impulse in der kokreativen Interaktion. Kokreative Wertschöpfung unter den Bedingungen von Koopetition am Beispiel der Ideenplattform jovoto,''} In \textit{\selectlanguage{ngerman}Kultur der Ökonomie. Zur Materialität und Performanz des Wirtschaftlichen}, edited by Inga Klein and Sonja Windmüller, 259–281. Edition Kulturwissenschaft. Bielefeld, Germany: transcript Verlag, 2014. \doi{10.14361/transcript.9783839424605.259}.
 	\item[Doctoral dissertation]
-	Gerhardt, Holger. 2013. \textit{Essays in Experimental and Neuro\-economics}. {\selectlanguage{ngerman}Humboldt-Universität zu Berlin,} School of Business and Economics. \url{https://edoc.hu-berlin.de/dissertationen/gerhardt-holger-2011-06-20}.
+	Holger Gerhardt. 2013. \textit{Essays in Experimental and Neuro\-economics}. {\selectlanguage{ngerman}Humboldt-Universität zu Berlin,} School of Business and Economics. \doi{10.18452/16722}.
 
 \end{topic}
 
@@ -368,10 +368,10 @@
 \begin{topic}
 
 	\item[\highlight{Job market paper}]
-	Dertwinkel-Kalt, Markus, Holger Gerhardt, Gerhard Riener, \mbox{Frederik} Schwerter, and Louis Strang. ``Concentration Bias in \mbox{Intertemporal} Choice.'' \url{https://www.econtribute.de/RePEc/ajk/ajkdps/ECONtribute_076_2021.pdf}. Accepted for publication, \textit{Review of Economic Studies}.
+	Markus Dertwinkel-Kalt, Holger Gerhardt, Gerhard Riener, \mbox{Frederik} Schwerter, and Louis Strang. ``Concentration Bias in \mbox{Intertemporal} Choice.'' Accepted for publication, \textit{Review of Economic Studies}. \url{https://www.restud.com/paper/concentration-bias-in-intertemporal-choice/}.
 
 	\item[Work in progress]
-	Gerhardt, Holger, Guido Biele, Hauke R. Heekeren, and Harald \mbox{Uhlig}. ``Cognitive Load Increases Risk Aversion.'' SFB~649 \mbox{Discussion} Paper No.~2016-011. \url{https://sfb649.wiwi.hu-berlin.de/papers/pdf/ SFB649DP2016-011.pdfs}.
+	Holger Gerhardt, Guido Biele, Hauke R. Heekeren, and Harald \mbox{Uhlig}. ``Cognitive Load Increases Risk Aversion.'' SFB~649 \mbox{Discussion} Paper No.~2016-011. \url{https://sfb649.wiwi.hu-berlin.de/papers/pdf/ SFB649DP2016-011.pdfs}.
 \end{topic}
 
 
@@ -381,7 +381,6 @@
 
 	\item[University of Bonn]
 	Lecture ``Economics and Psychology'' (joint with Frederik Schwer\-ter), 2015/16, M.Sc. level.
-	\nopagebreak
 
 	Lecture {\selectlanguage{ngerman}``Experimentelle Wirtschaftsforschung''} (in German, ``Ex\-peri\-mental Economics,'' joint with Sebastian Kube), 2014, B.Sc. level.
 

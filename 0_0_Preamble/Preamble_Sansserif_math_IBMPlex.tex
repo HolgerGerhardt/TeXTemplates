@@ -467,10 +467,10 @@
 
 \newcommand*{\sansmath}{%
 	\@for\@tempa:=%
-	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
-	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
-	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 	\do{%
 		\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa LGR\endcsname%
 		\expandafter\let\csname\@tempa up\expandafter\endcsname\csname\@tempa upLGR\endcsname%
@@ -480,6 +480,8 @@
 		epsilon,theta,pi,rho,phi%
 	\do{%
 		\expandafter\let\csname var\@tempa\expandafter\endcsname\csname\@tempa\endcsname%
+		\expandafter\let\csname var\@tempa up\expandafter\endcsname\csname\@tempa up\endcsname%
+		\expandafter\let\csname upvar\@tempa\expandafter\endcsname\csname up\@tempa\endcsname%
 	}%
 	%\renewcommand{\pm}{\pmsf}%
 	%\renewcommand{\times}{\timessf}%
@@ -491,10 +493,10 @@
 % ==>
 \newcommand*{\unsansmath}{%
 	\@for\@tempa:=%
-	alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
-	omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
-	Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
-	Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
+		alpha,beta,gamma,delta,epsilon,zeta,eta,theta,iota,kappa,lambda,mu,nu,xi,%
+		omicron,pi,rho,sigma,varsigma,tau,upsilon,phi,chi,psi,omega,digamma,%
+		Alpha,Beta,Gamma,Delta,Epsilon,Zeta,Eta,Theta,Iota,Kappa,Lambda,Mu,Nu,Xi,%
+		Omicron,Pi,Rho,Sigma,Tau,Upsilon,Phi,Chi,Psi,Omega,Digamma%
 	\do{%
 		\expandafter\let\csname\@tempa\expandafter\endcsname\csname\@tempa orig\endcsname%
 		\expandafter\let\csname\@tempa up\expandafter\endcsname\csname\@tempa uporig\endcsname%
@@ -504,6 +506,8 @@
 		epsilon,theta,pi,rho,phi%
 	\do{%
 		\expandafter\let\csname var\@tempa\expandafter\endcsname\csname var\@tempa orig\endcsname%
+		\expandafter\let\csname var\@tempa up\expandafter\endcsname\csname var\@tempa uporig\endcsname%
+		\expandafter\let\csname upvar\@tempa\expandafter\endcsname\csname var\@tempa uporig\endcsname%
 	}%
 	%\renewcommand{\pm}{\oldpm}%
 	%\renewcommand{\times}{\oldtimes}%

@@ -14,35 +14,39 @@
 
 % AER/JEL/JEP style
 
-\usepackage[backend=biber, natbib=true, bibencoding=inputenc, bibstyle=authoryear, citestyle=authoryear-comp, mincitenames=1, maxcitenames=3, minbibnames=99, maxbibnames=99, uniquename=false, uniquelist=true, backref=true, backrefstyle=three, doi=true, isbn=false, dashed=false, sorting=ynt, sortcites=true, mergedate=true, dateabbrev=false, abbreviate=false, citetracker=true]{biblatex}
-% sortcites sorts the in-text citations by year of publication
-\DeclareBibliographyAlias{newspaper}{article}
+\usepackage[
+	authordate, backend = biber, natbib = true, doi = only, isbn = false,
+	sorting = ynt, sortcites = true,  % sort the in-text citations by year of publication
+	compresspages = true, dashed = false,
+	backref = true, backrefstyle = three,
+	bibencoding = inputenc, citetracker = true
+]{biblatex-chicago}
 
-% Full author list on first citation, ``et al.'' only from second citation onwards:
-% https://tex.stackexchange.com/questions/48846/biblatex-et-al-beginning-from-second-citation
-% ==>
-%\AtEveryCitekey{\ifciteseen{}{\clearfield{namehash}}}  % Uncomment this ``so that an entry won't be part of a compact citation list the first time it is cited.''
-\xpatchbibmacro{cite}
-	{\printnames{labelname}}
-	{\ifciteseen
-		{\printnames{labelname}}
-		{\printnames[][1-5]{labelname}}%
-	}
-	{}
-	{}
-\xpatchbibmacro{textcite}
-	{\printnames{labelname}}
-	{\ifciteseen
-		{\printnames{labelname}}
-		{\printnames[][1-5]{labelname}}%
-	}
-	{}
-	{}
-% <==
+\urlstyle{same}  % Since biblatex-chicago sets \urlstyle{rm}
+% See https://tex.stackexchange.com/questions/134191/line-breaks-of-long-urls-in-biblatex-bibliography:
+\setcounter{biburllcpenalty}{10000}
+\setcounter{biburlucpenalty}{10000}
+\setcounter{biburlnumpenalty}{10000}
+\AtBeginDocument{\biburlbigskip = 0mu\relax}  % To prevent excessive whitespace in URLs and DOIs
 
-\let\citeorig\cite
+\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
+\let \citeorig \cite
 \renewcommand{\cite}{\citet}
 \renewcommand{\citealp}{\citeorig}
+\AtBeginDocument{\setlength{\bibhang}{\baselineskip}}
+\DeclareFieldFormat[report]{title}{\mkbibquote{#1}}
+\AtBeginDocument{%
+	\iftoggle{cms@comprange}
+		{\DeclareFieldFormat{pages}{\addspace\mbox{\mkcomprange{#1}}}}%
+		{\DeclareFieldFormat{pages}{\addspace\mbox{\mknormrange{#1}}}}%
+}%
+% Make author/editor name(s) bold
+\xpatchbibmacro{author}{\usebibmacro{justauthor}}{\mkbibbold{\usebibmacro{justauthor}}}{}{}
+\xpatchbibmacro{author}{\usebibmacro{moreauthor}}{\mkbibbold{\usebibmacro{moreauthor}}}{}{}
+
+%\usepackage[backend=biber, natbib=true, bibencoding=inputenc, bibstyle=authoryear, citestyle=authoryear-comp, mincitenames=1, maxcitenames=3, minbibnames=99, maxbibnames=99, uniquename=false, uniquelist=true, backref=true, backrefstyle=three, doi=true, isbn=false, dashed=false, sorting=ynt, sortcites=true, mergedate=true, dateabbrev=false, abbreviate=false, citetracker=true]{biblatex}
+% sortcites sorts the in-text citations by year of publication
+\DeclareBibliographyAlias{newspaper}{article}
 
 \defbibheading{subbibliography}[\refname]{%
 	\section*{#1}%
@@ -60,104 +64,6 @@
 	volume = {vol\adddot}
 }
 
-% Remove parentheses from the date:
-\xpatchbibmacro{date+extradate}{%
-	\printtext[parens]%
-}{%
-	\setunit*{\mkbibbold{\addperiod\space}}%
-	\mdseries\selectfont\printtext%
-}{}{}
-% Make the author/editor name(s) bold ==>
-% See https://tex.stackexchange.com/questions/41468/biblatex-textcite-author-formatting-vs-bibliography-author-formatting
-\xpatchbibmacro{author}{\printnames{author}}{\mkbibbold{\printnames{author}\addperiod}}{}{}
-%\xpretobibmacro{author}{\mkbibbold\bgroup}{}{}
-%\xapptobibmacro{author}{\egroup}{}{}
-\xpretobibmacro{editor+others}{\mkbibbold\bgroup}{}{}%
-\xapptobibmacro{editor+others}{\egroup\clearname{editor}}{}{}%
-\xpretobibmacro{translator+others}{\mkbibbold\bgroup}{}{}%
-\xapptobibmacro{translator+others}{\egroup\clearname{translator}}{}{}
-% Set up page range compression (e.g., 1034-1067 => 1034-67)
-\setcounter{mincomprange}{100}
-\setcounter{maxcomprange}{100000}
-\setcounter{mincompwidth}{10}
-\DeclareFieldFormat{pages}{\mkcomprange{#1}}
-% Removes ``pp.'' from pages and compresses page ranges:
-\DeclareFieldFormat[article, inbook, incollection, inproceedings, patent, thesis, unpublished, newspaper]{pages}{{\nopp\mkcomprange{#1}}} 
-% Include comma also after first name in the case of only two authors:
-\AtEveryBibitem{
-	\renewcommand*{\finalnamedelim}{\finalandcomma\addspace\bibstring{and}\space}
-	\renewcommand*{\finallistdelim}{\finalandcomma\addspace\bibstring{and}\space}
-}
-\xpretobibmacro{byeditor+others}  % Undo this for the listing of editors
-	{%
-		\renewcommand*{\finalnamedelim}{%
-			\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
-			\addspace\bibstring{and}\space%
-		}%
-	}
-	{}
-	{\DoNotContinue}
-
-% \renewcommand*{\newunitpunct}{\addcomma\space}
-\renewcommand*{\bibnamedash}{---{\kern -2.25pt}---{\kern -2.25pt}---\addcomma\space}
-
-%\DeclareCiteCommand{\citejournal}
-%  {\usebibmacro{prenote}}
-%  {\usebibmacro{citeindex}%
-%   \usebibmacro{journal}}
-%  {\multicitedelim}
-%  {\usebibmacro{postnote}}
-
-% Remove ``in'' for journal and newspaper articles:
-\renewcommand*{\intitlepunct}{\space}
-\renewbibmacro{in:}{%
-	\ifentrytype{article}%
-		{}%
-		{\ifentrytype{newspaper}%
-			{}%
-			{\printtext{\bibstring{in}\intitlepunct}}%
-		}%
-}
-
-% How to handle DOIs, eprints, and URLs
-% ==>
-\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{eprint}}}  % If DOI provided, remove eprint
-\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{url}}}  % If DOI provided, remove URL
-% This works, too:
-%\renewbibmacro*{doi+eprint+url}
-%{%
-%	\iffieldundef{doi}
-%		{\iftoggle{bbx:eprint}
-%			{\usebibmacro{eprint}}% If no DOI provided, use eprint
-%			{\usebibmacro{url+urldate}}}  % If no DOI provided, use URL
-%		{\printfield{doi}}
-%	\newunit\newblock%
-%}
-\DeclareFieldFormat{url}{%
-	% \setlength{\Urlmuskip}{0mu}%
-	\Urlmuskip = 0mu\relax%
-	\mathchardef\UrlBigBreakPenalty=1\relax%
-	\mathchardef\UrlBreakPenalty=2\relax%
-		% See https://tex.stackexchange.com/questions/22854/url-line-breaks-with-biblatex
-	\caps{URL}\addcolon\space\url{#1}%
-}
-% Link DOIs automatically to https://doi.org/<DOI>:
-\DeclareFieldFormat{doi}{%
-	% \setlength{\Urlmuskip}{0pt}%
-	\Urlmuskip = 0mu\relax
-	\mathchardef\UrlBigBreakPenalty=1\relax%
-	\mathchardef\UrlBreakPenalty=2\relax%
-		% See https://tex.stackexchange.com/questions/22854/url-line-breaks-with-biblatex
-	\caps{DOI}\addcolon\space\href{https://doi.org/#1}{\nolinkurl{#1}}%
-}
-% <==
-
-% Make journal title italic:
-\DeclareFieldFormat[article]{journaltitle}{%
-	\mkbibemph{#1}%
-	\iffieldundef{volume}{\addcomma}{}%
-}
-
 % Handling of newspaper articles
 \DeclareFieldFormat[newspaper]{journaltitle}{%
 	\mkbibemph{#1} \mkbibparens{\thefield{edition}}\addcomma\addspace%
@@ -171,48 +77,6 @@
 \DeclareFieldFormat[newspaper]{date}{%
 	\thefield{year}%
 }
-
-% Format the ``month'' field:
-\DeclareFieldFormat{month}{\mkbibmonth{#1}}
-
-% Put the title of articles in quotation marks:
-\DeclareFieldFormat[thesis, unpublished, report, misc, newspaper]{title}{\mkbibquote{#1}}
-%% Make title of books italic:
-%\DeclareFieldFormat[book]{title}{\mkbibemph{#1}\nopunct}
-
-% Makes first character of document type uppercase:
-\DeclareFieldFormat[thesis, unpublished, report, misc]{type}{\MakeCapital{#1}}
-
-%% Remove punctuation after ``series'' field:
-%\DeclareFieldFormat[incollection]{series}{#1\nopunct}
-
-% Add ``vol.'' for books etc.:
-\DeclareFieldFormat[book, inbook, incollection, inproceedings]{volume}{\bibstring{volume}\addnbspace#1\addcomma}
-% Formatting VV\,(NN):
-\DeclareFieldFormat[article]{volume}{%
-	\iffieldundef{volume}{}{%
-		\addspace#1%
-		\iffieldundef{number}{\addcolon}{\nopunct}%
-	}
-}
-\DeclareFieldFormat[article]{number}{\addnbthinspace\mkbibparens{#1}\addcolon}
-\DeclareFieldFormat[article]{date}{#1}
-
-% \AtEveryCitekey{\clearfield{month}}
-% Replace number by month if number is undefined:
-% ==>
-\DeclareSourcemap{
-    \maps[datatype=bibtex]{
-        \map{
-            \pertype{article}
-			\step[notfield=number, final]
-			\step[fieldsource=month, fieldtarget=number]
-            \step[fieldset=month, null]
-            \step[fieldset=month_numeric, null]
-        }
-    }
-}
-% <==
 
 % Adjust formatting of back-references
 % ==>
@@ -289,17 +153,17 @@
 % <==
 
 % Remove superfluous ``The'' from journal names ==>
-\DeclareSourcemap{ 
+\DeclareSourcemap{
 	\maps[datatype=bibtex]{
 		\map{
 			\step[fieldsource=journal, match={\regexp{^The\s}}, replace={}]
 		}
-	}      
+	}
 }
 % <==
 
 % Replace (Mendeley's) month strings (``jan'', ``feb'', etc.) by full names ==>
-\DeclareSourcemap{ 
+\DeclareSourcemap{
 	\maps[datatype=bibtex]{
 		\map{
 			\step[fieldsource=number, match={\regexp{^jan$}}, replace=\regexp{\\mkbibmonth\{1\}}]
@@ -315,6 +179,6 @@
 			\step[fieldsource=number, match={\regexp{^nov$}}, replace=\regexp{\\mkbibmonth\{11\}}]
 			\step[fieldsource=number, match={\regexp{^dec$}}, replace=\regexp{\\mkbibmonth\{12\}}]
 		}
-	}      
+	}
 }
 % <==

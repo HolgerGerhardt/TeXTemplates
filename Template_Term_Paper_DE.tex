@@ -59,6 +59,13 @@
 \input{0_0_Preamble/Preamble_Commenting_and_highlighting}
 \input{0_0_Preamble/Preamble_Miscellaneous}
 
+% Set up desired deviations from the default bibliography settings here:
+\setcounter{biburllcpenalty}{9999}
+\setcounter{biburlucpenalty}{9999}
+\setcounter{biburlnumpenalty}{9999}
+\AtEveryBibitem{\iffieldundef{eprint}{}{\clearfield{url}}}
+\AtEveryBibitem{\iffieldundef{doi}{}{\clearfield{eprint}}}
+
 \bibliography{Library.bib}
 
 \hypersetup{

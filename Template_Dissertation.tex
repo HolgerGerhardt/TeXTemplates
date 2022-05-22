@@ -1,4 +1,3 @@
-% !TeX document-id = {1898447c-dd8b-4106-9f92-de464eae291a}
 % !TeX program = pdflatex
 % !TeX TS-program = pdflatex
 % !TeX TXS-program:compile = txs:///pdflatex/
@@ -60,10 +59,23 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  LOAD THE .BIB FILES  %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  LOAD THE .BIB FILE(S)  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%% If desired, set up deviations from the default bibliography settings:
+%\ExecuteBibliographyOptions{
+%	compresspages = false,
+%	uniquename = true, uniquelist = true, maxbibnames = 99
+%}
+%% % Full author list on first citation, ``et al.'' only from second citation onwards:
+%% See https://tex.stackexchange.com/questions/478750/biblatex-first-citation-all-names-after-that-et-al:
+%\AtEveryCitekey{%
+%  \ifciteseen
+%    {}
+%    {\defcounter{maxnames}{6}}%
+%}
 
 \bibliography{Library.bib}
 %\addbibresource{.../filename.bib}  % Use to add further .bib files for the individual papers
@@ -77,6 +89,18 @@
 
 
 \begin{document}
+
+
+% Save original definitions of the referencing commands
+\makeatletter
+\let \labelorig \label
+\let \label@in@display@orig \label@in@display%
+\makeatother
+\let \reforig \ref
+\let \eqreforig \eqref
+\let \autoreforig \autoref
+\let \hyperreforig \hyperref
+\let \pagereforig \pageref
 
 
 \begin{refsection}
@@ -122,25 +146,18 @@
 
 % Redefine the referencing commands to be chapter-specific in order to
 % avoid erroneous cross-references from one chapter to another ==>
-\let \labelorig \label
-\renewcommand{\label}[1]{\labelorig{\currentchapter #1}}
-% Based on https://tex.stackexchange.com/a/135995: -->
 \makeatletter
-\let \label@in@display@orig \label@in@display%
+\renewcommand{\label}[1]{\labelorig{\currentchapter #1}}
+% Based on https://tex.stackexchange.com/a/135995:
 \renewcommand{\label@in@display}[1]{\label@in@display@orig{\currentchapter #1}}
 \makeatother
-% <--
-\let \reforig \ref
 \renewcommand{\ref}[1]{\reforig{\currentchapter #1}}
-\let \eqreforig \eqref
 \renewcommand{\eqref}[1]{(\ref{#1})}
-\let \autoreforig \autoref
 \renewcommand{\autoref}[1]{\autoreforig{\currentchapter #1}}
-\let \hyperreforig \hyperref
 \renewcommand{\hyperref}[2][]{\hyperreforig[\currentchapter #1]{#2}}
-\let \pagereforig \pageref
 \renewcommand{\pageref}[1]{\pagereforig{\currentchapter #1}}
 % <==
+
 \begin{refsection}
 
 % Save old footnote definition

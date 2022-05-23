@@ -80,38 +80,101 @@
 \renewcommand{\comment}[2][]{%
 	\commentpatched[#1]{#2}%
 }
-%\renewcommand{\comment}[2][]{%
-%	\commentpatched[#1]{%
-%		\ifx&#2&%
-%		% #1 is empty
-%		\else%
-%		\newline #2%
-%		\fi%
-%	}%
-%}
 
-\LetLtxMacro{\addedorig}{\added}
-\renewcommand{\added}[2][]{%
-	\addedorig[#1]{#2}%
-	\IfSubStr{#1}{comment}{}{\commentpatched[#1]{\textit{Added text.}}}%
-}
-\LetLtxMacro{\replacedorig}{\replaced}
-\renewcommand{\replaced}[3][]{%
-	\replacedorig[#1]{#2}{}%
-	\IfSubStr{#1}{comment}{}{\commentpatched[#1]{\textit{Replaced:} ``#3''}}%
-}
+% Redefine \added, \deleted, \replaced, and \highlight from https://ctan.org/tex-archive/macros/latex/contrib/changes
+% ==>
+
+\let \added \undefined
+\let \deleted \undefinded
+\let \replaced \undefinded
+\let \highlight \undefinded
 \setdeletedmarkup{}
-\LetLtxMacro{\deletedorig}{\deleted}
-\renewcommand{\deleted}[2][]{%
-	\deletedorig[#1]{#2}%
-	\IfSubStr{#1}{comment}{}{\commentpatched[#1]{\textit{Removed:} ``#2''}}%
+
+\makeatletter
+\newcommand{\lineabovecomment}[1]{%
+	\setbox0=\hbox{#1\unskip}%
+	\ifdim\wd0=0pt%
+		% empty
+	\else%
+		\hrule\smallskip\strut%
+	\fi%
 }
+\newcommand{\insertchangesadded}{%
+	\smallskip\hrule\smallskip%
+	\strut\textit{\mbox{\changesaddedname}}\\[\smallskipamount]
+	\lineabovecomment{\Changes@added@comment}%
+}%  % NEW
+\newcommand{\insertchangesdeleted}[1]{%
+	\smallskip\hrule\smallskip%
+	\strut\textit{\mbox{\changesdeletedname:}} #1\\[\smallskipamount]
+	\lineabovecomment{\Changes@deleted@comment}%
+}%  % NEW
+\newcommand{\insertchangesreplaced}[1]{%
+	\smallskip\hrule\smallskip%
+	\strut\textit{\mbox{\changesreplacedname:}} #1\\[\smallskipamount]
+	\lineabovecomment{\Changes@replaced@comment}%
+}%  % NEW
+\newcommand{\insertchangeshighlight}{%
+	\strut\lineabovecomment{\Changes@highlight@comment}%
+}
+\Changes@set@commandname{added}
+\expandafter\newcommand\expandafter{\csname\Changes@commandname\endcsname}[2][\@empty]{%
+	\setkeys{Changes@added}{#1}%
+	\Changes@output%
+		{added}%
+		{\Changes@added@id}%
+		{#2}%
+		{}%
+		{\insertchangesadded\Changes@added@comment}%
+		{\changesaddedname}%
+		{#2}%
+}
+\Changes@set@commandname{deleted}
+\expandafter\newcommand\expandafter{\csname\Changes@commandname\endcsname}[2][\@empty]{%
+	\setkeys{Changes@deleted}{#1}%
+	\Changes@output%
+		{deleted}%
+		{\Changes@deleted@id}%
+		{}%
+		{}% NEW
+		{\insertchangesdeleted{#2}\Changes@deleted@comment}%  % NEW
+		{\changesdeletedname}%
+		{#2}%
+}
+\Changes@set@commandname{replaced}
+\expandafter\newcommand\expandafter{\csname\Changes@commandname\endcsname}[3][\@empty]{%
+	\setkeys{Changes@replaced}{#1}%
+	\Changes@output%
+		{replaced}%
+		{\Changes@replaced@id}%
+		{#2}%
+		{}  % NEW
+		{\insertchangesreplaced{#3}\Changes@replaced@comment}%  % NEW
+		{\changesreplacedname}%
+		{#2}%
+}
+\Changes@set@commandname{highlight}
+\expandafter\newcommand\expandafter{\csname\Changes@commandname\endcsname}[2][\@empty]{%
+	\setkeys{Changes@highlight}{#1}%
+	\Changes@output%
+		{highlight}%
+		{\Changes@highlight@id}%
+		{#2}%
+		{}%
+		{\insertchangeshighlight\Changes@highlight@comment}%
+		{\changeshighlightname}%
+		{#2}%
+}
+\makeatother
+
+% <==
+
 \newcommand{\coloruline}[2]{%
-    \newcommand{\tempuline}{%
-    	\bgroup\markoverwith{\textcolor{#1}{\rule[-1ex]{1.5pt}{0.25ex}}}%
-    	\ULon%
-    }%
-    \tempuline{#2}%
+	\newcommand{\tempuline}{%
+		\bgroup\markoverwith{\textcolor{#1}{\rule[-1ex]{1.5pt}{0.25ex}}}%
+		\ULon%
+	}%
+	\tempuline{#2}%
 }
 \sethighlightmarkup{%
 	\colorlet{authorcoloraux}{authorcolor!33}%
@@ -119,13 +182,8 @@
 	\IfIsColored{%
 		\sethlcolor{authorcoloraux}%
 		%\makebox[0pt][l]{\coloruline{authorcolor}{\phantom{#1}}}
-		\hl{#1}%
+		\hl{#1\strut}%
 	}{}%
-}
-\LetLtxMacro{\highlightorig}{\highlight}
-\renewcommand{\highlight}[2][]{%
-	\highlightorig[#1]{#2}%
-	\IfSubStr{#1}{comment}{}{\commentorig[#1]{~}}%
 }
 
 \usepackage{pdfcomment}

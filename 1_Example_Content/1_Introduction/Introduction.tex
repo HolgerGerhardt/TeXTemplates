@@ -28,19 +28,19 @@
 %
 %\printlength{\baselineskip} \printlength{\textheight} \printlength{\topskip}
 
-This template uses the \href{https://en.wikipedia.org/wiki/Bitstream_Charter}{Charter} typeface for the body text. Charter is a~serif type\-face and was designed in 1987 by \href{https://en.wikipedia.org/wiki/Matthew_Carter}{Matthew Carter}. By contrast, all headings, tables, and captions are set in a~sans-serif typeface. The sans-serif typeface used in this document is \href{https://en.wikipedia.org/wiki/Fira_Sans}{Fira Sans}, designed by \href{https://en.wikipedia.org/wiki/Erik_Spiekermann}{Erik Spiekermann} and collaborators.
+This template uses the \href{https://en.wikipedia.org/wiki/Bitstream_Charter}{Charter} typeface for the body text. Charter is a~serif type\-face and was designed in 1987 by \href{https://en.wikipedia.org/wiki/Matthew_Carter}{Matthew Carter}. By contrast, all headings, tables, and captions are set in a~\highlight{sans-serif typeface}. The sans-serif typeface used in this document is \href{https://en.wikipedia.org/wiki/Fira_Sans}{Fira Sans}, designed by \href{https://en.wikipedia.org/wiki/Erik_Spiekermann}{Erik Spiekermann} and collaborators.
 
 The math settings are adjusted in the preamble to the effect that mathematical formulas are automatically typeset in the same font as the surrounding text. That is, math in a~serif environment will be set in a~serif font, while math in a~sans-serif environment will use the sans-serif font. This is an~aesthetic choice that may not please everyone given that a~sans-serif font may be used in mathematical formulas to express a~particular meaning. These cases are, however, very rare.
 
-Let us cite some publications: \cite{Andersen2008, Andreoni2012, Balakrishnan2016, Lisi1995}. With the options set for BibLaTeX in the preamble, citations in the body text are automatically sorted chronologically---irrespective of the order of the ``citekeys'' in your input. In the list of references, entries are sorted alphabetically by author surname. \cite{Andersen2008} once more.
+Let us cite \replaced[id=HG]{a~couple of}{some} publications: \cite{Andersen2008, Andreoni2012, Balakrishnan2016, Lisi1995}. With the options set for BibLaTeX in the preamble, citations in the body text are \deleted[id=LV]{automatically }sorted chronologically---irrespective of the order of the ``citekeys'' in your input. In the list of references, entries are sorted alphabetically by author surname.\added[id=UR]{ Let's cite} \cite{Andersen2008} once more.
 
 \Blindtext[3]
 
-Some\added[id=HG]{ more} references: See \cite{Sims2003, Gabaix2014} for models of ``rational inattention'' or ``goal-driven attention.'' See \cite{Bordalo2012, Bordalo2013, Koszegi2013, Taubinsky2014, Bushong2016} for models of ``stimulus-driven attention.''%
+Some\added[id=HG, comment={We already included several references above.}]{ additional} references: See \cite{Sims2003, Gabaix2014} for models of ``rational inattention'' or ``goal-driven attention.'' See \cite{Bordalo2012, Bordalo2013, Koszegi2013, Taubinsky2014, Bushong2016} for models of ``stimulus-driven attention.''%
 \comment[id=UR]{Check whether there are more recent publications!}
 
 \blindmathtrue
 
 \Blindtext[3]
 
-In \autoref{sec:Methods}, we describe the \highlight[id=LV]{design} of our study\deleted[id=HG]{in detail}. We present the data analysis and our results in \autoref{sec:Results}. In \autoref{sec:Discussion}, we discuss the plausibility of potential alternative explanations. \autoref{sec:Conclusion} \replaced[id=LV]{concludes}{will conclude}.
+In \autoref{sec:Methods}, we describe the \highlight[id=LV, comment={Italics?}]{design} of our study\deleted[id=HG, comment={Too wordy.}]{in detail}. We present the data analysis and our results in \autoref{sec:Results}. In \autoref{sec:Discussion}, we discuss the plausibility of potential alternative explanations. \autoref{sec:Conclusion} \replaced[id=LV, comment={Let's use the present tense throughout.}]{concludes}{will conclude}.

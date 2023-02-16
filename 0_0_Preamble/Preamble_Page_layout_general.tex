@@ -611,6 +611,12 @@
 
 
 \usepackage[title, titletoc]{appendix}  % allows, e.g., for appendices within chapters
+% Patch a bug in appendix.sty,
+% see https://github.com/wspr/herries-press/issues/34#issuecomment-935770824:
+\makeatletter
+\patchcmd\@resets@pp{\xdef}{\def}{}{\fail}
+\patchcmd\@resets@ppsub{\xdef}{\def}{}{\fail}
+\makeatother
 \usepackage{chngcntr}  % to innclude section numbers/letters in the figure/table/equation counters
 
 \AtBeginEnvironment{appendices}{%

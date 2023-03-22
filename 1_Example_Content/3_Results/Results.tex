@@ -9,7 +9,16 @@
 \blindtext
 With this, we can test our hypotheses.
 
-\subsection{Test of \autoref{hy:UNBAL}}
+\makeatletter
+\@ifclassloaded{book}{
+	\subsection{%
+		Test of
+		\texorpdfstring{\autoref{hy:UNBAL}}{\autoref{\currentchapter:hy:UNBAL}}%
+	}
+}{
+	\subsection{Test of \autoref{hy:UNBAL}}
+}
+\makeatother
 
 Our first result supports \autoref{hy:UNBAL}. \blindtext The analysis we conducted to obtain \autoref{r:main} is described in detail in \autoref{tmain:focus}. Let's reference a~section, a~subsection, and a~figure from the appendices: \autoref{sec:app:example_tables}, \autoref{sec:app:salience}, \autoref{fig:concentrated_cl}.
 
@@ -40,7 +49,17 @@ Our first result supports \autoref{hy:UNBAL}. \blindtext The analysis we conduct
 
 \blindtext
 
-\subsection{Test of \autoref{hy:UNBAL_2}}
+\makeatletter
+\@ifclassloaded{book}{
+	\subsection{%
+		Test of
+		\texorpdfstring{\autoref{hy:UNBAL_2}}{\autoref{\currentchapter:hy:UNBAL_2}}%
+	}
+}{
+	\subsection{Test of \autoref{hy:UNBAL_2}}
+}
+\makeatother
+
 \blindtext We thereby test \autoref{hy:UNBAL_2}.
 
 \begin{result} \label{r:main2}

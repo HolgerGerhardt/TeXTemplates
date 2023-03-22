@@ -3,8 +3,10 @@
 
 
 
+% When using Greek math symbolds in a figure caption or table title, place a \protect in front of them
+% so that they are displayed correctly in the list of tables/figures.
 \begin{table}[t]
-	\caption{Points Awarded in Our Typeface Competition---Basic Formatting}
+	\caption{Points Awarded in Our Typeface Competition---Basic Formatting \textcolor{gray}{Test Greek: $\protect\epsilon, \protect\theta, \protect\phi$}}
 	\label{tab:basic_formatting}
 	\begin{tabular}{@{}lccccc@{}}
 		\toprule

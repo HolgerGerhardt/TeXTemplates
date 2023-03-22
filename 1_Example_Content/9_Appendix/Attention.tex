@@ -17,10 +17,10 @@
 The typeset math below follows the ISO recommendations that only variables be set in italic. Note the use of upright shapes for ``$\mathup{d}$,'' ``$\mathup{e}$,'' and ``$\piup$.'' (These are entered as \texttt{\textbackslash mathup\{d\}}, \texttt{\textbackslash mathup\{e\}}, and \texttt{\textbackslash mathup\{\textbackslash pi\}}, respectively.)
 
 \begin{theorem}[Simplest form of the \emph{Central Limit Theorem}]
-	Let $X_1, X_2, \ldots, X_n$ be a sequence of i.i.d. random variables with mean $0$ 
+	Let $X_1, X_2, \ldots, X_n$ be a sequence of i.i.d. random variables with mean $0$
 	and variance $1$ on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$. Then
 	\[
-		\mathbb{P} {\left( \frac{X_1+\cdots+X_n}{\sqrt{n}} ~{\le}~ y \right)} \to \mathfrak{N}(y) \coloneqq 
+		\mathbb{P} {\left( \frac{X_1+\cdots+X_n}{\sqrt{n}} ~{\le}~ y \right)} \to \mathfrak{N}(y) \coloneqq
 		\int_{-\infty}^y \frac{\mathup{e}^{-v^2/2}}{\sqrt{2\mathup{\pi}}}\,
 		\mathup{d}v\quad\mbox{\regularmu as $n\to\infty$,}
 	\]
@@ -39,13 +39,13 @@ Salience theory \citep{Bordalo2012, Bordalo2013} represents a~behavioral model a
 Formally, alternatives are assumed to be uniquely characterized by the values they take in ${T \geq 1}$ attributes (or, ``dimensions''). Utility is assumed to be additively separable in attributes, and salience attaches a~decision weight to each attribute of each good which indicates how salient the respective attribute is for that good. Suppose an agent chooses one alternative from some finite choice set $\CS$. Let $t$ index the $T$~different attributes, and let $k$ index the $K$~available alternatives. Let $u_t(\cdot)$ denote the function which assigns utility to values in dimension~$t$.
 Denote by $a^k_{t}$ the level of attribute $t$ of good $k$ and define ${u^k_t \coloneqq u_t(a^k_t)}$ as the utility that dimension $t$ of good~$k$ yields. Let $\overline{u}_t$ be the average utility level, across all $K$~goods, of dimension~$t$. The salience of each dimension of good~$k$ is determined by a~symmetric and continuous salience function ${\sigma(\cdot, \cdot)}$ that satisfies the following two properties:
 \begin{enumerate}
-\item \emph{Ordering.} Let ${\mu \coloneqq \mathrm{sgn}(u^k_t - \overline{u}_t)}$. Then for any ${\epsilon,\epsilon' \geq 0}$ with ${\epsilon + \epsilon' > 0}$, it holds that~
+\item \emph{Ordering.} Let ${\mu \coloneqq \mathrm{sgn}(u^k_t - \overline{u}_t)}$. Then for any ${\varepsilon, \varepsilon' \geq 0}$ with ${\varepsilon + \varepsilon' > 0}$, it holds that~
 \begin{equation}
-	\sigma(u^k_t + \mu\,\epsilon, \overline{u}_t - \mu\,\epsilon') > \sigma (u^k_t,\overline{u}_t).
+	\sigma(u^k_t + \mu\,\varepsilon, \overline{u}_t - \mu\,\varepsilon') > \sigma (u^k_t,\overline{u}_t).
 \end{equation}
-\item \emph{Diminishing sensitivity.} For any ${u^k_t, \overline{u}_t \geq 0}$ and all ${\epsilon > 0}$, it holds that
+\item \emph{Diminishing sensitivity.} For any ${u^k_t, \overline{u}_t \geq 0}$ and all ${\varepsilon > 0}$, it holds that
 \begin{equation}
-	\sigma(u^k_t + \epsilon, \overline{u}_t + \epsilon) < \sigma(u^k_t,\overline{u}_t).
+	\sigma(u^k_t + \varepsilon, \overline{u}_t + \varepsilon) < \sigma(u^k_t,\overline{u}_t).
 \end{equation}
 \end{enumerate}
 

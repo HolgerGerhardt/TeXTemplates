@@ -34,7 +34,7 @@
 \newcommand{\dissbornin}
 	{Summacumlaudeville}
 \newcommand{\disssubmitdate}
-	{December~2020}
+	{December~2022}
 \newcommand{\dissdean}
 	{Prof.~Dr. Jürgen von Hagen}
 \newcommand{\dissfirstsupervisor}
@@ -42,7 +42,7 @@
 \newcommand{\disssecondsupervisor}
 	{Prof.~Dr. Hans-Martin von Gaudecker}
 \newcommand{\dissyear}
-	{2021}
+	{2023}
 \newcommand{\dissdatedefense}
 	{1.~April~\dissyear}
 
@@ -147,15 +147,15 @@
 % Redefine the referencing commands to be chapter-specific in order to
 % avoid erroneous cross-references from one chapter to another ==>
 \makeatletter
-\renewcommand{\label}[1]{\labelorig{\currentchapter #1}}
+\renewcommand{\label}[1]{\labelorig{\currentchapter:#1}}
 % Based on https://tex.stackexchange.com/a/135995:
-\renewcommand{\label@in@display}[1]{\label@in@display@orig{\currentchapter #1}}
+\renewcommand{\label@in@display}[1]{\label@in@display@orig{\currentchapter:#1}}
 \makeatother
-\renewcommand{\ref}[1]{\reforig{\currentchapter #1}}
+\renewcommand{\ref}[1]{\reforig{\currentchapter:#1}}
 \renewcommand{\eqref}[1]{(\ref{#1})}
-\renewcommand{\autoref}[1]{\autoreforig{\currentchapter #1}}
-\renewcommand{\hyperref}[2][]{\hyperreforig[\currentchapter #1]{#2}}
-\renewcommand{\pageref}[1]{\pagereforig{\currentchapter #1}}
+\renewcommand{\autoref}[1]{\autoreforig{\currentchapter:#1}}
+\renewcommand{\hyperref}[2][]{\hyperreforig[\currentchapter:#1]{#2}}
+\renewcommand{\pageref}[1]{\pagereforig{\currentchapter:#1}}
 % <==
 
 \begin{refsection}

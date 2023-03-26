@@ -72,10 +72,11 @@
 %%  ILLUSTRATE THE BASELINE GRID  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \usetikzlibrary{calc}
 \newcommand{\displaybaselinegrid}{%
 	\begin{tikzpicture}[remember picture, overlay, x = 1mm, y = \baselineskip]
-		\draw[orange] ($(current page.north west) + (0mm, -1in-\topmargin-\headheight-\headsep)$) -- ($(current page.north east) + (0,-1in-\topmargin-\headheight-\headsep)$);
+		\draw[orange] ($(current page.north west) + (0mm, -1in-\topmargin-\headheight-\headsep)$) -- ($(current page.north east) + (0, -1in-\topmargin-\headheight-\headsep)$);
 		\foreach \i in {-5,...,-1,0,1,2,...,\linesperpagedesired}{
 			\draw[magenta!50] ($(current page.north west) + (0mm, -1in-\voffset-\topmargin-\headheight-\headsep-\topskip) + (0, -\i-2)$) -- ($(current page.north east) + (0mm, -1in-\voffset-\topmargin-\headheight-\headsep-\topskip) + (0, -\i-2)$);
 		}

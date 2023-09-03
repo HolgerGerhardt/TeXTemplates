@@ -12,6 +12,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+% if we are in xelatex, pass no-math to fontspec to avoid package conflict
+\ifxetex \PassOptionsToPackage{no-math}{fontspec} \fi
 % Use Fira Sans as the sans-serif font.
 % Load first because it otherwise doesn't work properly.
 % ==>

@@ -165,8 +165,12 @@
 % ==>
 \usepackage{relsize}
 \renewcommand\RSpercentTolerance{1}
-% Enabling slightly reduced font for CAPS:
-\newcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+% Enabling slightly reduced font for CAPS with slightly increased letter spacing:
+\ifxetex
+	\newcommand{\caps}[1]{\textscale{0.96}{\addfontfeature{LetterSpace=3}\MakeUppercase{#1}}}
+\else
+	\newcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+\fi
 % <==
 
 
@@ -254,7 +258,7 @@
 \definecolor{neutralgreen}{RGB}{ 28, 166,   0}
 
 \colorlet{SpotColor}   {OSEBlue}
-\colorlet{AlertColor}  {OSEBlue}
+\colorlet{AlertColor}  {darkred}
 %\colorlet{ExampleColor}{neutralgreen}
 \colorlet{ExampleColor}{OSEBlueLight}
 \definecolor{darkgrey}{gray}{0.65}
@@ -279,7 +283,7 @@
 \definecolor{tablime}{RGB}{188, 189, 34}
 \definecolor{tabcyan}{RGB}{23, 190, 207}
 \setbeamercolor{structure}{fg=SpotColor}
-\setbeamercolor{alerted text}{fg=AlertColor}
+\setbeamercolor{alerted text}{fg=SpotColor}
 \setbeamercolor{author in head/foot}{fg=white, bg=SpotColor}
 \setbeamercolor{button}{bg=SpotColor,fg=white}
 \setbeamercolor{headline}{bg=SpotColor,fg=white}

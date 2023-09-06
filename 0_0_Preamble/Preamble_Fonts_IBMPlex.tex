@@ -1,3 +1,4 @@
+% !TeX program = pdflatex
 % !TeX TXS-program:compile = txs:///pdflatex/
 % !TeX TS-program = pdflatex
 % !TeX TXS-program:bibliography = txs:///biber
@@ -10,6 +11,11 @@
 %%  FONT SETTINGS AND TYPOGRAPHY  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+% If XeLaTeX is used for compilation, a conflict with the XCharter package needs to be avoided
+\ifxetex
+	\PassOptionsToPackage{no-math}{fontspec}
+\fi
 
 % Use Fira Sans as the sans-serif font.
 % Load first because it otherwise doesn't work properly.

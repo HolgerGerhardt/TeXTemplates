@@ -164,8 +164,12 @@
 % ==>
 \usepackage{relsize}
 \renewcommand\RSpercentTolerance{1}
-% Enabling slightly reduced font for CAPS:
-\newcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+% Enabling slightly reduced font for CAPS with slightly increased letter spacing:
+\ifxetex
+	\newcommand{\caps}[1]{\textscale{0.96}{\addfontfeature{LetterSpace=3}\MakeUppercase{#1}}}
+\else
+	\newcommand{\caps}[1]{\textscale{0.96}{\textls[35]{\MakeUppercase{#1}}}}
+\fi
 % <==
 
 
@@ -251,12 +255,12 @@
 \colorlet{AlertColor}  {darkred}
 \colorlet{ExampleColor}{neutralgreen}
 
-\setbeamercolor{structure}{fg=SpotColor}
-\setbeamercolor{alerted text}{fg=AlertColor}
-\setbeamercolor{author in head/foot}{fg=white, bg=SpotColor}
-\setbeamercolor{button}{bg=SpotColor,fg=white}
-\setbeamercolor{headline}{bg=SpotColor,fg=white}
-\setbeamercolor{headlinecover}{bg=white,fg=white}
+\setbeamercolor{structure}{fg = SpotColor}
+\setbeamercolor{alerted text}{fg = SpotColor}%{fg=AlertColor}
+\setbeamercolor{author in head/foot}{fg = white, bg = SpotColor}
+\setbeamercolor{button}{bg = SpotColor, fg = white}
+\setbeamercolor{headline}{bg = SpotColor, fg = white}
+\setbeamercolor{headlinecover}{bg = white, fg = white}
 
 \newcommand{\highlight}[1]{\textcolor{SpotColor}{#1}}
 \newcommand{\heading}[1]{%
@@ -265,8 +269,6 @@
 	\par%
 }
 \newcommand{\sigstar}{\highlight{*}}
-
-\renewcommand{\alert}[1]{\highlight{\textbf{#1}}}
 
 \newlength{\rulelength}
 \setlength{\rulelength}{\paperwidth - \marginleft - \marginright}

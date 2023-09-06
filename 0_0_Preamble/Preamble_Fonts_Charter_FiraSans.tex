@@ -12,10 +12,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+% If XeLaTeX is used for compilation, a conflict with the XCharter package needs to be avoided
+\ifxetex
+	\PassOptionsToPackage{no-math}{fontspec}
+\fi
+
 % Use Fira Sans as the sans-serif font.
 % Load first because it otherwise doesn't work properly.
 % ==>
-\usepackage[lining, scale=0.88]{FiraMono}  % To match the x-height of the Charter serif font
+\usepackage[lining, scale = 0.88]{FiraMono}  % To match the x-height of the Charter serif font
 \usepackage[book, semibold, lining, tabular, scale=0.88]{FiraSans}[2018/05/23]
 \makeatletter
 \@ifpackagelater{FiraSans}{2018/05/23}
@@ -131,7 +136,7 @@
 		           ; = { 50,   0}}
 \fi
 
-\usepackage{xfrac}	% Provides \sfrac
+\usepackage{xfrac}  % Provides \sfrac
 
 % Since math mode uses a different font encoding, issuing \euro/\texteuro in math mode
 % produces an incorrect sign. We fix this. ==>

@@ -37,6 +37,12 @@
 
 \usepackage[LY1, LGR, TS1, T1]{fontenc}
 % LGR (Greek) is needed to enable the ``sansserif math'' features.
+\AtBeginDocument{%
+	\renewcommand{\texteuro}{{\fontencoding{TS1}\selectfont\char"BF}}%
+}
+%\newcommand{\euro}{\texteuro}
+
+
 \usepackage[utf8]{inputenc}
 
 \usepackage{tabularx}
@@ -109,6 +115,7 @@
 \else
 	\usefonttheme{serif}
 	\setbeamerfont{normal text}{family=\rmfamily}
+	\AtBeginDocument{\rmfamily}
 \fi
 \ifnum \serifheadingfont=0
 	\setbeamerfont{structure}{family=\sffamily, shape=\upshape, series=\bfseries}
@@ -401,9 +408,6 @@
 	rounded corners=1.5pt
 	]{\raisebox{1.5pt}{\usebeamerfont{structure}\insertbuttontext}};%
 }
-
-%\renewcommand{\texteuro}{\fontencoding{TS1}\selectfont\char"BF\fontencoding{T1}\selectfont}
-%\newcommand{\euro}{\texteuro}
 
 % Adding framenumbers automatically to the frametitles
 \newcommand{\pageinsection}{\number\numexpr\insertpagenumber-\insertsectionstartpage+1}

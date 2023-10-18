@@ -179,8 +179,12 @@
 \fi
 
 % Reduce by how much an interword space can shrink; see
-% http://tex.stackexchange.com/questions/19236/how-to-change-the-interword-spacing and http://tex.stackexchange.com/questions/88991/what-do-different-fontdimennum-mean:
-\spaceskip=\fontdimen2\font plus \fontdimen3\font minus 0.75\fontdimen4\font
+% http://tex.stackexchange.com/questions/19236/how-to-change-the-interword-spacing,
+% http://tex.stackexchange.com/questions/88991/what-do-different-fontdimennum-mean, and
+% http://mirrors.ctan.org/macros/latex/contrib/everysel/everysel.pdf:
+\AddToHook{selectfont}{%
+	\spaceskip = \fontdimen2\font plus \fontdimen3\font minus 0.75\fontdimen4\font%
+}
 
 % Let even relatively big floats (long tables, spacious figures) be placed on text pages ==>
 \renewcommand{\textfraction}{0.05}

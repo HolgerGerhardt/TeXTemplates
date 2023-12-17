@@ -181,7 +181,7 @@
 
 
 \setbeamerfont{title}
-	{parent=structure, size=\LARGE, series=\bfseries}
+	{parent=structure, size=\LARGE}
 \setbeamerfont{subtitle}
 	{parent=structure, size=\Large, series=\mdseries}
 \setbeamerfont{frametitle}
@@ -265,26 +265,25 @@
 \newcommand{\highlight}[1]{\textcolor{SpotColor}{#1}}
 \newcommand{\heading}[1]{%
 	\par%
-	\textbf{\usebeamerfont{structure}\usebeamercolor[fg]{frametitle}#1}%
+	{\usebeamerfont{structure}\usebeamercolor[fg]{frametitle}#1}%
 	\par%
 }
 \newcommand{\sigstar}{\highlight{*}}
 
 \newlength{\rulelength}
 \setlength{\rulelength}{\paperwidth - \marginleft - \marginright}
-\newcommand{\sliderule}{%
-	\textcolor{SpotColor}{\rule{\rulelength}{.35pt}}%
-}
 
 % Remove navigation symbols from the slide footer
 \beamertemplatenavigationsymbolsempty
 
-% Adjust layout of frametitle
+% Adjust layout of frame title
 % ==>
 \setbeamertemplate{frametitle}{%
+	\parskip=0pt%
 	\vspace{\margintop}\vspace{-5pt}%
-	{\large\usebeamercolor{frametitle}\usebeamerfont{frametitle}\insertframetitle\\[-1.2ex]}%
-	\sliderule\vspace{-2.5pt}%
+	\makebox[0pt][l]{\textcolor{SpotColor}{\rule[-1.2ex]{\rulelength}{0.3pt}}}%
+	{\large\usebeamercolor{frametitle}\usebeamerfont{frametitle}\insertframetitle}%
+	\par\vspace{-2pt}%
 }
 % <==
 
@@ -295,7 +294,8 @@
 	% ==>
 	\setbeamertemplate{footline}{\vskip-15pt%
 		\hspace{\marginleft}%
-		\sliderule \vspace{1.1ex} \linebreak
+		\textcolor{SpotColor}{\rule{\rulelength}{0.3pt}}%
+		\vspace{1ex} \linebreak
 		\mbox{\hspace{\marginleft}}%
 		\strut% to ensure identical height of all footlines
 		\textmd{%
@@ -348,13 +348,14 @@
 \define@key{beamerframe}{standout}[true]{%
 	\setbeamertemplate{footline}{\vskip-15pt%
 		\hspace{\marginleft}%
-		\sliderule \vspace{1.1ex} \linebreak
+		\textcolor{SpotColor}{\rule{\rulelength}{0.3pt}}%
+		\vspace{1ex} \linebreak
 		\mbox{\hspace{\marginleft}}%
 		\strut% to ensure identical height with regular footline
 		\hfill%
 		\strut%
 		\hspace{\marginright}%
-		\vspace{15pt}%
+		\vspace{12pt}%
 	}%
 	\setbeamertemplate{headline}{}%
 }
@@ -420,26 +421,19 @@
 
 % Continuation counter for frames with the ``allowframebreaks'' option.
 % ==>
-%% Inspired by https://tex.stackexchange.com/questions/275044/how-do-i-insert-the-total-continuation-count-in-the-allowframbreaks-frame-title:
-%\newcounter{totalcontinuationcount}
-%\makeatletter
-%\setbeamertemplate{frametitle continuation}{%
-%	\setcounter{totalcontinuationcount}{\beamer@endpageofframe}%
-%	\addtocounter{totalcontinuationcount}{1}%
-%	\addtocounter{totalcontinuationcount}{-\beamer@startpageofframe}%
-%	\ifnum \value{totalcontinuationcount} > 1
-%		\textmd{(\insertcontinuationcount/\arabic{totalcontinuationcount})}%
-%	\fi
-%}
-%\makeatother
-% More elegant version based on https://github.com/josephwright/beamer/issues/423#issuecomment-456494500:
+% https://github.com/josephwright/beamer/issues/423#issuecomment-456494500:
 \makeatletter
 \defbeamertemplate*{frametitle continuation}{only if multiple}{%
 	\ifnum \numexpr\beamer@endpageofframe+1-\beamer@startpageofframe\relax > 1
-	\textmd{(%
-		\insertcontinuationcount/%
-		\the\numexpr\beamer@endpageofframe+1-\beamer@startpageofframe%
-		)}%
+		\textmd{(%
+			\insertcontinuationcount/%
+			\the\numexpr\beamer@endpageofframe+1-\beamer@startpageofframe%
+			)%
+		}%
+	\fi%
+	% Correct vertical space at the top of continued frames:
+	\ifnum \numexpr\insertcontinuationcount > 1%
+		\par\vspace{\medskipamount}
 	\fi%
 }
 \makeatother

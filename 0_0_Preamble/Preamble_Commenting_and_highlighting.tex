@@ -33,7 +33,7 @@
 \colorlet{Changes@Color}{magenta}
 % Decrease font size of the ``changes'' boxes and use sans-serif font:
 \newcommand{\changesfontsettings}{\sffamily\scriptsize\baselineskip=2.25ex}
-\renewcommand{\@todonotes@useSizeCommand}{\changesfontsettings}
+\providecommand{\@todonotes@useSizeCommand}{\changesfontsettings}
 % Decrease rule thickness slightly:
 \xpatchcmd{\@todonotes@drawLineToLeftMargin} {connectstyle}{connectstyle, line width=0.6pt}{}{}
 \xpatchcmd{\@todonotes@drawLineToRightMargin}{connectstyle}{connectstyle, line width=0.6pt}{}{}

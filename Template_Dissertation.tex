@@ -158,6 +158,24 @@
 \renewcommand{\hyperref}[2][]{\hyperreforig[\currentchapter:#1]{#2}}
 \renewcommand{\pageref}[1]{\pagereforig{\currentchapter:#1}}
 % <==
+% Extend \renewcommand{\label}{...} to figure environment
+\let \origfigure \figure
+\let \origendfigure \endfigure
+\renewenvironment{figure}[1][]{%
+	\origfigure[#1]%
+	\renewcommand{\label}[1]{%
+		\labelorig{\currentchapter:##1}%
+	}%
+}{\origendfigure}
+% Extend \renewcommand{\label}{...} to table environment
+\let \origtable \table
+\let \origendtable \endtable
+\renewenvironment{table}[1][]{%
+	\origtable[#1]%
+	\renewcommand{\label}[1]{%
+		\labelorig{\currentchapter:##1}%
+	}%
+}{\origendtable}
 
 \begin{refsection}
 
@@ -290,48 +308,48 @@
 \chapter{Math Tests}
 \label{diss:MathTests}
 
-{%
-	\setlength{\parindent}{0cm}
-	%\setlength{\mathindent}{0cm}  % Only for ``fleqn'' option
-
-	\input{2_Math_Tests/mathtest_defs}
-
-	\renewcommand{\showfamily}{{\color{magenta}%
-		Serif%
-	}}
-	{\rmfamily\mdseries%
-	 \input{2_Math_Tests/mathtest}%
-	 \subsection{Math ``Torture'' Test \showfamily}
-	 \input{2_Math_Tests/mathtest_TeXbook}%
- 	}
-
-	\renewcommand{\showfamily}{{\color{magenta}%
-		Serif Bold%
-	}}
-	{\rmfamily\bfseries%
-	 \input{2_Math_Tests/mathtest}%
-	 \subsection{Math ``Torture'' Test \showfamily}
-	 \input{2_Math_Tests/mathtest_TeXbook}%
- 	}
-
-	\renewcommand{\showfamily}{{\color{magenta}%
-		Sans Serif%
-	}}
-	{\sffamily\mdseries%
-	 \input{2_Math_Tests/mathtest}%
-	 \subsection{Math ``Torture'' Test \showfamily}
-	 \input{2_Math_Tests/mathtest_TeXbook}%
-	}
-
-	\renewcommand{\showfamily}{{\color{magenta}%
-		Sans Serif Bold%
-	}}
-	{\sffamily\bfseries%
-	 \input{2_Math_Tests/mathtest}%
-	 \subsection{Math ``Torture'' Test \showfamily}
-	 \input{2_Math_Tests/mathtest_TeXbook}%
-	}
-}
+%{%
+%	\setlength{\parindent}{0cm}
+%	%\setlength{\mathindent}{0cm}  % Only for ``fleqn'' option
+%
+%	\input{2_Math_Tests/mathtest_defs}
+%
+%	\renewcommand{\showfamily}{{\color{magenta}%
+%		Serif%
+%	}}
+%	{\rmfamily\mdseries%
+%	 \input{2_Math_Tests/mathtest}%
+%	 \subsection{Math ``Torture'' Test \showfamily}
+%	 \input{2_Math_Tests/mathtest_TeXbook}%
+% 	}
+%
+%	\renewcommand{\showfamily}{{\color{magenta}%
+%		Serif Bold%
+%	}}
+%	{\rmfamily\bfseries%
+%	 \input{2_Math_Tests/mathtest}%
+%	 \subsection{Math ``Torture'' Test \showfamily}
+%	 \input{2_Math_Tests/mathtest_TeXbook}%
+% 	}
+%
+%	\renewcommand{\showfamily}{{\color{magenta}%
+%		Sans Serif%
+%	}}
+%	{\sffamily\mdseries%
+%	 \input{2_Math_Tests/mathtest}%
+%	 \subsection{Math ``Torture'' Test \showfamily}
+%	 \input{2_Math_Tests/mathtest_TeXbook}%
+%	}
+%
+%	\renewcommand{\showfamily}{{\color{magenta}%
+%		Sans Serif Bold%
+%	}}
+%	{\sffamily\bfseries%
+%	 \input{2_Math_Tests/mathtest}%
+%	 \subsection{Math ``Torture'' Test \showfamily}
+%	 \input{2_Math_Tests/mathtest_TeXbook}%
+%	}
+%}
 
 \end{refsection}
 

@@ -74,49 +74,40 @@
 % <==
 
 % Packages for creating better-looking tables
-\usepackage{booktabs}
+
+\usepackage{tabularray}
+\UseTblrLibrary{booktabs, siunitx}
+\renewcommand{\lTblrDefaultHruleColorTl}{SpotColor}
+\renewcommand{\lTblrDefaultVruleColorTl}{SpotColor}
+\addtolength{\abovesep}{25pt}
+\addtolength{\belowsep}{20pt}
+
 \setlength{\cmidrulewidth}{0.67pt}
 \setlength{\lightrulewidth}{0.67pt}
 \setlength{\heavyrulewidth}{1pt}
-\addtolength{\abovetopsep}{25pt}
 \addtolength{\aboverulesep}{5pt}	% Make tables a little more spacious
 \addtolength{\belowrulesep}{7.5pt}
-\addtolength{\belowbottomsep}{20pt}
-\usepackage{colortbl} % e.g., for colored rules
-\arrayrulecolor{SpotColor} % Color all table rules blue
 
-\usepackage{multirow}
-\usepackage{tabularx}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{J}{>{\arraybackslash}X}
-\newcolumntype{L}{>{\raggedright\arraybackslash}X}
-\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
-\usepackage{makecell}
-\usepackage{siunitx}[=v2]	% Allow, among others, for alignment of decimal numbers in tables at the decimal point.
 \sisetup{
 	detect-all,
-	round-integer-to-decimal = true,
-	tight-spacing            = true,
-	group-digits             = true,
-	group-minimum-digits     = 5,
-	group-separator          = {\kern 1pt},
+	%round-integer-to-decimal = true,
+	%tight-spacing            = true,
+	%group-digits             = true,
+	%group-minimum-digits     = 5,
+	%group-separator          = {\kern 1pt},
 	table-align-text-pre     = false,
 	table-align-text-post    = false,
+	table-space-text-pre     = {**},
+	table-space-text-post    = {-**},
 	input-signs              = + -,
-	input-symbols            = {*} {**} {***},
+	%input-symbols            = {*} {**} {***},
 	input-open-uncertainty   = ,
 	input-close-uncertainty  = ,
-	table-align-text-post    = false,
+	%table-align-text-post    = false,
 	retain-explicit-plus
 }
-\newcolumntype{T}[1]{%
-	S[table-space-text-pre = {\;\;\;\:}, table-space-text-post = {\;\;\;\:}, table-format = #1]%
-}
-\newcommand{\minitab}[2][l]{%
-	\begin{tabular}{@{} #1 @{}}#2\end{tabular}%
-}
-\newcommand{\tworowlabel}[2]{%
-	\multirow{2}{*}{\minitab{#1\\\quad{}#2}}%
+\NewColumnType{T}[1]{%
+	S[table-format = #1]%
 }
 
 

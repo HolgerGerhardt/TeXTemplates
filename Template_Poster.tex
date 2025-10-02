@@ -186,23 +186,33 @@
 	\begin{beamercolorbox}[ht = 19.75cm, wd = 0.9\linewidth, center]{block body}
 		%~\\[-7cm]
 		\alert{Absolute and relative measure of concentration bias ($\tilde{d}$ and $\tilde{d}^{\textup{rel}}$, respectively) in \textsc{Main-Treat\-ment}}
-		\begin{tabularx}{0.9\textwidth}{@{} L *{4}{T{1.3, table-column-width = 0.145\textwidth, round-mode = places, round-precision = 3}} @{}}
-			\toprule
-			& \multicolumn{3}{@{}c}{OLS} & {Tobit}  \\
-			\cmidrule(lr){2-4} \cmidrule(l){5-5}
+		\par\bigskip\bigskip
+		\begin{booktabs}{
+			cell{1}{2} = {r=1, c=3}{c},
+			colspec = {
+				X[l] *{4}{T{2.4, table-column-width = 0.145\textwidth, round-mode = places, round-precision = 3}}
+			},
+			column{1} = {leftsep = 0pt},
+			column{Z} = {rightsep = 0pt},
+			hborder{1} = {abovespace = \abovetopsep, belowspace = \belowrulesep},
+			hborder{Z} = {abovespace = \aboverulesep, belowspace = \belowbottomsep},
+			hborder{2, 4, 6, 8} = {abovespace = \aboverulesep, belowspace = \belowrulesep},
+			hline{1} = {\heavyrulewidth, solid},
+			hline{2, 4, 6, 8} = solid,
+			hline{Z} = {\heavyrulewidth, solid},
+			row{1} = {guard},
+			width = 0.9\textwidth,
+		}
+			& OLS & OLS & OLS & {Tobit}  \\
 			& {Lower bound} & {Midpoint} & {Upper bound} &  \\
 			& {(1)} & {(2)} & {(3)} & {(4)} \\
-			\midrule
 			\smash{\(\tilde{d}\)} in \textsc{Main-Treat\-ment} &     31.64\ensuremath{^{***}} &    37.61\ensuremath{^{***}} &    43.58\ensuremath{^{***}} &    37.094\ensuremath{^{***}} \\
 			&  (2.685)         &  (3.575)         &  (4.683)         &  (3.658)         \\
-			\midrule
 			\smash{\(\tilde{d}^{\textup{rel}}\)} in \textsc{Main-Treat\-ment} &    0.190\ensuremath{^{***}} &    0.224\ensuremath{^{***}} &    0.259\ensuremath{^{***}} &  \\
 			&  (0.016)         &  (0.021)         &  (0.027)         &         \\
-			\midrule
 			Observations    &    {100}         &    {100}         &    {100}         &    {100}         \\
-			\bottomrule
-		\end{tabularx}%
-
+		\end{booktabs}%
+		\par\bigskip\bigskip
 		\justifying\small%
 		\textit{Notes:}
 		This table presents estimates of the average absolute and relative measure of concentration bias, $\tilde{d}$ and $\tilde{d}^{\textup{rel}}$, respectively.

@@ -1,4 +1,4 @@
-# TeXTemplates
+# TeX Templates
 
 
 ## General Information
@@ -28,4 +28,4 @@ I&nbsp;try to keep my TeX installation up-to-date as much as possible. That is, 
 
 Hence, whenever I&nbsp;update this repository, the *.tex* files should compile flawlessly with an up-to-date TeX installation. This entails, however, that they may not compile without errors on older TeX installations. This will happen, in particular, if the update of a&nbsp;package that is used in my templates features backward-incompatible changes.
 
-I&nbsp;am unable to ensure backward compatibility with older TeX installations because doing so would be extremely time-consuming. If you are using an older TeX installation, you may, of course, try to go back in time and download these templates based on earlier commits to this repository. (Say, if you use TeX Live 2019, which is the default TeX installation on Ubuntu 20.04&nbsp;LTS, you may try your luck with commits from 2019.)
+I&nbsp;am unable to ensure backward compatibility with older TeX installations, since this would be extremely time-consuming. If you are using an older TeX installation, you may, of course, go back in time and download these templates based on earlier commits to this repository. (Say, if you use TeX Live 2023, which is the default TeX installation on Ubuntu 24.04&nbsp;LTS, you might try your luck with commits from 2023.)

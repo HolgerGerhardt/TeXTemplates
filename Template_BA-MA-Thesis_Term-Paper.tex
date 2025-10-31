@@ -255,6 +255,7 @@
 	\thispagestyle{empty}
 	\pdfbookmark[1]{\manuscripttitle}{coverpage}
 	\begin{center}
+		\selectlanguage{USenglish}
 		\Large
 		\null\vfill
 		{\fontsize{27.5pt}{32pt}\bfseries\manuscripttitle\par}
@@ -304,6 +305,7 @@
 	\thispagestyle{empty}
 	\pdfbookmark[1]{\manuscripttitle}{Titelseite}
 	\begin{center}
+		\selectlanguage{ngerman}
 		\Large
 		\null\vfill
 		{\fontsize{27.5pt}{32pt}\bfseries\manuscripttitle\par}
@@ -5005,23 +5007,26 @@ $^u$ Not defined in {\tt amssymb.sty}, define using the
 	\ifthenelse{%
 		\equal{\manuscriptlanguage}{DE}%
 	}{% German
+		\selectlanguage{ngerman}
 		\section*{Selbstständigkeitserklärung}
 		% Taken from
 		% https://www.econ.uni-bonn.de/examinations/de/informationen/bachelor/bachelorarbeit/dokumente/ba-merkblatt-2016-05-23.pdf
 		\pdfbookmark[1]{Selbstständigkeitserklärung}{declaration}
 		Ich versichere hiermit, dass ich die vorstehende \ifthenelse{\equal{\manuscripttype}{BA}}{Bachelorarbeit}{Masterarbeit}
-		selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe, dass die vorgelegte Arbeit noch an keiner anderen Hochschule zur Prüfung vorgelegt wurde und dass sie weder ganz noch in Teilen bereits veröffentlicht wurde. Wörtliche Zitate und Stellen, die anderen Werken dem Sinn nach entnommen sind, habe ich in jedem einzelnen Fall kenntlich gemacht.%
+		selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe, dass die vorgelegte Arbeit noch an keiner anderen Hochschule zur Prüfung vorgelegt wurde und dass sie weder ganz noch in Teilen bereits veröffentlicht wurde. Wörtliche Zitate und Stellen, die anderen Werken dem Sinn nach entnommen sind, habe ich in jedem einzelnen Fall kenntlich gemacht. \par
+		\vspace{\baselineskip}
+		\noindent\datengerman\printdate{\manuscriptdate} \par
 	}{% English
+		\selectlanguage{USenglish}
 		\section*{Declaration}
 		% Taken from
 		% https://www.econ.uni-bonn.de/examinations/en/information/master-economics/master-thesis/documents/ma-master-thesis-style-guide-2014-06-10.pdf
 		\pdfbookmark[1]{Declaration}{declaration}
 		I~hereby confirm that the work presented has been performed and interpreted solely by myself except for where I~explicitly identified the contrary. I~assure that this work has not been presented in any other
-		form for the fulfillment of any other degree or qualification. Ideas taken from other works in letter and in spirit are identified in every single case.%
+		form for the fulfillment of any other degree or qualification. Ideas taken from other works in letter and in spirit are identified in every single case. \par
+		\vspace{\baselineskip}
+		\noindent\printdate{\manuscriptdate} \par
 	}
-	\par
-	\vspace{\baselineskip}
-	\noindent\printdate{\manuscriptdate} \par
 	\vspace{3\baselineskip} \par
 	\noindent\studentfullname%
 }{}

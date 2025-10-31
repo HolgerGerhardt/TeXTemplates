@@ -14,11 +14,11 @@
 \newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
-\newcommand{\manuscriptdate}{2025-10-01}  % In ISO format: yyyy-mm-dd
+\newcommand{\manuscriptdate}{2025-10-31}  % In ISO format: yyyy-mm-dd
 \newcommand{\manuscripttype}{MA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
-	Theoretical and Empirical Microeconomics and Macroeconomics with Implications for Social Policy All Around the World%
+	Theoretical and Empirical Microeconomics and Macroeconomics with~Implications for Social Policy All Around the World%
 }  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\advisorname}{Prof.~Dr. Vae-Ree Smart}
 \newcommand{\advisorgender}{x}  % f for female, m for male, otherwise nonbinary
@@ -927,6 +927,11 @@
 \pagenumbering{arabic}
 
 
+\selectlanguage{USenglish}
+	% Switching to English since the default content of this template is written in English.
+	% Remove this or replace with \selectlanguage{ngerman} if writing a paper in German!
+
+
 \section{Structure of the Thesis\slash Term Paper}% Note: \slash typesets a slash after which a line break may happen
 \label{sec:structure}
 
@@ -945,7 +950,7 @@
 	\href{https://miktex.org/download}{MiKTeX},
 	and \href{https://tug.org/texlive/acquire-netinstall.html}{TeX Live}. \\[\medskipamount]
 	\mdseries For MiKTeX, please choose the ``Net Installer'' to install the \emph{complete} MiKTeX distribution, rather than the ``Basic Installer.'' \\[\medskipamount]
-	\bfseries Compilation via \url{https://overleaf-students.astro.uni-bonn.de/} is also supported.
+	\bfseries Compilation via \url{https://overleaf-en.astro.uni-bonn.de} is also supported. \mdseries (Use ``Shibboleth login'' to log in with your Uni~\caps{ID}.)
 	\\[\medskipamount]
 	\mdseries This document was compiled on \today\ with \PDFcompiler.%
 }%
@@ -1210,8 +1215,8 @@ The rule to finish a~paragraph with a~concluding sentence entails, in particular
 \begin{tcolorbox}
 	\microtypesetup{protrusion = false}%
 	\begin{tblr}{}
-		\textellipsis\ {\setulcolor{DeepPink4!67}\ul{With these radii, the charges almost coincide with those obtained by the {\caps{CHELPG}} method (within ${0.02\,e}$).}}
-		{\setulcolor{DarkOrchid3!67}\ul{Thus, we can conclude that the main difference between the Merz--Kollman and the {\caps{CHELPG}} method is the 1.4~times larger effective radii of the former method, whereas the sampling schemes are almost equivalent.}}
+		\textellipsis\ {\setulcolor{DeepPink4!67}\ul{With these radii, the charges almost coincide with those obtained by the \mbox{\caps{CHELPG}} method (within ${0.02\,e}$).}}
+		{\setulcolor{DarkOrchid3!67}\ul{Thus, we can conclude that the main difference between the Merz--Kollman and the \mbox{\caps{CHELPG}} method is the 1.4~times larger effective radii of the former method, whereas the sampling schemes are almost equivalent.}}
 		&
 		{%
 			\textcolor{DeepPink4}{Evidence: \\ Supporting sentence with \\ empirical finding} \\ \strut \\
@@ -1491,7 +1496,7 @@ All variables should be consistently italicized. This makes it easier to identif
 \end{tcolorbox}
 
 \subsection{Upright Shape for Mathematical Constants and Functions with Established Meaning}
-In line with the \caps{ISO} norm 80000-2:2019(E), functions, numerical constants, and operators with an established, ``well-defined'' meaning should \emph{not} be italicized but set upright to disambiguate them from variables. ``Well-defined'' here means that the meaning does not change across contexts. This applies to, for instance, the exponential function ($\exp$) and the logarithmic function ($\log$, $\ln$), to Euler's constant ($\mathrm{e}$) and the circular constant ($\uppi$), as well as to the symbols for the differential ($\mathrm{d}$) and the expected value ($\operatorfont{E}$). The \caps{ISO}~80000-2:2019(E) standard%
+In line with \caps{ISO} norm 80000-2:2019(E), functions, numerical constants, and operators with an established, ``well-defined'' meaning should \emph{not} be italicized but set upright to disambiguate them from variables. ``Well-defined'' here refers to the meaning being the same across contexts. This applies to, for instance, the exponential function ($\exp$) and the logarithmic function ($\log$, $\ln$), to Euler's constant ($\mathrm{e}$) and the circular constant ($\uppi$), as well as to the symbols for the differential ($\mathrm{d}$) and the expected value ($\operatorfont{E}$). The \caps{ISO}~80000-2:2019(E) standard%
 \footnote{See \url{https://cdn.standards.iteh.ai/samples/64973/329519100abd447ea0d49747258d1094/ISO-80000-2-2019.pdf},~p.\,1. See also the descriptions and discussions in \url{https://tug.org/tugboat/tb18-1/tb54becc.pdf} and in \url{https://nhigham.com/2016/01/28/typesetting-mathematics-according-to-the-iso-standard/}.}%
 \textsuperscript{,\kern0.04em}%
 \footnote{Note that the decimal separator used by the \caps{ISO} is a~comma (as it is standard, e.g., in German texts) rather than a~period (as it is standard in, e.g., English texts). The \caps{ISO}~80000-1 standard permits both.}
@@ -5001,12 +5006,18 @@ $^u$ Not defined in {\tt amssymb.sty}, define using the
 		\equal{\manuscriptlanguage}{DE}%
 	}{% German
 		\section*{Selbstständigkeitserklärung}
+		% Taken from
+		% https://www.econ.uni-bonn.de/examinations/de/informationen/bachelor/bachelorarbeit/dokumente/ba-merkblatt-2016-05-23.pdf
 		\pdfbookmark[1]{Selbstständigkeitserklärung}{declaration}
-		Ich versichere hiermit, dass ich die vorstehende \ifthenelse{\equal{\manuscripttype}{BA}}{Bachelorarbeit}{Masterarbeit} selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe, dass die vorgelegte Arbeit noch an keiner anderen Hochschule zur Prüfung vorgelegt wurde und dass sie weder ganz noch in Teilen bereits veröffentlicht wurde. Wörtliche Zitate und Stellen, die anderen Werken dem Sinn nach entnommen sind, habe ich in jedem einzelnen Fall kenntlich gemacht.%
+		Ich versichere hiermit, dass ich die vorstehende \ifthenelse{\equal{\manuscripttype}{BA}}{Bachelorarbeit}{Masterarbeit}
+		selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe, dass die vorgelegte Arbeit noch an keiner anderen Hochschule zur Prüfung vorgelegt wurde und dass sie weder ganz noch in Teilen bereits veröffentlicht wurde. Wörtliche Zitate und Stellen, die anderen Werken dem Sinn nach entnommen sind, habe ich in jedem einzelnen Fall kenntlich gemacht.%
 	}{% English
 		\section*{Declaration}
+		% Taken from
+		% https://www.econ.uni-bonn.de/examinations/en/information/master-economics/master-thesis/documents/ma-master-thesis-style-guide-2014-06-10.pdf
 		\pdfbookmark[1]{Declaration}{declaration}
-		I~hereby declare that I~have written the above \ifthenelse{\equal{\manuscripttype}{BA}}{bachelor}{master}'s thesis independently and have used no other sources and aids than those indicated, that the submitted work has not been previously presented for examination at another university, and that it has not been published either in whole or in part. I~have identified all direct quotes and paraphrased ideas taken from other works in each individual case.%
+		I~hereby confirm that the work presented has been performed and interpreted solely by myself except for where I~explicitly identified the contrary. I~assure that this work has not been presented in any other
+		form for the fulfillment of any other degree or qualification. Ideas taken from other works in letter and in spirit are identified in every single case.%
 	}
 	\par
 	\vspace{\baselineskip}

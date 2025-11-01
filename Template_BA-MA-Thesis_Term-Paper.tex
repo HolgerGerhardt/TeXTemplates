@@ -14,7 +14,7 @@
 \newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
-\newcommand{\manuscriptdate}{2025-10-31}  % In ISO format: yyyy-mm-dd
+\newcommand{\manuscriptdate}{2025-11-01}  % In ISO format: yyyy-mm-dd
 \newcommand{\manuscripttype}{MA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
@@ -1252,25 +1252,25 @@ It is probably a~good choice to use a~serif font. This is because papers and the
 	Digit one, lowercase l, uppercase I, vertical bar: \\
 	\small%
 	{\fontfamily{ntxtlf}\selectfont Times: 1\,l\,I\,|} \quad
-	{\relscale{0.88}\fontfamily{plxSerif-TLF}\selectfont IBM Plex Serif: 1\,l\,I\,|} \quad
+	{\relscale{0.92}\fontfamily{XCharter-TLF}\selectfont Charter: 1\,l\,I\,|} \quad
 	{\relscale{0.85}\fontfamily{pag}\selectfont Avant Garde: 1\,l\,I\,|} \quad
-	{\relscale{0.90}\fontfamily{phv}\selectfont Helvetica: 1\,l\,I\,|} \quad {\relscale{0.87}\fontfamily{plxSans-TLF}\selectfont IBM Plex Sans: 1\,l\,I\,|}
+	{\relscale{0.88}\fontfamily{phv}\selectfont Helvetica: 1\,l\,I\,|} \quad {\relscale{1.05}\fontfamily{FiraSans-TLF}\selectfont Fira Sans: 1\,l\,I\,|}
 	\par
 	\normalsize%
 	Lowercase o, digit zero, uppercase O: \\
 	\small%
 	{\fontfamily{ntxtlf}\selectfont Times: o\,0\,O}\quad
-	{\relscale{0.89}\fontfamily{Cabin-TLF}\selectfont Cabin: o\,0\,O}\quad
-	{\relscale{0.92}\fontfamily{AlegreyaSans-OsF}\selectfont Alegreya Sans: o\,0\,O}\quad
-	{\relscale{0.82}\fontfamily{plxMono-TLF}\selectfont IBM Plex Mono: o\,0\,O}\quad
-	{\relscale{0.82}\fontfamily{CascadiaCode-TLF}\fontseries{sl}\selectfont Cascadia Code: o\,0\,O}
+	{\relscale{0.90}\fontfamily{Cabin-TLF}\selectfont Cabin: o\,0\,O}\quad
+	{\relscale{0.95}\fontfamily{AlegreyaSans-OsF}\selectfont Alegreya Sans: o\,0\,O}\quad
+	{\relscale{1.00}\fontfamily{FiraMono-TLF}\selectfont Fira Mono: o\,0\,O}\quad
+	{\relscale{0.81}\fontfamily{CascadiaCode-TLF}\fontseries{sl}\selectfont Cascadia Code: o\,0\,O}
 	\par
 	\normalsize%
 	Italic Latin a, p, u, v, y, Y vs. italic Greek alpha, rho, upsilon, nu, gamma, Upsilon: \\
 	\small%
 	Times: $a \, \alpha$, $p \, \rho$, $u \, \upsilon$, $v \, \nu$, $y \, \gamma$, $Y \, \mathit{\Upsilon}$
 	\quad
-	{\relscale{0.975}\fontfamily{FiraSans-TLF}\selectfont Fira Sans: {\itshape a\,\textalpha}, {\itshape p\,\textrho}, {\itshape u\,\textupsilon}, {\itshape v\,\textnu}, {\itshape y\,\textgamma}, {\itshape Y\,\textUpsilon}}
+	{\relscale{1.05}\fontfamily{FiraSans-TLF}\selectfont Fira Sans: {\itshape a\,\textalpha}, {\itshape p\,\textrho}, {\itshape u\,\textupsilon}, {\itshape v\,\textnu}, {\itshape y\,\textgamma}, {\itshape Y\,\textUpsilon}}
 \end{tcolorbox}
 
 When using Times or Times New Roman as the typeface, the following font sizes apply:
@@ -1659,6 +1659,7 @@ Further additional helpful features of \mbox{\textit{tabularray}} are:
 
 When using \verb|\UseTblrLibrary{siunitx}|, \mbox{\textit{tabularray}} loads the \mbox{\textit{siunitx}} package. This is another useful package which permits separating content from formatting. In particular, the \verb|S|~column type is able to round numbers to a~specified precision. This means that one can include table content produced by an external program with as many decimal digits as that program produces and have LaTeX take care of the rounding.
 
+
 \section{Tests, Including Example Figures}
 \label{sec:tests}
 
@@ -2046,7 +2047,7 @@ Final line on the page. \par
 
 \subsection{Tests of Cross-Referencing}
 
-\hyperref[sec:math]{\titlecap{\sectionautorefname}~\ref{sec:math}}, \autoref{sec:tests}, \autoref{sec:tests:lists}, \autoref{sec:tests:lorem-ipsum:beginning}, \autoref{sec:tests:lorem-ipsum:main:duden}, \autoref{app:math-torture}, \autoref{app:math-test:alphabets}.
+\hyperref[sec:math]{\titlecap{\sectionautorefname}~\ref{sec:math}}, \autoref{sec:tests}, \autoref{sec:tests:lists}, \autoref{sec:tests:lorem-ipsum:beginning}, \autoref{sec:tests:lorem-ipsum:main:duden}, \autoref{app:proofs}, \autoref{app:font-samples:utopia}.
 
 \autoref{fig:png}, \autoref{fig:pdf}, \autoref{tab:siunitx-example}, \autoref{tab:reg-table}.
 
@@ -2126,7 +2127,9 @@ The remaining text samples in this section were generated with the help of \url{
 \subsection{Kafka in \texttt{\textbackslash normalsize}}
 
 \newcommand{\Kafka}{%
-	Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, \mbox{wurde} er eines Morgens verhaftet. ,,Wie ein Hund!{}`` sagte er, es war, als sollte die Scham ihn über\-leben. Als Gregor \mbox{Samsa} eines Morgens aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt. Und es war ihnen wie eine Bestätigung ihrer neuen Träume und guten Absichten, als am Ziele ihrer Fahrt die Tochter als erste sich erhob und ihren jungen Körper dehnte. ,,Es ist~ein eigentümlicher Apparat``, sagte der Offizier zu dem Forschungsreisenden und überblickte mit einem gewissermaßen bewundernden Blick den ihm doch wohlbekannten Apparat. Sie hätten noch~ins Boot springen können, aber der Reisende hob ein schweres, geknotetes Tau vom Boden, drohte ihnen damit und hielt sie dadurch von dem Sprunge ab. In den letzten Jahrzehnten ist das Interesse an Hungerkünstlern sehr zurück\-ge\-gangen. Aber sie überwanden sich, umdrängten den Käfig und \textellipsis \par%
+	Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, \mbox{wurde} er eines Morgens verhaftet. ,,Wie ein Hund!{}`` sagte er, es war, als sollte die Scham ihn über\-leben. Als Gregor \mbox{Samsa} eines Morgens aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt. Und es war ihnen wie eine Bestätigung ihrer neuen Träume und guten Absichten, als am Ziele ihrer Fahrt die Tochter als erste sich erhob und ihren jungen Körper dehnte. ,,Es ist~ein eigentümlicher Apparat``, sagte der Offizier zu dem Forschungsreisenden und überblickte mit einem gewissermaßen bewundernden Blick den ihm doch wohlbekannten Apparat. Sie hätten noch~ins Boot springen können, aber der Reisende hob ein schweres, geknotetes Tau vom Boden, drohte ihnen damit und hielt sie dadurch von dem Sprunge ab. In den letzten Jahrzehnten ist das Interesse an Hungerkünstlern sehr zurück\-ge\-gangen. Aber sie überwanden sich, umdrängten den Käfig und \textellipsis
+	08/15 \textKappa\'{\textalpha}\textphi\textkappa\textalpha
+	\par%
 }
 
 \begin{otherlanguage}{ngerman}\normalsize\noindent%
@@ -2405,7 +2408,7 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 \end{refcontext}
 
 
-%%  APPENDIX: TESTING MATH FONTS
+%%  APPENDIX
 
 
 \begin{appendix}
@@ -3340,8 +3343,10 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 \normalsize
 
 \section{Font Samples}
+\label{app:font-samples}
 
 \subsection[Font Sample Times]{\fontfamily{ntxtlf}Font Sample Times}
+\label{app:font-samples:times}
 
 \begin{otherlanguage}{ngerman}\noindent\normalsize%
 	\fontfamily{ntxtlf}%
@@ -3359,6 +3364,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 \end{otherlanguage}
 
 \subsection[Font Sample Palatino]{\fontfamily{zpltlf}\selectfont Font Sample Palatino}
+\label{app:font-samples:palatino}
 
 \begin{otherlanguage}{ngerman}\noindent%
 	\fontfamily{zpltlf}%
@@ -3380,6 +3386,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 \section*{\strut}
 
 \subsection[Font Sample Utopia]{\fontfamily{erewhon-TLF}\selectfont Font Sample Utopia}
+\label{app:font-samples:utopia}
 
 \begin{otherlanguage}{ngerman}\noindent%
 	\fontfamily{erewhon-TLF}%
@@ -3397,6 +3404,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 \end{otherlanguage}
 
 \subsection[Font Sample Charter]{\fontfamily{XCharter-TLF}\selectfont Font Sample Charter}
+\label{app:font-samples:charter}
 
 \begin{otherlanguage}{ngerman}\noindent%
 	\fontfamily{XCharter-TLF}%
@@ -3418,6 +3426,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 \section*{\strut}
 
 \subsection[Font Sample {\textls[40]{STIX}} Two]{\fontfamily{SticksTooText-TLF}\selectfont Font Sample \textls[40]{STIX} Two}
+\label{app:font-samples:stix-two}
 
 \begin{otherlanguage}{ngerman}\noindent%
 	\fontfamily{SticksTooText-TLF}%
@@ -3435,6 +3444,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 \end{otherlanguage}
 
 \subsection[Font Sample Libertinus Serif]{\fontfamily{LibertinusSerif-TLF}\selectfont Font Sample Libertinus Serif}
+\label{app:font-samples:libertinus-serif}
 
 \begin{otherlanguage}{ngerman}\noindent%
 	\fontfamily{LibertinusSerif-TLF}%
@@ -3456,6 +3466,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 \section*{\strut}
 
 \subsection[Font Sample New Century Schoolbook]{\fontfamily{TeXGyreScholaX-TLF}\selectfont{\relscale{0.925}Font Sample New Century Schoolbook}}
+\label{app:font-samples:new-century-schoolbook}
 
 \begin{otherlanguage}{ngerman}\noindent%
 	\fontfamily{TeXGyreScholaX-TLF}%
@@ -3913,7 +3924,7 @@ $p_1(n)=\lim_{m\to\infty}\sum_{\nu=0}^\infty\bigl(1-\cos^{2m}(\nu!^n\piup \divsl
 
 \clearpage
 
-\section{Math Test \showfamily}
+\section{Extensive Math Test \showfamily}
 
 \subsection{Spacing}
 
@@ -4993,17 +5004,13 @@ $^u$ Not defined in {\tt amssymb.sty}, define using the
 \X\supsetneq    &\X\varsupsetneq \\ \X\supsetneqq  &\X\varsupsetneqq
 \end{tabular}
 
-\clearpage
+\clearpage  % Necessary for the last page in the appendix to display the correct page number
 
 \end{appendix}
 
 
-\renewcommand{\thepage}{}
-
-
-\clearpage
-
 \ifthenelse{\equal{\manuscripttype}{BA} \OR \equal{\manuscripttype}{MA}}{%
+	\renewcommand{\thepage}{}
 	\ifthenelse{%
 		\equal{\manuscriptlanguage}{DE}%
 	}{% German
@@ -5030,8 +5037,6 @@ $^u$ Not defined in {\tt amssymb.sty}, define using the
 	\vspace{3\baselineskip} \par
 	\noindent\studentfullname%
 }{}
-
-%\clearpage
 
 
 \end{document}

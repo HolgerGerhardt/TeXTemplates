@@ -14,7 +14,7 @@
 \newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
-\newcommand{\manuscriptdate}{2025-11-01}  % In ISO format: yyyy-mm-dd
+\newcommand{\manuscriptdate}{2025-11-04}  % In ISO format: yyyy-mm-dd
 \newcommand{\manuscripttype}{MA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
@@ -887,11 +887,26 @@
 \uselengthunit{PT}
 \renewcommand{\unitspace}{~}
 
+\newcommand{\PDFcompiler}{%
+	\ifthenelse{\boolean{PDFTeX}}{PDFLaTeX: \\[\medskipamount] \mdseries\texttt{\pdftexbanner}}{}%
+	\ifthenelse{\boolean{LuaTeX}}{LuaLaTeX: \\[\medskipamount] \mdseries\texttt{\luatexbanner}}{}%
+	\ifthenelse{\boolean{XeTeX}}{XeLaTeX, \\[\medskipamount] \mdseries version \texttt{\number\eTeXversion\eTeXrevision-\number\XeTeXversion\XeTeXrevision}}{}%
+	\texttt{ (format version: \fmtversion)}
+}
+
 \newcommand{\beware}[1]{%
-	\marginpar{%
-		\RaggedRight\scriptsize\sffamily\color{Red3}\bfseries\sloppy%
-		#1%
-	}%
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[
+			align = left,
+			anchor = north east,
+			fill = Red3!5,
+			font = \sffamily\scriptsize\bfseries\sloppy,
+			inner sep = 0.75em,
+			text = Red3,
+			text width = 4cm,
+		] at ([xshift = -0.6cm, yshift = -0.75cm] current page.north east)
+		{#1};
+	\end{tikzpicture}
 }
 
 
@@ -903,6 +918,18 @@
 
 
 \begin{document}
+
+
+\beware{%
+	For compiling this document without any changes, a~\emph{complete} (and up-to-date) TeX distribution is required. \\[\medskipamount]
+	Options include
+	\href{https://tug.org/mactex/mactex-download.html}{MacTeX},
+	\href{https://miktex.org/download}{MiKTeX},
+	and \href{https://tug.org/texlive/acquire-netinstall.html}{TeX Live}. \mdseries For MiKTeX, please choose the ``Net Installer'' to install the \emph{complete} MiKTeX distribution, rather than the ``Basic Installer.'' \\[\medskipamount]
+	\bfseries Compilation via \url{https://overleaf-en.astro.uni-bonn.de} is also supported. \mdseries Use ``Shibboleth login'' to log in with your Uni~\caps{ID}. \\[\medskipamount]
+	\bfseries And compilation via \url{https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch} should work, too. \mdseries Compiling the entire document from scratch may lead to a~time-out. Compiling the document again (and again) usually works. So does compiling a~shortened version. \\[\medskipamount]
+	\mdseries This document was compiled on \today\ with \PDFcompiler.%
+}
 
 
 \pagenumbering{roman}
@@ -937,23 +964,6 @@
 
 \subsection{Parts of the Manuscript}
 
-\newcommand{\PDFcompiler}{%
-	\ifthenelse{\boolean{PDFTeX}}{PDFLaTeX: \\[\medskipamount] \mdseries\texttt{\pdftexbanner}}{}%
-	\ifthenelse{\boolean{LuaTeX}}{LuaLaTeX: \\[\medskipamount] \mdseries\texttt{\luatexbanner}}{}%
-	\ifthenelse{\boolean{XeTeX}}{XeLaTeX, \\[\medskipamount] \mdseries version \texttt{\number\eTeXversion\eTeXrevision-\number\XeTeXversion\XeTeXrevision}}{}%
-	\texttt{ (format version: \fmtversion)}
-}
-\beware{%
-	For compiling this document without any changes, a~\emph{complete (and up-to-date)} TeX distribution is required. \\
-	Options include
-	\href{https://tug.org/mactex/mactex-download.html}{MacTeX},
-	\href{https://miktex.org/download}{MiKTeX},
-	and \href{https://tug.org/texlive/acquire-netinstall.html}{TeX Live}. \\[\medskipamount]
-	\mdseries For MiKTeX, please choose the ``Net Installer'' to install the \emph{complete} MiKTeX distribution, rather than the ``Basic Installer.'' \\[\medskipamount]
-	\bfseries Compilation via \url{https://overleaf-en.astro.uni-bonn.de} is also supported. \mdseries (Use ``Shibboleth login'' to log in with your Uni~\caps{ID}.) \\[\medskipamount]
-	%\bfseries Compilation via \url{https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch} should work, too. \\[\medskipamount]
-	\mdseries This document was compiled on \today\ with \PDFcompiler.%
-}%
 A~thesis generally consists of the following parts:
 \begin{enumerate}
 	\item a~title page,
@@ -4000,9 +4010,9 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 	$$\lim_{N \to \infty} \sum_{i=0}^{N} x^i = \min_{x \in \mathbb{R}} S(x)$$
 
 	$$\int_{-\infty}^{\infty} x\,f(x)\,\mathup{d}x = \left( \frac{27}{2} \right)$$
-	
+
 	$$t[u_1, \dots, u_n] = \sum_{k=1}^n \binom{n - 1}{k - 1} \, (1 - t)^{n-k} \, t^{k-1} \, u_k$$
-	
+
 	$$\Phi(u) = \frac{1}{\sqrt{2\uppi}} \int_{-\infty}^u \mathrm{e}^{-t^2 \divslash 2} \, \dd t$$
 
 	Disambiguation: $0$~O~$O$, $1$~l~I~$|$~$l$~$I$~$/$, $i$~$j$, $rn$~$m$, $\theta$~$\Theta$, $\phi$~$\psi$, --~$-$

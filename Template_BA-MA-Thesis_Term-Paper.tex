@@ -543,9 +543,9 @@
 	%group-digits             = true,
 	%group-minimum-digits     = 5,
 	%group-separator          = {\kern 1pt},
-	number-unit-product      = \textup{~},
-	table-align-text-pre     = false,
-	table-align-text-post    = false,
+	quantity-product         = \textup{~},
+	table-align-text-before  = false,
+	table-align-text-after   = false,
 	input-signs              = + -,
 	%input-symbols            = {*} {**} {***} \sigstar,
 	input-open-uncertainty = ,
@@ -2164,14 +2164,11 @@ Far far away, behind the word mountains, far from the countries Vokalia and Cons
 \begin{table}
 	\caption{Example of a~regression table---alignment at the decimal point via the \mbox{\textit{siunitx}} package}
 	\label{tab:reg-table}
-	\newcolumntype{U}{
-		S[table-format = +1.3, round-mode = places, round-precision = 3, table-space-text-pre = {**}, table-space-text-post = {-**}, round-pad = false, table-column-width = 0.1175\textwidth]
-	}
 	\begin{booktabs}{
 		cell{1}{2} = {c = 4}{halign = c},  % Merge cells 2-4 of row 1 and center the content
 		colspec = {
 			X[l]
-			*{5}{S[table-format = +1.3, round-mode = places, round-precision = 3, table-space-text-pre = {**}, table-space-text-post = {-**}, round-pad = false, table-column-width = 0.1175\textwidth]}
+			*{5}{S[table-format = {*\:}+1.3{+**}, round-mode = places, round-precision = 3, round-pad = false, table-column-width = 0.1175\textwidth]}
 		},
 		colsep = 2pt,
 		column{2} = {leftsep = 0pt},
@@ -2180,14 +2177,14 @@ Far far away, behind the word mountains, far from the countries Vokalia and Cons
 		hline{2} = {0pt},  % Remove default rule after column headings
 		hline{2} = {2-Y}{\lightrulewidth, solid, endpos = true, leftpos = -1, rightpos = -1},
 		hline{4, 16, 18} = {\lightrulewidth, solid},
-		row{1-3} = {guard},
+		row{1-3, W} = {guard},
 	}
 		& Choice List & Choice List & Choice List & Choice List & Combined \\
 		& A & B & C & D \\
 		&	(1) & (2) & (3) & (4) & (5) \\
 		Treatment
 			&	-0.390	&	-0.228	&	-0.729*	&	-0.449*	&	-0.453**	\\
-			&	(+0.352)	&	(-0.205)	&	[+0.377]	&	[-0.245]	&	{\{}+0.204{\}}	\\
+			&	(+0.352)	&	(-0.205)	&	[+0.377]	&	[-0.245]	&	\{+0.204\}	\\
 		Female
 			&	0.948***	&	0.0607	&	0.188	&	0.305	&	0.385*	\\
 			&	(0.354)	&	(0.233)	&	(0.372)	&	(0.226)	&	(0.222)	\\

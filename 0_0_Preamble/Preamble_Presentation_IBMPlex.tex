@@ -45,8 +45,6 @@
 
 \usepackage[utf8]{inputenc}
 
-\usepackage{tabularx}
-
 \ifxetex
 	\usepackage[protrusion=true, expansion=false]{microtype}
 \else
@@ -72,7 +70,7 @@
 
 \usepackage{multirow}
 
-\usepackage{xcolor}
+\usepackage[x11names]{xcolor}
 \usepackage{pgf}%,pgfarrows,pgfnodes,pgfshade}
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -813,18 +811,25 @@
 	\captionsetup{labelfont={rm, small, bf, color=SpotColor}}
 \fi
 
-\usepackage{tabularx}	% Provides environment tabularx to adjust width of tables
-% \usepackage{tabulary}	% For some reason, tabulary doesn't obey the width argument ...
-% Emulate the "tabulary" column types:
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{J}{>{\arraybackslash}X}
-\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
-\newcolumntype{R}{>{\RaggedLeft\arraybackslash}X}
-% \usepackage[flushleft]{threeparttable}	% Provides the tablenotes environment
+\usepackage{tabularray}
+\UseTblrLibrary{booktabs, siunitx}
+% Global default values for table formatting
+\AtBeginEnvironment{table}{\vspace{-1.2ex}\small}  % Reduce font size in and excessive white space above tables
+\renewcommand{\lTblrDefaultHruleColorTl}{SpotColor}
+\SetTblrInner[booktabs]{
+	cells = {font = \small},
+	hborder{1} = {abovespace = \abovetopsep, belowspace = \belowrulesep},
+	hline{1} = {\heavyrulewidth, solid},  % Draw heavy rule at the top of each table
+	hborder{2} = {abovespace = \aboverulesep, belowspace = \belowrulesep},
+	hline{2} = {\lightrulewidth, solid},  % Draw regular rule after column headings
+	hborder{Z} = {abovespace = \aboverulesep, belowspace = \belowbottomsep},
+	hline{Z} = {\heavyrulewidth, solid},  % Draw heavy rule at the bottom of each table
+	column{1} = {leftsep = 0pt},  % Make left-most column flush with horizontal rules
+	column{Z} = {rightsep = 0pt},  % Make right-most column flush with horizontal rules
+	row{1} = guard,  % Prevent siunitx formatting for first row
+}
 
-
-% Packages for creating better-looking tables
-\usepackage{booktabs}
+% Adjust rule thickness
 \setlength{\cmidrulewidth}{.35pt}
 \setlength{\lightrulewidth}{.35pt}
 \setlength{\heavyrulewidth}{.70pt}
@@ -832,27 +837,30 @@
 \addtolength{\aboverulesep}{1pt}	% Make tables a little more spacious
 \addtolength{\belowrulesep}{1pt}
 % \setlength{\belowbottomsep}{-2pt}
-\usepackage{colortbl} % e.g., for colored rules
-\arrayrulecolor{SpotColor} % Color all table rules blue
 
-\usepackage{siunitx}[=v2]
-% Allows, among others, for alignment of decimal numbers in tables at the decimal point.
+% Global defaults for the siunitx package
 \sisetup{
 	detect-all,
-	round-integer-to-decimal = true,
-	group-digits             = true,
-	group-minimum-digits     = 5,
-	group-separator          = {\kern 1pt},
-	table-align-text-pre     = false,
-	table-align-text-post    = false,
-	input-signs              = + -,
-	input-symbols            = {*} {**} {***} \sigstar,
+	mode = match,
+	propagate-math-font = true,
+	reset-math-version = false,
+	reset-text-family = false,
+	reset-text-series = false,
+	reset-text-shape = false,
+	text-family-to-math = true,
+	text-series-to-math = true,
+	%round-integer-to-decimal = true,
+	%group-digits             = all,
+	%group-minimum-digits     = 5,
+	%group-separator          = {\kern 1pt},
+	table-align-text-before  = false,
+	table-align-text-after   = false,
+	%input-signs              = + -,
+	%input-symbols            = {*} {**} {***} \sigstar,
 	input-open-uncertainty 	 = ,
 	input-close-uncertainty  = ,
 	retain-explicit-plus
 }
-\newcolumntype{T}[1]
-{@{}S[table-format = #1, table-space-text-pre = {***}, table-space-text-post = {***}]}
 % Loading the ``siunitx'' package generates a ``too many math alphabets'' used error.
 % See https://tex.stackexchange.com/questions/452682/limit-math-alphabets-created-by-siunitx?noredirect=1&lq=1 and
 %https://tex.stackexchange.com/questions/40874/kpfonts-siunitx-and-math-alphabets

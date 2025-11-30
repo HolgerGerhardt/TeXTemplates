@@ -501,6 +501,7 @@
 \usepackage{tabularray}
 	% Modern package that comprises the functionality of (probably) all earlier table packages that you can think of: threeparttable, tabularx/tabulary/tabu, longtable, xltabular, multirow, makecell, booktabs, colortbl, ...
 \UseTblrLibrary{booktabs, siunitx}
+% Global default values for table formatting
 \addtolength{\heavyrulewidth}{0.1pt}%
 \addtolength{\lightrulewidth}{-0.05pt}%
 \setlength{\cmidrulewidth}{\lightrulewidth}
@@ -511,12 +512,12 @@
 	hborder{1} = {abovespace = \abovetopsep, belowspace = \belowrulesep},
 	hline{1} = {\heavyrulewidth, solid},  % Draw heavy rule at the top of each table
 	hborder{2} = {abovespace = \aboverulesep, belowspace = \belowrulesep},
-	hline{2} = {\lightrulewidth, solid},    % By default, draw regular rule after column headings
+	hline{2} = {\lightrulewidth, solid},  % Draw regular rule after column headings
 	hborder{Z} = {abovespace = \aboverulesep, belowspace = \belowbottomsep},
 	hline{Z} = {\heavyrulewidth, solid},  % Draw heavy rule at the bottom of each table
-	column{1} = {leftsep = 0pt},
-	column{Z} = {rightsep = 0pt},
-	row{1} = {guard},
+	column{1} = {leftsep = 0pt},  % Make left-most column flush with horizontal rules
+	column{Z} = {rightsep = 0pt},  % Make right-most column flush with horizontal rules
+	row{1} = guard,  % Prevent siunitx formatting for first row
 	width = \textwidth,
 }
 %\AtEndEnvironment{booktabs}{\vspace{\belowbottomsep}}
@@ -2096,13 +2097,13 @@ The remaining text samples in this section were generated with the help of \url{
 	\begin{booktabs}{
 		colspec = {
 			r
-			X[c, si={table-format = 2.3}]
-			X[c, si={table-format = +1.3}]
-			X[c, si={table-format = 2.3}]
-			X[c, si={table-format = 1.3}]
-			X[c, si={table-format = 1.3}]
-			X[c, si={table-format = +3.3}]
-			Q[c, si={table-format = +3.3}]
+			X[c, si = {table-format = 2.3}]
+			X[c, si = {table-format = +1.3}]
+			X[c, si = {table-format = 2.3}]
+			X[c, si = {table-format = 1.3}]
+			X[c, si = {table-format = 1.3}]
+			X[c, si = {table-format = +3.3}]
+			Q[c, si = {table-format = +3.3}]
 		},
 		column{1} = {rightsep+ = 15pt},
 		column{Z} = {leftsep+ = 3pt},

@@ -72,15 +72,15 @@
 
 \begin{frame}[standout]{~}
 
-	\titlepage%
+\titlepage%
 
 \end{frame}
 
 
 \begin{frame}[standout]{Outline}
 
-	\medskip
-	\tableofcontents
+\medskip
+\tableofcontents
 
 \end{frame}
 
@@ -97,114 +97,110 @@
 
 \begin{frame}{\titleprefix: Choice of a~Reasonable Aspect Ratio}
 
-	When preparing a~presentation, we often do not know whether the native aspect ratio of the projector in the seminar room/lecture hall will be 4\,:\,3 or 16\,:\,9 (or 16\,:\,10).
+When preparing a~presentation, we often do not know whether the native aspect ratio of the projector in the seminar room/lecture hall will be 4\,:\,3 or 16\,:\,9 (or 16\,:\,10).
 
-	In this case, it may be a~good idea to choose an~\alert{intermediate aspect ratio}, see \url{https://github.com/josephwright/beamer/issues/497}. The idea behind this recommendation is that it minimizes the average loss of available space.
+In this case, it may be a~good idea to choose an~\alert{intermediate aspect ratio}, see \url{https://github.com/josephwright/beamer/issues/497}. The idea behind this recommendation is that it minimizes the average loss of available space.
 
-	Hence, these templates include a~presentation in the \alert{14\,:\,9 aspect ratio} (see \url{https://en.wikipedia.org/wiki/14:9_aspect_ratio}): while it is imperfect for probably every projector that you will encounter, it is good on average for all of them.
+Hence, these templates include a~presentation in the \alert{14\,:\,9 aspect ratio} (see \url{https://en.wikipedia.org/wiki/14:9_aspect_ratio}): while it is imperfect for probably every projector that you will encounter, it is good on average for all of them.
 
-	(Please note that 14\,:\,9${}\mathrel{\dot{=}} 1.556$, which is pretty close to the ``officially'' recommended 20\,:\,13${}\mathrel{\dot{=}} 1.5385$.)
-
-\end{frame}
-
-
-\begin{frame}{\titleprefix}
-
-	\begin{quote}
-		Great Minds Discuss Ideas. \\
-		Average Minds Discuss Events. \\
-		Small Minds Discuss People. \\
-		\upshape ---\url{https://quoteinvestigator.com/2014/11/18/great-minds/}
-	\end{quote}
-
-	\heading{Background}
-	\begin{itemize}
-		\item Temporal discounting is key concept in economics.
-		\item Normative model: exponential discounting. However, observed decisions are hard to explain \citep[e.g.,][]{Dohmen2012}.
-		\item One alternative: the ``focusing model'' by \cite{Koszegi2013}.
-		\item See also \cite{Lisi1995}.
-	\end{itemize}
+(Please note that 14\,:\,9${}\mathrel{\dot{=}} 1.556$, which is pretty close to the ``officially'' recommended 20\,:\,13${}\mathrel{\dot{=}} 1.5385$.)
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix}
 
-	\heading{Research Question}
-	\begin{itemize}
-		\item The composition of latex and of typical rubbers is given below.
-		\item Is it true that trees are regularly tapped and the coagulated latex which exudes is collected and worked up into rubber?
-	\end{itemize}
+\begin{quote}
+	Great Minds Discuss Ideas. \\
+	Average Minds Discuss Events. \\
+	Small Minds Discuss People. \\
+	\upshape ---\url{https://quoteinvestigator.com/2014/11/18/great-minds/}
+\end{quote}
 
-	\pause
-
-	\heading{Preview of the Results}
-	\begin{itemize}
-		\item There is no feasible method at present known of preventing the inclusion of the resin of the latex with the rubber during coagulation.
-		\item[$\Rightarrow$\hspace{-2.5pt}] Although the separation of the resin from the solid caoutchouc by means of solvents is possible, it is not practicable or profitable commercially.
-	\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{\titleprefix: Beamer \texttt{block} Environments}
-
-	\begin{block}{Block title example: 0123456789 äöüß ÄÖÜ \texteuro. Often finding flowers in official fjords}
-		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
-	\end{block}%
-
-	\begin{exampleblock}{An~exemplary example}
-		I~am the \texttt{exampleblock} environment. Use me for examples.\strut  % \strut so that the bottom rule is not too close to the text
-	\end{exampleblock}
-
-	\begin{alertblock}{Summary: Things to remember}
-		The \texttt{alertblock} environment. Use this environment for really important stuff. The \texttt{alertblock} environment.\strut  % \strut so that the bottom rule is not too close to the text
-	\end{alertblock}
+\heading{Background}
+\begin{itemize}
+	\item Temporal discounting is key concept in economics.
+	\item Normative model: exponential discounting. However, observed decisions are hard to explain \citep[e.g.,][]{Dohmen2012}.
+	\item One alternative: the ``focusing model'' by \cite{Koszegi2013}.
+	\item See also \cite{Lisi1995}.
+\end{itemize}
 
 \end{frame}
 
 
-\begin{frame}{\titleprefix: Beamer \texttt{block} Environment with Different Colors}
+\begin{frame}{\titleprefix}
 
-	\begin{block}{A~\texttt{block} in the default color}
-		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
-	\end{block}%
+\heading{Research Question}
+\begin{itemize}
+	\item The composition of latex and of typical rubbers is given below.
+	\item Is it true that trees are regularly tapped and the coagulated latex which exudes is collected and worked up into rubber?
+\end{itemize}
 
-	{%
-	\renewcommand{\framedblockcolor}{UBonnYellow}%
-	\begin{block}{A~\texttt{block} in yellow}
-		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
-	\end{block}%
-	}
+\pause
 
-	\begin{block}{A~\texttt{block} in the default color}
-		The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
-	\end{block}%
+\heading{Preview of the Results}
+\begin{itemize}
+	\item There is no feasible method at present known of preventing the inclusion of the resin of the latex with the rubber during coagulation.
+	\item[$\Rightarrow$\hspace{-2.5pt}] Although the separation of the resin from the solid caoutchouc by means of solvents is possible, it is not practicable or profitable commercially.
+\end{itemize}
 
 \end{frame}
 
 
-\begin{frame}{\titleprefix: Beamer \texttt{definition} and \texttt{theorem} Environments}
+\begin{frame}[allowframebreaks]{\titleprefix: Questions to Structure Your Presentation}
 
-	\begin{definition}[A~Very, Very, Very, Very, Very, Very Long Name of a~Concept that Spans Two Lines]
-		The \texttt{definition} environment. Upright.
-	\end{definition}
+You may find the following list of questions helpful as a~guide to making sure that your presentation covers all important aspects. The questions equally apply, of course, to posters and manuscripts.
 
-	\begin{theorem}[Theorem's Name]
-		The \texttt{theorem} environment. Italic.
-	\end{theorem}%
+\framebreak
 
-	\begin{lemma}[Lemma's Name]
-		The \texttt{lemma} environment. Italic.
-	\end{lemma}%
+\bgroup
+\addtolength{\leftmargini}{\widthof{9}}
+Your introduction might answer the following questions (not necessarily in this order, but this order will produce a~``funnel'' structure):
+\begin{enumerate}
+	\addtolength{\labelwidth}{\widthof{9}}
+	\item What do we already know?
+	\item What do we not know yet (the ``knowledge gap'')?
+	\item Why is it interesting\slash relevant to close the gap?
+	\item \alert{What is the research question? [R]}
+	\item Why is it interesting to answer the research question? \textcolor{gray}{[``No one has done it before'' ist not sufficient \textellipsis]}
+	\item How do we contribute to closing the knowledge gap: How do we answer the research question? (Which method do we use?)
+	\item Why is the chosen method (more) suitable (than alternative methods) for answering the research question?
+\end{enumerate}
 
-	\begin{corollary}[Corollary's Name]
-		The \texttt{corollary} environment. Italic.
-	\end{corollary}%
+\framebreak
 
-	\begin{proof}[Proof of Theorem's Name]
-		The \texttt{proof} environment. Upright.
-	\end{proof}
+Your conclusion/discussion might answer the following questions (the following order will produce a~``reverse funnel'' structure):
+\begin{enumerate}
+	\addtolength{\labelwidth}{\widthof{9}}
+	\item[8.] What was the knowledge gap before the current study? \textcolor{gray}{[Similar to the introduction.]}
+	\item[9.] \alert{How did we contribute to closing that gap, and what did we find? [A]} Which method\slash dataset did we use, and what are the results? \textcolor{gray}{[Recap and take-home message.]}
+	\item[10.] How do our results relate to (confirm\slash contradict\slash complement\slash extend) the results from previous and other contemporaneous studies?
+	\item[11.] What part of the gap is still open? (Phrased a~bit more negatively: What are the limitations of our approach?)
+	\item[12.] Next steps\slash avenues for future research: How could we go about closing the remaining knowledge gap (by removing the limitations of our current approach)?
+\end{enumerate}
+\egroup
+
+\framebreak
+
+John Cochrane might do away with question~12.
+
+See his ``Writing Tips for Ph.D. Students,'' \url{https://www.fma.org/assets/docs/membercontent/writing_cochrane.pdf}.
+
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{\titleprefix: More Structuring Advice}
+
+In her book \textit{The Little Book of Research Writing}, Varanya Chaubey proposes a~simpler list of only three items---the \alert{``RAP method''}:
+\begin{itemize}
+	\item The \alert{``R''} stands for ``research question.''
+	\item The \alert{``A''} stands for ``answer'' (to the research question, of course).
+	\item The \alert{``P''} stands for ``positioning statement.'' (How does our manuscript relate to the literature: Does it corroborate or extend or contradict others' findings?)
+\end{itemize}
+
+Relating the ``RAP'' approach to the the list of questions above, question~4 is the ``R,'' the answer to question~9 is the ``A,'' and the remaining questions spell out the ``P.''
+
+For a quick summary of the book, see \url{https://mauve-porcupine-8992.squarespace.com/s/Chaubey_Research_Writing-bxdd.pdf}. See also \url{https://www.econscribe.org/about} and \url{https://arxiv.org/pdf/2012.07787}.
 
 \end{frame}
 
@@ -212,145 +208,210 @@
 \section{Study Design}
 
 
-\begin{frame}{\titleprefix: Design of the Study}
+\begin{frame}{\titleprefix: Beamer \texttt{block} Environments}
 
-	\begin{itemize}
-		\item The latex of the best rubber plants furnishes from 20\% to 50\% of rubber.
-		\item As the removal of the impurities of the latex is one of the essential points to be aimed at, it was thought that the use of a centrifugal machine to separate the caoutchouc as a cream from the watery part of the latex would prove to be a satisfactory process.
-	\end{itemize}
+\begin{block}{Block title example: 0123456789 äöüß ÄÖÜ \texteuro. Often finding flowers in official fjords}
+	The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
+\end{block}%
+
+\begin{exampleblock}{An~exemplary example}
+	I~am the \texttt{exampleblock} environment. Use me for examples.\strut  % \strut so that the bottom rule is not too close to the text
+\end{exampleblock}
+
+\begin{alertblock}{Summary: Things to remember}
+	The \texttt{alertblock} environment. Use this environment for really important stuff. The \texttt{alertblock} environment.\strut  % \strut so that the bottom rule is not too close to the text
+\end{alertblock}
+
+\end{frame}
+
+
+\begin{frame}{\titleprefix: Beamer \texttt{block} Environment with Different Colors}
+
+\begin{block}{A~\texttt{block} in the default color}
+	The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
+\end{block}%
+
+{%
+\renewcommand{\framedblockcolor}{UBonnYellow}%
+\begin{block}{A~\texttt{block} in yellow}
+	The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
+\end{block}%
+}
+
+\begin{block}{A~\texttt{block} in the default color}
+	The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. The \texttt{block} environment. \insertblocktitle.\strut  % \strut so that the bottom rule is not too close to the text
+\end{block}%
+
+\end{frame}
+
+
+\begin{frame}{\titleprefix: Beamer \texttt{definition} and \texttt{theorem} Environments}
+
+\begin{definition}[A~Very, Very, Very, Very, Very, Very Long Name of a~Concept that Spans Two Lines]
+	The \texttt{definition} environment. Upright.
+\end{definition}
+
+\begin{theorem}[Theorem's Name]
+	The \texttt{theorem} environment. Italic.
+\end{theorem}%
+
+\begin{lemma}[Lemma's Name]
+	The \texttt{lemma} environment. Italic.
+\end{lemma}%
+
+\begin{corollary}[Corollary's Name]
+	The \texttt{corollary} environment. Italic.
+\end{corollary}%
+
+\begin{proof}[Proof of Theorem's Name]
+	The \texttt{proof} environment. Upright.
+\end{proof}
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Design of the Study}
 
-	The watery portion of the latex soaks into the trunk, and the soft spongy rubber which remains is kneaded and pressed into lumps or balls:
+\begin{itemize}
+	\item The latex of the best rubber plants furnishes from 20\% to 50\% of rubber.
+	\item As the removal of the impurities of the latex is one of the essential points to be aimed at, it was thought that the use of a centrifugal machine to separate the caoutchouc as a cream from the watery part of the latex would prove to be a satisfactory process.
+\end{itemize}
 
-	\begin{tabularx}{\textwidth}{@{} l @{\hspace{0.67em}} L @{}}
-		\alert{\balA, \balB:} &
-		Each payment transferred on single day. \\
-		\addlinespace
-		\alert{\unbalA:} &
-		Earlier payoff concentrated, while later payoff dispersed over ${n = 2}$, $4$, or $8$~dates. \\
-		\addlinespace
-		\alert{\unbalB:} &
-		Earlier payoff dispersed over ${n = 2}$, $4$, or $8$ dates, while later payoff concentrated.
-	\end{tabularx}
+\end{frame}
+
+
+\begin{frame}{\titleprefix: Design of the Study}
+
+The watery portion of the latex soaks into the trunk, and the soft spongy rubber which remains is kneaded and pressed into lumps or balls:
+
+\begin{booktabs}{
+	colspec = {@{} l @{\hspace{0.67em}} X[l] @{}},
+	width = \textwidth,
+}
+	\alert{\balA, \balB:} &
+	Each payment transferred on single day. \\
+	\addlinespace
+	\alert{\unbalA:} &
+	Earlier payoff concentrated, while later payoff dispersed over ${n = 2}$, $4$, or $8$~dates. \\
+	\addlinespace
+	\alert{\unbalB:} &
+	Earlier payoff dispersed over ${n = 2}$, $4$, or $8$ dates, while later payoff concentrated.
+\end{booktabs}
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Control Experiment}
 
-	\begin{itemize}
-		\item Control for alternative explanations.
-		\item Many of the example sentences were taken from \url{http://sentence.yourdictionary.com/latex}.
-	\end{itemize}
+\begin{itemize}
+	\item Control for alternative explanations.
+	\item Many of the example sentences were taken from \url{http://sentence.yourdictionary.com/latex}.
+\end{itemize}
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: An~Example \texttt{enumerate} List}
 
-	\blindlistlist[3]{enumerate}[4]
+\blindlistlist[3]{enumerate}[4]
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: An~Example \texttt{itemize} List}
 
-	\blindlistlist[3]{itemize}[4]
+\blindlistlist[3]{itemize}[4]
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Some Example Text}
 
-	\heading{Let's include some Greek letters: $\alpha$, $\beta$, $\sigma$}
+\heading{Let's include some Greek letters: $\alpha$, $\beta$, $\sigma$}
 
-	\blindtext $(a, \alpha)$, $\beta$, $\sigma$, $(v, \nu)$, $(y, \gamma)$
+\blindtext $(a, \alpha)$, $\beta$, $\sigma$, $(v, \nu)$, $(y, \gamma)$
 
-	\textsf{Test: \fontencoding{LGR}\selectfont qrst qrs t qrs\noboundary\ t}. Math mode, upright: $\mathord{\textup{\fontencoding{LGR}\selectfont s\noboundary}}$
+\textsf{Test: \fontencoding{LGR}\selectfont qrst qrs t qrs\noboundary\ t}. Math mode, upright: $\mathord{\textup{\fontencoding{LGR}\selectfont s\noboundary}}$
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Some Example Formulas}
 
-	\alert{Let's include some additional Greek letters: $\gamma, \phi, \sigma_\epsilon, c^\alpha$}
-	\vspace{-\smallskipamount}
-	\[
-		p(R, \phi) \sim
-			\int_{-\infty}^\infty
-				\frac
-					{ \tilde{W}_n(\gamma) \exp \left[ \imath R / a \left( \sqrt{k^2 a^2 - \gamma^2} \cos \phi \right) \right] }
-					{ (k^2 a^2 - \gamma^2)^{3/4} {H'}_n^{(1)} \left( \sqrt{k^2 a^2 - \gamma^2} \right) }
-			\mathup{d}\gamma
-	\]
-	\pause
-	\alert{Let's include upright Latin letters in math mode: $\mathup{d}$, $\mathup{e}$ (\hyperlink{Eulers_number}{next slide})}
-	\vspace{-\smallskipamount}
-	\[
-		\int_{a}^{b} f(x)\,\mathup{d}x = F(b) - F(a)
-	\]
-	\pause
-	\alert{Let's test the math bold styles (both upright and italic)}
-	\vspace{-\medskipamount}
-	\[
-		\mathbfup{\Sigma} \coloneqq
-		\mathbfup{Cov}(\mathbf{X}) =
-		\begin{bmatrix}
-			\mathup{Var}(X_1)      & \cdots & \mathup{Cov}(X_1, X_n) \\[-2.5pt]
-			\vdots                 & \ddots & \vdots                 \\
-			\mathup{Cov}(X_n, X_1) & \cdots & \mathup{Var}(X_n)
-		\end{bmatrix}
-	\]
+\alert{Let's include some additional Greek letters: $\gamma, \phi, \sigma_\epsilon, c^\alpha$}
+\vspace{-\smallskipamount}
+\[
+	p(R, \phi) \sim
+		\int_{-\infty}^\infty
+			\frac
+				{ \tilde{W}_n(\gamma) \exp \left[ \imath R / a \left( \sqrt{k^2 a^2 - \gamma^2} \cos \phi \right) \right] }
+				{ (k^2 a^2 - \gamma^2)^{3/4} {H'}_n^{(1)} \left( \sqrt{k^2 a^2 - \gamma^2} \right) }
+		\mathup{d}\gamma
+\]
+\pause
+\alert{Let's include upright Latin letters in math mode: $\mathup{d}$, $\mathup{e}$ (\hyperlink{Eulers_number}{next slide})}
+\vspace{-\smallskipamount}
+\[
+	\int_{a}^{b} f(x)\,\mathup{d}x = F(b) - F(a)
+\]
+\pause
+\alert{Let's test the math bold styles (both upright and italic)}
+\vspace{-\medskipamount}
+\[
+	\mathbfup{\Sigma} \coloneqq
+	\mathbfup{Cov}(\mathbf{X}) =
+	\begin{bmatrix}
+		\mathup{Var}(X_1)      & \cdots & \mathup{Cov}(X_1, X_n) \\[-2.5pt]
+		\vdots                 & \ddots & \vdots                 \\
+		\mathup{Cov}(X_n, X_1) & \cdots & \mathup{Var}(X_n)
+	\end{bmatrix}
+\]
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Additional Example Formulas (with upright $\mathup{\pi}$)}
 
-	Only variables are set in italics according to \caps{ISO} style---hence, we use upright ``$\mathup{d}$,'' ``$\mathup{e}$,'' and ``$\mathup{\pi}$'' (\texttt{\textbackslash mathup\{d\}}, \texttt{\textbackslash mathup\{e\}}, and \texttt{\textbackslash mathup\{\textbackslash pi\}}, respectively).
+Only variables are set in italics according to \caps{ISO} style---hence, we use upright ``$\mathup{d}$,'' ``$\mathup{e}$,'' and ``$\mathup{\pi}$'' (\texttt{\textbackslash mathup\{d\}}, \texttt{\textbackslash mathup\{e\}}, and \texttt{\textbackslash mathup\{\textbackslash pi\}}, respectively).
 
-	\begin{theorem}[simplest form of the \emph{Central Limit Theorem}]
-		\ifnum \serifbodyfont=0
-			\sffamily
-		\fi
-		Let $X_1, X_2, \ldots, X_n$ be a~sequence of i.i.d. random variables with mean $0$
-		and variance $1$ on a~probability space $(\Omega, \mathcal{F}, \mathbb{P})$. Then
-		\hypertarget{Eulers_number}{}
-		\[
-			\mathbb{P}{\left(\frac{X_1+\cdots+X_n}{\sqrt{n}}\le y\right)} \to
-			\mathfrak{N}(y) \coloneqq
-			\int_{-\infty}^y \frac{\mathup{e}^{-v^2/2}}{\sqrt{2\mathup{\pi}}}\,\mathup{d}v
-			\quad\text{as} \quad n\to\infty,
-		\]
-		or, equivalently, letting $S_n \coloneqq \sum_1^n X_k$,
-		\[
-			\mathbb{E} f(S_n/\sqrt{n}) \to
-			\int_{-\infty}^\infty f(v) \frac{\mathup{e}^{-v^2/2}}{\sqrt{2\piup}}\,\mathup{d}v
-			\quad \mbox{as $n\to\infty$, for every $f \in \mathup{b}\mathcal{C}(\mathbb{R})$.}
-		\]
-	\end{theorem}
+\begin{theorem}[simplest form of the \emph{Central Limit Theorem}]
+	\ifnum \serifbodyfont=0
+		\sffamily
+	\fi
+	Let $X_1, X_2, \ldots, X_n$ be a~sequence of i.i.d. random variables with mean $0$
+	and variance $1$ on a~probability space $(\Omega, \mathcal{F}, \mathbb{P})$. Then
+	\hypertarget{Eulers_number}{}
+	\[
+		\mathbb{P}{\left(\frac{X_1+\cdots+X_n}{\sqrt{n}}\le y\right)} \to
+		\mathfrak{N}(y) \coloneqq
+		\int_{-\infty}^y \frac{\mathup{e}^{-v^2/2}}{\sqrt{2\mathup{\pi}}}\,\mathup{d}v
+		\quad\text{as} \quad n\to\infty,
+	\]
+	or, equivalently, letting $S_n \coloneqq \sum_1^n X_k$,
+	\[
+		\mathbb{E} f(S_n/\sqrt{n}) \to
+		\int_{-\infty}^\infty f(v) \frac{\mathup{e}^{-v^2/2}}{\sqrt{2\piup}}\,\mathup{d}v
+		\quad \mbox{as $n\to\infty$, for every $f \in \mathup{b}\mathcal{C}(\mathbb{R})$.}
+	\]
+\end{theorem}
 
 \end{frame}
 
 
-\newcommand{\mc}[2]{\multicolumn{1}{@{} c #2}{#1}}
-
 \begin{frame}{\titleprefix: An~\texttt{siunitx} Example Table}
 
-	\begin{table}
-		\caption{%
-			Overview of the choice lists presented to subjects \\
-			\citep[adapted from][]{Gerhardt2017}.%
-		}
-		\label{tab:choice_lists}%
-		\resizebox*{!}{0.59\textheight}{%
-			\input{1_Example_Content/9_Appendix/siunitx_Example_Choice_Lists}
-		}
-	\end{table}%
+\NewTblrColumnType{E}{S[table-format = {\texteuro}2.2, table-align-text-before = true]}
+
+\begin{table}
+	\caption{%
+		Overview of the choice lists presented to subjects \\
+		\citep[adapted from][]{Gerhardt2017}.%
+	}
+	\label{tab:choice_lists}%
+	\resizebox*{!}{0.6\textheight}{%
+		\input{1_Example_Content/9_Appendix/siunitx_Example_Choice_Lists}%
+	}
+\end{table}%
 
 \end{frame}
 
@@ -360,115 +421,145 @@
 
 \begin{frame}{\titleprefix: Overview}
 
+\begin{enumerate}
+	\item<1-> As a secondary function we may recognize the power of closing wounds, which results from the rapid coagulation of exuded latex in contact with the air:
 	\begin{enumerate}
-		\item<1-> As a secondary function we may recognize the power of closing wounds, which results from the rapid coagulation of exuded latex in contact with the air:
-		\begin{enumerate}
-			\item<2-> In some cases (Allium, Convolvulaceae, etc.) rows of cells with latex-like contents occur.
-			\item<2-> However, the walls separating the individual cells do not break down.
-		\end{enumerate}
-		\item<3-> The rows of cells from which the laticiferous vessels are formed can be distinguished (6.3~p.p. vs. 2.6~p.p.; ${p < 0.01}$).
+		\item<2-> In some cases (Allium, Convolvulaceae, etc.) rows of cells with latex-like contents occur.
+		\item<2-> However, the walls separating the individual cells do not break down.
 	\end{enumerate}
+	\item<3-> The rows of cells from which the laticiferous vessels are formed can be distinguished (6.3~p.p. vs. 2.6~p.p.; ${p < 0.01}$).
+\end{enumerate}
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Our Main Results}
 
-	The charts are taken from \cite{Dertwinkel-Kalt2017}.
-	\begin{figure}
-		\begin{minipage}[t]{\textwidth}
-			\begin{minipage}[t]{0.46\textwidth}
-				\Large\textbf{A} \textcolor{SpotColor}{\hspace{0.375in} {\small \textbf{Result~1}}} \\[15pt]
-				\includegraphics[width=1.643in, trim={3.75in 1.75in 3.75in 2in}, clip]
-					{1_Example_Content/Images/average_pb_fb.png} \\
-				\centering \footnotesize \sffamily
-				$\text{\balA} - \text{\unbalA[\bullet]}$
-			\end{minipage}
-			\hspace{2pt}
-			\begin{minipage}[t]{0.46\textwidth}
-				\Large\textbf{B} \textcolor{SpotColor}{\hspace{0.39in} {\small \textbf{Result~2}}} \\[15pt]
-				\includegraphics[width=1.710in, trim={3.75in 1.75in 3.75in 2in}, clip]
-					{1_Example_Content/Images/average_8_4_2.png} \\
-				\centering \footnotesize \sffamily
-				$\text{\unbalB[\bullet]} - \text{\balB}$
-			\end{minipage} \\
+The charts are taken from \cite{Dertwinkel-Kalt2017}.
+\begin{figure}
+	\begin{minipage}[t]{\textwidth}
+		\begin{minipage}[t]{0.46\textwidth}
+			\Large\textbf{A} \textcolor{SpotColor}{\hspace{0.375in} {\small \textbf{Result~1}}} \\[15pt]
+			\includegraphics[width=1.643in, trim={3.75in 1.75in 3.75in 2in}, clip]
+				{1_Example_Content/Images/average_pb_fb.png} \\
+			\centering \footnotesize \sffamily
+			$\text{\balA} - \text{\unbalA[\bullet]}$
 		\end{minipage}
-		\caption{%
-			\textbf{(A)}~Difference between treatment and control condition. \textbf{(B)}~Heterogeneity.%
-		}
-	\end{figure}
+		\hspace{2pt}
+		\begin{minipage}[t]{0.46\textwidth}
+			\Large\textbf{B} \textcolor{SpotColor}{\hspace{0.39in} {\small \textbf{Result~2}}} \\[15pt]
+			\includegraphics[width=1.710in, trim={3.75in 1.75in 3.75in 2in}, clip]
+				{1_Example_Content/Images/average_8_4_2.png} \\
+			\centering \footnotesize \sffamily
+			$\text{\unbalB[\bullet]} - \text{\balB}$
+		\end{minipage} \\
+	\end{minipage}
+	\caption{%
+		\textbf{(A)}~Difference between treatment and control condition. \textbf{(B)}~Heterogeneity.%
+	}
+\end{figure}
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Main vs. Control Experiment}
 
-	Rule out some alternative explanations \citep{Dertwinkel-Kalt2017}.
+Rule out some alternative explanations \citep{Dertwinkel-Kalt2017}.
 
-	\bigskip
+\medskip
 
-	\centering
-	{\small \alert{Result~3}} \\[15pt]
-	% trim={<left> <lower> <right> <upper>}
-	\includegraphics[height=0.5\textheight, trim={3.75in 1.75in 3.75in 2in}, clip]
-		{1_Example_Content/Images/average_main_control.png}
+\centering
+{\small \alert{Result~3}} \\[15pt]
+% trim={<left> <lower> <right> <upper>}
+\includegraphics[height=0.5\textheight, trim={3.75in 1.75in 3.75in 2in}, clip]
+	{1_Example_Content/Images/average_main_control.png}
 
 \end{frame}
 
 
+\NewTblrColumnType{U}{S[table-format={**}+1.3{-**}, round-mode=places, round-precision=3, round-integer-to-decimal=false]}%
+\providecommand{\discard}[1]{\makebox(0pt, 0pt)[lb]{}}
+
+
 \begin{frame}{\titleprefix: Another \textbf{\texttt{siunitx}} Example Table}
 
-	\begin{table}
+\begin{table}
 	\caption{%
 		Example of a~regression table \citep[adapted from][]{Gerhardt2017}.
-		Never forget to mention the dependent variable (here, $m_\sim$)!%
+		Make sure to mention the dependent variable (here, $m_\sim$)!%
 	}
 	\label{tab:lin_reg_interactions}
-	\resizebox*{!}{0.59\textheight}{%
-		\mdseries\selectfont
-		\input{1_Example_Content/9_Appendix/siunitx_Example_Regression}
+	\resizebox*{!}{0.6\textheight}{%
+		\SetTblrInner[booktabs]{cells = {font = \footnotesize}}%
+		\input{1_Example_Content/9_Appendix/siunitx_Example_Regression}%
 	}
-	\end{table}
+\end{table}
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Revealing a~Table Column by Column}
 
-	\begin{table}
+\SetTblrInner[booktabs]{
+	cells = {font = \footnotesize},
+	cell{2-Z}{2-Z} = {fg = white},
+	row{Z} = {cmd = \discard, ht = 0pt, abovesep = -10pt, belowsep = -10pt},
+}
+\only<2->{\SetTblrInner[booktabs]{column{2} = {fg = black}}}
+\only<3->{\SetTblrInner[booktabs]{column{3} = {fg = black}}}
+\only<4->{\SetTblrInner[booktabs]{column{4} = {fg = black}}}
+\only<5->{\SetTblrInner[booktabs]{column{5} = {fg = black}}}
+\only<6>{\SetTblrInner[booktabs]{column{6} = {fg = black}}}
+
+\begin{table}
 	\caption{%
-		Revealing a~table column-by-column makes it easier to comprehend.%
+		Revealing a~table column by column makes it easier to comprehend.%
 	}
-	\resizebox*{!}{0.59\textheight}{%
-		\mdseries\selectfont
-		\input{1_Example_Content/9_Appendix/siunitx_Example_Regression_column-wise}
+	\resizebox*{!}{0.67\textheight}{%
+		\SetTblrInner[booktabs]{cells = {font = \footnotesize}}%
+		\input{1_Example_Content/9_Appendix/siunitx_Example_Regression}%
 	}
-	\end{table}
+\end{table}
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Highlighting Cells in a~Table}
 
-	\begin{table}
+\SetTblrInner[booktabs]{
+	cells = {font = \footnotesize},
+	row{Z} = {cmd = \discard, ht = 0pt, abovesep = -10pt, belowsep = -10pt},
+}
+\only<1>{\SetTblrInner[booktabs]{cell{2}{2} = {bg = UBonnYellow!75, fg = black}}}
+\only<2>{\SetTblrInner[booktabs]{row{2} = {bg = UBonnYellow!75, fg = black}}}
+\only<3>{\SetTblrInner[booktabs]{column{4} = {bg = UBonnYellow!75, fg = black}}}
+\only<4>{%
+	\SetTblrInner[booktabs]{
+		cell{12}{2, 3, 5, 6} = {bg = Chartreuse4, fg = white, font = \bfseries},
+		cell{12}{4} = {bg = Red3, fg = white, font = \bfseries},
+		column{1-5} = {rightsep+ = -0.36em},
+		column{2-6} = {leftsep+ = -0.36em},
+	}%
+}
+
+\begin{table}
 	\caption{%
-		There are various ways to highlight cells, columns, and rows in a~table.%
+		\textit{tabularray} makes it simple to highlight cells, rows, or columns in a~table.%
 	}
-	\resizebox*{!}{0.59\textheight}{%
-		\mdseries\selectfont
-		\input{1_Example_Content/9_Appendix/siunitx_Example_Regression_highlighting}
+	\resizebox*{!}{0.67\textheight}{%
+		\input{1_Example_Content/9_Appendix/siunitx_Example_Regression}%
 	}
-	\end{table}
+\end{table}
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Yet Another \texttt{siunitx} Example Table}
 
-	\begin{table}
-		\caption{Figure grouping via \texttt{siunitx} in a~table.}
-		\input{1_Example_Content/9_Appendix/siunitx_Example_Figure_Grouping}
-	\end{table}
+\begin{table}
+	\caption{Figure grouping via \texttt{siunitx} in a~table.}
+	\input{1_Example_Content/9_Appendix/siunitx_Example_Figure_Grouping}
+\end{table}
 
 \end{frame}
 
@@ -478,31 +569,31 @@
 
 \begin{frame}{\titleprefix}
 
-	\begin{itemize}[<+->]
-		\item The latex exhibits a neutral, acid, or alkaline reaction, depending on the plant from which it was obtained.
-		\item The latex is therefore usually allowed to coagulate on the tree \citep{Koszegi2013}.
-			\begin{itemize}
-				\item<.->[\raisebox{0.75pt}{\scalebox{0.86}{$\Rightarrow$}}\!] The latex, which is usually coagulated by standing or by heating, is obtained from incisions.
-			\end{itemize}
-		\item See also \cite{Bordalo2013, Dohmen2012}.
-	\end{itemize}
+\begin{itemize}[<+->]
+	\item The latex exhibits a neutral, acid, or alkaline reaction, depending on the plant from which it was obtained.
+	\item The latex is therefore usually allowed to coagulate on the tree \citep{Koszegi2013}.
+		\begin{itemize}
+			\item<.->[\raisebox{0.75pt}{\scalebox{0.86}{$\Rightarrow$}}\!] The latex, which is usually coagulated by standing or by heating, is obtained from incisions.
+		\end{itemize}
+	\item See also \cite{Bursztyn2025, Bordalo2013, Dohmen2012}.
+\end{itemize}
 
 \end{frame}
 
 
 \begin{frame}{\titleprefix: Conclusion}
 
-	A~paragraph before a~list.
+A~paragraph before a~list.
 
-	\begin{itemize}
-		\item When exposed to air, the latex gradually undergoes putrefactive changes accompanied by coagulation. \par
-		A~paragraph within a list item.
-		\item The addition of a small quantity of ammonia or of formalin to some latices has the effect of preserving them.
-		\item There is, however, reason to believe the following.
-		\item The coagulation of latex into rubber is not mainly of this character.
-	\end{itemize}
+\begin{itemize}
+	\item When exposed to air, the latex gradually undergoes putrefactive changes accompanied by coagulation. \par
+	A~paragraph within a list item.
+	\item The addition of a small quantity of ammonia or of formalin to some latices has the effect of preserving them.
+	\item There is, however, reason to believe the following.
+	\item The coagulation of latex into rubber is not mainly of this character.
+\end{itemize}
 
-	A~paragraph after a~list.
+A~paragraph after a~list.
 
 \end{frame}
 
@@ -581,15 +672,15 @@ On this slide, \textbf{``(1/3)''} should appear in the frame title.
 
 \begin{frame}[allowframebreaks]{\insertsection}
 
-	\begin{refcontext}[sorting=nyt]
-		% Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
-	\printbibliography[heading=none]
-	\end{refcontext}
+\begin{refcontext}[sorting=nyt]
+	% Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
+\printbibliography[heading=none]
+\end{refcontext}
 
-	%% Only when using BibTeX instead of BibLaTeX ==>
-	%\bibliographystyle{0_0_Preamble/aea_doi_url_href}
-	%\bibliography{Library}
-	%% <==
+%% Only when using BibTeX instead of BibLaTeX ==>
+%\bibliographystyle{0_0_Preamble/aea_doi_url_href}
+%\bibliography{Library}
+%% <==
 
 \end{frame}
 
@@ -609,28 +700,28 @@ On this slide, \textbf{``(1/3)''} should appear in the frame title.
 
 \begin{frame}[label=model]
 
-	\frametitle{\insertsection: Modeling Concentration Bias}
+\frametitle{\insertsection: Modeling Concentration Bias}
 
-	Subjects consider a sequences of consequences $\boldsymbol{c}$ from choice set $\boldsymbol{C}$.
+Subjects consider a sequences of consequences $\boldsymbol{c}$ from choice set $\boldsymbol{C}$.
 
-	%Focusing theory augments discounted utility (constant, hyperbolic, \dots) through an~additional weight \highlight{$g[\cdot]$} on the instantaneous utility function.
+%Focusing theory augments discounted utility (constant, hyperbolic, \dots) through an~additional weight \highlight{$g[\cdot]$} on the instantaneous utility function.
+\begin{itemize}
+
+\item \alert{Standard discounted utility:}
+	Suppose that the instantaneous utility function $u$ satisfies ${u'>0}$ and ${u''\leq 0}$, and that earlier consequences are preferred over later consequences of the same magnitude, i.e., ${D(t)\leq 1}$:
+\item[] ${U}(\boldsymbol{c}\phantom{, \boldsymbol{C}}) \coloneqq
+	\sum_{t=1}^{T} \phantom{g_t} D(t)\,u(c_t)$, \quad where, e.g., \quad $D(t) = \delta^t$  or $D(t) = \frac{1}{1 + k\,t}$. %$\beta \delta^t$.
+\medskip
+\item \only<1->{\alert{Focusing model \citep{Koszegi2013}:}}
+\item[]<1-> $\tilde{U}(\boldsymbol{c}\highlight{, C}) \coloneqq \sum_{t=1}^{T} \highlight{g_t}\,D(t)\,u(c_t)$, \quad where \\[3pt]
+	\highlight{$g_t \equiv % g[\Delta_t(C)]$, $\Delta_t(C) =
+	g[\max_{\boldsymbol{c}'\in C} D(t)\,u(c'_t) - \min_{\boldsymbol{c}'\in C} D(t)\,u(c'_t)]$}
+	\smallskip
 	\begin{itemize}
-
-	\item \alert{Standard discounted utility:}
-		Suppose that the instantaneous utility function $u$ satisfies ${u'>0}$ and ${u''\leq 0}$, and that earlier consequences are preferred over later consequences of the same magnitude, i.e., ${D(t)\leq 1}$:
-	\item[] ${U}(\boldsymbol{c}\phantom{, \boldsymbol{C}}) \coloneqq
-		\sum_{t=1}^{T} \phantom{g_t} D(t)\,u(c_t)$, \quad where, e.g., \quad $D(t) = \delta^t$  or $D(t) = \frac{1}{1 + k\,t}$. %$\beta \delta^t$.
-	\medskip
-	\item \only<1->{\alert{Focusing model \citep{Koszegi2013}:}}
-	\item[]<1-> $\tilde{U}(\boldsymbol{c}\highlight{, C}) \coloneqq \sum_{t=1}^{T} \highlight{g_t}\,D(t)\,u(c_t)$, \quad where \\[3pt]
-		\highlight{$g_t \equiv % g[\Delta_t(C)]$, $\Delta_t(C) =
-		g[\max_{\boldsymbol{c}'\in C} D(t)\,u(c'_t) - \min_{\boldsymbol{c}'\in C} D(t)\,u(c'_t)]$}
-		\smallskip
-		\begin{itemize}
-			\item<1-> Weighting function \highlight{$g[\cdot]$} increases in difference of maximum and minimum possible utility at a~point in time.
-			\item<1-> Subjects overweight intertemporal consequences with a greater range.
-		\end{itemize}
+		\item<1-> Weighting function \highlight{$g[\cdot]$} increases in difference of maximum and minimum possible utility at a~point in time.
+		\item<1-> Subjects overweight intertemporal consequences with a greater range.
 	\end{itemize}
+\end{itemize}
 
 \end{frame}
 

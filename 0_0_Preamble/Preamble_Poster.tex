@@ -85,30 +85,34 @@
 \setlength{\cmidrulewidth}{0.67pt}
 \setlength{\lightrulewidth}{0.67pt}
 \setlength{\heavyrulewidth}{1pt}
-\addtolength{\aboverulesep}{5pt}	% Make tables a little more spacious
+\addtolength{\aboverulesep}{5pt}  % Make tables a little more spacious
 \addtolength{\belowrulesep}{7.5pt}
 
 \sisetup{
-	detect-all,
+	%detect-all,
+	mode = match,
+	propagate-math-font = true,
+	reset-math-version = false,
+	reset-text-family = false,
+	reset-text-series = false,
+	reset-text-shape = false,
+	text-family-to-math = true,
+	text-series-to-math = true,
 	%round-integer-to-decimal = true,
 	%tight-spacing            = true,
 	%group-digits             = true,
 	%group-minimum-digits     = 5,
 	%group-separator          = {\kern 1pt},
-	table-align-text-pre     = false,
-	table-align-text-post    = false,
-	table-space-text-pre     = {**},
-	table-space-text-post    = {-**},
-	input-signs              = + -,
+	table-align-text-before  = false,
+	table-align-text-after   = false,
+	%input-signs              = + -,
 	%input-symbols            = {*} {**} {***},
 	input-open-uncertainty   = ,
 	input-close-uncertainty  = ,
 	%table-align-text-post    = false,
 	retain-explicit-plus
 }
-\NewColumnType{T}[1]{%
-	S[table-format = #1]%
-}
+\NewTblrColumnType{T}[2][]{S[table-format = {{**}#2{-**}}, #1]}
 
 
 

@@ -5,8 +5,8 @@
 
 % When using Greek math symbolds in a figure caption or table title, place a \protect in front of them
 % so that they are displayed correctly in the list of tables/figures.
-\begin{table}[t]
-	\caption{Points Awarded in Our Typeface Competition---Basic Formatting \textcolor{gray}{Test Greek: $\protect\epsilon, \protect\theta, \protect\phi$}}
+\begin{table}[t!]
+	\caption{Points Awarded in Our Typeface Competition---Basic Formatting That Produces Irregular Column Widths and a~Suboptimal Table Width \textcolor{gray}{Test Greek: $\protect\epsilon, \protect\theta, \protect\phi$}}
 	\label{tab:basic_formatting}
 	\begin{tabular}{@{}lccccc@{}}
 		\toprule
@@ -26,21 +26,30 @@
 	\end{tabular}
 \end{table}
 
-\begin{table}[b]
-	\caption{Points Awarded in Our Typeface Competition---More Sophisticated Formatting}
-	\label{tab:advanced_formatting}
-	\sisetup{table-column-width = 0.13\textwidth}
-	% <{\qquad} @{\extracolsep{\fill}}
-	\renewcommand\cellalign{ct}
-	\begin{tabularx}{\textwidth}{ @{} L *{5}{T{2.0}} }
-		\toprule
-			&	{Utopia\parnote{\texttt{\textbackslash usepackage\{fourier\}}}}
-			&	{\makecell[{{p{0.13\textwidth}}}]{\centering Computer Modern\parnote{The \LaTeX\ standard serif font.}}}
-			&	{Charter\parnote{\texttt{\textbackslash usepackage[charter]\{mathdesign\}}}}
-			&	{\makecell[{{p{0.13\textwidth}}}]{\centering Times Roman\parnote{\texttt{\textbackslash usepackage\{newtxtext, newtxmath\}}}}}
-			&	{Palatino\parnote{\texttt{\textbackslash usepackage[sc]\{mathpazo\}}}}
-			\\
-		\midrule
+\begingroup
+\begin{table}[b!]
+	\sisetup{table-column-width = 0.145\textwidth}
+	\begin{booktabs}[
+		caption = {Points Awarded in Our Typeface Competition---More Sophisticated Formatting with Homogeneous Column Widths and a~Table Width That Equals the Text Width},
+		footsep = \belowbottomsep,
+		headsep = 0pt,
+		%headsep = 10pt,  % See https://ftp.agdsn.de/pub/mirrors/latex/dante/macros/latex/contrib/caption/caption.pdf, Section 2.6
+		label = {tab:advanced_formatting},
+		tall,
+		note{a} = {\texttt{\textbackslash usepackage\{fourier\}}},
+		note{b} = {The \LaTeX\ standard serif font.},
+		note{c} = {\texttt{\textbackslash usepackage[charter]\{mathdesign\}}},
+		note{d} = {\texttt{\textbackslash usepackage\{newtxtext, newtxmath\}}},
+		note{e} = {\texttt{\textbackslash usepackage[sc]\{mathpazo\}}},
+	]{
+		colspec = {X[l] *{5}{T{2.0}}}
+	}
+		&	{Utopia\TblrNote{a}}
+		&	{Computer Modern\TblrNote{b}}
+		&	{Charter\TblrNote{c}}
+		&	{Times Roman\TblrNote{d}}
+		&	{Palatino\TblrNote{e}}
+		\\
 		Yo\"{e}l  	& 	1	&	1	&	2	&	0	&	1	\\
 		\c{C}elik	&	2	&	0	&	2	&	1	&	0	\\
 		Anit\`{a}	&	1	&	2	&	1	&	2	&	0	\\
@@ -49,16 +58,8 @@
 		Allison		&	2	&	0	&	1	&	2	&	1	\\
 		P\'ia		&	1	&	0	&	2	&	1	&	0	\\
 		David		&	1	&	0	&	2	&	1	&	1	\\
-		\midrule
+		%\midrule
 		Sum			&  10	&	5	&	12	&	8	&	4	\\
-		\bottomrule
-		%\multicolumn{6}{@{} p{\textwidth} @{}}{%
-		%	\renewcommand{\parnotevskip}{-22pt}
-		%	\parnotes%
-		%	\vspace{\parnotevskip}
-		%}
-		% {\justify\setlength{\parindent}{0pt}\parnotes}
-	\end{tabularx}
-	%\renewcommand{\parnotevskip}{-22pt}
-	\parnotes%
+	\end{booktabs}
 \end{table}
+\endgroup

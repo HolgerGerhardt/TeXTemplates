@@ -161,6 +161,7 @@
 %%  LAYOUT AND SECTIONING  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 % Disable single lines that start a~paragraph at the end of a~page (widows/Schusterjungen)
 % and disable single lines at the end of a~paragraph that start a~new page (orphans/Hurenkinder):
 \usepackage[all]{nowidow}
@@ -287,19 +288,35 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\makeatletter
+%\g@addto@macro\@floatboxreset{\vskip 0.45\baselineskip}  % Move floats down a bit, since we increase \topskip
+\g@addto@macro\@floatboxreset{\centering}  % Automatically center all figures and tables
+\g@addto@macro\@floatboxreset{\sffamily\small}  % Use small sans-serif font by default in figures and tables
+\makeatother
+
+\usepackage{tabularray}
+\UseTblrLibrary{booktabs, siunitx}
+\usepackage{tblr-extras}
+\UseTblrLibrary{caption}
+
 \usepackage[singlelinecheck=on]{caption}
 \DeclareCaptionLabelSeparator{periodlargespace}{.\:\:}
 \captionsetup{
-	singlelinecheck=on,
-	figureposition=below,
-	tableposition=above,
+	singlelinecheck = on,
+	figureposition = below,
+	tableposition = above,
 	format = plain,
 	labelsep = periodlargespace,
 	margin = 0pt,
 	font = {sf, small},
 	labelfont = {sf, bf, small},
-	justification = justified
+	justification = justified,
 }
+%\SetTblrStyle{caption}{halign = c, hang = 0pt, indent = 0pt}
+%\DeclareTblrTemplate{caption-sep}{default}{.\:\:\strut}
+%\SetTblrStyle{caption-tag}{font = \sffamily\bfseries\small}
+%\SetTblrStyle{caption-sep}{font = \sffamily\bfseries\small}
+%\SetTblrStyle{caption-text}{font = \sffamily\small}
 
 % Referencing ``subfigures'' (i.e., individual panels of which a figure is comprised):
 %\usepackage{subfigure}
@@ -313,56 +330,68 @@
 \setlength{\cmidrulewidth}{.035em}
 \setlength{\lightrulewidth}{.035em}
 \setlength{\heavyrulewidth}{.09em}
-\setlength{\abovetopsep}{-5pt}
+%\setlength{\abovetopsep}{-5pt}
 \addtolength{\aboverulesep}{1.5pt}	% Make tables a little more spacious
 \addtolength{\belowrulesep}{1.5pt}
-% \setlength{\belowbottomsep}{-2pt}
+\setlength{\belowbottomsep}{2ex}
 
-\usepackage{tabularx}	% Provides environment tabularx to adjust width of tables
-% \usepackage{tabulary}	% For some reason, tabulary doesn't obey the width argument ...
-% Emulate the "tabulary" column types:
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{J}{>{\arraybackslash}X}
-\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
-\newcolumntype{R}{>{\RaggedLeft\arraybackslash}X}
-% \usepackage[flushleft]{threeparttable}	% Provides the tablenotes environment
-
-% Remove superfluous whitespace at beginning and end of table rows -->
-\LetLtxMacro{\oldtabular}{\tabular}
-\LetLtxMacro{\endoldtabular}{\endtabular}
-\RenewDocumentEnvironment{tabular}{O{c} m}{%
-	\oldtabular[#1]{@{}#2@{}}%
-}{%
-	\endoldtabular%
-}
-\LetLtxMacro{\oldtabularx}{\tabularx}
-\LetLtxMacro{\endoldtabularx}{\endtabularx}
-\RenewDocumentEnvironment{tabularx}{m O{c} m}{%
-	\oldtabularx{#1}[#2]{@{}#3@{}}%
-}{%
-	\endoldtabularx%
+\SetTblrInner[booktabs]{
+	hborder{1} = {abovespace = \abovetopsep, belowspace = \belowrulesep},
+	hline{1} = {\heavyrulewidth, solid},  % Draw heavy rule at the top of each table
+	hborder{2} = {abovespace = \aboverulesep, belowspace = \belowrulesep},
+	hline{2} = {\lightrulewidth, solid},  % Draw regular rule after column headings
+	hborder{Z} = {abovespace = \aboverulesep, belowspace = \belowbottomsep},
+	hline{Z} = {\heavyrulewidth, solid},  % Draw heavy rule at the bottom of each table
+	column{1} = {leftsep = 0pt},  % Make left-most column flush with horizontal rules
+	column{Z} = {rightsep = 0pt},  % Make right-most column flush with horizontal rules
+	row{1} = guard,  % Prevent siunitx formatting for first row
+	width = \textwidth,
 }
 
-% Package for long tables that span multiple pages
-\usepackage{xltabular}
+\SetTblrStyle{note}{font = \footnotesize}
+\SetTblrStyle{remark}{halign = j, hang = 0pt, indent = 0pt, font = \footnotesize}
 
-\usepackage{siunitx}[=v2]
-	% Allows, among others, for alignment of decimal numbers in tables at the decimal point.
+% Global defaults for the siunitx package, version 2
+%\usepackage{siunitx}[=v2]
+%	% Allows, among others, for alignment of decimal numbers in tables at the decimal point.
+%\sisetup{
+%	detect-all,
+%	round-integer-to-decimal = true,
+%	group-digits             = true,
+%	group-minimum-digits     = 5,
+%	group-separator          = {\kern 1pt},
+%	table-align-text-pre     = false,
+%	table-align-text-post    = false,
+%	input-signs              = + -,
+%	input-symbols            = {*} {**} {***} \sigstar,
+%	input-open-uncertainty 	 = ,
+%	input-close-uncertainty  = ,
+%	retain-explicit-plus
+%}
+% Global defaults for the siunitx package, version 3.4.14 (2025-07-09)
 \sisetup{
-	detect-all,
-	round-integer-to-decimal = true,
-	group-digits             = true,
-	group-minimum-digits     = 5,
-	group-separator          = {\kern 1pt},
-	table-align-text-pre     = false,
-	table-align-text-post    = false,
-	input-signs              = + -,
-	input-symbols            = {*} {**} {***} \sigstar,
-	input-open-uncertainty 	 = ,
+	%detect-all,
+	mode = match,
+	propagate-math-font = true,
+	reset-math-version = false,
+	reset-text-family = false,
+	reset-text-series = false,
+	reset-text-shape = false,
+	text-family-to-math = true,
+	text-series-to-math = true,
+	%round-integer-to-decimal = true,
+	%group-digits             = all,
+	%group-minimum-digits     = 5,
+	%group-separator          = {\kern 1pt},
+	table-align-text-before  = false,
+	table-align-text-after   = false,
+	%input-signs              = + -,
+	%input-symbols            = {*} {**} {***} \sigstar,
+	input-open-uncertainty   = ,
 	input-close-uncertainty  = ,
 	retain-explicit-plus
 }
-\newcolumntype{T}[1]{@{}S[table-format = #1, table-space-text-pre = {***}, table-space-text-post = {***}]}
+\NewTblrColumnType{T}[2][]{S[table-format = {{***}#2{***}}, #1]}
 % Fix incompatibility of siunitx (v2018-05-17) with FiraSans (v2019-06-06),
 % based on https://tex.stackexchange.com/questions/213605/siunitx-does-not-detect-semi-bold-font
 % ==>
@@ -404,56 +433,14 @@
 \makeatother\ExplSyntaxOff
 % <==
 
-% Ability to add footnotes to tables:
-% ==>
-\usepackage[restart, breakwithin, indentafter]{parnotes}
-	% BEWARE: For some reason, \parnotes removes the vertical space before the following section/the indent of the following paragraph if not included in the table itself!
-\renewcommand{\parnotevskip}{0pt}
-% \renewcommand{\parnoteintercmd}{\\}
-\renewcommand{\theparnotemark}{\alph{parnotemark}}
-\renewcommand{\parnotefmt}[1]{\footnotesize\noindent\justify #1\par}
-%\renewcommand{\parnotefmt}[1]{\footnotesize\rmfamily%
-%	\noindent\rule{\linewidth}{1pt}\\%
-%	\noindent#1\par%
-%	\noindent\rule{\linewidth}{1pt}\\%
-%}
-%\renewcommand{\parnoteintercmd}{\;$\bullet$\;}
-% <==
+% Copied from AEA.cls
+\newenvironment{tablenotes}[1][Note]
+	{\par\justifying\medskip\begingroup\footnotesize\noindent\strut\textit{#1:} \ignorespaces}
+	{\par\endgroup}
+\newenvironment{figurenotes}[1][Note]
+	{\par\justifying\medskip\begingroup\footnotesize\noindent\strut\textit{#1:} \ignorespaces}
+	{\par\endgroup}
 
-\usepackage{makecell}
-
-\usepackage{longtable}
-
-\usepackage{multirow}
-
-% Redefine figure environment so that all figures are centered
-% ==>
-\makeatletter
-\let\oldfigure\figure
-\def\figure{\@ifnextchar[\figure@i \figure@ii}
-\def\figure@i[#1]{\oldfigure[#1]\centering}
-\def\figure@ii{\oldfigure\centering}
-\makeatother
-% <==
-
-\usepackage[font={sf, small}]{floatrow}	% Set the font in tables to sansserif small
-\floatsetup[table]{style=Plaintop}
-\renewcommand{\floatfootskip}{\smallskipamount}
-\newcommand{\tablenotes}[2][Notes:]{%
-	\floatfoot*{%
-		\setlength{\baselineskip}{11pt}%
-		\textit{#1} #2%
-	}%
-}
-\newcommand{\figurenotes}[2][Notes:]{%
-	\floatfoot{%
-		\setlength{\baselineskip}{11pt}%
-		\vspace{-\floatfootskip}%
-		\vspace{\medskipamount}%
-		\\[-\baselineskip]
-		\textit{#1} #2%
-	}%
-}
 % \usepackage{float}	% Allows the inclusion of figures inside a minipage	% Do not use in combination with floatrow.
 \usepackage{placeins} % improve placing of floats (figures, tables), provides \FloatBarrier
 
@@ -462,8 +449,6 @@
 % originally, \textfloatsep: 20.0pt plus 2.0pt minus 4.0pt
 
 \usepackage{verbatim}
-
-\usepackage{longtable}
 
 %\usepackage{setspace}
 

@@ -14,7 +14,7 @@
 \newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
-\newcommand{\manuscriptdate}{2025-11-04}  % In ISO format: yyyy-mm-dd
+\newcommand{\manuscriptdate}{2025-12-16}  % In ISO format: yyyy-mm-dd
 \newcommand{\manuscripttype}{MA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
@@ -201,9 +201,10 @@
 
 \renewenvironment{quote}{%
 	\par\list{}{%
+		\baselineskip = \smalllinespacing% 15pt%
 		\leftmargin = \baselineskip%
 		\rightmargin = \leftmargin%
-		\baselineskip = \smalllinespacing% 15pt%
+		\topsep = 0.5\baselinedist plus 3ex
 	}
 	\item\relax%
 }{%
@@ -211,12 +212,13 @@
 }
 \renewenvironment{quotation}{%
 	\list{}{%
+		\baselineskip = \smalllinespacing% 15pt
 		\leftmargin = \baselineskip%
 		\rightmargin = \leftmargin%
 		\listparindent = \smalllinespacing%
 		%\itemindent = \listparindent%
 		\parsep = 0pt%
-		\baselineskip = \smalllinespacing% 15pt
+		\topsep = 0.5\baselinedist plus 3ex
 	}%
 	\item\relax%
 }{%
@@ -501,6 +503,9 @@
 \usepackage{tabularray}
 	% Modern package that comprises the functionality of (probably) all earlier table packages that you can think of: threeparttable, tabularx/tabulary/tabu, longtable, xltabular, multirow, makecell, booktabs, colortbl, ...
 \UseTblrLibrary{booktabs, siunitx}
+\usepackage{tblr-extras}
+\UseTblrLibrary{caption}
+
 % Global default values for table formatting
 \addtolength{\heavyrulewidth}{0.1pt}%
 \addtolength{\lightrulewidth}{-0.05pt}%
@@ -521,11 +526,11 @@
 	width = \textwidth,
 }
 %\AtEndEnvironment{booktabs}{\vspace{\belowbottomsep}}
-\SetTblrStyle{caption}{halign = c, hang = 0pt, indent = 0pt}
-\DeclareTblrTemplate{caption-sep}{default}{.~\strut}
-\SetTblrStyle{caption-tag}{font = \small\bfseries}
-\SetTblrStyle{caption-sep}{font = \small\bfseries}
-\SetTblrStyle{caption-text}{font = \small}
+%\SetTblrStyle{caption}{halign = c, hang = 0pt, indent = 0pt}
+%\DeclareTblrTemplate{caption-sep}{default}{.~\strut}
+%\SetTblrStyle{caption-tag}{font = \small\bfseries}
+%\SetTblrStyle{caption-sep}{font = \small\bfseries}
+%\SetTblrStyle{caption-text}{font = \small}
 % Prints a colon only if \InsertTblrRemarkTag is not empty
 \newcommand{\RemarkTagMaybeColon}{%
 	\ifdefempty{\InsertTblrRemarkTag}{\hspace{\smalllinespacing}\ignorespaces}{:~\ignorespaces}%
@@ -854,25 +859,26 @@
 
 % Here, you can add further packages that you would like to use and custom commands
 
-\usepackage[most]{tcolorbox}  % Loads tikz
-\tcbset{
-	after = {\par\vskip 0.25\baselinedist plus 10ex\noindent\unskip\ignorespacesafterend},
-	after upper = \strut,
-	arc = 0pt,
-	before = {\par\vskip 0.75\baselinedist plus 10ex\noindent\ignorespaces},
-	before upper = {%
-		\fontsize{\fsnormal}{\smalllinespacing}\selectfont%
-		\setlength{\parindent}{\smalllinespacing}%
-		\noindent\strut%
-	},
-	bottom = 1.5ex, left = 2ex, right = 2ex, top = 1.5ex,
-	breakable,
-	boxrule = 0pt,
-	colback = UBonnBlue!5,  % Set background color to 5% blue
-	colframe = UBonnBlue!5,
-}
+%\usepackage[most]{tcolorbox}  % Loads tikz
+%\tcbset{
+%	after = {\par\vskip 0.25\baselinedist plus 10ex\noindent\unskip\ignorespacesafterend},
+%	after upper = \strut,
+%	arc = 0pt,
+%	before = {\par\vskip 0.75\baselinedist plus 10ex\noindent\ignorespaces},
+%	before upper = {%
+%		\fontsize{\fsnormal}{\smalllinespacing}\selectfont%
+%		\setlength{\parindent}{\smalllinespacing}%
+%		\noindent\strut%
+%	},
+%	bottom = 1.5ex, left = 2ex, right = 2ex, top = 1.5ex,
+%	breakable,
+%	boxrule = 0pt,
+%	colback = UBonnBlue!5,  % Set background color to 5% blue
+%	colframe = UBonnBlue!5,
+%}
 
 % Illustrate the baseline grid:
+\usepackage{tikz}
 \usetikzlibrary{calc}
 \newcommand{\displaybaselinegrid}{%
 	\begin{tikzpicture}[remember picture, overlay, x = 1mm, y = \baselineskip]
@@ -1000,19 +1006,37 @@ The IMRaD structure is very common in the natural sciences and life sciences. It
 
 Other structures are possible, of course. Please consult with your advisor to find a~good structure for your manuscript.
 
-\subsection{Structuring Introduction and Discussion: Funnel and Reverse Funnel}
+\subsection{Structuring Introduction and Discussion: ``Funnel'' and ``Reverse Funnel''}
 
 \begingroup
 
-\SetTblrInner[tblr]{
-	colspec = {X[2.25] X[l]},
-	column{1} = {leftsep = 0pt},
-	column{Z} = {rightsep = 0pt},
-	column{2} = {font = \sffamily\footnotesize\setlength{\baselineskip}{2.75ex}\RaggedRight},
+\SetTblrTemplate{contfoot}{empty}
+\SetTblrTemplate{conthead}{empty}
+\SetTblrOuter[longtblr]{
+	entry = none,
+	label = none,
+	postsep = 0.5\baselinedist plus 10ex,
+	presep = 0.5\baselinedist plus 10ex,
+}
+\SetTblrInner[longtblr]{
+	colspec = {X[1.9] X[l]},
+	column{1} = {
+		bg = UBonnBlue!5, font = \rmfamily\small, leftsep = 3ex,
+	},
+	column{2} = {
+		bg = UBonnBlue!5, font = \sffamily\footnotesize\setlength{\baselineskip}{2.75ex}\RaggedRight, rightsep = 3ex
+	},
 	hborder{1-Z} = {abovespace = 0pt, belowspace = 0pt},
-	hline{1, Z} = {0pt},
-	vborder{2} = {rightspace+ = 0.75em},
+	hborder{1} = {belowspace = 2.25ex},
+	hborder{Z} = {abovespace = 2.25ex},
+	hline{1-Z} = {0pt},
+	vborder{2} = {rightspace+ = 0.5em},
 	width = \linewidth,
+}
+\let \longtblrOrig \longtblr
+\renewcommand{\longtblr}{%
+	\fontsize{\fsnormal}{\smalllinespacing}\selectfont%
+	\longtblrOrig%
 }
 
 A~general structure that can be found in many research papers is the so-called X-shaped or ``hourglass'' structure.\footnote{See \url{https://skillsearthsciences.sites.uu.nl/writing/structure/\#attachment_2387}, Fig.\,1, and \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC5405644/pdf/JHRS-10-3.pdf}, Figure~1.} This structure is brought about when the so-called ``funnel'' technique is used to write the introduction,\footnote{See  \url{https://read.aupress.ca/read/read-think-write/section/9e945e9b-62cf-4dbb-b8cd-823549ede292\#fig1401}, Figure~14.1, and \url{https://kib.ki.se/en/write-cite/academic-writing/structure-academic-texts}} and when a~``reverse funnel'' or ``upside-down funnel'' is used to write the discussion\slash concluding section:\footnote{See \url{https://read.aupress.ca/read/read-think-write/section/9e945e9b-62cf-4dbb-b8cd-823549ede292\#fig1402}, Figure~14.2, and \url{https://kib.ki.se/en/write-cite/academic-writing/writing-conclusion}.}
@@ -1023,80 +1047,76 @@ A~general structure that can be found in many research papers is the so-called X
 \end{enumerate}
 
 Let us take a~look at the ``Introduction'' section from \citet{sigfridsson} to see the funneling approach at work:%
-\footnote{See \url{https://lucris.lub.lu.se/ws/portalfiles/portal/135489685/25_charges.pdf}.}
-\begin{tcolorbox}
-	\begin{tblr}{}
-		Molecular simulation methods have become an important technique in many areas of chemistry through the recent advent of effective and wide-spread software for molecular mechanics, molecular dynamics, and Monte Carlo simulations, and procedures for the estimation of free energy differences. In all such methods, a~proper description of the electrostatic interactions within the simulated system is of key importance, \textellipsis\ However, in most implementations, \textellipsis, the simplest possible solution is used, \textellipsis\ Thus, most classical simulation methods need a~point-charge parameterisation of the molecules of interest.
-		&
-		{%
-			\textit{Paragraph~1} \\
-			\textmd{Broad introduction with general description of the research field (``many areas of
-			chemistry''), research topic (``molecular simulation methods''), and recent development (``through the recent advent of \textellipsis''). Followed by a~more detailed description of crucial aspects in this context (``In all such methods, a~proper description \textellipsis\ is of key importance'') and of shortcomings of existing methods.}
-		}
+\footnote{The full text of the article by \citet{sigfridsson} is available at \url{https://lucris.lub.lu.se/ws/portalfiles/portal/135489685/25_charges.pdf}.}
+\begin{longtblr}{}
+	Molecular simulation methods have become an important technique in many areas of chemistry through the recent advent of effective and wide-spread software for molecular mechanics, molecular dynamics, and Monte Carlo simulations, and procedures for the estimation of free energy differences. In all such methods, a~proper description of the electrostatic interactions within the simulated system is of key importance, \textellipsis\ However, in most implementations, \textellipsis, the simplest possible solution is used, \textellipsis\ Thus, most classical simulation methods need a~point-charge parameterisation of the molecules of interest.
+	&
+	{%
+		\textit{Paragraph~1} \\
+		\textmd{Broad introduction with general description of the research field (``many areas of
+		chemistry''), research topic (``molecular simulation methods''), and recent development (``through the recent advent of \textellipsis''). Followed by a~more detailed description of crucial aspects in this context (``In all such methods, a~proper description \textellipsis\ is of key importance'') and of shortcomings of existing methods.}
+	}
+	\\
+	\hspace{\smalllinespacing}Unfortunately, atomic charges are not observables, i.e. they cannot unambiguously be determined by experiments or quantum chemical calculations. Therefore, a~large number of methods have been suggested for the estimation of point charges [1]. Several groups have tried to derive the charges directly from experimental quantities, \textellipsis\ Yet, relevant data is usually missing or too scarce to allow a determination of all charges in interesting molecules. Instead, most techniques derive atomic charges from quantum chemical calculations.
+	&
+	{%
+		\textit{Paragraph~2} \\
+		Narrowing down the topic: Description of the state of the art and of issues and limitations observed in the literature.%
+	}
+	\\
+	{%
+		\hspace{\smalllinespacing}The simplest way to determine quantum chemical charges is the Mulliken population
+		analysis. \textellipsis\ Although, Mulliken charges are known to strongly depend on the basis set [6] and to reproduce electrostatic moments poorly [1], they are still widely used due to their simplicity. Several other \textellipsis\ methods have been devised to cure the problems of the Mulliken charges [1], \textellipsis
 		\\
-		\hspace{\smalllinespacing}Unfortunately, atomic charges are not observables, i.e. they cannot unambiguously be determined by experiments or quantum chemical calculations. Therefore, a~large number of methods have been suggested for the estimation of point charges [1]. Several groups have tried to derive the charges directly from experimental quantities, \textellipsis\ Yet, relevant data is usually missing or too scarce to allow a determination of all charges in interesting molecules. Instead, most techniques derive atomic charges from quantum chemical calculations.
-		&
-		{%
-			\textit{Paragraph~2} \\
-			Narrowing down the topic: Description of the state of the art and of issues and limitations observed in the literature.%
-		}
-		\\
-		{%
-			\hspace{\smalllinespacing}The simplest way to determine quantum chemical charges is the Mulliken population
-			analysis. \textellipsis\ Although, Mulliken charges are known to strongly depend on the basis set [6] and to reproduce electrostatic moments poorly [1], they are still widely used due to their simplicity. Several other \textellipsis\ methods have been devised to cure the problems of the Mulliken charges [1], \textellipsis
-			\\
-			\null\hspace{\smalllinespacing}\textellipsis
-		}
-		&
-		{%
-			\textit{Paragraph 3} \\
-			Further description of the state of the art: strengths and weaknesses of existing approaches. \\
-			\strut \\[2ex]
-			\textit{Paragraphs 4--6} \\
-			Further description of unresolved issues.
-		}
-		\\
-		\hspace{\smalllinespacing}In this paper, we make a critical analysis of the four most popular potential-based point-charge methods, \textellipsis\ It is shown that these methods may give widely different results and possible explanations for this are discussed. Two alternative methods for deriving atomic charges are suggested, which avoid the arbitrariness in the selection of potential points, and their performance is judged using \textellipsis
-		&
-		{%
-			\textit{Paragraph~7} \\
-			Narrow description of the specific contribution of this paper: Identification of undesirable arbitrary variation in simulation results of existing methods, which inspired development of an ``alternative methods'' that avoids this issue.
-		}
-	\end{tblr}
-\end{tcolorbox}
+		\null\hspace{\smalllinespacing}\textellipsis
+	}
+	&
+	{%
+		\textit{Paragraph 3} \\
+		Further description of the state of the art: strengths and weaknesses of existing approaches. \\
+		\strut \\[2ex]
+		\textit{Paragraphs 4--6} \\
+		Further description of unresolved issues.
+	}
+	\\
+	\hspace{\smalllinespacing}In this paper, we make a critical analysis of the four most popular potential-based point-charge methods, \textellipsis\ It is shown that these methods may give widely different results and possible explanations for this are discussed. Two alternative methods for deriving atomic charges are suggested, which avoid the arbitrariness in the selection of potential points, and their performance is judged using \textellipsis
+	&
+	{%
+		\textit{Paragraph~7} \\
+		Narrow description of the specific contribution of this paper: Identification of undesirable arbitrary variation in simulation results of existing methods, which inspired development of an ``alternative methods'' that avoids this issue.
+	}
+\end{longtblr}
 
 Let us now inspect the ``Concluding Remarks'' subsection from \citet{sigfridsson} to see the ``reverse funneling'' approach at work:
-\begin{tcolorbox}
-	\begin{tblr}{}
-		Potential-based charges strongly depend on the way the potential points are selected. We have presented and tested a~new method that avoids such a~dependence, \caps{CHELMO}. It fits the charges directly to the electrostatic moments and it performs as well, or better, as the best electrostatic potential method judging from the calculated electrostatic potential and moments. \textellipsis\ The major disadvantage of the method is that it cannot be used for large molecules, since there is a~limited number of moments. No more than 25~independent charges in a~molecule can be determined if all moments up to hexadecapole moments are used. In practice it should not be used for molecules with more than about 20 atoms since otherwise the higher moments may be poorly reproduced \textellipsis\ This could be remedied if moments higher than hexadecapole moments are calculated but such moments are not included in the output of normal quantum chemical packages.
-		&
-		{%
-			\textit{Paragraph~1} \\
-			Narrow recap of the first contribution of the paper: brief description of the issue and how it was solved by the new method. Followed by description of the limitations of the new method. Outlook how these limitations could be overcome.
-		}
-		\\
-		\hspace{\smalllinespacing}In order to get a~method that can be used for larger system, we constructed the \caps{CHELP-BOW} method, which estimates the charges from a Boltzmann-weighted fit to the electrostatic potential. It has the advantage over the other \textellipsis\ methods that \textellipsis\ The present implementation of the \caps{CHELP-BOW} method is very simplified, but in a future publication we will refine and thoroughly test the method. However, the results are conclusive enough to show that the method \textellipsis\ has the desired behaviour. \textellipsis\ Clearly, this is the method we recommend for general use.
-		&
-		{%
-			\textit{Paragraph~2} \\
-			Narrow recap of the central contribution of the paper and how it relates to the literature: how existing methods were further improved upon by the second method proposed in this paper. Followed by outlook on future advances and recommendation for researchers in the field.
-		}
-		\\
-		\hspace{\smalllinespacing}An important advantage of the methods developed in this paper is that they are general, i.e. they can be used with any quantum chemical program and they can use experimental data (\textellipsis\!) as well. The only thing that has to be changed is the input section of the programs. Thus any quantum chemical basis sets can be used, and any level of theory that gives a~wave function may be employed. Furthermore, the methods can easily be adapted to \textellipsis
-		&
-		{%
-			\textit{Paragraph~3} \\
-			Broader implications due to the generality of the new method.
-		}
-		\\
-		\hspace{\smalllinespacing}Finally, a comment on the traditional electrostatic potential methods. \textellipsis\ Thus, we cannot see any justification to use \caps{CHELP} charges except for backward comparisons.
-		&
-		{%
-			\textit{Paragraph~4} \\
-			Other broader implications.
-		}
-	\end{tblr}
-\end{tcolorbox}
+\begin{longtblr}{}
+	Potential-based charges strongly depend on the way the potential points are selected. We have presented and tested a~new method that avoids such a~dependence, \caps{CHELMO}. It fits the charges directly to the electrostatic moments and it performs as well, or better, as the best electrostatic potential method judging from the calculated electrostatic potential and moments. \textellipsis\ The major disadvantage of the method is that it cannot be used for large molecules, since there is a~limited number of moments. No more than 25~independent charges in a~molecule can be determined if all moments up to hexadecapole moments are used. In practice it should not be used for molecules with more than about 20 atoms since otherwise the higher moments may be poorly reproduced \textellipsis\ This could be remedied if moments higher than hexadecapole moments are calculated but such moments are not included in the output of normal quantum chemical packages.
+	&
+	{%
+		\textit{Paragraph~1} \\
+		Narrow recap of the first contribution of the paper: brief description of the issue and how it was solved by the new method. Followed by description of the limitations of the new method. Outlook how these limitations could be overcome.
+	}
+	\\
+	\hspace{\smalllinespacing}In order to get a~method that can be used for larger system, we constructed the \caps{CHELP-BOW} method, which estimates the charges from a Boltzmann-weighted fit to the electrostatic potential. It has the advantage over the other \textellipsis\ methods that \textellipsis\ The present implementation of the \caps{CHELP-BOW} method is very simplified, but in a future publication we will refine and thoroughly test the method. However, the results are conclusive enough to show that the method \textellipsis\ has the desired behaviour. \textellipsis\ Clearly, this is the method we recommend for general use.
+	&
+	{%
+		\textit{Paragraph~2} \\
+		Narrow recap of the central contribution of the paper and how it relates to the literature: how existing methods were further improved upon by the second method proposed in this paper. Followed by outlook on future advances and recommendation for researchers in the field.
+	}
+	\\
+	\hspace{\smalllinespacing}An important advantage of the methods developed in this paper is that they are general, i.e. they can be used with any quantum chemical program and they can use experimental data (\textellipsis\!) as well. The only thing that has to be changed is the input section of the programs. Thus any quantum chemical basis sets can be used, and any level of theory that gives a~wave function may be employed. Furthermore, the methods can easily be adapted to \textellipsis
+	&
+	{%
+		\textit{Paragraph~3} \\
+		Broader implications due to the generality of the new method.
+	}
+	\\
+	\hspace{\smalllinespacing}Finally, a comment on the traditional electrostatic potential methods. \textellipsis\ Thus, we cannot see any justification to use \caps{CHELP} charges except for backward comparisons.
+	&
+	{%
+		\textit{Paragraph~4} \\
+		Other broader implications.
+	}
+\end{longtblr}
 
 \endgroup
 
@@ -1139,15 +1159,38 @@ Relating the ``RAP'' approach to the the list of questions above, question~4 is 
 
 \setul{0.3ex}{0.5ex}
 
-\SetTblrInner[tblr]{
+\SetTblrTemplate{contfoot}{empty}
+\SetTblrTemplate{conthead}{empty}
+\SetTblrOuter[longtblr]{
+	entry = none,
+	label = none,
+	postsep = 0.75\baselinedist plus 10ex,
+	presep = 0.75\baselinedist plus 10ex,
+}
+\SetTblrInner[longtblr]{
 	colspec = {X[2.15] X[l]},
-	column{1} = {leftsep = 0pt},
-	column{Z} = {rightsep = 0pt},
-	column{2} = {font = \sffamily\bfseries\footnotesize\setlength{\baselineskip}{2.75ex}},
+	column{1} = {
+		bg = UBonnBlue!5,
+		font = \fontsize{\fsnormal}{\smalllinespacing}\rmfamily,
+		leftsep = 3ex,
+		rightsep = 1.5ex,
+	},
+	column{2} = {
+		bg = UBonnBlue!5,
+		font = \sffamily\footnotesize\setlength{\baselineskip}{2.75ex}\bfseries\RaggedRight,
+		leftsep = 1.5ex,
+		rightsep = 3ex,
+	},
 	hborder{1-Z} = {abovespace = 0pt, belowspace = 0pt},
-	hline{1, Z} = {0pt},
-	vborder{2} = {rightspace+ = 0.75em},
+	hborder{1} = {belowspace = 2.25ex},
+	hborder{Z} = {abovespace = 2.25ex},
+	hline{1-Z} = {0pt},
 	width = \linewidth,
+}
+\let \longtblrOrig \longtblr
+\renewcommand{\longtblr}{%
+	\fontsize{\fsnormal}{\smalllinespacing}\selectfont%
+	\longtblrOrig%
 }
 
 Obviously, there is no single ``right'' way of constructing paragraphs. However, a~few basic rules can help you write paragraphs that are \emph{easy to comprehend} by your readers. A~common approach is to compose sentences such that they reflect the following functional sequence:\footnote{See \url{https://libguides.newcastle.edu.au/writing-paragraphs/structure}, \url{https://www.une.edu.au/library/students/academic-writing/write-paragraphs/paragraphs/Academic-paragraphs_v2.pdf}, \url{https://learningessentials.auckland.ac.nz/writing-effectively/paragraph/}}
@@ -1194,9 +1237,10 @@ It is perfectly fine to mix the different approaches. For some paragraphs, a~clo
 One thing that \emph{all} these suggestions have in common is, however, that they start with a~\emph{topic sentence} and end with a~\emph{concluding\slash connecting sentence}. Hence, no matter how you fill the supporting sentences, it is probably best to start a~paragraph with a~topic sentence and end with a~concluding\slash connecting sentence.
 
 Let us illustrate the ``\caps{MEAL}''\slash``\caps{PEEL}'' structure, with an optional explanation\slash def\-i\-ni\-tion included, through some example sentences from \citet{sigfridsson}:
-\begin{tcolorbox}
+
+\begingroup
 	\microtypesetup{protrusion = false}%
-	\begin{tblr}{}
+	\begin{longtblr}{}
 		\textellipsis\ {\setulcolor{DarkOrchid3!67}\ul{Thus, most classical simulation methods need a~point-charge parameterisation of the molecules of interest.}}
 		&
 		\textcolor{DarkOrchid3}{L: Concluding sentence}
@@ -1208,33 +1252,46 @@ Let us illustrate the ``\caps{MEAL}''\slash``\caps{PEEL}'' structure, with an op
 		{\setulcolor{DarkOrchid3!67}\ul{Instead, most techniques derive atomic charges from quantum chemical calculations.}}%
 		&
 		{%
-			\textcolor{Purple4}{M/P: Topic sentence \\ \textmd{(reference to previous paragraph)}} \\ \strut \\
-			\textcolor{RoyalBlue4}{Optional explanation/definition} \\ \strut \\
+			\textcolor{Purple4}{M/P: Topic sentence} \\
+			\textcolor{Purple4}{\textmd{(reference to previous paragraph)}} \\
+			\strut \\
+			\textcolor{RoyalBlue4}{Optional explanation/definition} \\
+			\strut \\
 			Supporting sentences: \\
 			\textcolor{DeepPink4}{E: Evidence} \\
-			\textcolor{Teal}{A/E: Analysis/Evaluation} \\ \strut \\
-			\textcolor{DarkOrchid3}{L: Connecting sentence \\ \textmd{(link to next paragraph)}}%
+			\textcolor{Teal}{A/E: Analysis/Evaluation} \\
+			\strut \\
+			\textcolor{DarkOrchid3}{L: Connecting sentence} \\
+			\textcolor{DarkOrchid3}{\textmd{(link to next paragraph)}}%
 		}
 		\\
 		\hspace{\smalllinespacing}{\setulcolor{Purple4!67}\ul{The simplest way to determine quantum chemical charges is the Mulliken population analysis.}} \textellipsis
 		&
-		\textcolor{Purple4}{M/P: Topic sentence \\ \textmd{(reference to previous paragraph)}}
-	\end{tblr}
-\end{tcolorbox}
+		{%
+			\textcolor{Purple4}{M/P: Topic sentence} \\
+			\textcolor{Purple4}{\textmd{(reference to previous paragraph)}}%
+		}
+\end{longtblr}
+\endgroup
 
 The rule to finish a~paragraph with a~concluding sentence entails, in particular, that a~theoretical or empirical finding should never be the last thing that you mention in a~paragraph. An ``evidence'' sentence should always be followed by an interpretation in which you tell the reader what we learn from that finding. Here is an example from \citet{sigfridsson}:
-\begin{tcolorbox}
+
+\begingroup
 	\microtypesetup{protrusion = false}%
-	\begin{tblr}{}
+	\begin{longtblr}{}
 		\textellipsis\ {\setulcolor{DeepPink4!67}\ul{With these radii, the charges almost coincide with those obtained by the \mbox{\caps{CHELPG}} method (within ${0.02\,e}$).}}
 		{\setulcolor{DarkOrchid3!67}\ul{Thus, we can conclude that the main difference between the Merz--Kollman and the \mbox{\caps{CHELPG}} method is the 1.4~times larger effective radii of the former method, whereas the sampling schemes are almost equivalent.}}
 		&
 		{%
-			\textcolor{DeepPink4}{Evidence: \\ Supporting sentence with \\ empirical finding} \\ \strut \\
-			\textcolor{DarkOrchid3}{Concluding sentence with \\ interpretation of that finding}%
+			\textcolor{DeepPink4}{Evidence:} \\
+			\textcolor{DeepPink4}{Supporting sentence with} \\
+			\textcolor{DeepPink4}{empirical finding} \\
+			\strut \\
+			\textcolor{DarkOrchid3}{Concluding sentence with} \\
+			\textcolor{DarkOrchid3}{interpretation of that finding}%
 		}
-	\end{tblr}
-\end{tcolorbox}
+	\end{longtblr}
+\endgroup
 
 To reiterate, there is no single ``right'' way of constructing paragraphs. However, keeping the \caps{TS}/\caps{SS}/\caps{CS} structure in mind as a~guideline is bound to help you produce a~text that enables readers to follow your chain of reasoning.
 
@@ -1248,6 +1305,33 @@ Additional useful recommendations and tips can be found in Plamen Nikolov's ``Wr
 \section{Layout and Design of the Thesis}
 \label{sec:layout}
 
+\begingroup
+
+\SetTblrTemplate{contfoot}{empty}
+\SetTblrTemplate{conthead}{empty}
+\SetTblrOuter[longtblr]{
+	entry = none,
+	label = none,
+	postsep = 0.75\baselinedist plus 10ex,
+	presep = 0.75\baselinedist plus 10ex,
+}
+\SetTblrInner[longtblr]{
+	colspec = {X},
+	column{1} = {
+		bg = UBonnBlue!5, font = \fontsize{\fsnormal}{\smalllinespacing}\rmfamily, leftsep = 3ex, rightsep = 3ex,
+	},
+	hborder{1-Z} = {abovespace = 0pt, belowspace = 0pt},
+	hborder{1} = {belowspace = 2.25ex},
+	hborder{Z} = {abovespace = 2.25ex},
+	hline{1-Z} = {0pt},
+	width = \linewidth,
+}
+\let \longtblrOrig \longtblr
+\renewcommand{\longtblr}{%
+	\fontsize{\fsnormal}{\smalllinespacing}\selectfont%
+	\longtblrOrig%
+}
+
 \subsection{Introductory Remark}
 The following recommendations are based on the official guidelines%
 \footnote{See \url{https://www.econ.uni-bonn.de/examinations/de/informationen/bachelor/bachelorarbeit/dokumente/ba-merkblatt-2016-05-23.pdf} and \url{https://www.econ.uni-bonn.de/examinations/en/information/master-economics/master-thesis/documents/ma-master-thesis-style-guide-2014-06-10.pdf}.}
@@ -1257,8 +1341,9 @@ of the examination office of the Department of Economics at the University of Bo
 This template uses the Times typeface by default for the body text. Alternatively, you can choose a~typeface of equal size. Equal size here means that the same amount of text (or less) fits on a~page with the layout---the page size, margins, and line spacing---defined below.
 
 It is probably a~good choice to use a~serif font. This is because papers and theses in economics often feature mathematical formulas and equations. With serif fonts, characters can usually be disambiguated relatively well, and often better than with sans-serif fonts (compare: Al/AI, {\relscale{0.90}\fontfamily{phv}\selectfont Al/AI}). Here are some examples of glyphs that are easy to confuse in particular fonts:
-\begin{tcolorbox}[before upper = {\setlength{\parindent}{0pt}\setlength{\parskip}{\medskipamount}\strut}]
-	Digit one, lowercase l, uppercase I, vertical bar: \\
+
+\begin{longtblr}{}
+	Digit 1, lowercase l, uppercase I, vertical bar |: \\
 	\small%
 	{\fontfamily{ntxtlf}\selectfont Times: 1\,l\,I\,|} \quad
 	{\relscale{0.92}\fontfamily{XCharter-TLF}\selectfont Charter: 1\,l\,I\,|} \quad
@@ -1266,7 +1351,7 @@ It is probably a~good choice to use a~serif font. This is because papers and the
 	{\relscale{0.88}\fontfamily{phv}\selectfont Helvetica: 1\,l\,I\,|} \quad {\relscale{1.05}\fontfamily{FiraSans-TLF}\selectfont Fira Sans: 1\,l\,I\,|}
 	\par
 	\normalsize%
-	Lowercase o, digit zero, uppercase O: \\
+	Lowercase o, digit 0, uppercase O: \\
 	\small%
 	{\fontfamily{ntxtlf}\selectfont Times: o\,0\,O}\quad
 	{\relscale{0.90}\fontfamily{Cabin-TLF}\selectfont Cabin: o\,0\,O}\quad
@@ -1275,12 +1360,12 @@ It is probably a~good choice to use a~serif font. This is because papers and the
 	{\relscale{0.81}\fontfamily{CascadiaCode-TLF}\fontseries{sl}\selectfont Cascadia Code: o\,0\,O}
 	\par
 	\normalsize%
-	Italic Latin a, p, u, v, y, Y vs. italic Greek alpha, rho, upsilon, nu, gamma, Upsilon: \\
+	Italic Latin a, p, u, v, y, Y vs. italic Greek $\upalpha$, $\uprho$, $\upupsilon$, $\upnu$, $\upgamma$, $\upUpsilon$: \\
 	\small%
 	Times: $a \, \alpha$, $p \, \rho$, $u \, \upsilon$, $v \, \nu$, $y \, \gamma$, $Y \, \mathit{\Upsilon}$
 	\quad
 	{\relscale{1.05}\fontfamily{FiraSans-TLF}\selectfont Fira Sans: {\itshape a\,{\fontencoding{LGR}\selectfont a}}, {\itshape p\,{\fontencoding{LGR}\selectfont r}}, {\itshape u\,{\fontencoding{LGR}\selectfont u}}, {\itshape v\,{\fontencoding{LGR}\selectfont n}}, {\itshape y\,{\fontencoding{LGR}\selectfont g}}, {\itshape Y\,{\fontencoding{LGR}\selectfont U}}}
-\end{tcolorbox}
+\end{longtblr}
 
 When using Times or Times New Roman as the typeface, the following font sizes apply:
 \begin{itemize}
@@ -1366,49 +1451,56 @@ Both literal citations from other texts as well as the paraphrasing of other aut
 \subsubsection{Paraphrasing Other Authors' Thoughts}
 
 Here is an example of a~paraphrasing in-text citation:
-\begin{tcolorbox}
+\begin{longtblr}{}
 	\cite{sarfraz} suggest an algorithm to automatically capture the outlines of fonts.
-\end{tcolorbox}
-
-The author's name/authors' names can be embedded in the sentence, as in the example above, or surrounded by parentheses:
-\begin{tcolorbox}
+\end{longtblr}
+\noindent The author's name/authors' names can be embedded in the sentence, as in the example above, or surrounded by parentheses:
+\begin{longtblr}{}
 	Many researchers in computer science have worked on the problem of converting the outlines of objects to mathematically describable curves, such as B\'{e}zier curves (see, e.g., \citealp{sarfraz}).
-\end{tcolorbox}
-Paraphrasing citations of this type usually start with ``see.''
+\end{longtblr}
+\noindent Paraphrasing citations of this type usually start with ``see.''
 
 \subsubsection{Literal Citations}
 
 Literal citations must be indicated via quotation marks. Use double quotation marks for this purpose. For quotes within direct quotes, use single quotation marks. For literal citations, the page number must also be provided, if possible. Here is an example of a~literal citation:
-\begin{tcolorbox}
+\begin{longtblr}{}
 	\cite[795]{sarfraz} state that ``another major difference lies in the curve model for the description of the design curve. The outline capturing technique, instead of traditional B\'{e}zier cubics, is based upon a~generalized Hermite cubic.'' They conclude (p.\,796): ``Accordingly, the design curve will be $GC^1$ continuous.''
-\end{tcolorbox}
+\end{longtblr}
 
 Omissions must be indicated by ellipses (``\textellipsis\!''), as in the following example:
-\begin{tcolorbox}
+\begin{longtblr}{}
 	\cite[795]{sarfraz} state: ``Another major difference lies in the curve model for the description of the design curve. The outline capturing technique, \textellipsis, is based upon a~generalized Hermite cubic.''
-\end{tcolorbox}
+\end{longtblr}
 
-\pagebreak
 Changes must be placed in square brackets, as in the following example:
-\begin{tcolorbox}
+\begin{longtblr}{}
 	\cite[377]{sigfridsson} find that the ``\caps{CHELMO} [Charges from Electrostatic Moments] method gives the best multipole moments for small and medium-sized polar systems.''
-\end{tcolorbox}
+\end{longtblr}
 
-Longer quotations---as a~rule of thumb, anything that spans more than two lines of text---should be formatted as block quotes:
-\begin{tcolorbox}[bottom = -0.75\baselinedist, breakable = false]
-	\cite[377]{sigfridsson} summarize their findings as follows:
-	\begin{quote}\vspace{-\smallskipamount}%
-		The \caps{CHELMO} method gives the best multipole moments for small and medium-sized polar systems, whereas the \caps{CHELP-BOW} charges reproduce best the total interaction energy in actual simulations. Among the standard methods, the Merz--Kollman charges give the best moments and potentials, but they show an appreciable dependence on the orientation of the molecule.
-	\end{quote}
-\end{tcolorbox}
-Even longer quotations---which span more than one paragraph---are typeset as follows: \begin{tcolorbox}[bottom = -0.75\baselinedist, breakable = false]
-	\cite[801]{sarfraz} describe the results of their approach as follows:
-	\begin{quotation}\vspace{-\smallskipamount}%
-		The scheme and the algorithm has been implemented and tested for various shapes. Visually quite elegant results have been observed. \par
-		The algorithm has been tested for four fonts in Figs. 4(a), 5(a), 6(a) and (7a). The fonts in Figs. 4(a) and 5(a) are Arabic, whereas the images in Figs. 6(a) and 7(a) are Greek and Kanji characters respectively. \par
-		Fig.~4(b) is the outline of Fig.~4(a) using modified Avrahami and Pratt algorithm~[24]. Fig. 4(c) displays the initial characteristic points in Fig. 4(b) using the method of Davis~[23]. Figs. 4(d) and (e) demonstrate the initial characteristic points as well as the intermediate characteristic points which have been obtained after minimizing the errors between the original outline and the computed outline.
-	\end{quotation}
-\end{tcolorbox}
+Longer quotations---as a~rule of thumb, anything that spans more than two lines of text---should be formatted as block quotations:
+\begin{longtblr}{}
+	\begin{minipage}{\linewidth}%
+		\strut\noindent%
+		\cite[377]{sigfridsson} summarize their findings as follows:
+		\begin{quote}\vspace{-\smallskipamount}%
+			The \caps{CHELMO} method gives the best multipole moments for small and medium-sized polar systems, whereas the \caps{CHELP-BOW} charges reproduce best the total interaction energy in actual simulations. Among the standard methods, the Merz--Kollman charges give the best moments and potentials, but they show an appreciable dependence on the orientation of the molecule.%
+			\strut
+		\end{quote}
+	\end{minipage}
+\end{longtblr}
+\noindent Even longer quotations---which span more than one paragraph---are typeset as block quotations with additional first-line indent from the second quoted paragraph on:
+\begin{longtblr}{}
+	\begin{minipage}{\linewidth}
+		\strut\noindent%
+		\cite[801]{sarfraz} describe the results of their approach as follows:
+		\begin{quotation}\vspace{-\smallskipamount}%
+			The scheme and the algorithm has been implemented and tested for various shapes. Visually quite elegant results have been observed. \par
+			The algorithm has been tested for four fonts in Figs. 4(a), 5(a), 6(a) and (7a). The fonts in Figs. 4(a) and 5(a) are Arabic, whereas the images in Figs. 6(a) and 7(a) are Greek and Kanji characters respectively. \par
+			Fig.~4(b) is the outline of Fig.~4(a) using modified Avrahami and Pratt algorithm~[24]. Fig. 4(c) displays the initial characteristic points in Fig. 4(b) using the method of Davis~[23]. Figs. 4(d) and (e) demonstrate the initial characteristic points as well as the intermediate characteristic points which have been obtained after minimizing the errors between the original outline and the computed outline.%
+			\strut
+		\end{quotation}
+	\end{minipage}
+\end{longtblr}
 
 \subsection{List of References}
 
@@ -1428,50 +1520,47 @@ The \textit{\caps{CMOS}} style posits that titles of books and journals be itali
 \subsubsection{Citations Embedded in a~Sentence}
 
 The settings in this document output citations as they would be generated by the popular \texttt{natbib} package. That is, \verb|\cite|, \verb|\citet|, and \verb|\textcite| yield the same result:
-\begin{tcolorbox}
+\begin{longtblr}{}
 	\cite{sarfraz}, \citet{sarfraz}, \textcite{sarfraz}
-\end{tcolorbox}
-Citing the same author multiple times:
-\begin{tcolorbox}
+\end{longtblr}
+\noindent Citing the same author multiple times:
+\begin{longtblr}{}
 	\cite{aristotle:anima, aristotle:physics, aristotle:poetics} \textellipsis
-\end{tcolorbox}
+\end{longtblr}
 
-\pagebreak
 If a~citation includes a~``von'' part and occurs at the beginning of a~sentence, it has to be capitalized, which is done via the \verb|\Citet| command:
-\begin{tcolorbox}
+\begin{longtblr}{}
 	\Citet{vangennep} \textellipsis, \citet{vangennep} \textellipsis
-\end{tcolorbox}
+\end{longtblr}
 
 Citing a~work with more than three authors via \verb|\cite|, \verb|\citep|, \verb|\citet|, etc. abbreviates the author list to first author plus ``et~al.'' by default:
-\begin{tcolorbox}
-	\setlength{\parindent}{0pt}%
-	The book \citetitle{gerhardt} \citep{gerhardt} has a~single author. \par
-	The report \citetitle{chiu} \citep{chiu} has two authors. \par
-	The \citetitle{companion} \citep{companion} has three authors. \par
+\begin{longtblr}{}
+	The book \citetitle{gerhardt} \citep{gerhardt} has a~single author.
+	The report \citetitle{chiu} \citep{chiu} has two authors.
+	The \citetitle{companion} \citep{companion} has three authors.
 	The article \citetitle{murray} \citep{murray} has many authors and was published in \mkbibemph{\citefield{murray}{journaltitle}}.
-\end{tcolorbox}
-The full list of author names is printed when using the starred commands \verb|\citep*|, \verb|\citet*|, etc:
-\begin{tcolorbox}
+\end{longtblr}
+\noindent The full list of author names is printed when using the starred commands \verb|\citep*|, \verb|\citet*|, etc:
+\begin{longtblr}{}
 	The article \citetitle{murray} \citep*{murray} has many authors and was published in \mkbibemph{\citefield{murray}{journaltitle}}.
-\end{tcolorbox}
+\end{longtblr}
 
 \subsubsection{Citations Included in Parentheses}
 
 A~citation in parentheses:
-\begin{tcolorbox}
+\begin{longtblr}{}
 	This process has been described in the literature in detail \citep[see][and the references therein]{gerhardt}.
-\end{tcolorbox}
-An alternative way to include additional text in the parentheses is the following:
-\begin{tcolorbox}
+\end{longtblr}
+\noindent An alternative way to include additional text in the parentheses is the following:
+\begin{longtblr}{}
 	Its properties are covered in publications and reports from various disciplines (for instance, \citealp{chiu, markey, padhye, sarfraz} are of relevance).
-\end{tcolorbox}
+\end{longtblr}
 
 \subsubsection{Citing Only Parts of Works}
 To cite particular pieces of information of a~work, several commands are available, such as \verb|\citeauthor|, \verb|\citeyear|, \verb|\citetitle|, etc.:
-\begin{tcolorbox}
+\begin{longtblr}{}
 	The book \citetitle{knuth:ct:a}, written by Donald~E. \citeauthor{knuth:ct:a}, was published in \citeyear{knuth:ct:a}. It is available online via  \url{https://ctan.org/pkg/texbook}.%
-	\vspace{-1pt}
-\end{tcolorbox}
+\end{longtblr}
 
 
 \section{Recommendations for Typesetting Mathematical Expressions}
@@ -1479,32 +1568,39 @@ To cite particular pieces of information of a~work, several commands are availab
 
 \subsection{Equations and Equation Numbering}
 Short equations can be typeset in-line:
-\begin{tcolorbox}
+\begin{longtblr}{}
 	Let $\pi(x) = p(x)\,x - c(x)$ denote the profit of a~monopolist, where $c(x)$ is the cost of producing quantity~$x$.
-\end{tcolorbox}
+\end{longtblr}
 
 Equations that are taller than a~normal line of text and important equations should be typeset as display equations:
-\begin{tcolorbox}[bottom = -2.75ex, top = -2.75ex]
-	\begin{equation}
-		(x+a)^n= \sum_{k=0}^n \binom{n}{k} \, x^k a^{n-k}
-	\end{equation}%
-\end{tcolorbox}
+\begin{longtblr}{}
+	\begin{minipage}{\linewidth}\noindent%
+		\begin{equation}
+			(x+a)^n= \sum_{k=0}^n \binom{n}{k} \, x^k a^{n-k}
+		\end{equation}%
+	\end{minipage}\vspace{0.333\smallskipamount}
+\end{longtblr}
 
 All display equations should be numbered because this makes it easier to refer to them:
-\begin{tcolorbox}[top = -2.75ex]
-	\begin{equation}
-		\label{eq:series}
-		(1+x)^n = 1 + \frac{n\,x}{1!} + \frac{n\,(n-1)\,x^2}{2!} + \cdots
-	\end{equation} \par
-	Equation~\eqref{eq:series} posits that \textellipsis
-\end{tcolorbox}
-Some authors prefer to number only those equations that they actually reference in the body text. This practice is debatable, however, since the very purpose of the numbering is to make an equation easy to find. When encountering an unnumbered equation, one does not know whether the numbered equation that one is looking for can be found above or below the unnumbered equation. Hence, please number \emph{all} equations. (In the same vein, we also numbers \emph{all} pages, because selectively numbering only particular pages would make little sense.)
+\begin{longtblr}{}
+	\begin{minipage}{\linewidth}\noindent%
+		\begin{equation}
+			\label{eq:series}
+			(1+x)^n = 1 + \frac{n\,x}{1!} + \frac{n\,(n-1)\,x^2}{2!} + \cdots
+		\end{equation}\par
+		Equation~\eqref{eq:series} posits that \textellipsis%
+		\strut
+	\end{minipage}
+\end{longtblr}
+\noindent Some authors prefer to number only those equations that they actually reference in the body text. This practice is dubious, however, since the very purpose of the numbering is to make an equation easy to find. When encountering an unnumbered equation, one does not know whether the numbered equation that one is looking for can be found above or below the unnumbered equation. Hence, please number \emph{all} equations. (In the same vein, we also numbers \emph{all} pages and all sections in our document. Selectively numbering only some pages or some sections would make little sense.)
+
+\pagebreak
 
 \subsection{Italic Shape for Variables}
 All variables should be consistently italicized. This makes it easier to identify them and to com\-pre\-hend the text. In LaTeX, this is achieved by using math mode (e.g., \verb|$x$| or \verb|\(x\)| to produce~$x$):
-\begin{tcolorbox}
+\begin{longtblr}{X}
 	Let $p$ denote the price, and $c$ marginal cost.
-\end{tcolorbox}
+\end{longtblr}
 
 \subsection{Upright Shape for Mathematical Constants and Functions with Established Meaning}
 In line with \caps{ISO} norm 80000-2:2019(E), functions, numerical constants, and operators with an established, ``well-defined'' meaning should \emph{not} be italicized but set upright to disambiguate them from variables. ``Well-defined'' here refers to the meaning being the same across contexts. This applies to, for instance, the exponential function ($\exp$) and the logarithmic function ($\log$, $\ln$), to Euler's constant ($\mathrm{e}$) and the circular constant ($\uppi$), as well as to the symbols for the differential ($\mathrm{d}$) and the expected value ($\operatorfont{E}$). The \caps{ISO}~80000-2:2019(E) standard%
@@ -1532,45 +1628,51 @@ states:
 \end{quotation}
 
 Here are some examples:
-\begin{tcolorbox}[extras last = {bottom = -4ex}, extras unbroken = {bottom = -4ex}]
-	\setlength{\parindent}{0pt}%
-	Profit $\pi$ (variable) vs.\ radial constant $\uppi$ (numerical constant). \par
-	Effort $e$ (variable) vs.\ Euler's number $\mathrm{e}$ (numerical constant). \par
-	Expected value $\operatorname{E}[X]$, variance $\operatorname{Var}[X]$, covariance $\mathrm{Cov}[X, Y]$, probability $\Pr[{X \le x}]$. \par
-	Exponential function and logarithm: $\exp x$, $\log y$, $\lg y$, $\ln y$. \par
-	Sine and cosine function: $\sin \theta$, $\cos \theta$.
-	\begin{equation}
-		f(x) = a_0 + \sum_{n=1}^\infty \left(a_n \cos \frac{n \uppi x}{L} + b_n \sin \frac{n \uppi x}{L} \right).
-	\end{equation} \par
-	Variable $d$ vs.\ differential $\dd$, difference operator $\upDelta$, limit $\lim$.
-	\begin{equation}
-		\mathrm{E}[X] \coloneq \int_{-\infty}^{\infty} x\,f(x)\,\dd x; \quad
-		f'(x) \coloneq \frac{\dd f(x)}{\dd x} \coloneq \lim_{\upDelta x \to 0} \frac{f(x + \upDelta x) - f(x)}{\upDelta x}.
-	\end{equation}
-\end{tcolorbox}
 
-\pagebreak
+\begin{longtblr}{}
+	Profit $\pi$ (variable) vs.\ radial constant $\uppi$ (numerical constant). \\
+	Effort $e$ (variable) vs.\ Euler's number $\mathrm{e}$ (numerical constant). \\
+	Expected value $\operatorname{E}[X]$, variance $\operatorname{Var}[X]$, covariance $\mathrm{Cov}[X, Y]$, probability $\Pr[{X \le x}]$. \\
+	Exponential function and logarithm: $\exp x$, $\log y$, $\lg y$, $\ln y$. \\
+	\begin{minipage}{\linewidth}\noindent%
+		Sine and cosine function: $\sin \theta$, $\cos \theta$.
+		\begin{equation}
+			f(x) = a_0 + \sum_{n=1}^\infty \left(a_n \cos \frac{n \uppi x}{L} + b_n \sin \frac{n \uppi x}{L} \right).
+		\end{equation}
+	\end{minipage} \\
+	\begin{minipage}{\linewidth}\noindent%
+		Variable $d$ vs.\ differential $\dd$, difference operator $\upDelta$, limit $\lim$.
+		\begin{equation}
+			\mathrm{E}[X] \coloneq \int_{-\infty}^{\infty} x\,f(x)\,\dd x; \quad
+			f'(x) \coloneq \frac{\dd f(x)}{\dd x} \coloneq \lim_{\upDelta x \to 0} \frac{f(x + \upDelta x) - f(x)}{\upDelta x}.
+		\end{equation}
+	\end{minipage}\vspace{0.333\smallskipamount}
+\end{longtblr}
 
 Following the \caps{ISO} recommendations, vectors and matrices should be typeset using boldface. Also for vectors and matrices, italics should be used when they denote variables, and upright font should be used for vector-\slash matrix-valued operators and functions with a~``well-defined'' meaning:
-\begin{tcolorbox}[extras last = {bottom = -3.5ex}, extras unbroken = {bottom = -3.5ex}]
-	A multivariate random variable $\bm{X}$ has the expected value $\mathbf{E}[\boldsymbol{X}]$ (a~vector of scalar expected values). The variance--covariance matrix $\bm{\Sigma}$ is a~symmetric ${(n \times n)}$ matrix with the following entries:
-	\begin{equation}
-		\bm{\Sigma} = \mathbf{Cov}[\bm{X}] =
-		\left[\;\begin{matrix}
-			\mathrm{Var}[X_1] & \mathrm{Cov}[X_1, X_2] & \cdots & \mathrm{Cov}[X_1, X_n] \\
-			\mathrm{Cov}[X_2, X_1] & \mathrm{Var}[X_2] & \cdots & \mathrm{Cov}[X_2, X_n]
-			\\
-			\vdots & & \ddots & \vdots \\
-			\mathrm{Cov}[X_n, X_1] & \mathrm{Cov}[X_n, X_2] & \cdots & \mathrm{Var}[X_n]
-		\end{matrix}\;\right].
-	\end{equation}
-\end{tcolorbox}
+\begin{longtblr}{}
+	\begin{minipage}{\linewidth}\noindent%
+		A multivariate random variable $\bm{X}$ has the expected value $\mathbf{E}[\boldsymbol{X}]$ (a~vector of scalar expected values). The variance--covariance matrix $\bm{\Sigma}$ is a~symmetric ${(n \times n)}$ matrix with the following entries:
+		\vspace{-0.75\smallskipamount}%
+		\begin{equation}
+			\bm{\Sigma} = \mathbf{Cov}[\bm{X}] =
+			\left[\;\begin{matrix}
+				\mathrm{Var}[X_1] & \mathrm{Cov}[X_1, X_2] & \cdots & \mathrm{Cov}[X_1, X_n] \\
+				\mathrm{Cov}[X_2, X_1] & \mathrm{Var}[X_2] & \cdots & \mathrm{Cov}[X_2, X_n]
+				\\
+				\vdots & & \ddots & \vdots \\
+				\mathrm{Cov}[X_n, X_1] & \mathrm{Cov}[X_n, X_2] & \cdots & \mathrm{Var}[X_n]
+			\end{matrix}\;\right].
+		\end{equation}
+	\end{minipage}\vspace{0.1\smallskipamount}
+\end{longtblr}
 
 Descriptive subscripts and superscripts should be printed upright so that they can be disambiguated from exponential operations etc.:
-\begin{tcolorbox}
-	In the equation ${\hat{\bm{\beta}} = (\bm{X}^\mathrm{T}\bm{X})^{-1}\bm{X}^\mathrm{T}\bm{y}}$, the (upright) uppercase letter~$\mathrm{T}$ denotes the matrix transpose. \par
-	By contrast, in the expression ${\bm{X} = (\bm{x}_t)_{t = 1}^T}$, the (italic) uppercase letter~$T$ denotes the total number of observations, with individual observations indexed by lowercase~$t$.
-\end{tcolorbox}
+\begin{longtblr}{}
+	In the expression ${\hat{\bm{\beta}} = (\bm{X}^\mathrm{T}\bm{X})^{-1}\bm{X}^\mathrm{T}\bm{y}}$, the upright uppercase $\mathrm{T}$ denotes the matrix transpose. By contrast, in the expression ${\bm{X} = (\bm{x}_t)_{t = 1}^T}$, the italic uppercase $T$ denotes the total number of observations, with individual observations being indexed by lowercase~$t$.
+\end{longtblr}
+
+\endgroup
 
 
 \section{Portability}
@@ -1584,6 +1686,8 @@ The settings in this template regarding the font family (by default, Times), fon
 
 All written texts are structured into words and sentences. If they are long enough, texts are also structured into paragraphs. Academic texts, in addition, feature sections, subsections, and often subsubsections, as well as figures, tables, lists of references, and potentially appendices. These structural elements are associated with headings\slash titles and captions.
 
+\pagebreak[1]
+
 The structure of a~document is conveyed to the reader through \emph{formatting}. Effective formatting of academic documents, thus, requires that all elements of a~particular type---say, section headings---be identifiable as such. Identifiability is achieved through styling that is \emph{consistent within type} and \emph{distinct across types}. For example, all section headings must be formatted identically, and at the same time, they must look different from subsection headings.
 
 As a~consequence, one should refrain from using manual, discretionary formatting whenever possible. In line with this principle, the source code of this template refers to the document's structure as much as possible. This is also called ``semantic coding'': using code that describes the \emph{meaning} of the content and not \emph{how} those elements should look.
@@ -1592,11 +1696,13 @@ As a~consequence, one should refrain from using manual, discretionary formatting
 	\item Examples for LaTeX commands that are \emph{not semantic}---and should be avoided---are \verb|\textbf|, \verb|\textit|, \verb|\newpage|, \verb|\pagebreak|, \verb|\linebreak|, \verb|\\|, \verb|\noindent|, \verb|\smallskip|, \verb|\centering|, \verb|\noindent|, \verb|\hspace|, \verb|\vspace|, \verb|\cellcolor|, \verb|\multirow|.
 \end{itemize}
 
-The reason why one should stick to using semantic commands is that they keep the code \emph{portable}: Semantic code can be \emph{reused} across document without any changes (or at least without major adjustments). This is not then case with nonsemantic code, that is, code that includes manual formatting instructions. Instructions like \verb|\bigskip|, \verb|\hspace|, \verb|\\| (even worse, \verb|\\ \\|), etc. may result in decent formatting in a~particular document but are bound to lead to undesirable formatting in another document. Moreover, manual formatting is error-prone, as it easily leads to inconsistent styling.
+The reason why one should stick to using semantic commands is that they keep the code \emph{portable}: Semantic code can be \emph{reused} across documents without any changes (or at least without major adjustments). This is not then case when code includes manual formatting instructions: Instructions like \verb|\bigskip|, \verb|\hspace|, \verb|\\| (even worse, \verb|\\ \\|), etc. may result in decent formatting in a~particular document but are bound to lead to undesirable formatting in another document. Moreover, manual formatting is error-prone, as it easily leads to inconsistent styling.
 
 This entails two things: First, the formatting should be determined, as much as possible, in the \emph{preamble} of the LaTeX document. This comes at the cost, of course, of a~rather long preamble. Second, instead of defining custom commands, one should \emph{redefine} standard LaTeX commands or use (widely adopted) packages that are available on \caps{CTAN} (\url{https://ctan.org}).
 
-This template follows the above principles, resulting in clean, portable code: The source code of the body of this template (apart from the boxes with examples) consists almost completely of semantic, basic LaTeX, with a~few commands from popular packages on top. And while the preamble of this document is rather long---to achieve the formatting described in \autoref{sec:portability:compatibility}---the packages that are absolutely necessary for successful compilation are few:
+This template follows the above principles, resulting in clean, portable code: The source code of the body of this template (apart from the boxes with examples) consists almost completely of semantic, basic LaTeX,
+%\footnote{The many boxes with examples in Sections~\ref{sec:structure}--\ref{sec:math} made it necessary to include a~few manual page breaks via \texttt{\textbackslash pagebreak}.}
+with a~few commands from popular packages on top. And while the preamble of this document is rather long---to achieve the formatting described in \autoref{sec:portability:compatibility}---the packages that are absolutely necessary for successful compilation are few:
 \begin{itemize}
 	\item \verb|amsmath|,
 	\item \verb|amsthm|,
@@ -1616,7 +1722,7 @@ This template follows the above principles, resulting in clean, portable code: T
 	\item \verb|relsize|,
 	\item \verb|soul|,
 	\item \verb|tabularray| with \verb|\UseTblrLibrary{booktabs, siunitx}|,
-	\item \verb|tcolorbox| with option \verb|most|,
+	\item \verb|tikz| with \verb|\usetikzlibrary{calc}|,
 	\item \verb|titlecaps|,
 	\item \verb|xcolor| with options \verb|svgnames| and \verb|x11names|.
 \end{itemize}
@@ -1647,8 +1753,9 @@ Using BibLaTeX requires using the program \verb|biber| instead of \verb|bibtex| 
 \end{quote}
 at the beginning of the \textit{.tex} file.
 
-\subsection{Using the \mbox{\textit{tabularray}} Package (Rather Than \mbox{\textit{tabularx}}\slash \mbox{\textit{tabulary}}\slash \mbox{\textit{tabu}}, \mbox{\textit{booktabs}}, \mbox{\textit{longtable}}, \mbox{\textit{xltabular}}, \mbox{\textit{multirow}}, \mbox{\textit{makecell}}, \mbox{\textit{colortbl}}, \mbox{\textit{threeparttable}}, \textellipsis\!)}
+\subsection{Using the \mbox{\textit{tabularray}} Package (Rather Than \mbox{\textit{tabularx}}\slash \mbox{\textit{tabulary}}\slash \mbox{\textit{tabu}}, \mbox{\textit{booktabs}}, \mbox{\textit{longtable}}, \mbox{\textit{xltabular}}, \mbox{\textit{multirow}}, \mbox{\textit{makecell}}, \mbox{\textit{colortbl}}, \mbox{\textit{parnotes}}, \mbox{\textit{threeparttable}}, \textellipsis\!)}
 
+\subsubsection{General Idea}
 The principle of separating the content from its formatting as much as possible can also be applied to tables. The \mbox{\textit{tabularray}} package (\url{https://ctan.org/pkg/tabularray}) allows you to do just that. \mbox{\textit{tabularray}} has been around since May 2021, so it is relatively new---but it has already matured into a~package that is extremely useful. \mbox{\textit{tabularray}} replaces (or loads) all the other table-related LaTeX packages that you may have used so far---like \mbox{\textit{tabularx}}\slash\mbox{\textit{tabulary}}\slash\mbox{\textit{tabu}}, \mbox{\textit{longtable}}, \mbox{\textit{xltabular}}, \mbox{\textit{multirow}}, \mbox{\textit{makecell}}, \mbox{\textit{booktabs}}, \mbox{\textit{colortbl}}, \mbox{\textit{threeparttable}}, \textellipsis
 
 Separating the contents of a~table from its formatting means that no formatting instructions whatsoever need to be placed in the table cells---neither for drawing rules between table rows nor for highlighting entries nor for increasing spacing nor for changing alignment, and so on. Instead, the placement of rules at the top and bottom of a~table or between particular rows, the specification of column widths, the specification of font sizes and cell alignment, desired highlighting via boldface or a~background color, etc., can all be coded as arguments to the table environment. This is beneficial in at least three aspects:
@@ -1665,7 +1772,8 @@ Further additional helpful features of \mbox{\textit{tabularray}} are:
 	\item You can set document-wide formatting defaults to achieve consistent formatting of all tables. For instance, you can set defaults such that all tables feature the same top and bottom rules. Or, you could make all column heads be typeset in boldface document-wide.
 \end{itemize}
 
-When using \verb|\UseTblrLibrary{siunitx}|, \mbox{\textit{tabularray}} loads the \mbox{\textit{siunitx}} package. This is another useful package which permits separating content from formatting. In particular, the \verb|S|~column type is able to round numbers to a~specified precision. This means that one can include table content produced by an external program with as many decimal digits as that program produces and have LaTeX take care of the rounding.
+\subsubsection{In Conjunction with the \textit{siunitx} Package}
+When using \verb|\UseTblrLibrary{siunitx}|, \mbox{\textit{tabularray}} loads the \mbox{\textit{siunitx}} package. This is another useful package which permits separating content from formatting. In particular, the \verb|S|~column type is able to round numbers to a~specified precision. This means that one can include table content produced by an external program with as many decimal digits as that program produces and have LaTeX take care of the rounding. See \autoref{tab:siunitx-rounding} for an illustration.
 
 
 \section{Tests, Including Example Figures}
@@ -1702,14 +1810,14 @@ If the order of the list entries does not matter---that is, the list is a~collec
 \end{itemize}
 
 \renewcommand{\testlist}{%
-	\item We first provide an overview of the foundational concepts in LaTeX, including its purpose as a~typesetting system that is particularly well-suited for producing complex documents such as academic papers and theses. LaTeX allows for precise control over document structure and formatting, making it a~preferred choice for many professionals in academia and research.
-	\item We delve into\footnote{This text was \caps{AI}-generated \textellipsis} the various environments available in LaTeX, such as the \texttt{itemize} and \texttt{enumerate} environments. Each environment serves a~different purpose, with \texttt{itemize} creating bullet points and \texttt{enumerate} generating numbered lists.
-	\item We discuss the importance of packages in LaTeX, which enhance its functionality. Packages like \texttt{amsmath} for advanced mathematical typesetting and \texttt{graphicx} for including images are essential for expanding the capabilities of basic LaTeX. Users should familiarize themselves with how to include and utilize these packages to maximize their LaTeX experience.
-	\item Lastly, we explore the common pitfalls and troubleshooting tips for LaTeX users. Issues such as compilation errors, misformatted text, and missing packages can often arise. Knowing how to read error messages and where to find help, such as online forums and documentation, can significantly improve the user experience and help resolve issues efficiently.
+	\item We first provide an overview of the foundational concepts in LaTeX. LaTeX allows for precise control over document structure and formatting, in particular of mathematics, making it a~preferred choice for many professionals in academia.
+	\item We delve into\footnote{\caps{AI} is a~big fan of delving into stuff \textellipsis} the various environments available in LaTeX, such as the \texttt{equation}, \texttt{figure}, \texttt{table}, \texttt{enumerate}, and \texttt{itemize} environments.
+	\item We discuss the importance of packages in LaTeX, which enhance its functionality. Packages like \texttt{amsmath} for advanced mathematical typesetting and \texttt{graphicx} for including images are essential for expanding the capabilities of basic LaTeX.
+	\item Lastly, we explore the common pitfalls and troubleshooting tips for LaTeX users. Knowing how to read error messages helps resolve issues efficiently.
 }
 
 \displaybaselinegrid%
-If the order of the list entries matters---such as when describing a~sequence of events, a~hierarchy, or items sorted by priority---use an ordered list, that is, a~numbered list:%
+If the order of the list entries matters---such as when describing a~sequence of events, a~hierarchy, or items sorted by priority---use an ordered---that is, a~numbered---list:%
 \begin{enumerate}
 	\item Nested numbered list (please avoid more than two list levels!):
 		\begin{enumerate}
@@ -1719,9 +1827,9 @@ If the order of the list entries matters---such as when describing a~sequence of
 \end{enumerate}
 
 \begin{description}
-	\item[Apple.] A~sweet and crunchy fruit that comes in various colors such as red, green, and yellow. Apples are rich in dietary fiber and vitamin~C, making them a~healthy snack. They are also used in a~variety of recipes, including pies, salads, and juices.\footnote{This description was \caps{AI}-generated.}
-	\item[Banana.] A~long, yellow fruit that is soft and sweet when ripe. Bananas are known for being an excellent source of potassium, which helps maintain proper muscle and nerve function. They are often eaten as a~quick snack or used in smoothies, baked goods, and desserts.\footnote{This description was \caps{AI}-generated, too.}
-	\item[Cherry.] A~small, round fruit that is typically red or dark purple in color and contains a~hard pit in the center. Cherries are known for their sweet-tart flavor and are commonly consumed fresh, or used in jams, pies, and juices. They are also rich in antioxidants and anti-inflammatory compounds.\footnote{This description was \caps{AI}-generated, too.}
+	\item[Apple.] A~sweet and crunchy fruit that comes in various colors such as red, green, and yellow. Apples are rich in dietary fiber and vitamin~C, making them a~healthy snack.
+	\item[Banana.] A~long, yellow fruit that is soft and sweet when ripe. Bananas are known for being an excellent source of potassium, which helps maintain proper muscle and nerve function.
+	\item[Cherry.] A~small, round fruit that is typically red or dark purple in color and contains a~hard pit in the center. Cherries are rich in antioxidants and anti-inflammatory compounds.\footnote{These descriptions were \caps{AI}-generated.}
 \end{description}
 
 \pagebreak
@@ -2349,6 +2457,7 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 
 \begin{table}[b]
 	\caption{A~table to illustrate rounding with the help of the \mbox{\textit{siunitx}} package}
+	\label{tab:siunitx-rounding}
 	\begin{booktabs}{
 		colspec = {X r c l S[table-format = 11.4, round-precision = 4, round-mode = places]},
 		hborder{2, 4} = {abovespace = \aboverulesep, belowspace = \belowrulesep},
@@ -2377,10 +2486,8 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 			A~\mbox{\textit{tabularray}}-based table with natural column widths and a~total width of less than \texttt{\textbackslash textwidth}%
 		},
 		label = {fig:test},
-		headsep = 10pt,  % See https://ftp.agdsn.de/pub/mirrors/latex/dante/macros/latex/contrib/caption/caption.pdf, Section 2.6
-		long,
-		postsep = 0pt,
-		presep = 0pt,  % No additional space, since we are within a table environment
+		headsep = 0pt,  % Skip already inserted by the caption package
+		tall,
 		remark{Notes} = {%
 			\footnotesize\strut As this example shows, \mbox{\textit{tabularray}} can produce table titles and notes whose width is identical to that of the table's body, just as the \mbox{\textit{threeparttable}} package would produce them. So, no \mbox{\textit{threeparttable}} needed, \mbox{\textit{tabularray}} does it all.%
 		},
@@ -2443,17 +2550,21 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 	\UseTblrTemplate{contfoot-text}{normal} \par
 }
 \SetTblrTemplate{contfoot}{leftaligned}
-\DeclareTblrTemplate{conthead-text}{normal}{\tablecapstrut(continued)}
-\SetTblrTemplate{conthead-text}{normal}
-\DeclareTblrTemplate{capcont}{default}{%
+\DeclareTblrTemplate{conthead-text}{minimal}{\tablecapstrut(continued)}
+\SetTblrTemplate{conthead-text}{minimal}
+\SetTblrStyle{caption-tag}{font = \bfseries}
+\DeclareTblrTemplate{capcont}{minimal}{%
 	\UseTblrTemplate{caption-tag}{default}
-	\UseTblrTemplate{conthead-text}{default}%
+	\UseTblrTemplate{conthead-text}{minimal}%
+}
+\DeclareTblrTemplate{middlehead, lasthead}{default}{
+	\UseTblrTemplate{capcont}{minimal}
 }
 \begin{booktabs}[
 	caption = {Parameter values used in the time experiment},
 	label = {tab:parameter_values_time},
 	footsep = 2\belowbottomsep,
-	headsep = 10pt,  % See https://ftp.agdsn.de/pub/mirrors/latex/dante/macros/latex/contrib/caption/caption.pdf, Section 2.6
+	%headsep = 10pt,  % See https://ftp.agdsn.de/pub/mirrors/latex/dante/macros/latex/contrib/caption/caption.pdf, Section 2.6
 	long,
 	presep = \smallskipamount,  %\textfloatsep,
 	postsep = \medskipamount,  %\textfloatsep,
@@ -2464,11 +2575,18 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 	column{2-6} = {rightsep+ = -1pt},
 	column{7} = {rightsep+ = 12pt},
 	hborder{1-Z} = {abovespace = 0pt, belowspace = 0pt},
-	hborder{1} = {abovespace = \abovetopsep, belowspace = \belowrulesep},
-	hborder{Z} = {abovespace = \aboverulesep, belowspace = \belowbottomsep},
-	hborder{2, 36, 38, 74, 79} = {abovespace = \aboverulesep, belowspace = \belowrulesep},
-	hline{2, 38, 79} = {\lightrulewidth, solid},
-	rowhead = 1,
+	% Workaround so that the horizontal rules that are repeated on each page receive
+	% sufficient vertical space above and below -->
+	hline{1} = {1}{-}{\heavyrulewidth},
+	hline{1} = {2}{-}{fg = white, text = {\rule{0pt}{\belowrulesep}}},
+	hline{2} = {1}{-}{fg = white, text = {\rule{0pt}{\aboverulesep}}},
+	hline{2} = {2}{-}{\lightrulewidth},
+	hline{2} = {3}{-}{fg = white, text = {\rule{0pt}{\belowrulesep}}},
+	hline{Z} = {1}{-}{fg = white, text = {\rule{0pt}{\aboverulesep}}},
+	hline{Z} = {2}{-}{\heavyrulewidth},
+	% <--
+	rowhead = 1,  % Repeat first line on each page
+	rulesep = 0pt,
 	%rows = {ht = 0.765\baselinedist},
 	rows = {ht = 0.0216\textheight},
 	stretch = 0,  % Reduce row height slightly
@@ -3343,8 +3461,8 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 
 \clearpage
 
-\iffalse
-	% Use \iffalse to suppress the text font samples, needed for https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch
+\iftrue
+	% Use \iffalse to suppress the text font samples, which may be needed for compilation via https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch
 	% Use \iftrue to display the text font samples
 
 	\begingroup

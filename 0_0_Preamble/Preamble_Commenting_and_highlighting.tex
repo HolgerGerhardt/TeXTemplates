@@ -14,17 +14,17 @@
 
 \let\comment\undefined  % in case \comment{...} is already defined, e.g., by verbatim
 
-\usepackage[todonotes={textsize=scriptsize}, authormarkuptext=name, authormarkup=none]{changes}
+\usepackage[todonotes={textsize=scriptsize}, authormarkuptext = name, authormarkup = none]{changes}
 
 \makeatletter
 % Make the ``changes'' boxes solid and less round:
 \tikzstyle{notestyleraw} = [
-	draw=\@todonotes@currentbordercolor,
-	fill=\@todonotes@currentbordercolor,
-	text=white,
+	draw = \@todonotes@currentbordercolor,
+	fill = \@todonotes@currentbordercolor,
+	text = white,
 	line width = 0.35pt,
 	text width = \@todonotes@textwidth - 1.5ex - 1pt,
-	inner sep = 0.75ex,
+	inner sep = 1ex,
 	rounded corners = 0pt
 ]
 % Redefine default color (which is used when the author ID is omitted):
@@ -32,11 +32,12 @@
 \@namedef{Changes@AuthorColor}{magenta}
 \colorlet{Changes@Color}{magenta}
 % Decrease font size of the ``changes'' boxes and use sans-serif font:
-\newcommand{\changesfontsettings}{\sffamily\scriptsize\baselineskip=2.25ex}
+\newcommand{\changesfontsettings}{\sffamily\scriptsize\setlength{\baselineskip}{2.25ex}}
+\renewcommand{\todoformat}[1]{{\changesfontsettings\strut#1\par}}
 \providecommand{\@todonotes@useSizeCommand}{\changesfontsettings}
 % Decrease rule thickness slightly:
-\xpatchcmd{\@todonotes@drawLineToLeftMargin} {connectstyle}{connectstyle, line width=0.6pt}{}{}
-\xpatchcmd{\@todonotes@drawLineToRightMargin}{connectstyle}{connectstyle, line width=0.6pt}{}{}
+\xpatchcmd{\@todonotes@drawLineToLeftMargin} {connectstyle}{connectstyle, line width = 0.6pt}{}{}
+\xpatchcmd{\@todonotes@drawLineToRightMargin}{connectstyle}{connectstyle, line width = 0.6pt}{}{}
 \makeatother
 
 \definecolor{electricultramarine}{rgb}{0.25, 0.0, 1.0}
@@ -44,15 +45,17 @@
 \definecolor{dartmouthgreen}{rgb}{0.05, 0.5, 0.06}
 \definecolor{goldenpoppy}{HTML}{FCC200}
 \definecolor{internationalorange}{rgb}{1.0, 0.31, 0.0}
-\definechangesauthor[name={Holger}, color=alizarin]           {HG}
-\definechangesauthor[name={Lou~E.}, color=internationalorange]{LV}
-\definechangesauthor[name={U.~R.},  color=electricultramarine]{UR}
+\definechangesauthor[name={Holger}, color = alizarin]           {HG}
+\definechangesauthor[name={Lou~E.}, color = internationalorange]{LV}
+\definechangesauthor[name={U.~R.},  color = electricultramarine]{UR}
 
 % Make the \todo lines solid (instead of 70% opacity) and introduce a ``tickmark''
 \LetLtxMacro{\todoorig}{\todo}
 \makeatletter
 \renewcommand{\todo}[2][]{%
-	\todoorig[color=Changes@Color, bordercolor=Changes@Color, #1, tickmarkheight=0.1cm, linecolor=authorcolor]{#2}%
+	\todoorig[
+		color = Changes@Color, bordercolor = Changes@Color, #1, tickmarkheight = 0.1cm, linecolor = authorcolor
+	]{\strut#2}%
 }
 \makeatother
 
@@ -67,7 +70,7 @@
 		\parbox{\commentboxwidth}{%
 			\changesfontsettings\color{white}\RaggedRight%
 			\hrule\smallskip%
-			#2%
+			\strut#2\par%
 		}%
 	}%
 	\commentorig[#1]{%
@@ -115,6 +118,7 @@
 	\lineabovecomment{\Changes@replaced@comment}%
 }%  % NEW
 \newcommand{\insertchangeshighlight}{%
+	\smallskip%
 	\strut\lineabovecomment{\Changes@highlight@comment}%
 }
 \Changes@set@commandname{added}

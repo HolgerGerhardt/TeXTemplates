@@ -2,11 +2,6 @@
 	\relax\ifmmode\text{\texteuro}\else\texteuro\fi%
 }%
 \begin{booktabs}{
-%	colspec = {
-%		X[l]
-%		@{\quad\qquad} E @{\:} Q[r] @{\qquad} E @{\:} Q[r]
-%		@{\quad\qquad} E @{\:} Q[r] @{\qquad} E @{\:} Q[r]
-%	},
 	cell{1}{2} = {c = 4}{halign = c},
 	cell{1}{6} = {c = 4}{halign = c},
 	cell{3, 8, 13, 18}{1} = {c = 9}{halign = l},
@@ -14,18 +9,17 @@
 	cell{4-7, 9-12, 14-17, 19-23}{3, 7, 9} = {appto = \%},
 	cell{4-7, 14-17, 19-23}{4} = {preto = \euro},
 	cell{4-7, 14-17, 19-23}{5} = {appto = \%},
-	cells = {font = \footnotesize},
-	column{2-4, 6-8} = {rightsep+ = -0.15em},
-	column{3-5, 7-9} = {leftsep+ = -0.15em},
-	column{5} = {rightsep+ = 1.75em},
-	column{4, 6, 8} = {leftsep+ = 1em},
+	column{2-4, 6-8} = {rightsep+ = -0.2em},
+	column{3-5, 7-9} = {leftsep+ = -0.2em},
+	column{1, 5} = {rightsep+ = 0.4em},
+	column{4, 6, 8} = {leftsep+ = 0.8em},
 	colspec = {X[l] E Q[r] E Q[r] E Q[r] E Q[r]},
 	hborder{3} = {abovespace = \aboverulesep, belowspace = \belowrulesep},
 	hline{2} = {0pt, solid},  % Suppress regular rule after column headings
 	hline{3} = {\lightrulewidth, solid},  % Suppress regular rule after column headings
 	row{1, 2, 3, 8, 13, 18} = guard,
 	row{2} = {halign = c},
-	width = 1.25\textwidth,
+	width = \textwidth,
 }
 	& Alternative~$\mathbfit{A}$ & & &
 	& Alternative~$\mathbfit{B}$ & & & \\

@@ -402,15 +402,18 @@ Only variables are set in italics according to \caps{ISO} style---hence, we use 
 
 \NewTblrColumnType{E}{S[table-format = {\texteuro}2.2, table-align-text-before = true]}
 
+\smallskip
 \begin{table}
 	\caption{%
 		Overview of the choice lists presented to subjects \\
 		\citep[adapted from][]{Gerhardt2017}.%
 	}
 	\label{tab:choice_lists}%
-	\resizebox*{!}{0.6\textheight}{%
+	\vspace{-\smallskipamount}%
+	\resizebox*{!}{0.6\textheight}{{%
+		\SetTblrInner[booktabs]{cells = {font = \footnotesize}}%
 		\input{1_Example_Content/9_Appendix/siunitx_Example_Choice_Lists}%
-	}
+	}}
 \end{table}%
 
 \end{frame}
@@ -477,19 +480,22 @@ Rule out some alternative explanations \citep{Dertwinkel-Kalt2017}.
 \end{frame}
 
 
-\NewTblrColumnType{U}{S[table-format={**}+1.3{-**}, round-mode=places, round-precision=3, round-integer-to-decimal=false]}%
+\NewTblrColumnType{U}{S[table-format = {**}+1.3{-**}, round-mode = places, round-precision = 3]}%
 \providecommand{\discard}[1]{\makebox(0pt, 0pt)[lb]{}}
 
 
 \begin{frame}{\titleprefix: Another \textbf{\texttt{siunitx}} Example Table}
 
+\smallskip
 \begin{table}
 	\caption{%
 		Example of a~regression table \citep[adapted from][]{Gerhardt2017}.
 		Make sure to mention the dependent variable (here, $m_\sim$)!%
 	}
 	\label{tab:lin_reg_interactions}
+	\vspace{-\smallskipamount}%
 	\resizebox*{!}{0.6\textheight}{%
+		\SetTblrStyle{remark}{font = \scriptsize, halign = j, hang = 0pt, indent = 0pt}%
 		\SetTblrInner[booktabs]{cells = {font = \footnotesize}}%
 		\input{1_Example_Content/9_Appendix/siunitx_Example_Regression}%
 	}
@@ -500,10 +506,10 @@ Rule out some alternative explanations \citep{Dertwinkel-Kalt2017}.
 
 \begin{frame}{\titleprefix: Revealing a~Table Column by Column}
 
+\SetTblrTemplate{remark}{empty}  % Suppress table notes in this frame
 \SetTblrInner[booktabs]{
 	cells = {font = \footnotesize},
 	cell{2-Z}{2-Z} = {fg = white},
-	row{Z} = {cmd = \discard, ht = 0pt, abovesep = -10pt, belowsep = -10pt},
 }
 \only<2->{\SetTblrInner[booktabs]{column{2} = {fg = black}}}
 \only<3->{\SetTblrInner[booktabs]{column{3} = {fg = black}}}
@@ -511,10 +517,12 @@ Rule out some alternative explanations \citep{Dertwinkel-Kalt2017}.
 \only<5->{\SetTblrInner[booktabs]{column{5} = {fg = black}}}
 \only<6>{\SetTblrInner[booktabs]{column{6} = {fg = black}}}
 
+\smallskip
 \begin{table}
 	\caption{%
 		Revealing a~table column by column makes it easier to comprehend.%
 	}
+	\vspace{-\smallskipamount}%
 	\resizebox*{!}{0.67\textheight}{%
 		\SetTblrInner[booktabs]{cells = {font = \footnotesize}}%
 		\input{1_Example_Content/9_Appendix/siunitx_Example_Regression}%
@@ -526,9 +534,9 @@ Rule out some alternative explanations \citep{Dertwinkel-Kalt2017}.
 
 \begin{frame}{\titleprefix: Highlighting Cells in a~Table}
 
+\SetTblrTemplate{remark}{empty}  % Suppress table notes in this frame
 \SetTblrInner[booktabs]{
 	cells = {font = \footnotesize},
-	row{Z} = {cmd = \discard, ht = 0pt, abovesep = -10pt, belowsep = -10pt},
 }
 \only<1>{\SetTblrInner[booktabs]{cell{2}{2} = {bg = UBonnYellow!75, fg = black}}}
 \only<2>{\SetTblrInner[booktabs]{row{2} = {bg = UBonnYellow!75, fg = black}}}
@@ -542,10 +550,12 @@ Rule out some alternative explanations \citep{Dertwinkel-Kalt2017}.
 	}%
 }
 
+\smallskip
 \begin{table}
 	\caption{%
 		\textit{tabularray} makes it simple to highlight cells, rows, or columns in a~table.%
 	}
+	\vspace{-\smallskipamount}%
 	\resizebox*{!}{0.67\textheight}{%
 		\input{1_Example_Content/9_Appendix/siunitx_Example_Regression}%
 	}
@@ -556,8 +566,10 @@ Rule out some alternative explanations \citep{Dertwinkel-Kalt2017}.
 
 \begin{frame}{\titleprefix: Yet Another \texttt{siunitx} Example Table}
 
+\smallskip
 \begin{table}
 	\caption{Figure grouping via \texttt{siunitx} in a~table.}
+	\vspace{-\smallskipamount}%
 	\input{1_Example_Content/9_Appendix/siunitx_Example_Figure_Grouping}
 \end{table}
 

@@ -54,6 +54,7 @@
 %}
 
 \bibliography{Library}
+\addbibresource{biblatex-examples-ms.bib}
 
 
 
@@ -93,11 +94,14 @@
 	\newpage
 	\subimport{1_Example_Content/9_Appendix/}{Additional_Figures}
 	\FloatBarrier
+	\newpage
+	\NewTblrColumnType{E}{S[table-format = {\texteuro}2.2, table-align-text-before = true]}%
+	\NewTblrColumnType{U}{S[table-format = {**}+1.3{-**}, round-mode = places, round-precision = 3]}%
 	\subimport{1_Example_Content/9_Appendix/}{siunitx_Examples}
 	\FloatBarrier
 	\newpage
 	%\begin{ignore}
-	{%
+	\begingroup%
 		\setlength{\parindent}{0cm}
 		%\setlength{\mathindent}{0cm}  % Only for ``fleqn'' option
 
@@ -142,7 +146,7 @@
 		 \subsection{Math ``Torture'' Test \showfamily}
 		 \input{2_Math_Tests/mathtest_TeXbook}%
 		}%
-	}
+	\endgroup
 	%\end{ignore}
 \end{appendices}
 

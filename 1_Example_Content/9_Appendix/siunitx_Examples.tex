@@ -18,54 +18,94 @@
 %	retain-explicit-plus
 %}
 
-
-\section{\texttt{siunitx} and \texttt{xltabular} Example Tables}
+\section{Additional \textit{siunitx} and \textit{tabularray} Example Tables}
 \label{sec:app:example_tables}
 
+\vfill
+
 \begin{table}[h!]
-	\caption{An~Example of a~Regression Table (Adapted from \citealp{Gerhardt2017}). Never Forget to Mention the Dependent Variable!}
+	\caption{An~Example of a~Regression Table (Adapted from \citealp{Gerhardt2017}). Remember to Mention the Dependent Variable!}
 	\label{tab:lin_reg_interactions}
 	\input{siunitx_Example_Regression}
 \end{table}
+
+\vfill
 
 \begin{table}[h!]
 	\caption{Figure Grouping via \texttt{siunitx} in a~Table}
 	\input{siunitx_Example_Figure_Grouping}
 \end{table}
 
-\newcommand{\mc}[2]{\multicolumn{1}{@{} c #2}{#1}}
+\vfill
 
-\begin{table}[p]
+\newpage
+
+\vphantom{\LARGE\strut}
+
+\vfill
+
+\begin{table}[h!]
 	\caption{Overview of the Choice Lists Presented to Subjects (Adapted from \citealp{Gerhardt2017})}
 	\label{tab:choice_lists}%
 	\input{siunitx_Example_Choice_Lists}
 \end{table}%
 
+\vfill
+
 \newpage
 
-\begin{xltabular}{\textwidth}{
-	X *{4}{T{1.4, round-mode=places, round-precision=4, table-column-width = 0.175\textwidth}}
-	%T @{\hspace{1.5em}} T @{\hspace{1.5em}} T @{\hspace{1.5em}} T
+\begingroup
+
+\DeclareTblrTemplate{contfoot-text}{normal}{\sffamily\strut Continued on next page.}
+\SetTblrStyle{contfoot-text}{font = \itshape\footnotesize}
+\DeclareTblrTemplate{contfoot}{leftaligned}{
+	\noindent\raggedright%
+	\UseTblrTemplate{contfoot-text}{normal} \par
 }
-	\caption{%
-		A~Really Long Table That Spans Multiple Pages%
-		\label{tab:long_table}%
-	}
-	\addtocounter{table}{-1}
-	\\[\smallskipamount]
-	\toprule
+\SetTblrTemplate{contfoot}{leftaligned}
+\DeclareTblrTemplate{conthead-text}{normal}{\strut(continued)}
+\SetTblrTemplate{conthead-text}{normal}
+\DeclareTblrTemplate{capcont}{default}{%
+	\UseTblrTemplate{caption-tag}{default}
+	\UseTblrTemplate{conthead-text}{default}%
+}
+\SetTblrStyle{caption-tag}{font = \sffamily\bfseries\small}
+\SetTblrStyle{conthead-text}{font = \sffamily\small}
+\DeclareTblrTemplate{middlehead, lasthead}{default}{
+	\UseTblrTemplate{capcont}{default}\par\vskip\abovecaptionskip
+}
+\SetTblrStyle{remark}{font = \sffamily\footnotesize}
+\begin{booktabs}[
+	caption = {A~Really Long Table That Spans Multiple Pages},
+	footsep = \belowbottomsep,
+	headsep = 0pt,
+	%headsep = 10pt,  % See http://mirrors.ctan.org/macros/latex/contrib/caption/caption.pdf, Section 2.6
+	label = {tab:long_table},
+	long,
+	presep = \smallskipamount,  %\textfloatsep,
+	postsep = \medskipamount,  %\textfloatsep,
+	remark{Note} = {\strut At the very end, you can add some notes to the table.},
+]{
+	cells = {font = \sffamily\small},
+	colspec = {
+		X[l] *{4}{T[round-mode = places, round-precision = 4, table-column-width = 0.175\textwidth]{1.4}}
+	},
+	% Workarounds so that the horizontal rules that are repeated on each page receive
+	% sufficient vertical space above and below -->
+	hborder{1, 2, Z} = {abovespace = 0pt, belowspace = 0pt},
+	hline{1} = {1}{-}{\heavyrulewidth},
+	hline{1} = {2}{-}{fg = white, text = {\rule{0pt}{\belowrulesep}}},
+	hline{2} = {1}{-}{fg = white, text = {\rule{0pt}{\aboverulesep}}},
+	hline{2} = {2}{-}{\lightrulewidth},
+	hline{2} = {3}{-}{fg = white, text = {\rule{0pt}{\belowrulesep}}},
+	hline{Z} = {1}{-}{fg = white, text = {\rule{0pt}{\aboverulesep}}},
+	hline{Z} = {2}{-}{\heavyrulewidth},
+	rulesep = 0pt,
+	% <--
+	rowhead = 1,  % Repeat first line on each page
+	width = \textwidth,
+}
 	& {(1)} & {(2)} & {(3)} & {(4)} \\
-	\midrule
-	\endfirsthead
-	\caption*{\RaggedRight\textbf{Table~\thetable---continued}}
-	\\[\smallskipamount]
-	\toprule
-	& {(1)} & {(2)} & {(3)} & {(4)} \\
-	\midrule
-	\endhead
-	%\bottomrule
-	%\endfoot
-	%\endlastfoot
 	Row 1	&	0.007032462	&	0.135596128	&	0.155969766	&	0.897921256	\\
 	Row 2	&	0.4222883	&	0.731075422	&	0.421275506	&	0.690013061	\\
 	Row 3	&	0.076653347	&	0.510960841	&	0.73988751	&	0.949080606	\\
@@ -215,10 +255,7 @@
 	Row 147	&	0.680134294	&	0.317947132	&	0.831536639	&	0.798823985	\\
 	Row 148	&	0.78095551	&	0.339692563	&	0.524474036	&	0.847763503	\\
 	Row 149	&	0.145795876	&	0.109805553	&	0.265917064	&	0.231935946	\\
-	Row 150	&	0.720666118	&	0.193055837	&	0.207090523	&	0.024127114	\\
-	\bottomrule
-	\addlinespace[\smallskipamount]
-	\multicolumn{5}{@{} p{\textwidth} @{}}{%
-	    \textit{Notes:} At the very end, you can add some notes to the table.
-	}
-\end{xltabular}
+	Row 150	&	0.720666118	&	0.193055837	&	0.207090523	&	0.024127114 \\
+\end{booktabs}
+
+\endgroup

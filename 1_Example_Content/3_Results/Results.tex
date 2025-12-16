@@ -27,24 +27,29 @@ Our first result supports \autoref{hy:UNBAL}. \blindtext The analysis we conduct
 \end{result}
 
 \begin{table}[t]
-	\caption{An Example Table}
-	\label{tmain:focus}
-	\begin{tabularx}{\textwidth}[t]{L T{1.3}}
-		\toprule
+	\begin{booktabs}[
+		caption = {A~\textit{tabularray}-Based Example Table},
+		footsep = \belowbottomsep,
+		headsep = 0pt,
+		label = {tmain:focus},
+		remark{Notes} = {Standard errors in parentheses, clustered on the subject level. {*} $p < 0.10$, {**} $p < 0.05$, {***} $p<0.01$.},
+		tall,
+	]{
+		colspec = {X[l] T{1.3}},
+		width = \textwidth,
+		hborder{4} = {abovespace = \aboverulesep, belowspace = \belowrulesep},
+		hline{4} = {\lightrulewidth, solid},
+	}
 		Dependent variable & {$\hat{d}$} \\
-		\midrule
 		Estimate      &       0.123{***} \\
 		&     (0.011) \\
-		\midrule
 		Observations & {750} \\
-		%clustered by subjects & \\
 		Subjects      &         {250} \\
-		\bottomrule
-	\end{tabularx}
-	\tablenotes{%
-		Standard errors in parentheses, clustered on the subject level.
-		{*} $p < 0.10$, {**} $p < 0.05$, {***} $p<0.01$.
-	}
+	\end{booktabs}
+	%\tablenotes{%
+	%	Standard errors in parentheses, clustered on the subject level.
+	%	{*} $p < 0.10$, {**} $p < 0.05$, {***} $p<0.01$.
+	%}
 \end{table}
 
 \blindtext

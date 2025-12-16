@@ -27,11 +27,15 @@ Our first result supports \autoref{hy:UNBAL}. \blindtext The analysis we conduct
 \end{result}
 
 \begin{table}[t]
+	\caption{A~\textit{tabularray}-Based Example Table}
+	\label{tmain:focus}
 	\begin{booktabs}[
-		caption = {A~\textit{tabularray}-Based Example Table},
+		%caption = {A~\textit{tabularray}-Based Example Table},  % Does not work with the automated chapter-wise labels for tables implemented in the dissertation template
+		entry = none,
 		footsep = \belowbottomsep,
 		headsep = 0pt,
-		label = {tmain:focus},
+		%label = {tmain:focus},  % Does not work with the automated chapter-wise labels for tables implemented in the dissertation template
+		label = none,
 		remark{Notes} = {Standard errors in parentheses, clustered on the subject level. {*} $p < 0.10$, {**} $p < 0.05$, {***} $p<0.01$.},
 		tall,
 	]{
@@ -46,10 +50,6 @@ Our first result supports \autoref{hy:UNBAL}. \blindtext The analysis we conduct
 		Observations & {750} \\
 		Subjects      &         {250} \\
 	\end{booktabs}
-	%\tablenotes{%
-	%	Standard errors in parentheses, clustered on the subject level.
-	%	{*} $p < 0.10$, {**} $p < 0.05$, {***} $p<0.01$.
-	%}
 \end{table}
 
 \blindtext

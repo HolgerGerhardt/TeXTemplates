@@ -17,9 +17,9 @@
 		Anit\`{a}	&	1	&	2	&	1	&	2	&	0	\\
 		U\u{g}ur	&	1	&	2	&	0	&	1	&	0	\\
 		H\r{a}kan	&	1	&	0	&	2	&	0	&	1	\\
-		Allison		&	2	&	0	&	1	&	2	&	1	\\
+		Allis\H{o}n		&	2	&	0	&	1	&	2	&	1	\\
 		P\'{i}a		&	1	&	0	&	2	&	1	&	0	\\
-		David		&	1	&	0	&	2	&	1	&	1	\\
+		\DH avid		&	1	&	0	&	2	&	1	&	1	\\
 		\midrule
 		Sum			&  10	&	5	&	12	&	8	&	4	\\
 		\bottomrule
@@ -28,13 +28,17 @@
 
 \begingroup
 \begin{table}[b!]
+	\caption{Points Awarded in Our Typeface Competition---More Sophisticated Formatting with Homogeneous Column Widths and a~Table Width That Equals the Text Width}
+	\label{tab:advanced_formatting}
 	\sisetup{table-column-width = 0.145\textwidth}
 	\begin{booktabs}[
-		caption = {Points Awarded in Our Typeface Competition---More Sophisticated Formatting with Homogeneous Column Widths and a~Table Width That Equals the Text Width},
+		%caption = {Points Awarded in Our Typeface Competition---More Sophisticated Formatting with Homogeneous Column Widths and a~Table Width That Equals the Text Width},  % Does not work with the automated chapter-wise labels for tables implemented in the dissertation template
+		entry = none,
 		footsep = \belowbottomsep,
 		headsep = 0pt,
 		%headsep = 10pt,  % See https://ftp.agdsn.de/pub/mirrors/latex/dante/macros/latex/contrib/caption/caption.pdf, Section 2.6
-		label = {tab:advanced_formatting},
+		%label = {tab:advanced_formatting},  % Does not work with the automated chapter-wise labels for tables implemented in the dissertation template
+		label = none,
 		tall,
 		note{a} = {\texttt{\textbackslash usepackage\{fourier\}}},
 		note{b} = {The \LaTeX\ standard serif font.},
@@ -42,7 +46,9 @@
 		note{d} = {\texttt{\textbackslash usepackage\{newtxtext, newtxmath\}}},
 		note{e} = {\texttt{\textbackslash usepackage[sc]\{mathpazo\}}},
 	]{
-		colspec = {X[l] *{5}{T{2.0}}}
+		colspec = {X[l] *{5}{T{2.0}}},
+		hborder{Y} = {abovespace = \aboverulesep, belowspace = \belowrulesep},
+		hline{Y} = {\lightrulewidth},
 	}
 		&	{Utopia\TblrNote{a}}
 		&	{Computer Modern\TblrNote{b}}
@@ -55,10 +61,9 @@
 		Anit\`{a}	&	1	&	2	&	1	&	2	&	0	\\
 		U\u{g}ur	&	1	&	2	&	0	&	1	&	0	\\
 		H\r{a}kan	&	1	&	0	&	2	&	0	&	1	\\
-		Allison		&	2	&	0	&	1	&	2	&	1	\\
+		Allis\H{o}n		&	2	&	0	&	1	&	2	&	1	\\
 		P\'ia		&	1	&	0	&	2	&	1	&	0	\\
-		David		&	1	&	0	&	2	&	1	&	1	\\
-		%\midrule
+		\DH avid		&	1	&	0	&	2	&	1	&	1	\\
 		Sum			&  10	&	5	&	12	&	8	&	4	\\
 	\end{booktabs}
 \end{table}

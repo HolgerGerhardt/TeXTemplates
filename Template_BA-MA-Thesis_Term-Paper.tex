@@ -14,8 +14,8 @@
 \newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
-\newcommand{\manuscriptdate}{2025-12-16}  % In ISO format: yyyy-mm-dd
-\newcommand{\manuscripttype}{MA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
+\newcommand{\manuscriptdate}{2026-06-16}  % In ISO format: yyyy-mm-dd
+\newcommand{\manuscripttype}{BA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
 	Theoretical and Empirical Microeconomics and Macroeconomics with~Implications for Social Policy All Around the World%
@@ -31,13 +31,14 @@
 %%%%%%%%%%%%%%%%%%%%%%
 
 
-\documentclass[12pt, a4paper, oneside]{article}
-	% In line with the official guidelines of the Department of Economics at the University of Bonn:
-	% https://www.econ.uni-bonn.de/examinations/de/informationen/bachelor/bachelorarbeit/dokumente/ba-merkblatt-2016-05-23.pdf
+%\documentclass[12pt, a4paper, oneside]{article}
+	% In line with the 2014 guidelines for master’s theses of the Department of Economics at the University of Bonn:
 	% https://www.econ.uni-bonn.de/examinations/en/information/master-economics/master-thesis/documents/ma-master-thesis-style-guide-2014-06-10.pdf
-%\documentclass[11pt, a4paper, oneside]{article}
-	% Alternative with 11pt font size
+\documentclass[11pt, a4paper, oneside]{article}
+	% 11pt font size
 	% Margins are adjusted below such that approximately the same amount of text fits per page
+	% In line with the 2026 guidelines for bachelor’s theses of the Department of Economics at the University of Bonn:
+	% https://www.econ.uni-bonn.de/examinations/de/informationen/bachelor/bachelorarbeit/dokumente/merkblatt-abschlussarbeiten-ba-ma-2026-06-02.pdf
 
 
 
@@ -73,7 +74,7 @@
 \colorlet{UBonnGrey}{UBonnGray}
 
 \usepackage{amsmath, mathtools}
-\usepackage{amsthm, thmtools}
+\usepackage{amsthm}
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 
 \usepackage[ngerman, UKenglish, USenglish, cleanlook]{isodate}
@@ -705,6 +706,64 @@
 	\newtheorem{summary}{Summary}
 }
 
+% Autoref names for theorem-like environments
+
+\providecommand*{\axiomautorefname}{Axiom}
+\providecommand*{\definitionautorefname}{Definition}
+\providecommand*{\lemmaautorefname}{Lemma}
+\providecommand*{\problemautorefname}{Problem}
+\providecommand*{\theoremautorefname}{Theorem}
+
+\ifthenelse{
+	\equal{\manuscriptlanguage}{DE}
+}{% German
+	\providecommand*{\acknowledgmentautorefname}{Kenntnisnahme}
+	\providecommand*{\algorithmautorefname}{Algorithmus}
+	\providecommand*{\assertionautorefname}{Zusicherung}
+	\providecommand*{\assumptionautorefname}{Annahme}
+	\providecommand*{\caseautorefname}{Fall}
+	\providecommand*{\claimautorefname}{Behauptung}
+	\providecommand*{\conclusionautorefname}{Schlussfolgerung}
+	\providecommand*{\conditionautorefname}{Bedingung}
+	\providecommand*{\conjectureautorefname}{Vermutung}
+	\providecommand*{\corollaryautorefname}{Korollar}
+	\providecommand*{\criterionautorefname}{Kriterium}
+	\providecommand*{\exampleautorefname}{Beispiel}
+	\providecommand*{\exerciseautorefname}{\"Ubung}
+	\providecommand*{\hypothesisautorefname}{Hypothese}
+	\providecommand*{\notationautorefname}{Notation}
+	\providecommand*{\noteautorefname}{Hinweis}
+	\providecommand*{\propertyautorefname}{Eigenschaft}
+	\providecommand*{\propositionautorefname}{Satz}
+	\providecommand*{\questionautorefname}{Frage}
+	\providecommand*{\remarkautorefname}{Anmerkung}
+	\providecommand*{\resultautorefname}{Resultat}
+	\providecommand*{\summaryautorefname}{Zusammenfassung}
+}{% English
+	\providecommand*{\acknowledgmentautorefname}{Acknowledgment}
+	\providecommand*{\algorithmautorefname}{Algorithm}
+	\providecommand*{\assertionautorefname}{Assertion}
+	\providecommand*{\assumptionautorefname}{Assumption}
+	\providecommand*{\caseautorefname}{Case}
+	\providecommand*{\claimautorefname}{Claim}
+	\providecommand*{\conclusionautorefname}{Conclusion}
+	\providecommand*{\conditionautorefname}{Condition}
+	\providecommand*{\conjectureautorefname}{Conjecture}
+	\providecommand*{\corollaryautorefname}{Corollary}
+	\providecommand*{\criterionautorefname}{Criterion}
+	\providecommand*{\exampleautorefname}{Example}
+	\providecommand*{\exerciseautorefname}{Exercise}
+	\providecommand*{\hypothesisautorefname}{Hypothesis}
+	\providecommand*{\notationautorefname}{Notation}
+	\providecommand*{\noteautorefname}{Note}
+	\providecommand*{\propertyautorefname}{Property}
+	\providecommand*{\propositionautorefname}{Proposition}
+	\providecommand*{\questionautorefname}{Question}
+	\providecommand*{\remarkautorefname}{Remark}
+	\providecommand*{\resultautorefname}{Result}
+	\providecommand*{\summaryautorefname}{Summary}
+}
+
 
 
 
@@ -927,16 +986,16 @@
 \begin{document}
 
 
-\beware{%
-	For compiling this document without any changes, a~\emph{complete} (and up-to-date) TeX distribution is required. \\[\medskipamount]
+{\selectlanguage{USenglish}\beware{%
+	{\small\relscale{1.2}For compiling this document without any changes, a~\emph{complete} (and up-to-date) TeX distribution is required. \par} \medskip
 	Options include
 	\href{https://tug.org/mactex/mactex-download.html}{MacTeX},
 	\href{https://miktex.org/download}{MiKTeX},
-	and \href{https://tug.org/texlive/acquire-netinstall.html}{TeX Live}. \mdseries For MiKTeX, please choose the ``Net Installer'' to install the \emph{complete} MiKTeX distribution, rather than the ``Basic Installer.'' \\[\medskipamount]
-	\bfseries Compilation via \url{https://overleaf-en.astro.uni-bonn.de} is also supported. \mdseries Use ``Shibboleth login'' to log in with your Uni~\caps{ID}. \\[\medskipamount]
-	\bfseries And compilation via \url{https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch} should work, too. \mdseries Compiling the entire document from scratch may lead to a~time-out. Compiling the document again (and again) usually works. So does compiling a~shortened version. \\[\medskipamount]
+	and \href{https://tug.org/texlive/acquire-netinstall.html}{TeX Live}. \mdseries For MiKTeX, please choose the ``Net Installer'' to install the \emph{complete} MiKTeX distribution, rather than the ``Basic Installer.'' \par \medskip
+	\bfseries Compilation via \url{https://overleaf-en.astro.uni-bonn.de} is also supported. \mdseries Use ``Shibboleth login'' to log in with your Uni~\caps{ID}. \par \medskip
+	\bfseries And compilation via \url{https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch} should work, too. \mdseries Compiling the entire document from scratch may lead to a~time-out. Compiling the document again (and again) usually works. So does compiling a~shortened version. \par \medskip
 	\mdseries This document was compiled on \today\ with \PDFcompiler.%
-}
+}}
 
 
 \pagenumbering{roman}
@@ -2516,6 +2575,13 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 
 \phantomsection
 \begin{refcontext}[sorting=nyt]  % Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
+	\ifthenelse{%
+		\equal{\manuscriptlanguage}{DE}%
+	}{% German
+		\selectlanguage{ngerman}%
+	}{% English
+		\selectlanguage{USenglish}%
+	}%
 	\printbibliography[heading=bibintoc]
 \end{refcontext}
 

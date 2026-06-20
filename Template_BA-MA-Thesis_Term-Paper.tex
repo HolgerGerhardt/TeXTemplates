@@ -16,7 +16,7 @@
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
 \newcommand{\manuscriptdate}{2026-06-20}  % In ISO format: yyyy-mm-dd
 \newcommand{\manuscripttype}{BA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
-\newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
+\newcommand{\manuscriptlanguage}{DE}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
 	Exercises in Theoretical and Empirical Microeconomics and Macroeconomics, Using\nolinebreak\ State-of-the-Art Econometric Methods, to\nolinebreak\ Address Societal Issues All Around the World%
 }  % Only relevant for term papers, ignored for bachelor’s and master’s theses
@@ -2086,9 +2086,19 @@ Final line on the page. \par
 	incentives are necessary under a~more risky performance measure.
 \end{lemma}
 
-\begin{proof}%[Proof of \autoref{lemma:budde-kraekel-1}]
-	Obvious from (IC$'$).
-\end{proof}
+\ifthenelse{% Test translation proof -> Beweis
+	\equal{\manuscriptlanguage}{DE}%
+}{% German
+	\begin{otherlanguage}{ngerman}
+		\begin{proof}%[Proof of \autoref{lemma:budde-kraekel-1}]
+			Obvious from (IC$'$).
+		\end{proof}
+	\end{otherlanguage}
+}{
+	\begin{proof}%[Proof of \autoref{lemma:budde-kraekel-1}]
+		Obvious from (IC$'$).
+	\end{proof}
+}
 
 \begin{lemma}
 	\label{lemma:budde-goex-1}

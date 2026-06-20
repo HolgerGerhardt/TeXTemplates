@@ -10,17 +10,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\newcommand{\studentfullname}{\"{A}nn\'{i} Sn\^{e}\v{z}{\`a}na H\r{a}land-\c{C}a{\l}han\H{o}\u{g}l\"{u}}
+\newcommand{\studentfullname}{\AE nn\i\ Sn\^{e}\v{z}{\`a}\~{n}\'{a} H\r{a}land-\c{C}a{\l}han\H{o}\u{g}l\"{u}}
 \newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
-\newcommand{\manuscriptdate}{2026-06-19}  % In ISO format: yyyy-mm-dd
-\newcommand{\manuscripttype}{TP}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
+\newcommand{\manuscriptdate}{2026-06-20}  % In ISO format: yyyy-mm-dd
+\newcommand{\manuscripttype}{BA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
 	Exercises in Theoretical and Empirical Microeconomics and Macroeconomics, Using\nolinebreak\ State-of-the-Art Econometric Methods, to\nolinebreak\ Address Societal Issues All Around the World%
 }  % Only relevant for term papers, ignored for bachelor’s and master’s theses
-\newcommand{\advisorname}{Prof.~Dr. Vae-Ree Smart}
+\newcommand{\advisorname}{Prof.~Dr. V\ae-Rie Sm\={a}rt}
 \newcommand{\advisorgender}{f}  % f for female, m for male, otherwise nonbinary
 
 
@@ -1594,7 +1594,7 @@ If a~citation includes a~``von'' part and occurs at the beginning of a~sentence,
 
 Citing a~work with more than three authors via \verb|\cite|, \verb|\citep|, \verb|\citet|, etc. abbreviates the author list to first author plus ``et~al.'' by default:
 \begin{longtblr}{}
-	The book \citetitle{gerhardt} \citep{gerhardt} has a~single author.
+	The book \citetitle*{gerhardt} \citep{gerhardt} has a~single author.
 	The report \citetitle{chiu} \citep{chiu} has two authors.
 	The \citetitle{companion} \citep{companion} has three authors.
 	The article \citetitle{murray} \citep{murray} has many authors and was published in \mkbibemph{\citefield{murray}{journaltitle}}.
@@ -1616,9 +1616,9 @@ A~citation in parentheses:
 \end{longtblr}
 
 \subsubsection{Citing Only Parts of Works}
-To cite particular pieces of information of a~work, several commands are available, such as \verb|\citeauthor|, \verb|\citeyear|, \verb|\citetitle|, etc.:
+To cite particular pieces of information of a~work, several commands are available, such as \verb|\citeauthor|, \verb|\citeyear|, \verb|\citetitle|, \verb|\citetitle*|, etc.:
 \begin{longtblr}{}
-	The book \citetitle{knuth:ct:a}, written by Donald~E. \citeauthor{knuth:ct:a}, was published in \citeyear{knuth:ct:a}. It is available online via  \url{https://ctan.org/pkg/texbook}.%
+	The book \citetitle*{knuth:ct:a}, written by Donald~E. \citeauthor{knuth:ct:a}, was published in \citeyear{knuth:ct:a}. It is available online via  \url{https://ctan.org/pkg/texbook}.%
 \end{longtblr}
 
 

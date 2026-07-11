@@ -14,7 +14,7 @@
 \newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
-\newcommand{\manuscriptdate}{2026-07-06}  % In ISO format: yyyy-mm-dd
+\newcommand{\manuscriptdate}{2026-07-11}  % In ISO format: yyyy-mm-dd
 \newcommand{\manuscripttype}{MA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
@@ -1252,7 +1252,7 @@ Relating the ``RAP'' approach to the list of questions above, question~4 is the 
 	\longtblrOrig%
 }
 
-Obviously, there is no single ``right'' way of constructing paragraphs. However, a~few basic rules can help you write paragraphs that are \emph{easy to comprehend} by your readers. A~common approach is to compose sentences such that they reflect the following functional sequence:\footnote{See \url{https://libguides.newcastle.edu.au/writing-paragraphs/structure}, \url{https://www.une.edu.au/library/students/academic-writing/write-paragraphs/paragraphs/Academic-paragraphs_v2.pdf}, \url{https://learningessentials.auckland.ac.nz/writing-effectively/paragraph/}}
+Obviously, there is no single ``right'' way of constructing paragraphs. However, a~few basic rules can help you write paragraphs that are \emph{easy to comprehend} by your readers. A~common approach is to compose sentences such that they reflect the following functional sequence:\footnote{See \url{https://libguides.newcastle.edu.au/writing-paragraphs/structure}, \url{https://www.une.edu.au/library/students/academic-writing/write-paragraphs/paragraphs/Academic-paragraphs_v2.pdf}, \url{https://learningessentials.auckland.ac.nz/writing-effectively/paragraph/}.}
 \begin{enumerate}
 	\item \emph{topic sentence (\caps{TS})}---which, if necessary, connects to the previous paragraph;
 	\item \emph{supporting sentences (\caps{SS})}---which elaborate on the topic sentence; and
@@ -1265,7 +1265,7 @@ There are various ways in which the supporting sentences can be filled with cont
 	\item ``evidence and examples,'' and
 	\item ``comment'' (an interpretation and evaluation of the evidence by you).
 \end{enumerate}
-The University of Hull and Newcastle University (\caps{UK}) consider the mnemonic ``\caps{PEEL}'' helpful, although they define its meaning in slightly different ways: ``Point, Evidence, Explanation, Link''\footnote{See \url{https://libguides.hull.ac.uk/writing/paras}.} versus ``Point, Evidence, Evaluation, Link''\footnote{See \url{https://www.ncl.ac.uk/academic-skills-kit/writing/academic-writing/paragraphing/}}. One may view ``Explanation''---``why the point is important and how it helps with your overall argument''---as narrower than ``Evaluation''---which is a~general critical reflection on the informativeness of the evidence and can include an explanation of its importance. ``\caps{PEEL}'' relates to \caps{TS}\slash \caps{SS}\slash \caps{CS} as follows:
+The University of Hull and Newcastle University (\caps{UK}) consider the mnemonic ``\caps{PEEL}'' helpful, although they define its meaning in slightly different ways: ``Point, Evidence, Explanation, Link''\footnote{See \url{https://libguides.hull.ac.uk/writing/paras}.} versus ``Point, Evidence, Evaluation, Link''\footnote{See \url{https://www.ncl.ac.uk/academic-skills-kit/writing/academic-writing/paragraphing/}.}. One may view ``Explanation''---``why the point is important and how it helps with your overall argument''---as narrower than ``Evaluation''---which is a~general critical reflection on the informativeness of the evidence and can include an explanation of its importance. ``\caps{PEEL}'' relates to \caps{TS}\slash \caps{SS}\slash \caps{CS} as follows:
 \begin{enumerate}
 	\item ``P,'' the Point, corresponds to the topic sentence.
 	\item ``E,'' Evidence, is the first part of the supporting sentences.
@@ -1474,7 +1474,7 @@ The examination office's guidelines require that bachelor's and master's theses 
 			(${35 \times 20.7\textup{~pt}} = 724.5\textup{~pt} = 25.56\textup{~cm}$)%
 		\fi%
 		\makeatother%
-		, as ``one-and-a-half line spacing'' would produce in Microsoft Word.
+		.
 	\item There is no additional vertical space between paragraphs. Paragraphs that do not follow a~heading should have a~first-line indent (that corresponds to the line height of \printlength{\baselinedist}).
 	\item The line spacing for headings is also \printlength{\baselinedist}, in combination with vertical space above and below as follows:
 		\newlength{\baselinedistDouble}
@@ -1485,7 +1485,7 @@ The examination office's guidelines require that bachelor's and master's theses 
 			\item Level-1 headings (\verb|\section|) are spaced \printlength{\baselinedistDouble} above and \printlength{\baselinedist} below.
 			\item Level-2 headings (\verb|\subsection|) are spaced \printlength{\baselinedist} above and \printlength{\baselinedist} below.
 			\item Level-3 headings (\verb|\subsubsection|) are spaced \makeatletter\SI[round-mode = places, round-precision = 2]{\strip@pt\baselinedistHalf}{pt}\makeatother\ above and \makeatletter\SI[round-mode = places, round-precision = 2]{\strip@pt\baselinedistHalf}{pt}\makeatother\ below.
-			\item Level-4 headings (\verb|\paragraph|) are spaced \makeatletter\SI[round-mode = places, round-precision = 2]{\strip@pt\baselinedistHalf}{pt}\makeatother\ above and 0~pt below. (Level-4 headings are usually unnecessary in documents that have the scope of theses.)
+			\item Level-4 headings (\verb|\paragraph|) are spaced \makeatletter\SI[round-mode = places, round-precision = 2]{\strip@pt\baselinedistHalf}{pt}\makeatother\ above and 0~pt below. (A~fourth sectioning level is usually too much for a~thesis.)
 		\end{itemize}
 	\item The line spacing is \printlength{\smalllinespacing} for tables (including table of contents), table titles, figure captions, list of references, and appendix.
 	\item The line spacing is \printlength{\footnotelinespacing} for footnotes, table notes, and figure notes.
@@ -1509,11 +1509,11 @@ Both literal citations from other texts as well as the paraphrasing of other aut
 
 \subsubsection{Paraphrasing Other Authors' Thoughts}
 
-Here is an example of a~paraphrasing in-text citation:
+The following is an example of an in-text citation that introduces a paraphrase of other authors' ideas:
 \begin{longtblr}{}
 	\cite{sarfraz} suggest an algorithm to automatically capture the outlines of fonts.
 \end{longtblr}
-\noindent The author's name/authors' names can be embedded in the sentence, as in the example above, or surrounded by parentheses:
+\noindent The author's name or authors' names, respectively, can be embedded in the sentence, as in the example above, or surrounded by parentheses:
 \begin{longtblr}{}
 	Many researchers in computer science have worked on the problem of converting the outlines of objects to mathematically describable curves, such as B\'{e}zier curves (see, e.g., \citealp{sarfraz}).
 \end{longtblr}

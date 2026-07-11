@@ -2103,14 +2103,15 @@ Final line on the page. \par
 \begin{lemma}
 	\label{lemma:budde-goex-1}
 	The optimal capacity choice of firm~$i$ is given by
-	\begin{equation*}
+	\begin{equation}
+		\label{eq:opt-capacity}
 		k^* =
 		\begin{cases*}
 			\strut \; 1 & for\;\; $\underline{c} \leq c_i < \hat{c}$, \\
 			\strut \; 0 & for\;\; $\hat{c} \leq c_i \leq \overline{c}$,
 		\end{cases*}
 		\quad \text{where} \quad \hat{c} = H^{-1}(1 \divslash \theta).
-	\end{equation*}
+	\end{equation}
 \end{lemma}
 
 \begin{proof}
@@ -2119,7 +2120,7 @@ Final line on the page. \par
 
 \begin{proposition}
 	\label{proposition:budde-1}
-	Let $\bm{P}$ be balanced with respect to the principal's objective $V$. Then the following statements hold:
+	Let $\bm{P}$ be balanced with respect to the principal's objective~$V$. Then the following statements hold:
 	\begin{enumerate}[label = (\roman*), align = right, leftmargin = \baselinedist, labelsep = 0.3\baselinedist]
 		\item The first-best solution can be achieved by a~linear contract based on $\bm{P}$.
 		\item If $\bm{P}$ is also minimal, all measures have nonzero value in the optimal contract.
@@ -2583,6 +2584,7 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 
 %%  BIBLIOGRAPHY  %%
 
+\clearpage
 \phantomsection
 \begin{refcontext}[sorting=nyt]  % Sort BIBLIOGRAPHY by alphabet (while CITATIONS are sorted by year)
 	\ifthenelse{%
@@ -2605,7 +2607,7 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 \label{app:proofs}
 
 \begin{proof}[Proof of \autoref{lemma:budde-goex-1}]
-	Since expected profit is linear in $k_i$, the firm chooses the maximum capacity level ${k = 1}$ when (3) is positive and the minimum capacity ${k_i = 0}$ when (3) is negative. Taking into account that in equilibrium the condition ${B^{-1}(b_i^*) = c_i}$ must hold for all~$i$, the critical value~$\hat{c}$ for the indifferent bidder is obtained by solving~(3) for~$c_i$.
+	Since expected profit is linear in $k_i$, the firm chooses the maximum capacity level ${k = 1}$ when \eqref{eq:opt-capacity} is positive and the minimum capacity ${k_i = 0}$ when \eqref{eq:opt-capacity} is negative. Taking into account that in equilibrium the condition ${B^{-1}(b_i^*) = c_i}$ must hold for all~$i$, the critical value~$\hat{c}$ for the indifferent bidder is obtained by solving~\eqref{eq:opt-capacity} for~$c_i$.
 \end{proof}
 
 \clearpage

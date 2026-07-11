@@ -461,8 +461,8 @@
 \titlespacing*{\subsubsection}{0pt}{0.5\baselinedist plus 1ex}{0.5\baselinedist plus 1ex}
 \titleformat{\paragraph}{\normalfont\normalsize\upshape}{\strut\theparagraph}{1em}{#1\strut}
 \titlespacing*{\paragraph}{0pt}{0.5\baselinedist plus 1ex}{0pt}
-\titleformat{name = \subparagraph, numberless}[runin]{}{}{0pt}{\itshape}[]
-\titlespacing{\subparagraph}{\parindent}{0pt}{2\wordsep}[]
+\titleformat{name = \subparagraph, numberless}[runin]{}{}{0pt}{\itshape#1}[]
+\titlespacing{\subparagraph}{\parindent}{0pt}{\wordsep}[]
 
 \usepackage{soul}
 \renewcommand{\caps}[1]{{\textscale{0.97}{\textls[50]{\MakeUppercase{#1}}}}}
@@ -2338,7 +2338,7 @@ The remaining text samples in this section were generated with the help of \url{
 
 \subsubsection{The Beginning}
 \label{sec:tests:lorem-ipsum:beginning}
-Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a~large language ocean. A~small river named Duden flows by their place and supplies it with the necessary regelialia. It is a~paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a~small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a~large language ocean. A~small river named Duden flows by their place and supplies it with the necessary regelialia. It is a~paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life
 
 \begin{table}
 	\caption{Example of a~regression table---alignment at the decimal point via the \mbox{\textit{siunitx}} package}
@@ -2393,7 +2393,9 @@ Far far away, behind the word mountains, far from the countries Vokalia and Cons
 	\end{tablenotes}
 \end{table}
 
-The Big Oxmox \citep{wilde} advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a~last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a~rethoric question ran over her cheek, then she continued her way. On her way she met a~copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a~thousand times and everything that was left from its origin would be the word ``and'' and the Little Blind Text should turn around and return to its own, safe country.
+One day however a~small line of blind text by the name of \textit{Lorem Ipsum} decided to leave for the far World of Grammar. The Big Oxmox \citep{wilde} advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a~last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a~rethoric question ran over her cheek, then she continued her way.
+
+On her way she met a~copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a~thousand times and everything that was left from its origin would be the word ``and'' and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her.
 
 \begin{table}[tb!]
 	\caption{Initial capital structures of large projects}
@@ -2426,11 +2428,12 @@ The Big Oxmox \citep{wilde} advised her not to do so, because there were thousan
 
 \paragraph{The Duden River}
 \label{sec:tests:lorem-ipsum:main:duden}
-But nothing the copy said could convince her and so it didn't take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn't been rewritten, then they are still using her. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.%
+Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a~large language ocean.%
 \footnote{The quick, brown fox jumps over a lazy dog \citep{knuth:ct:b, knuth:ct:c}. DJs flock by when \caps{MTV} ax quiz prog. Junk \caps{MTV} quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs vex! Fox nymphs grab quick-jived waltz. Brick quiz whangs jumpy veldt fox. Bright vixens jump; dozy fowl quack. Quick wafting zephyrs vex bold Jim. Quick zephyrs blow, vexing daft Jim. Sex-charged fop blew my junk \caps{TV} quiz. How quickly daft jumping zebras vex. Two driven jocks help fax my big quiz. Quick, Baz, get my woven flax jodhpurs! ``Now fax quiz Jack!'' my brave ghost pled. Five quacking zephyrs jolt my wax bed. ``But I~must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I~will give you a~complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a~trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? %But who has any right to find fault with a~man who chooses to enjoy a~pleasure that has no annoying consequences, or one who avoids a~pain that produces no resultant pleasure? On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee. the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish.
 \citep[210.]{cicero}}
+A~small river named Duden flows by their place and supplies it with the necessary regelialia. It is a~paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life
 
-Separated they live in Bookmarksgrove right at the coast of the Semantics, a~large language ocean. A~small river named Duden flows by their place and supplies it with the necessary regelialia. It is a~paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.%
+One day however a small line of blind text by the name of \textit{Lorem Ipsum} decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.%
 
 \begin{table}
 	\caption{Project funding by source}
@@ -2464,9 +2467,9 @@ Separated they live in Bookmarksgrove right at the coast of the Semantics, a~lar
 	\end{tablenotes}
 \end{table}
 
-On her way she met a~copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a~thousand times and everything that was left from its origin would be the word ``and'' and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn't take long until a~few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn't been rewritten, then they are still using her.
+On her way she met a~copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a~thousand times and everything that was left from its origin would be the word ``and'' and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her.
 
-Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a~large language ocean. A~small river named Duden flows by their place and supplies it with the necessary regelialia. It is a~paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a~small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen.
+Far far away, behind the word mountains, far from the countries Vokalia and Conso-nantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a~large language ocean. A~small river named Duden flows by their place and supplies it with the necessary regelialia. It is a~paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life
 
 \begin{table}
 	\caption{Global project bank facility lead arrangers}
@@ -2500,32 +2503,26 @@ Far far away, behind the word mountains, far from the countries Vokalia and Cons
 	\end{tablenotes}
 \end{table}
 
-\paragraph{The Seven Versalia}
-She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a~last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a~rethoric question ran over her cheek, then she continued her way. On her way she met a~copy \citep{shore}.
-
-\subparagraph{Warning.} The copy warned the Little Blind Text, that where it came from it would have been rewritten a~thousand times and everything that was left from its origin would be the word ``and'' and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn't take long until a~few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn't been rewritten, then they are still using her.
-
-\subparagraph{Vokalia and Consonantia.} Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a~large language ocean. A~small river named Duden flows by their place and supplies it with the necessary regelialia. It is a~paradisematic country, in which roasted parts of sentences fly into your mouth.
-
-Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a~small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
-
-\subsubsection{The End}
-When she reached the first hills of the Italic Mountains, she had a~last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a~rethoric question ran over her cheek, then she continued her way. On her way she met a~copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a~thousand times and everything that was left from its origin would be the word ``and'' and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn't take long until a~few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their projects again and again. And if she hasn't been rewritten, then they are still using her. Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a~large language ocean.%
-\displaybaselinegrid
-
-\begin{table}
+\begin{table}[b]
 	\caption{An additional table to check the horizontal spacing of columns}
 	\begin{booktabs}{X}
 		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} *{8}{l} @{}}
 			Test & Test 1 & Test 12 & Test 123 & Test 1234 & Test 12345 & Test 123456 & Test 1234567
 		\end{tabular*}
 	\end{booktabs}
-	\begin{tablenotes}
-		One can nest traditional environments (e.g., \verb|tabular|, \verb|tabular*|) in \mbox{\textit{tabularray}} environments. This way, the outer formatting can be kept consistent (e.g., automatically adding \verb|\toprule| and \verb|\bottomrule|), while at the same time, formatting via the traditional environments can be used (e.g., \verb|@{\extracolsep{\fill}}|).
+	\begin{tablenotes}[Notes]
+		One can nest traditional environments (e.g., \verb|tabular|, \verb|tabular*|) in \mbox{\textit{tabularray}} environments. This way, the outer formatting can be kept consistent (e.g., automatically adding \verb|\toprule| and \verb|\bottomrule|), while at the same time, formatting via the traditional environments can be used (e.g., \verb|@{\extracolsep{\fill}}|). \par
+		We place this table at the bottom of the page since the top is already occupied by another table.
 	\end{tablenotes}
 \end{table}
 
-\begin{table}[b]
+\paragraph{The Seven Versalia}
+One day a~small line of blind text by the name of \textit{Lorem Ipsum} decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way.%
+\displaybaselinegrid
+
+\subparagraph{Warning.} On her way she met a~copy \citep{shore}. The copy warned the Little Blind Text, that where it came from it would have been rewritten a~thousand times and everything that was left from its origin would be the word ``and'' and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her.
+
+\begin{table}
 	\caption{A~table to illustrate rounding with the help of the \mbox{\textit{siunitx}} package}
 	\label{tab:siunitx-rounding}
 	\begin{booktabs}{
@@ -2541,14 +2538,18 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 		Sum	& 2.46 & 9.12 & 15.78 & 18024691357.80246913578 \\
 	\end{booktabs}
 	\begin{tablenotes}[Notes]
-		We place this table at the bottom of the page because the top is already occupied by another table. \par
 		Check the source code of this table to see that the \texttt{S}~column type provided by the \mbox{\textit{siunitx}} package takes care of the rounding in the right-most column.
 	\end{tablenotes}
 \end{table}
 
-A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a~paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a~small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so \citep[see, e.g.,][]{baez/article}, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+\subparagraph{Vokalia and Consonantia.} Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a~large language ocean. A~small river named Duden flows by their place and supplies it with the necessary regelialia. It is a~paradisematic country, in which roasted parts of sentences fly into your mouth.
 
-When she reached the first hills of the Italic Mountains, she had a~last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a~rethoric question ran over her cheek, then she continued her way. On her way she met a~copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a~thousand times and everything that was left from its origin would be the word ``and'' and the Little Blind Text should turn around and return to its own, safe country.
+\subparagraph{No control.} Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life
+
+\subsubsection{The End}
+When she reached the first hills of the Italic Mountains, she had a~last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a~rethoric question ran over her cheek, then she continued her way. On her way she met a~copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a~thousand times and everything that was left from its origin would be the word ``and'' and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her.
+
+Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a~large language ocean.
 
 \begin{table}
 	\begin{booktabs}[
@@ -2580,6 +2581,10 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 		$f(x)$ & $\displaystyle\frac{\sqrt{3}}{n}$ & Test & \SetCell[c=3]{c} Content spanning multiple cells & & & {Row~1 \\ Row~2}
 	\end{booktabs}
 \end{table}
+
+A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a~paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a~small line of blind text by the name of \textit{Lorem Ipsum} decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so \citep[see, e.g.,][]{baez/article}, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn't listen. She packed her seven versalia, put her initial into the belt and made herself on the way.
+
+When she reached the first hills of the Italic Mountains, she had a~last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a~rethoric question ran over her cheek, then she continued her way. On her way she met a~copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a~thousand times and everything that was left from its origin would be the word ``and'' and the Little Blind Text should turn around and return to its own, safe country.
 
 
 %%  BIBLIOGRAPHY  %%

@@ -14,7 +14,7 @@
 \newcommand{\studentemail}{a.s.haaland-calhanoglu@example.org}  % Only relevant for term papers, ignored for bachelor’s and master’s theses
 \newcommand{\studentID}{1234567}
 \newcommand{\manuscripttitle}{Template for Term\nolinebreak\ Papers, Bachelor\texorpdfstring{'}{’}s\nolinebreak\ Theses, and Master\texorpdfstring{'}{’}s\nolinebreak\ Theses}
-\newcommand{\manuscriptdate}{2026-07-11}  % In ISO format: yyyy-mm-dd
+\newcommand{\manuscriptdate}{2026-07-12}  % In ISO format: yyyy-mm-dd
 \newcommand{\manuscripttype}{MA}  % BA for bachelor's thesis, MA for master's thesis, otherwise term paper
 \newcommand{\manuscriptlanguage}{EN}  % DE for German, otherwise (US) English
 \newcommand{\seminartitle}{%
@@ -503,6 +503,7 @@
 
 \usepackage{tabularray}
 	% Modern package that comprises the functionality of (probably) all earlier table packages that you can think of: threeparttable, tabularx/tabulary/tabu, longtable, xltabular, multirow, makecell, booktabs, colortbl, ...
+\UseTblrLibrary{counter}  % To prevent incorrect numbering of equations embedded in tblr environments
 \UseTblrLibrary{booktabs, siunitx}
 \usepackage{tblr-extras}
 \UseTblrLibrary{caption}
@@ -779,6 +780,10 @@
 	compresspages = false,
 	dashed = false,
 	doi = only, isbn = false,
+	maxbibnames = 6,  % See https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-2.html
+	minbibnames = 3,  % See https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-2.html
+	maxcitenames = 2,  % See https://www.chicagomanualofstyle.org/tools_citationguide/citation-guide-2.html
+	mincitenames = 1,
 	natbib = true,
 	noibid,  % See https://tex.stackexchange.com/questions/129487/bug-in-the-parencite-command-of-the-biblatex-chicago-package
 	sortcites = true, sorting = ynt,  % sort the in-text citations by year of publication
@@ -1507,9 +1512,9 @@ For the front matter, page numbers can be omitted, or Roman numerals can be used
 
 Both literal citations from other texts as well as the paraphrasing of other authors' ideas must be identified as such. The cited author(s) is (are) indicated right before or after the citation, including the year of the manuscript that you are citing/paraphrasing.
 
-\subsubsection{Paraphrasing Other Authors' Thoughts}
+\subsubsection{Paraphrasing Other Authors' Ideas}
 
-The following is an example of an in-text citation that introduces a paraphrase of other authors' ideas:
+The following is an example of an in-text citation that introduces a~paraphrase of other authors' ideas:
 \begin{longtblr}{}
 	\cite{sarfraz} suggest an algorithm to automatically capture the outlines of fonts.
 \end{longtblr}
@@ -1592,7 +1597,7 @@ If a~citation includes a~``von'' part and occurs at the beginning of a~sentence,
 	\Citet{vangennep} \textellipsis, \citet{vangennep} \textellipsis
 \end{longtblr}
 
-Citing a~work with more than three authors via \verb|\cite|, \verb|\citep|, \verb|\citet|, etc. abbreviates the author list to first author plus ``et~al.'' by default:
+Citing a~work with three authors or more via \verb|\cite|, \verb|\citep|, \verb|\citet|, etc. abbreviates the author list to first author plus ``et~al.'' by default:
 \begin{longtblr}{}
 	The book \citetitle*{gerhardt} \citep{gerhardt} has a~single author.
 	The report \citetitle{chiu} \citep{chiu} has two authors.
@@ -1739,13 +1744,11 @@ Descriptive subscripts and superscripts should be printed upright so that they c
 \subsection{Compatibility with Other Typesetting Software}
 \label{sec:portability:compatibility}
 
-The settings in this template regarding the font family (by default, Times), font sizes, and line spacing were chosen such that a~virtually identical layout can be achieved with other typesetting software such as Microsoft Word and Apple Pages and the open-source alternatives Libre\-Office Writer (\url{https://www.libreoffice.org}) and Typst (\url{https://typst.app}). This means taking into account, for instance, that Word restricts font sizes to multiples of 0.5~pt.
+The typeface (Times), font sizes, and line spacing in this template were chosen such that a~virtually identical layout can be achieved with other typesetting software such as Microsoft Word, Apple Pages, and the open-source alternatives Libre\-Office Writer (\url{https://www.libreoffice.org}) and Typst (\url{https://typst.app}). This means taking into which fonts are available across applications and operating systems, and the fact that Word restricts font sizes to multiples of 0.5~pt.
 
 \subsection{Clean Code/Semantic Coding: Separating Content and Formatting}
 
-All written texts are structured into words and sentences. If they are long enough, texts are also structured into paragraphs. Academic texts, in addition, feature sections, subsections, and often subsubsections, as well as figures, tables, lists of references, and potentially appendices. These structural elements are associated with headings\slash titles and captions.
-
-\pagebreak[1]
+Beyond words, sentences, and paragraphs, academic texts are structured via sections, subsections, and often subsubsections. Moreover, academic texts often feature figures, tables, lists of references, and potentially appendices. These structural elements are associated with headings\slash titles and captions.
 
 The structure of a~document is conveyed to the reader through \emph{formatting}. Effective formatting of academic documents, thus, requires that all elements of a~particular type---say, section headings---be identifiable as such. Identifiability is achieved through styling that is \emph{consistent within type} and \emph{distinct across types}. For example, all section headings must be formatted identically, and at the same time, they must look different from subsection headings.
 
@@ -1831,7 +1834,7 @@ Further additional helpful features of \mbox{\textit{tabularray}} are:
 	\item You can set document-wide formatting defaults to achieve consistent formatting of all tables. For instance, you can set defaults such that all tables feature the same top and bottom rules. Or, you could make all column heads be typeset in boldface document-wide.
 \end{itemize}
 
-\subsubsection{In Conjunction with the \textit{siunitx} Package}
+\subsubsection{Combining \mbox{\textit{tabularray}} with the \textit{siunitx} Package}
 When using \verb|\UseTblrLibrary{siunitx}|, \mbox{\textit{tabularray}} loads the \mbox{\textit{siunitx}} package. This is another useful package which permits separating content from formatting. In particular, the \verb|S|~column type is able to round numbers to a~specified precision. This means that one can include table content produced by an external program with as many decimal digits as that program produces and have LaTeX take care of the rounding. See \autoref{tab:siunitx-rounding} for an illustration.
 
 
@@ -1870,7 +1873,7 @@ If the order of the list entries does not matter---that is, the list is a~collec
 
 \renewcommand{\testlist}{%
 	\item We first provide an overview of the foundational concepts in LaTeX. LaTeX allows for precise control over document structure and formatting, in particular of mathematics, making it a~preferred choice for many professionals in academia.
-	\item We delve into\footnote{\caps{AI} is a~big fan of delving into stuff \textellipsis} the various environments available in LaTeX, such as the \texttt{equation}, \texttt{figure}, \texttt{table}, \texttt{enumerate}, and \texttt{itemize} environments.
+	\item We delve into the various environments available in LaTeX, such as the \texttt{equation}, \texttt{figure}, \texttt{table}, \texttt{enumerate}, and \texttt{itemize} environments.
 	\item We discuss the importance of packages in LaTeX, which enhance its functionality. Packages like \texttt{amsmath} for advanced mathematical typesetting and \texttt{graphicx} for including images are essential for expanding the capabilities of basic LaTeX.
 	\item Lastly, we explore the common pitfalls and troubleshooting tips for LaTeX users. Knowing how to read error messages helps resolve issues efficiently.
 }
@@ -1888,7 +1891,7 @@ If the order of the list entries matters---such as when describing a~sequence of
 \begin{description}
 	\item[Apple.] A~sweet and crunchy fruit that comes in various colors such as red, green, and yellow. Apples are rich in dietary fiber and vitamin~C, making them a~healthy snack.
 	\item[Banana.] A~long, yellow fruit that is soft and sweet when ripe. Bananas are known for being an excellent source of potassium, which helps maintain proper muscle and nerve function.
-	\item[Cherry.] A~small, round fruit that is typically red or dark purple in color and contains a~hard pit in the center. Cherries are rich in antioxidants and anti-inflammatory compounds.\footnote{These descriptions were \caps{AI}-generated.}
+	\item[Cherry.] A~small, round fruit that is typically red or dark purple in color and contains a~hard pit in the center. Cherries are rich in antioxidants and anti-inflammatory compounds.\footnote{These descriptions were \caps{LLM}-generated.}
 \end{description}
 
 \pagebreak
@@ -2134,7 +2137,7 @@ Final line on the page. \par
 
 \begin{proposition}
 	\label{proposition:budde-kraekel-4}
-	If the agent is risk neutral, there is a~positive risk--incentive relationship as long as the probability of a~high payment exceeds \textonehalf.
+	If the agent is risk neutral, there is a~positive risk--incentive relationship, as long as the probability of a~high payment exceeds \textonehalf.
 \end{proposition}
 
 \begin{theorem}[Lindeberg--Lévy Central Limit Theorem]
@@ -2214,7 +2217,7 @@ Final line on the page. \par
 		The following list summarizes the types of structures which are normally
 		associated with each theorem style. \par\vskip7.5pt
 		\begin{tblr}{
-			colspec = {l X},
+			colspec = {@{}l X@{}},
 			hline{1} = {0pt},
 			hline{Z} = {0pt},
 			width = \linewidth-\parindent,
@@ -2612,7 +2615,7 @@ When she reached the first hills of the Italic Mountains, she had a~last view ba
 \label{app:proofs}
 
 \begin{proof}[Proof of \autoref{lemma:budde-goex-1}]
-	Since expected profit is linear in $k_i$, the firm chooses the maximum capacity level ${k = 1}$ when \eqref{eq:opt-capacity} is positive and the minimum capacity ${k_i = 0}$ when \eqref{eq:opt-capacity} is negative. Taking into account that in equilibrium the condition ${B^{-1}(b_i^*) = c_i}$ must hold for all~$i$, the critical value~$\hat{c}$ for the indifferent bidder is obtained by solving~\eqref{eq:opt-capacity} for~$c_i$.
+	Since expected profit is linear in $k_i$, the firm chooses the maximum capacity level ${k = 1}$ when \eqref{eq:opt-capacity} is positive, and the minimum capacity ${k_i = 0}$ when \eqref{eq:opt-capacity} is negative. Taking into account that in equilibrium, the condition ${B^{-1}(b_i^*) = c_i}$ must hold for all~$i$, the critical value~$\hat{c}$ for the indifferent bidder is obtained by solving~\eqref{eq:opt-capacity} for~$c_i$.
 \end{proof}
 
 \clearpage
@@ -3555,7 +3558,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 	\section{Font Samples}
 	\label{app:font-samples}
 
-	\subsection[Font Sample Times]{\fontfamily{ntxtlf}Font Sample Times}
+	\subsection[Font Sample Times]{\fontfamily{ntxtlf}Font Sample \textit{Times}}
 	\label{app:font-samples:times}
 
 	\begin{otherlanguage}{ngerman}\noindent\normalsize%
@@ -3573,7 +3576,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 		\noindent\url{https://en.wikipedia.org/wiki/Times_New_Roman} \par
 	\end{otherlanguage}
 
-	\subsection[Font Sample Palatino]{\fontfamily{zpltlf}\selectfont Font Sample Palatino}
+	\subsection[Font Sample Palatino]{\fontfamily{zpltlf}\selectfont Font Sample \textit{Palatino}}
 	\label{app:font-samples:palatino}
 
 	\begin{otherlanguage}{ngerman}\noindent%
@@ -3595,7 +3598,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 
 	\section*{\strut}
 
-	\subsection[Font Sample Utopia]{\fontfamily{erewhon-TLF}\selectfont Font Sample Utopia}
+	\subsection[Font Sample Utopia]{\fontfamily{erewhon-TLF}\selectfont Font Sample \textit{Utopia}}
 	\label{app:font-samples:utopia}
 
 	\begin{otherlanguage}{ngerman}\noindent%
@@ -3613,7 +3616,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 		\noindent\url{https://en.wikipedia.org/wiki/Utopia_(typeface)} \par
 	\end{otherlanguage}
 
-	\subsection[Font Sample Charter]{\fontfamily{XCharter-TLF}\selectfont Font Sample Charter}
+	\subsection[Font Sample Charter]{\fontfamily{XCharter-TLF}\selectfont Font Sample \textit{Charter}}
 	\label{app:font-samples:charter}
 
 	\begin{otherlanguage}{ngerman}\noindent%
@@ -3635,7 +3638,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 
 	\section*{\strut}
 
-	\subsection[Font Sample {\textls[40]{STIX}} Two]{\fontfamily{SticksTooText-TLF}\selectfont Font Sample \textls[40]{STIX} Two}
+	\subsection[Font Sample {\textls[40]{STIX}} Two]{\fontfamily{SticksTooText-TLF}\selectfont Font Sample \textit{\textls[40]{STIX} Two}}
 	\label{app:font-samples:stix-two}
 
 	\begin{otherlanguage}{ngerman}\noindent%
@@ -3653,7 +3656,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 		\noindent\url{https://en.wikipedia.org/wiki/STIX_Fonts_project#STIX_2.0.0} \par
 	\end{otherlanguage}
 
-	\subsection[Font Sample Libertinus Serif]{\fontfamily{LibertinusSerif-TLF}\selectfont Font Sample Libertinus Serif}
+	\subsection[Font Sample Libertinus Serif]{\fontfamily{LibertinusSerif-TLF}\selectfont Font Sample \textit{Libertinus Serif}}
 	\label{app:font-samples:libertinus-serif}
 
 	\begin{otherlanguage}{ngerman}\noindent%
@@ -3675,7 +3678,7 @@ all_estimates_report[["0.4"]][, c(1:5, 11:15)]
 
 	\section*{\strut}
 
-	\subsection[Font Sample New Century Schoolbook]{\fontfamily{TeXGyreScholaX-TLF}\selectfont{\relscale{0.925}Font Sample New Century Schoolbook}}
+	\subsection[Font Sample New Century Schoolbook]{\fontfamily{TeXGyreScholaX-TLF}\selectfont{\relscale{0.925}Font Sample \textit{New Century Schoolbook}}}
 	\label{app:font-samples:new-century-schoolbook}
 
 	\begin{otherlanguage}{ngerman}\noindent%

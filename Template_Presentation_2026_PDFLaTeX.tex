@@ -353,25 +353,25 @@
 
 % Leicester
 % Colors from https://le.ac.uk/-/media/uol/docs/recruitment/brand-guidelines/uol-quick-guidelines-2020.pdf
-\definecolor{LeicesterCoreRed}{HTML}{E4042C}
-\definecolor{LeicesterCoreGrey}{HTML}{3C3C3C}
-\definecolor{LeicesterOrange}{HTML}{E37606}
-\definecolor{LeicesterGreen}{HTML}{07A75A}
-\definecolor{LeicesterBlue}{HTML}{0096D2}
-\definecolor{LeicesterPurple}{HTML}{5A4BC2}
-\definecolor{LeicesterYellowBright}{HTML}{FAD246}
-\definecolor{LeicesterGreenBright}{HTML}{55DC7D}
-\definecolor{LeicesterBlueBright}{HTML}{32D2F5}
-\definecolor{LeicesterPinkBright}{HTML}{FE8D9C}
-\definecolor{LeicesterPurpleBright}{HTML}{CD7DFF}
-\definecolor{LeicesterOrangeDark}{HTML}{962814}
-\definecolor{LeicesterGreenDark}{HTML}{0F554B}
-\definecolor{LeicesterBlueDark}{HTML}{262E65}
+\definecolor{ULeicesterCoreRed}{HTML}{E4042C}
+\definecolor{ULeicesterCoreGrey}{HTML}{3C3C3C}
+\definecolor{ULeicesterOrange}{HTML}{E37606}
+\definecolor{ULeicesterGreen}{HTML}{07A75A}
+\definecolor{ULeicesterBlue}{HTML}{0096D2}
+\definecolor{ULeicesterPurple}{HTML}{5A4BC2}
+\definecolor{ULeicesterYellowBright}{HTML}{FAD246}
+\definecolor{ULeicesterGreenBright}{HTML}{55DC7D}
+\definecolor{ULeicesterBlueBright}{HTML}{32D2F5}
+\definecolor{ULeicesterPinkBright}{HTML}{FE8D9C}
+\definecolor{ULeicesterPurpleBright}{HTML}{CD7DFF}
+\definecolor{ULeicesterOrangeDark}{HTML}{962814}
+\definecolor{ULeicesterGreenDark}{HTML}{0F554B}
+\definecolor{ULeicesterBlueDark}{HTML}{262E65}
 
 % From https://le.ac.uk
-\definecolor{LeicesterBlueWeb}{HTML}{207ea4}
-\definecolor{LeicesterGreyWeb}{HTML}{b3b3b3}
-\definecolor{LeicesterGreyBrightWeb}{HTML}{ebebeb}
+\definecolor{ULeicesterBlueWeb}{HTML}{207ea4}
+\definecolor{ULeicesterGreyWeb}{HTML}{b3b3b3}
+\definecolor{ULeicesterGreyBrightWeb}{HTML}{ebebeb}
 
 % Maastricht
 % Colors from https://www.maastrichtuniversity.nl/support/communications-guide/house-style/colours
@@ -387,23 +387,23 @@
 
 % Melbourne
 % Colors from https://designsystem.web.unimelb.edu.au/style-guide/colour-palette/
-\definecolor{MelbTraditionalHeritage}{HTML}{000F46}  % (Blue)
-\definecolor{MelbTraditionalHeritageDark}{HTML}{000B34}  % (Dark Blue)
-\definecolor{MelbMtWilliamGreenstone}{HTML}{ABC1A7}  % (Light Sage)
-\definecolor{MelbMtWilliamGreenstoneDark}{HTML}{444A40}  % (Dark Sage)
-\definecolor{MelbMagpie}{HTML}{C8C8C8}  % (Light Grey)
-\definecolor{MelbMagpieDark}{HTML}{2D2D2D}  % (Dark Grey)
-\definecolor{MelbLaughingKookaburra}{HTML}{46C8F0}  % (Light Blue)
-\definecolor{MelbLaughingKookaburraDark}{HTML}{003C55}  % (Dark Blue)
-\definecolor{MelbPossum}{HTML}{EB7BBE}  % (Pink)
-\definecolor{MelbPossumDark}{HTML}{73234B}  % (Maroon)
-\definecolor{MelbBlackSheoak}{HTML}{FF2D3C}  % (Light Red)
-\definecolor{MelbBlackSheoakDark}{HTML}{78000D}  % (Dark Red)
-\definecolor{MelbYamDaisy}{HTML}{FFD629}  % (Yellow)
-\definecolor{MelbYamDaisyDark}{HTML}{A84500}  % (Brown)
-\definecolor{MelbRiverRedGum}{HTML}{9FB825}  % (Light Green)
-\definecolor{MelbRiverRedGumDark}{HTML}{2C421D}  % (Dark Green)
-\definecolor{MelbLink}{HTML}{083973}  % (Blue)
+\definecolor{UMelbTraditionalHeritage}{HTML}{000F46}  % (Blue)
+\definecolor{UMelbTraditionalHeritageDark}{HTML}{000B34}  % (Dark Blue)
+\definecolor{UMelbMtWilliamGreenstone}{HTML}{ABC1A7}  % (Light Sage)
+\definecolor{UMelbMtWilliamGreenstoneDark}{HTML}{444A40}  % (Dark Sage)
+\definecolor{UMelbMagpie}{HTML}{C8C8C8}  % (Light Grey)
+\definecolor{UMelbMagpieDark}{HTML}{2D2D2D}  % (Dark Grey)
+\definecolor{UMelbLaughingKookaburra}{HTML}{46C8F0}  % (Light Blue)
+\definecolor{UMelbLaughingKookaburraDark}{HTML}{003C55}  % (Dark Blue)
+\definecolor{UMelbPossum}{HTML}{EB7BBE}  % (Pink)
+\definecolor{UMelbPossumDark}{HTML}{73234B}  % (Maroon)
+\definecolor{UMelbBlackSheoak}{HTML}{FF2D3C}  % (Light Red)
+\definecolor{UMelbBlackSheoakDark}{HTML}{78000D}  % (Dark Red)
+\definecolor{UMelbYamDaisy}{HTML}{FFD629}  % (Yellow)
+\definecolor{UMelbYamDaisyDark}{HTML}{A84500}  % (Brown)
+\definecolor{UMelbRiverRedGum}{HTML}{9FB825}  % (Light Green)
+\definecolor{UMelbRiverRedGumDark}{HTML}{2C421D}  % (Dark Green)
+\definecolor{UMelbLink}{HTML}{083973}  % (Blue)
 
 % LMU Munich
 % Colors from https://www.fu-berlin.de/en/sites/corporate-design/guidelines/fu-farben/index.html
@@ -765,6 +765,8 @@
 }
 \setbeamertemplate{button}[rounded]
 
+% Make vertical spacing of default list environment consistent with Beamer's itemize/enumerate
+\apptocmd{\list}{\vskip\topsep}{}{}
 % List formatting
 \setbeamertemplate{itemize items}{\strut\textbf{\textbullet}{\kern 0.07em}}
 \setbeamertemplate{enumerate item}{\strut\textbf{\arabic{enumi}.\kern-0.1em}}
@@ -973,7 +975,7 @@
 \usepackage{curves}
 
 \usepackage{fontawesome5}
-\usetikzlibrary{arrows.meta, positioning, calc}
+\usetikzlibrary{arrows.meta, calc, overlay-beamer-styles, positioning}
 
 % Superscript for author affiliations, inspired by the authblk package
 \newcommand{\affil}[1]{%
@@ -1121,13 +1123,158 @@ Inserting \texttt{\textbackslash par} before the beginning of a~lower-level list
 \end{frame}
 
 
-\begin{frame}{A~simple schematic}
+\begin{frame}[allowframebreaks]{Questions to Structure Your Presentation}
 
-% \vfill
-% %\begin{figure}[!h]
-%     \includegraphics[width = \textwidth, keepaspectratio]{figures/draft_pic.png}
-% %\end{figure}
-% \vfill
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item You may find the following list of questions helpful as a~guide to making sure that your presentation covers all important aspects. The questions equally apply, of course, to posters and manuscripts.
+\end{list}
+
+\framebreak
+
+\bgroup
+\addtolength{\leftmargini}{\widthof{9}}
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item Your introduction might answer the following questions (not necessarily in this order, but this order will produce a~``funnel'' structure):
+\end{list}
+\begin{enumerate}
+	\addtolength{\labelwidth}{\widthof{9}}
+	\item What do we already know?
+	\item What do we not know yet (the ``knowledge gap'')?
+	\item Why is it interesting\slash relevant to close the gap? \textcolor{gray}{[``No one has done it yet'' ist not enough.]}
+	\item \structure{What is the research question? [R]}
+	\item In which way(s) does answering the research question contribute to closing the knowledge gap?
+	\item Which method(s) do you use to answer the research question?
+	\item Why is\slash are the chosen method(s) (more) suitable (than potential alternative methods)?
+\end{enumerate}
+
+\framebreak
+
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item Your conclusion/discussion might answer the following questions (the following order will produce a~``reverse funnel'' structure):
+\end{list}
+\begin{enumerate}
+	\addtolength{\labelwidth}{\widthof{9}}
+	\item[8.] What was the knowledge gap before the current study? \textcolor{gray}{[Similar to the introduction.]}
+	\item[9.] \structure{What did you find, and how does it contribute to closing the knowledge gap? [A]} \\
+		Which method\slash data did you use; what are the results? \textcolor{gray}{[Recap \& take-home message.]}
+	\item[10.] How do your results relate to (confirm\slash contradict\slash complement\slash extend) the results from previous and other contemporaneous studies?
+	\item[11.] What part of the gap is still open? \\
+		Phrased a~bit more negatively: What are the limitations of your approach?
+	\item[12.] Next steps\slash avenues for future research: How could we go about closing the remaining knowledge gap (by removing the limitations of the approaches used so far)?
+\end{enumerate}
+\egroup
+
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item John Cochrane might do away with question~12. See his ``Writing Tips for Ph.D. Students,'' \url{https://www.fma.org/assets/docs/membercontent/writing_cochrane.pdf}.
+\end{list}
+
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{More Structuring Advice}
+
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item In her book \textit{The Little Book of Research Writing}, Varanya Chaubey proposes a~simpler list of only three items---the \structure{``RAP method''}:
+\end{list}
+
+\begin{itemize}
+	\item The \structure{``R''} stands for ``research question.''
+	\item The \structure{``A''} stands for ``answer'' (to the research question, of course).
+	\item The \structure{``P''} stands for ``positioning statement.'' (How does our manuscript relate to the literature: Does it corroborate or extend or contradict others' findings?)
+\end{itemize}
+
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item Relating the ``RAP'' approach to the the list of questions above, question~4 is the ``R,'' the answer to question~9 is the ``A,'' and the remaining questions spell out the ``P.''
+	\item For a quick summary of the book, see \url{https://mauve-porcupine-8992.squarespace.com/s/Chaubey_Research_Writing-bxdd.pdf}. See also \url{https://www.econscribe.org/about} and \url{https://arxiv.org/pdf/2012.07787}.
+\end{list}
+
+\end{frame}
+
+
+\tikzset{
+  sat/.style={
+  	align = center,
+    circle, fill = #1, inner sep = 0pt, minimum size = 2.1cm,
+    text opacity = 1, font = \footnotesize\bfseries, text = white,
+  },
+}
+
+\begin{frame}[c, plain]
+
+\begin{tikzpicture}[remember picture, overlay, scale = 0.85, transform shape]
+	\coordinate (ctr) at (current page.center);
+	% Center node: Research question
+	\node[align = center, circle, minimum size = 3.25cm, fill = structure, font = \fontsize{13pt}{15pt}\bfseries, text = white, visible on = <4->]
+		(core) at (ctr) {\textmd{Q4}\\Research\\question};
+	% Six satellite nodes, placed explicitly at 60-degree intervals
+	% 1. Background
+	\node[sat=OxOrange, visible on = <1->] (s1) at ([shift={(150:3.6cm)}]ctr)
+		{\textmd{Q1}\\Back-\\ground};
+	\draw[OxOrange, arrows = latex-, line width = 1pt, visible on = <4->] (core) -- (s1);
+	% 2. Knowledge gap
+	\node[sat = ErasmusTrafficBlue, visible on = <2->] (s2) at ([shift={(90:3.6cm)}]ctr)
+		{\textmd{Q2}\\Knowledge\\gap};
+	\draw[ErasmusTrafficBlue, arrows = latex-, line width = 1pt, visible on = <4->] (core) -- (s2);
+	% 3. Relevance
+	\node[sat = ErasmusTrafficPurple, visible on = <3->] (s3) at ([shift={(30:3.6cm)}]ctr)
+		{\textmd{Q3}\\Rele-\\vance};
+	\draw[ErasmusTrafficPurple, arrows = latex-, line width = 1pt, visible on = <4->] (core) -- (s3);
+	% 5. Closing the gap
+	\node[align=center, sat=ULeicesterCoreRed, visible on = <5->] (s5) at ([shift={(330:3.6cm)}]ctr)
+		{\textmd{Q5}\\Closing\\the gap};
+	\draw[ULeicesterCoreRed, -latex, line width = 1pt,visible on = <5->] (core) -- (s5);
+	% 6. Method of choice
+	\node[align=center, sat = UAntwerpGreen, visible on = <6->] (s6) at ([shift={(270:3.6cm)}]ctr)
+		{\textmd{Q6}\\Method\\of choice};
+	\draw[UAntwerpGreen, -latex, line width = 1pt, visible on = <6->] (core) -- (s6);
+	% 7. Suitability of method
+	\node[sat=UChicagoLake, visible on = <7->] (s7) at ([shift={(210:3.6cm)}]ctr)
+		{\textmd{Q7}\\Suitability\\of method};
+	\draw[UChicagoLake, -latex, line width = 1pt, visible on = <7->] (core) -- (s7);
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}{}
+
+\begin{tikzpicture}[remember picture, overlay]
+	% Research question
+	\fill[structure, opacity = 0.25, visible on = <1-5>]
+		([xshift = -2cm, yshift = 0.75cm]current page.center)
+		circle (4.25cm);
+	\node[align = center, font = \fontsize{18}{20}\selectfont\bfseries, text = structure, visible on=<1-5>]
+		at ([xshift = -2cm, yshift = 0.75cm]current page.center) {Research\\question};
+	% Theory
+	\fill[StirEnergyGreen, opacity = 0.2, visible on = <2-5>]
+		([xshift = 2.5cm, yshift = 3.75cm]current page.center)
+		circle (3.5cm);
+	\node[font = \fontsize{13}{15}\selectfont\bfseries, text = StirEnergyGreen, visible on=<2-5>]
+		at ([xshift = 2.5cm, yshift = 3.75cm]current page.center) {Theory};
+	% Related literature
+	\fill[YaleBlueMid, opacity = 0.15, visible on = <3-5>]
+		([xshift = -6.5cm, yshift = -2.75cm]current page.center)
+		circle (3.2cm);
+	\node[align = center, font = \fontsize{13}{15}\selectfont\bfseries, text = YaleBlueMid, visible on=<3-5>]
+		at ([xshift = -6.5cm, yshift = -2.75cm]current page.center) {Related\\literatur};
+	% Methods
+	\fill[UMaasOrangeRed, opacity = 0.15, visible on = <4-5>]
+		([xshift = 3cm, yshift = -2.5cm]current page.center)
+		circle (3.25cm);
+	\node[font = \fontsize{13}{15}\selectfont\bfseries, text = UMaasOrangeRed, visible on=<4-5>]
+		at ([xshift = 3cm, yshift = -2.5cm]current page.center) {Methods};
+	% Software
+	\fill[NYUViolet, opacity = 0.1, visible on = <5-5>]
+		([xshift = 6.75cm, yshift = -0.25cm]current page.center)
+		circle (2.0cm);
+	\node[font = \fontsize{11}{13}\selectfont\bfseries, text = NYUViolet, visible on=<5-5>]
+		at ([xshift = 6.75cm, yshift = -0.25cm]current page.center) {Software};
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}{Another example TikZ graphic}
 
 \bigskip
 \resizebox{\textwidth}{!}{%
@@ -1155,49 +1302,47 @@ Inserting \texttt{\textbackslash par} before the beginning of a~lower-level list
 
 	% --- Main boxes -------------------------------------------------------------
 	% Factor 1
-	\node[redbox, fill = UAntwerpRedIntense!10, draw = none, font = \fontsize{11.5pt}{14.5pt}\bfseries, text = UAntwerpRedIntense] (F1) {%
+	\node[redbox, fill = UAntwerpRedIntense!10, draw = none, font = \fontsize{11.5pt}{14.5pt}\bfseries, text = UAntwerpRedIntense, visible on = <1-6>] (F1) {%
 	  	\faBullseye\\[5pt]\strut Exogenous\\\strut Factor%
 	};
-	\node[redbox, minimum height = 0.8cm, above = -0.80cm of F1.north] (F1Icon) {\faBullseye};
+	\node[redbox, above = -0.80cm of F1.north, minimum height = 0.8cm, visible on = <1-6>] (F1Icon) {\faBullseye};
 	% Factor 2
-	\node[greenbox, fill = UAntwerpGreen!17, right = 3.1cm of F1, draw = none, font = \fontsize{11.5pt}{14.5pt}\bfseries, text = UAntwerpGreen] (F2) {%
+	\node[greenbox, fill = UAntwerpGreen!17, right = 3.1cm of F1, draw = none, font = \fontsize{11.5pt}{14.5pt}\bfseries, text = UAntwerpGreen, visible on = <2-6>] (F2) {%
 	  	\faHeart\\[5pt]\strut Mediating\\\strut Factor%
 	};
-	\node[greenbox, minimum height = 0.8cm, above = -0.80cm of F2.north,] (F2Icon) {\faHeart};
+	\node[greenbox, above = -0.80cm of F2.north, minimum height = 0.8cm, visible on = <2-6>] (F2Icon) {\faHeart};
 	% Factor 3
-	\node[yelbox, draw = none, fill = UBonnYellow!22, font = \fontsize{11.5pt}{14.5pt}\bfseries, right = 3.1cm of F2] (F3) {%
+	\node[yelbox, draw = none, fill = UBonnYellow!22, font = \fontsize{11.5pt}{14.5pt}\bfseries, right = 3.1cm of F2, visible on = <3-6>] (F3) {%
 		\faStopwatch\\[5pt]\strut Some Other\\\strut Mediating Factor%
 	};
-	\node[yelbox, minimum height = 0.8cm, above = -0.80cm of F3.north] (F3Icon) {\faStopwatch};
+	\node[yelbox, minimum height = 0.8cm, above = -0.80cm of F3.north, visible on = <3-6>] (F3Icon) {\faStopwatch};
 	% Dependent Variable
-	\node[bluebox, draw = none, fill = UBonnBlue!15, font = \fontsize{11.5pt}{14.5pt}\bfseries, right = 3.1cm of F3, text = UBonnBlue] (DV) {%
+	\node[bluebox, draw = none, fill = UBonnBlue!15, font = \fontsize{11.5pt}{14.5pt}\bfseries, right = 3.1cm of F3, text = UBonnBlue, visible on = <4-6>] (DV) {%
 		\faCoins\\[5pt]\strut Dependent\\\strut Variable%
 	};
-	\node[bluebox, minimum height = 0.8cm, above = -0.80cm of DV.north] (DVIcon) {\faCoins};
+	\node[bluebox, minimum height = 0.8cm, above = -0.80cm of DV.north, visible on = <4-6>] (DVIcon) {\faCoins};
 	% Indirect Path (top)
-	\node[AAPbox, above = 2.5cm of F3, draw = none, fill = UMaasOrangeRed!12, font = \fontsize{11.5pt}{14.5pt}\bfseries, text = UMaasOrangeRed] (AAP) {%
+	\node[AAPbox, above = 2.5cm of F3, draw = none, fill = UMaasOrangeRed!12, font = \fontsize{11.5pt}{14.5pt}\bfseries, text = UMaasOrangeRed, visible on = <5-6>] (AAP) {%
 		\faCog\\[5pt]\strut Alternative\,/\\\strut Additional Path%
 	};
-	\node[AAPbox, minimum height = 0.8cm, above = -0.80cm of AAP.north] (AAPIcon) {\faCog};
+	\node[AAPbox, minimum height = 0.8cm, above = -0.80cm of AAP.north, visible on = <5-6>] (AAPIcon) {\faCog};
 
 	% --- Solid arrows (main chain) ----------------------------------------
-	\draw[garr] (F1.east) -- (F2.west);
-	\node[font = \fontsize{11.5pt}{14.5pt}\bfseries] at ($(F1.east) + (1.55cm, 0.6cm)$) {\textbf{manipulates}};
-	\draw[garr] (F2.east) -- (F3.west);
-	\draw[garr] (F3.east) -- (DV.west);
+	\draw[garr, visible on = <2-6>] (F1.east) -- (F2.west);
+	\node[font = \fontsize{11.5pt}{14.5pt}\bfseries, visible on = <2-6>] at ($(F1.east) + (1.55cm, 0.6cm)$) {\textbf{manipulates}};
+	\draw[garr, visible on = <3-6>] (F2.east) -- (F3.west);
+	\draw[garr, visible on = <4-6>] (F3.east) -- (DV.west);
 
 	% --- Curved solid arrow up to alternative path ---------------------------
-	\draw[solidcurv] (F2.north) to[out=75, in=185] (AAP.west);
+	\draw[solidcurv, visible on = <5-6>] (F2.north) to[out=75, in=185] (AAP.west);
 
 	% --- Curved dashed arrow from AAP to DV --------------------
-	\draw[dcurv](AAP.east) to[out=-5, in=105] (DV.north);
-
-	\node[font = \Huge, text = UBonnGray!75] at ($(AAP.east) + (3.75cm, -0.2cm)$) {?};
+	\draw[dcurv, visible on = <5-6>](AAP.east) to[out=-5, in=105] (DV.north);
+	\node[font = \Huge, text = UBonnGray!75, visible on = <5-6>] at ($(AAP.east) + (3.75cm, -0.2cm)$) {?};
 
 	% --- Bottom dashed curved arrow from Factor 2 to Dependent Variable -----------------------
-	\draw[dcurv](F2.south) to[out=-75, in=-105] (DV.south);
-
-	\node[font = \HUGE\bfseries, text = UBonnYellow] at ($(F2.south)!0.52!(DV.south) + (0,-2cm)$) {?};
+	\draw[dcurv, visible on = <6-6>](F2.south) to[out=-75, in=-105] (DV.south);
+	\node[font = \HUGE\bfseries, text = UAntwerpGreen, visible on = <6-6>] at ($(F2.south)!0.52!(DV.south) + (0,-2.5cm)$) {?};
 
 	\end{tikzpicture}%
 	}
@@ -1283,26 +1428,65 @@ For this reason, one should place \emph{any} text in a~\texttt{list} environment
 \end{frame}
 
 
-\begin{frame}{\texttt{list} environment}
+\begin{frame}{\texttt{list} environment, followed by other environments}
 
 \begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
-	\item Item 1 in \texttt{list} environment.
-	\item Item 2 in \texttt{list} environment.
+	\item Item~1 in \texttt{list} environment.
+	\item Item~2 in \texttt{list} environment.
+	\item Item~3 in \texttt{list} environment.
 \end{list}
 
-Subsequent body text.
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item Item~1 in subsequent \texttt{list} environment.
+	\item Item~2 in subsequent \texttt{list} environment.
+\end{list}
+
+\begin{itemize}
+	\item Item~1 in subsequent \texttt{itemize} environment.
+	\item Item~2 in subsequent \texttt{itemize} environment.
+\end{itemize}
+
+\begin{enumerate}
+	\item Item~1 in subsequent \texttt{enumerate} environment.
+	\item Item~2 in subsequent \texttt{enumerate} environment.
+\end{enumerate}
+
+\begin{itemize}
+	\item Item~1 in subsequent \texttt{itemize} environment.
+	\item Item~2 in subsequent \texttt{itemize} environment.
+\end{itemize}
 
 \end{frame}
 
 
-\begin{frame}{\texttt{itemize} environment}
+\begin{frame}{\texttt{itemize} environment, followed by other environments}
+
 
 \begin{itemize}
-	\item Item 1 in \texttt{itemize} environment.
-	\item Item 2 in \texttt{itemize} environment.
+	\item Item~1 in \texttt{itemize} environment.
+	\item Item~2 in \texttt{itemize} environment.
 \end{itemize}
 
-Subsequent body text.
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item Item~1 in subsequent \texttt{list} environment.
+	\item Item~2 in subsequent \texttt{list} environment.
+	\item Item~3 in subsequent \texttt{list} environment.
+\end{list}
+
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item Item~1 in subsequent \texttt{list} environment.
+	\item Item~2 in subsequent \texttt{list} environment.
+\end{list}
+
+\begin{enumerate}
+	\item Item~1 in subsequent \texttt{enumerate} environment.
+	\item Item~2 in subsequent \texttt{enumerate} environment.
+\end{enumerate}
+
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item Item~1 in subsequent \texttt{list} environment.
+	\item Item~2 in subsequent \texttt{list} environment.
+\end{list}
 
 \end{frame}
 
@@ -1317,7 +1501,11 @@ Subsequent body text.
 	\end{itemize}
 	\item Item~2.
 \end{itemize}
-Body text.
+
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item Item 1 in subsequent \texttt{list} environment.
+	\item Item 2 in subsequent \texttt{list} environment.
+\end{list}
 
 \end{frame}
 
@@ -1332,7 +1520,10 @@ Body text.
 	\end{enumerate}
 	\item Item~2.
 \end{enumerate}
+
 Body text.
+
+Also here: vertical space between paragraphs is absent. Hence, better to use \texttt{list} environment.
 
 \end{frame}
 
@@ -1352,7 +1543,10 @@ Body text.
 		\item Item~2.
 	\end{enumerate}
 \end{enumerate}
-Body text.
+\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
+	\item Item 1 in subsequent \texttt{list} environment.
+	\item Item 2 in subsequent \texttt{list} environment.
+\end{list}
 
 \end{frame}
 
@@ -1415,62 +1609,37 @@ Body text.
 \end{frame}
 
 
-\begin{frame}[allowframebreaks]{Questions to Structure Your Presentation}
+\begin{frame}{An automated animation}
 
 \begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
-	\item You may find the following list of questions helpful as a~guide to making sure that your presentation covers all important aspects. The questions equally apply, of course, to posters and manuscripts.
+	\item The automated transition to the next slide (=~page in the PDF document) only works in full-screen mode.
 \end{list}
-
-\framebreak
-
-\bgroup
-\addtolength{\leftmargini}{\widthof{9}}
-Your introduction might answer the following questions (not necessarily in this order, but this order will produce a~``funnel'' structure):
-\begin{enumerate}
-	\addtolength{\labelwidth}{\widthof{9}}
-	\item What do we already know?
-	\item What do we not know yet (the ``knowledge gap'')?
-	\item Why is it interesting\slash relevant to close the gap?
-	\item \structure{What is the research question? [R]}
-	\item Why is it interesting to answer the research question? \textcolor{gray}{[``No one has done it before'' ist not sufficient \textellipsis]}
-	\item How do we contribute to closing the knowledge gap: How do we answer the research question? (Which method do we use?)
-	\item Why is the chosen method (more) suitable (than alternative methods) for answering the research question?
-\end{enumerate}
-
-\framebreak
-
-Your conclusion/discussion might answer the following questions (the following order will produce a~``reverse funnel'' structure):
-\begin{enumerate}
-	\addtolength{\labelwidth}{\widthof{9}}
-	\item[8.] What was the knowledge gap before the current study? \textcolor{gray}{[Similar to the introduction.]}
-	\item[9.] \structure{How did we contribute to closing that gap, and what did we find? [A]} Which method\slash dataset did we use, and what are the results? \textcolor{gray}{[Recap and take-home message.]}
-	\item[10.] How do our results relate to (confirm\slash contradict\slash complement\slash extend) the results from previous and other contemporaneous studies?
-	\item[11.] What part of the gap is still open? (Phrased a~bit more negatively: What are the limitations of our approach?)
-	\item[12.] Next steps\slash avenues for future research: How could we go about closing the remaining knowledge gap (by removing the limitations of our current approach)?
-\end{enumerate}
-\egroup
-
-John Cochrane might do away with question~12. See his ``Writing Tips for Ph.D. Students,'' \url{https://www.fma.org/assets/docs/membercontent/writing_cochrane.pdf}.
-
-\end{frame}
-
-
-\begin{frame}[allowframebreaks]{More Structuring Advice}
-
-\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
-	\item In her book \textit{The Little Book of Research Writing}, Varanya Chaubey proposes a~simpler list of only three items---the \structure{``RAP method''}:
-\end{list}
-
 \begin{itemize}
-	\item The \structure{``R''} stands for ``research question.''
-	\item The \structure{``A''} stands for ``answer'' (to the research question, of course).
-	\item The \structure{``P''} stands for ``positioning statement.'' (How does our manuscript relate to the literature: Does it corroborate or extend or contradict others' findings?)
+	\item The feature is available in Adobe Acrobat and Acrobat Reader.
+	\item Unfortunately, it is (currently, \today) not available in macOS Preview, Skim, and SumatraPDF.
 \end{itemize}
+\transduration{0.25}%
+\only<12>{\transduration{}}
+\foreach \n [evaluate=\n as \angle using \n * 30] in {0, ..., 12}{
+	\only<\n>{
+		\begin{figure}
+			\begin{tikzpicture}
+				\draw[draw=none, use as bounding box](-1, 0) rectangle (1, 2);
+				\filldraw[fill=structure, draw=none] (0,1) -- (0,2) arc (90:90-\angle:1cm) -- cycle;
+			\end{tikzpicture}
+			\caption{%
+				Step~\makebox[\widthof{12}][r]{\n}---%
+				Angle:~\makebox[\widthof{360.0}][r]{\angle}\textdegree%
+			}
+		\end{figure}
+	}
+}%
+\vspace{-\bigskipamount}
 
-\begin{list}{}{\leftmargin = 0pt \itemindent = 0pt}
-	\item Relating the ``RAP'' approach to the the list of questions above, question~4 is the ``R,'' the answer to question~9 is the ``A,'' and the remaining questions spell out the ``P.''
-	\item For a quick summary of the book, see \url{https://mauve-porcupine-8992.squarespace.com/s/Chaubey_Research_Writing-bxdd.pdf}. See also \url{https://www.econscribe.org/about} and \url{https://arxiv.org/pdf/2012.07787}.
-\end{list}
+\hypertarget<1>{animation_start}{}%
+\hypertarget<12>{animation_end}{}%
+\hyperlink<1>{animation_end}{\beamergotobutton{Jump to the end}}%
+\hyperlink<12>{animation_start}{\beamerreturnbutton{Back to the start}}%
 
 \end{frame}
 
@@ -1526,13 +1695,14 @@ John Cochrane might do away with question~12. See his ``Writing Tips for Ph.D. S
 \begin{frame}{\texttt{block}s \inserttopiccounter}
 
 \begin{lemma}
-Given two line segments whose lengths are \(a\) and \(b\), respectively, there
-is a real number \(r\) such that \(b = r\,a\).
+	Given two line segments whose lengths are \(a\) and \(b\), respectively, there
+	is a real number \(r\) such that \(b = r\,a\).%
+	\vphantom{y}
 \end{lemma}
 
 \begin{proof}
-To prove a~lemma by contradiction, try and assume that the statement is false,
-proceed from there and at some point you will arrive at a~contradiction.
+	To prove a~lemma by contradiction, try and assume that the statement is false,
+	proceed from there and at some point you will arrive at a~contradiction.
 \end{proof}
 
 \end{frame}
@@ -1712,12 +1882,6 @@ proceed from there and at some point you will arrive at a~contradiction.
 	\item Bla bla.
 	\item Bla bla.
 \end{itemize}
-
-\bigskip
-
-\beamergotobutton{Details on the dataset}
-
-\beamergotobutton{Dataset in greater detail}
 
 \end{frame}
 
@@ -2411,9 +2575,9 @@ proceed from there and at some point you will arrive at a~contradiction.
 
 \begingroup
 
-\colorlet{structure}{LeicesterCoreRed}
-\hypersetup{urlcolor = LeicesterBlueWeb}
-\setbeamercolor{alerted text}{fg = LeicesterCoreRed}
+\colorlet{structure}{ULeicesterCoreRed}
+\hypersetup{urlcolor = ULeicesterBlueWeb}
+\setbeamercolor{alerted text}{fg = ULeicesterCoreRed}
 
 \begin{frame}{University of Leicester Color Palette \inserttopiccounter}
 
@@ -2421,8 +2585,8 @@ proceed from there and at some point you will arrive at a~contradiction.
 	\item \textbf{Core colors\vphantom{p}}
 		\smallskip
 	\item
-		\colorswatch{LeicesterCoreRed}{Core \\ Red}\;\;
-		\colorswatch{LeicesterCoreGrey}{Core \\ Grey}
+		\colorswatch{ULeicesterCoreRed}{Core \\ Red}\;\;
+		\colorswatch{ULeicesterCoreGrey}{Core \\ Grey}
 		\smallskip
 	\item See \url{https://le.ac.uk/-/media/uol/docs/recruitment/brand-guidelines/uol-quick-guidelines-2020.pdf}.
 	\item \alert{Attention!}
@@ -2438,28 +2602,28 @@ proceed from there and at some point you will arrive at a~contradiction.
 		\smallskip
 	\item
 		\makebox[9.25cm][l]{%
-			\colorswatch{LeicesterOrange}{Orange}\;\;
-			\colorswatch{LeicesterGreen}{Green}\;\;
-			\colorswatch{LeicesterBlue}{Blue}\;\;
-			\colorswatch{LeicesterPurple}{Purple}%
+			\colorswatch{ULeicesterOrange}{Orange}\;\;
+			\colorswatch{ULeicesterGreen}{Green}\;\;
+			\colorswatch{ULeicesterBlue}{Blue}\;\;
+			\colorswatch{ULeicesterPurple}{Purple}%
 		}
-		\colorswatch{LeicesterBlueWeb}{Web \\ Blue}\;\;
-		\colorswatch{LeicesterGreyWeb}{Web \\ Grey}\;\;
-		\colorswatch{LeicesterGreyBrightWeb}{Web \\ Bright~Grey}
+		\colorswatch{ULeicesterBlueWeb}{Web \\ Blue}\;\;
+		\colorswatch{ULeicesterGreyWeb}{Web \\ Grey}\;\;
+		\colorswatch{ULeicesterGreyBrightWeb}{Web \\ Bright~Grey}
 		\smallskip
 	\item \textbf{Supporting palette}
 		\smallskip
 	\item
-		\colorswatch{LeicesterYellowBright}{Bright \\ Yellow}\;\;
-		\colorswatch{LeicesterGreenBright}{Bright \\ Green}\;\;
-		\colorswatch{LeicesterBlueBright}{Bright \\ Blue}\;\;
-		\colorswatch{LeicesterPurpleBright}{Bright \\ Purple}\;\;
-		\colorswatch{LeicesterPinkBright}{Bright \\ Pink}
+		\colorswatch{ULeicesterYellowBright}{Bright \\ Yellow}\;\;
+		\colorswatch{ULeicesterGreenBright}{Bright \\ Green}\;\;
+		\colorswatch{ULeicesterBlueBright}{Bright \\ Blue}\;\;
+		\colorswatch{ULeicesterPurpleBright}{Bright \\ Purple}\;\;
+		\colorswatch{ULeicesterPinkBright}{Bright \\ Pink}
 		\smallskip
 	\item
-		\colorswatch{LeicesterOrangeDark}{Dark \\ Orange}\;\;
-		\colorswatch{LeicesterGreenDark}{Dark \\ Green}\;\;
-		\colorswatch{LeicesterBlueDark}{Dark \\ Blue}\;\;
+		\colorswatch{ULeicesterOrangeDark}{Dark \\ Orange}\;\;
+		\colorswatch{ULeicesterGreenDark}{Dark \\ Green}\;\;
+		\colorswatch{ULeicesterBlueDark}{Dark \\ Blue}\;\;
 \end{list}
 
 \end{frame}
@@ -2701,36 +2865,36 @@ proceed from there and at some point you will arrive at a~contradiction.
 
 \begingroup
 
-\colorlet{structure}{MelbTraditionalHeritage}
-\hypersetup{urlcolor = MelbLink}
-\setbeamercolor{alerted text}{fg = MelbBlackSheoak}
+\colorlet{structure}{UMelbTraditionalHeritage}
+\hypersetup{urlcolor = UMelbLink}
+\setbeamercolor{alerted text}{fg = UMelbBlackSheoak}
 
 \begin{frame}{University of Melbourne Color Palette}
 
 \smallskip
 \begin{list}{}{\leftmargin = 0pt}
 	\item
-		\colorswatch{MelbTraditionalHeritage}{Traditional \\  Heritage}\;\;
-		\colorswatch{MelbTraditionalHeritageDark}{Traditional \\ Heritage Dark}\;\;
-		\colorswatch{MelbMtWilliamGreenstone}{Mt William \\ Greenstone}\;\;
-		\colorswatch{MelbMtWilliamGreenstoneDark}{Mt William \\ Greenstone Dark}\;\;
-		\colorswatch{MelbMagpie}{Magpie}\;\;
-		\colorswatch{MelbMagpieDark}{Magpie \\ Dark}\;\;
-		\colorswatch{MelbLaughingKookaburra}{Laughing Kookaburra}\;\;
-		\colorswatch{MelbLaughingKookaburraDark}{Laughing Kookaburra Dark}
+		\colorswatch{UMelbTraditionalHeritage}{Traditional \\  Heritage}\;\;
+		\colorswatch{UMelbTraditionalHeritageDark}{Traditional \\ Heritage Dark}\;\;
+		\colorswatch{UMelbMtWilliamGreenstone}{Mt William \\ Greenstone}\;\;
+		\colorswatch{UMelbMtWilliamGreenstoneDark}{Mt William \\ Greenstone Dark}\;\;
+		\colorswatch{UMelbMagpie}{Magpie}\;\;
+		\colorswatch{UMelbMagpieDark}{Magpie \\ Dark}\;\;
+		\colorswatch{UMelbLaughingKookaburra}{Laughing Kookaburra}\;\;
+		\colorswatch{UMelbLaughingKookaburraDark}{Laughing Kookaburra Dark}
 		\smallskip
 	\item
-		\colorswatch{MelbPossum}{Possum}\;\;
-		\colorswatch{MelbPossumDark}{Possum \\ Dark}\;\;
-		\colorswatch{MelbBlackSheoak}{Black Sheoak}\;\;
-		\colorswatch{MelbBlackSheoakDark}{Black Sheoak \\ Dark}\;\;
-		\colorswatch{MelbYamDaisy}{Yam Daisy}\;\;
-		\colorswatch{MelbYamDaisyDark}{Yam Daisy \\ Dark}\;\;
-		\colorswatch{MelbRiverRedGum}{River Red Gum}\;\;
-		\colorswatch{MelbRiverRedGumDark}{River Red Gum \\ Dark}
+		\colorswatch{UMelbPossum}{Possum}\;\;
+		\colorswatch{UMelbPossumDark}{Possum \\ Dark}\;\;
+		\colorswatch{UMelbBlackSheoak}{Black Sheoak}\;\;
+		\colorswatch{UMelbBlackSheoakDark}{Black Sheoak \\ Dark}\;\;
+		\colorswatch{UMelbYamDaisy}{Yam Daisy}\;\;
+		\colorswatch{UMelbYamDaisyDark}{Yam Daisy \\ Dark}\;\;
+		\colorswatch{UMelbRiverRedGum}{River Red Gum}\;\;
+		\colorswatch{UMelbRiverRedGumDark}{River Red Gum \\ Dark}
 		\smallskip
 	\item
-		\colorswatch{MelbLink}{Link \\ Color}
+		\colorswatch{UMelbLink}{Link \\ Color}
 		\smallskip
 	\item See \url{https://designsystem.web.unimelb.edu.au/style-guide/colour-palette/}.
 	\item \alert{Attention!}

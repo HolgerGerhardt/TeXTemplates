@@ -11,7 +11,7 @@ This repository includes LaTeX templates for
 * conference posters, and
 * (academic) curricula vitae/résumés.
 
-A template for bachelor’s and master’s theses, and term papers can be found in my [`ThesisTemplates`](https://github.com/HolgerGerhardt/ThesisTemplates/) repository.
+A template for bachelor’s and master’s theses, and term papers can be found in my [ThesisTemplates](https://github.com/HolgerGerhardt/ThesisTemplates/) repository.
 
 ## Noteworthy Features
 

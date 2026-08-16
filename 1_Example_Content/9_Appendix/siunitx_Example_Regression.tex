@@ -6,6 +6,7 @@
 		tall,
 	]{
 		colspec = {X[l] *{5}{U}},
+		column{1} = {preto = {\hangindent = 1.25em \hangafter = 1\relax}},
 		column{1-Y} = {rightsep+ = -0.3em},
 		column{2-Z} = {leftsep+ = -0.3em},
 		%hborder{1, 2} = {abovespace = 0pt, belowspace = 0pt},
@@ -46,7 +47,7 @@
 		\midrule
 		$\text{Treatment} \times \text{(1 + Female)}$
 			&	-0.221	&	0.0228	&	0.163	&	0.00435	&	-0.0138	\\
-		$p_F[\text{Treatment} \times {}$ \newline\mbox{\hspace{1.25em}}$(1 + \text{Female}) = 0]$
+		$p_F[\text{Treatment} \times \allowbreak (1 + \text{Female}) = 0]$
 			&	0.327	&	0.00767	&	0.192	&	0.000314	&	0.00343	\\
 	\end{booktabs}%
 \endgroup

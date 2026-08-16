@@ -35,7 +35,7 @@
 \newcommand{\dissbornin}
 	{Summacumlaudeville}
 \newcommand{\disssubmitdate}
-	{December~2025}
+	{August~2026}
 \newcommand{\dissdean}
 	{Prof.~Dr. Martin Böse}
 \newcommand{\dissfirstsupervisor}
@@ -43,9 +43,9 @@
 \newcommand{\disssecondsupervisor}
 	{Prof.~Dr. V\H{a}e-R\'ee Sm\k{a}rt}
 \newcommand{\dissyear}
-	{2025}
+	{2026}
 \newcommand{\dissdatedefense}
-	{24.~Dezember~2025}
+	{24.~Dezember~2026}
 
 \input    {0_0_Preamble/Preamble_Fundamental_packages}
 \hypersetup{pdftitle={\disstitle}, pdfauthor={\dissauthor}}
@@ -121,6 +121,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  INTRODUCTION  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\newcommand{\currentchapter}{ChIntro}
+
 \begin{refsection}
 
 \chapter*{Introduction}
@@ -147,7 +149,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  CHAPTER 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\newcommand{\currentchapter}{Ch1}
+\renewcommand{\currentchapter}{Ch1}
 
 % Redefine the referencing commands to be chapter-specific in order to
 % avoid erroneous cross-references from one chapter to another ==>
@@ -183,7 +185,7 @@
 
 \begin{refsection}
 
-% Save old footnote definition
+% Revert to original footnote text definition for symobl-based footnote
 \makeatletter
 \renewcommand{\@makefntext}[1]{\@makefntextorig{#1}}
 \makeatother
@@ -196,13 +198,20 @@
 % Use footnote symbols instead of numbers
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \footnotetext[1]{\:\protect\input{1_Example_Content/1_Introduction/Acknowledgments}}
-% Switch back to the original footnote definition
+% Switch back to numbered footnotes
 \renewcommand{\thefootnote}{\thefootnoteorig}
+% Switch back to custom footnote text definition
 \makeatletter
 \renewcommand{\@makefntext}[1]{\@makefntextcustom{#1}}
-\renewcommand{\@makefnmark}{\@makefnmarkorig}
 \makeatother
 \setcounter{footnote}{0}
+
+\begin{abstract}
+	% The input file must not contain blank lines before the abstract text, as these are interpreted as the start of a new paragraph.
+	\input{0_1_Titlepage_paper/Abstract}
+\end{abstract}
+
+\clearpage
 
 \graphicspath{{1_Example_Content/}}
 % \subimport enables execution of \input commands in subdocuments without having to adjust paths
@@ -250,27 +259,34 @@
 
 \begin{refsection}
 
-% Save old footnote definition
+% Revert to original footnote text definition for symobl-based footnote
 \makeatletter
 \renewcommand{\@makefntext}[1]{\@makefntextorig{#1}}
 \makeatother
 \chapter
 	[My Second Paper Has a~Long Title That\nolinebreak\  Spans Two Lines]
-	{My Second Paper Has a\nolinebreak\ Long Title That\nolinebreak\  Spans Two Lines%
+	{My Second Paper Has a\nolinebreak\ Long Title That\nolinebreak\ Spans Two Lines%
 	 \setcounter{footnote}{1}\textsuperscript{\Large\fnsymbol{footnote}}%
 	}
 \label{diss:MySecondPaper}
 % Use footnote symbols instead of numbers
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \footnotetext[1]{\:\protect\input{1_Example_Content/1_Introduction/Acknowledgments}}
-% Switch back to the original footnote definition
+% Switch back to numbered footnotes
 \renewcommand{\thefootnote}{\thefootnoteorig}
+% Switch back to custom footnote text definition
 \makeatletter
 \renewcommand{\@makefntext}[1]{\@makefntextcustom{#1}}
-\renewcommand{\@makefnmark}{\@makefnmarkorig}
 \makeatother
 \setcounter{footnote}{0}
-\vspace{-\bigskipamount}\textsf{\textit{Joint with Adam Smith, Janet Smith, and Jeremiah Smith}} \bigskip
+\textsf{\Large\textit{Joint with Adam Smith, Janet Smith, and Jeremiah Smith}}
+
+\begin{abstract}
+	% The input file must not contain blank lines before the abstract text, as these are interpreted as the start of a new paragraph.
+	\input{0_1_Titlepage_paper/Abstract}
+\end{abstract}
+
+\clearpage
 
 \graphicspath{{1_Example_Content/}}
 \subimport{1_Example_Content/1_Introduction/}{Introduction}
@@ -313,14 +329,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  CHAPTER 3  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\renewcommand{\currentchapter}{Ch3}
+\iftrue  % Use \iffalse to omit the math tests
 
-%\begin{comment}
+\renewcommand{\currentchapter}{Ch3}
 
 \begin{refsection}
 
 \chapter{Math Tests}
 \label{diss:MathTests}
+
+\begin{abstract}
+	This section contains an extensive set of math ``torture'' tests. They are designed to check whether mathematical notation is rendered correctly across a~wide range of cases. The examples include inline formulas, displayed equations, aligned equations, matrices, and other common mathematical structures. The expressions are not meant to make sense, but rather to expose potential formatting problems.
+\end{abstract}
+
+\clearpage
 
 {%
 	\setlength{\parindent}{0cm}
@@ -367,7 +389,7 @@
 
 \end{refsection}
 
-%\end{comment}
+\fi
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%  FORMAL STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%

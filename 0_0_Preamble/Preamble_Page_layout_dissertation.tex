@@ -187,40 +187,40 @@
 
 \titleformat{name=\section}[hang]
 	{\raggedright\Large\sffamily\bfseries}{\thesection\quad}{0pt}{%
-		\xcapitalisewords{%
-			#1%
-		}%
+		\xcapitalisewords{#1}%
 	}[]
-\titleformat{name=\section, numberless}[hang]
+\titleformat{name=\section, numberless}[hang]  % For the starred version
 	{\raggedright\Large\sffamily\bfseries}{}{0pt}{%
-		\xcapitalisewords{%
-			#1%
-		}%
+		\xcapitalisewords{#1}%
 	}[]
 \titleformat{name=\subsection}[hang]
 	{\raggedright\large\sffamily\bfseries}{\thesubsection\quad}{0pt}{%
-		\xcapitalisewords{%
-			#1%
-		}%
+		\xcapitalisewords{#1}%
 	}[]
-\titleformat{name=\subsection, numberless}[hang]
+\titleformat{name=\subsection, numberless}[hang]  % For the starred version
 	{\raggedright\large\sffamily\bfseries}{}{0pt}{%
-		\xcapitalisewords{%
-			#1%
-		}%
+		\xcapitalisewords{#1}%
 	}[]
-\titleformat{name=\subsubsection}[hang]
-	{\raggedright\normalsize\sffamily\bfseries}{\thesubsubsection\quad}{0pt}{%
-		\xcapitalisewords{%
-			#1%
-		}%
+\titleformat{name=\subsubsection}[runin]%
+	{}{}{0pt}{%
+		\textsf{\textbf{\thesubsubsection\quad%
+			\xcapitalisewords{#1}\iftextterm{#1}{}{\unskip.}%
+		}}%
 	}[]
-\titleformat{name=\subsubsection, numberless}[hang]
-	{\raggedright\normalsize\sffamily\bfseries}{}{0pt}{%
-		\xcapitalisewords{%
-			#1%
-		}%
+\titleformat{name=\subsubsection, numberless}[runin]  % For the starred version
+	{}{}{0pt}{%
+		\textsf{\textbf{%
+			\xcapitalisewords{#1}\iftextterm{#1}{}{\unskip.}%
+		}}%
 	}[]
+%\titleformat{name=\subsubsection}[hang]
+%	{\raggedright\normalsize\sffamily\bfseries}{\thesubsubsection\quad}{0pt}{%
+%		\xcapitalisewords{#1}%
+%	}[]
+%\titleformat{name=\subsubsection, numberless}[hang]  % For the starred version
+%	{\raggedright\normalsize\sffamily\bfseries}{}{0pt}{%
+%		\xcapitalisewords{#1}%
+%	}[]
 \titleformat{name=\paragraph, numberless}[runin]
 	{}{}{0pt}{%
 		\textbf{%
@@ -233,6 +233,13 @@
 			#1\iftextterm{#1}{}{\unskip.}%
 		}%
 	}[]
+
+\titlespacing*{\section}%  % Starred version kills indentation of the following paragraph
+	{0pt}{2\baselineskip plus 0.67\baselineskip}{1\baselineskip plus 0.5\baselineskip minus 0.33\baselineskip}
+\titlespacing*{\subsection}%
+	{0pt}{1.33\baselineskip plus 0.5\baselineskip minus 0.33\baselineskip}{0.67\baselineskip plus 0.33\baselineskip minus 0.17\baselineskip}
+\titlespacing{\subsubsection}%
+	{0pt}{1\baselineskip plus 0.67\baselineskip minus 0.33\baselineskip}{4\wordsep}[]
 \titlespacing{\paragraph}
 	{0pt}{0.5\baselineskip plus 0.5\baselineskip}{3\wordsep}[]
 \titlespacing{\subparagraph}
@@ -247,3 +254,23 @@
 \setlength{\marginparwidth}{3.75cm}
 \setlength{\marginparsep}{0.4cm}
 \setlength{\marginparpush}{0.4cm}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  ABSTRACT ENVIRONMENT  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newenvironment{abstract}{%
+	\par\bigskip\bigskip\bigskip\medskip
+	\begingroup%
+	\noindent%
+	\sffamily\fontseries{sl}\selectfont%
+	\textbf{\fontseries{sb}\selectfont Abstract.}~\space%
+	\ignorespaces%
+}{%
+	\unskip\par
+	\endgroup
+}

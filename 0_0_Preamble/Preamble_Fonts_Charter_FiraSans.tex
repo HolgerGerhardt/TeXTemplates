@@ -112,16 +112,17 @@
 
 % Use Bitstream Charter as the text font
 % ==>
-\usepackage[scaled = 0.96, lining, sups]{XCharter}  % option ``sups'' not working properly with subimport
+\usepackage[scaled = 0.96, lining]{XCharter}  % option ``sups'' not working properly with subimport
 % Save the font family and font series definitions for later use:
 \let \savermdefaultfortext \rmdefault
 \let \savemddefaultfortext \mddefault
 \let \savebfdefaultfortext \bfdefault
 \renewcommand{\textellipsis}{\mbox{.{\kern.09em}.{\kern.09em}.}}
 \makeatletter
-\newcommand{\@makefnmarkorig}{%
-	\hbox{\sufigures\hspace*{.04em}\@thefnmark\hspace*{.04em}}%
-}  % Copied from XCharter.sty
+\let \@makefnmarkorig \@makefnmark
+%\AtBeginDocument{%
+%	\renewcommand{\@makefnmark}{\sustyle\@makefnmarkorig}%
+%}
 \makeatother
 % <==
 

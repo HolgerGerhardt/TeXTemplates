@@ -100,7 +100,7 @@
 	\subimport{1_Example_Content/9_Appendix/}{siunitx_Examples}
 	\FloatBarrier
 	\newpage
-	%\begin{ignore}
+	\iftrue  % Use \iffalse to omit the math tests
 	\begingroup%
 		\setlength{\parindent}{0cm}
 		%\setlength{\mathindent}{0cm}  % Only for ``fleqn'' option
@@ -147,7 +147,7 @@
 		 \input{2_Math_Tests/mathtest_TeXbook}%
 		}%
 	\endgroup
-	%\end{ignore}
+	\fi
 \end{appendices}
 
 \newpage

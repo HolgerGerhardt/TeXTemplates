@@ -48,18 +48,28 @@
 
 \newcommand{\appendixformat}[1][\currentname]{%
 	\titleformat{\section}[hang]%
-		{}{\textscale{1.3}{\textsf{\textbf{\appendixname~\thesection\quad}}}}{0pt}{\textscale{1.3}{\textsf{\textbf{#1}}}}[]%
+		{}{\Large\textsf{\textbf{\appendixname~\thesection\quad}}}{0pt}{%
+			\raggedright\Large\textsf{\textbf{#1}}%
+		}[]%
 }
 \AtBeginEnvironment{appendices}{\appendixformat}
 
 \titleformat{name=\section}[hang]%
-	{}{\textscale{1.3}{\textsf{\textbf{\thesection\quad}}}}{0pt}{\textscale{1.3}{\textsf{\textbf{#1}}}}[]
+	{}{\Large\textsf{\textbf{\thesection\quad}}}{0pt}{%
+		\raggedright\Large\textsf{\textbf{#1}}%
+	}[]
 \titleformat{name=\section, numberless}[hang]%
-	{}{}{0pt}{\textscale{1.3}{\textsf{\textbf{#1}}}}[]
+	{}{}{0pt}{%
+		\raggedright\Large\textsf{\textbf{#1}}%
+	}[]
 \titleformat{name=\subsection}[hang]%
-	{}{\textscale{1.15}{\textsf{\textbf{\thesubsection\quad}}}}{0pt}{\textscale{1.15}{\textsf{\textbf{#1}}}}[]
+	{}{\textscale{1.125}{\textsf{\textbf{\thesubsection\quad}}}}{0pt}{%
+		\raggedright\textscale{1.125}{\textsf{\textbf{#1}}}%
+	}[]
 \titleformat{name=\subsection, numberless}[hang]%
-	{}{}{0pt}{\textscale{1.15}{\textsf{\textbf{#1}}}}[]
+	{}{}{0pt}{%
+		\raggedright\textscale{1.125}{\textsf{\textbf{#1}}}%
+	}[]
 % In various journals, third-level headings are run-in headings:
 % AER, QJE, REStud, JEEA (not Econometrica)
 \titleformat{name=\subsubsection}[runin]%

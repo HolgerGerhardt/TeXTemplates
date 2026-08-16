@@ -213,6 +213,10 @@
 \newcommand*{\currentname}{\@currentlabelname}
 \makeatother
 
+\usepackage{needspace}
+
+\usepackage{verbatim}
+
 
 
 
@@ -221,14 +225,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\usepackage[multiple, bottom, norule, splitrule, marginal]{footmisc}
+\usepackage[bottom, multiple, norule, splitrule]{footmisc}
 % \renewcommand{\multfootsep}{,\,}
 % AER-like style: no regular footnote rule, half-page splitrule
 % ==>
-\setlength{\footnotemargin}{0.85\newparindent}%
-\renewcommand{\footnotelayout}{\hspace{0.15\newparindent}}
-\renewcommand{\hangfootparindent}{\newparindent}
-\preto{\footnote}{\setlength{\parindent}{\newparindent}}
+% Right-aligned footnote number in a box as wide as the body indentation
+\AtBeginDocument{%
+	\setlength{\footnotemargin}{\newparindent}%
+	\renewcommand{\footnotelayout}{\setlength{\parindent}{\newparindent}}% Indentation of paragraphs within footnote
+}
+% Right-aligned non-superscript footnote number in box as wide as 3 digits, followed by period
+\makeatletter
+\let \@makefntextorig \@makefntext
+\newcommand{\@makefntextcustom}[1]{%
+	\setlength{\parindent}{\newparindent}% Indentation of paragraphs within footnote
+	\noindent%
+	\makebox[\widthof{000}][r]{% Reserve space for 3 digits
+		\normalfont\@thefnmark%
+	}.\:\,#1%
+}
+\renewcommand{\@makefntext}[1]{\@makefntextcustom{#1}}
+\makeatother
 % Add some space around the footnoterule:
 \let\oldfootnoterule\footnoterule
 \addtolength{\skip\footins}{\bigskipamount}
@@ -239,40 +256,6 @@
 % <==
 %\setlength{\footnotesep}{0.8\baselineskip}
 
-% Chicago Manual of Style (16th edition):
-% ``Note reference numbers in text are set as superior (superscript) numbers.
-% In the notes themselves, they are normally full size, not raised, and followed by a period.''
-% (also REStud and JEEA style)
-% ==>
-\usepackage{xstring}
-\newlength{\textparindent}
-\setlength{\textparindent}{\parindent}
-\newlength{\templength}
-\makeatletter
-\let \@makefntextorig \@makefntext
-    % Saving the original definition so we can reuse it if necessary.
-\newcommand{\@makefntextcustom}[1]{%
-	\parindent 2\textparindent%
-	\hspace{-\textparindent}%
-	\settowidth{\templength}{0}%
-	\ifnum\value{footnote}<10 \hspace{\templength}\else\fi%
-	\thefootnote.\enskip #1%
-}
-\renewcommand{\@makefntext}[1]{\@makefntextcustom{#1}}
-\makeatother
-%\usepackage{scrextend}
-%\newlength{\footnoteflmargin}
-%\setlength{\footnoteflmargin}{\parindent}
-%% \deffootnote[\footnoteflmargin]{0pt}{0pt}{\thefootnotemark.\:\,}
-%\deffootnote[\footnoteflmargin]{0pt}{\footnoteflmargin}{}
-%\renewcommand{\footnote}[1]{%
-%	\footnoteorig{%
-%		\ifnum\value{footnote}<10 \phantom{0}\else\fi%
-%		\thefootnotemark.\enskip%
-%		#1%
-%	}%
-%}
-% <==
 \let \thefootnoteorig \thefootnote
 \DefineFNsymbols*{star}{%
 	{$\mathrm{\star}$}{$\mathrm{\star\star}$}{$\mathrm{\ddagger}$}%
@@ -447,10 +430,6 @@
 % Adjust the minimum distance between a float (figure, table) and the body text:
 \setlength{\textfloatsep}{1.5\newbaselineskip plus 0.5\newbaselineskip minus 0.0pt}
 % originally, \textfloatsep: 20.0pt plus 2.0pt minus 4.0pt
-
-\usepackage{verbatim}
-
-%\usepackage{setspace}
 
 %\DeclareCaptionLabelFormat{REStudTable}{\MakeUppercase{\tablename}~#2}
 %\DeclareCaptionTextFormat{REStudTableT}{\textit{#1}}

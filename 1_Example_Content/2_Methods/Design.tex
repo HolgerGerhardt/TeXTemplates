@@ -44,13 +44,13 @@ Similarly, in a~paper, the list of references should include \caps{URL}s or \cap
 \end{verbatim}
 \end{quote}
 
-Using BibLaTeX requires using the program \verb|biber| instead of \verb|bibtex| for compiling the bibliography. When using the Overleaf online service, using \verb|biber| instead of \verb|bibtex| is as simple as it gets: Overleaf automatically chooses \verb|biber| to compile the bibliography when it encounters BibLaTeX's \verb|backend = biber| option.\footnote{This applies to the commercial version (\url{https://www.overleaf.com}) as well as to free versions \url{https://overleaf-students.astro.uni-bonn.de/} and \url{https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch}.} And when using the TeXstudio editor (\url{https://texstudio.org}), an easy way to make this happen is to include the ``magic comment''
+Using BibLaTeX requires using the program \verb|biber| instead of \verb|bibtex| for compiling the bibliography. When using the Overleaf online service, using \verb|biber| instead of \verb|bibtex| is as simple as it gets: Overleaf automatically chooses \verb|biber| to compile the bibliography when it encounters BibLaTeX's \verb|backend = biber| option.\footnote{This applies to the commercial version (\url{https://www.overleaf.com}) as well as to the free versions \url{https://overleaf-students.astro.uni-bonn.de/} and \url{https://uni-bonn.sciebo.de/apps/overleaf_nextcloud/launcher/launch}.} And when using the TeXstudio editor (\url{https://texstudio.org}), an easy way to make this happen is to include the ``magic comment''
 \begin{quote}
 	\verb|% !BIB program = biber|
 \end{quote}
 at the beginning of the \textit{.tex} file.
 
-\subsection{Using the \mbox{\textit{tabularray}} Package (Rather Than \mbox{\textit{tabularx}}\slash \mbox{\textit{tabulary}}\slash \mbox{\textit{tabu}}, \mbox{\textit{booktabs}}, \mbox{\textit{longtable}}, \mbox{\textit{xltabular}}, \mbox{\textit{multirow}}, \mbox{\textit{makecell}}, \mbox{\textit{colortbl}}, \mbox{\textit{parnotes}}, \mbox{\textit{threeparttable}}, \textellipsis\!)}
+\subsection{Using the \mbox{\textit{tabularray}} Package (Rather Than \mbox{\textit{tabularx}}\slash \mbox{\textit{tabulary}}\slash \mbox{\textit{tabu}}, \mbox{\textit{booktabs}}, \mbox{\textit{longtable}}, \mbox{\textit{xltabular}}, \mbox{\textit{multirow}}, \mbox{\textit{makecell}}, \mbox{\textit{colortbl}}, \mbox{\textit{parnotes}}, \mbox{\textit{threeparttable}}, \textellipsis)}
 
 The principle of separating the content from its formatting as much as possible can also be applied to tables. The \mbox{\textit{tabularray}} package (\url{https://ctan.org/pkg/tabularray}) allows you to do just that. \mbox{\textit{tabularray}} has been around since May 2021, so it is relatively new---but it has already matured into a~package that is extremely useful. \mbox{\textit{tabularray}} replaces (or loads) all the other table-related LaTeX packages that you may have used so far---like \mbox{\textit{tabularx}}\slash\mbox{\textit{tabulary}}\slash\mbox{\textit{tabu}}, \mbox{\textit{longtable}}, \mbox{\textit{xltabular}}, \mbox{\textit{multirow}}, \mbox{\textit{makecell}}, \mbox{\textit{booktabs}}, \mbox{\textit{colortbl}}, \mbox{\textit{parnotes}}, \mbox{\textit{threeparttable}}, \textellipsis
 
@@ -150,7 +150,6 @@ An example of the ``funnel'' technique can be found in \autoref{fig:sigfridsson:
 		The full text of the article by \citet{sigfridsson} is available at \url{https://lucris.lub.lu.se/ws/portalfiles/portal/135489685/25_charges.pdf}.
 	\end{figurenotes}
 \end{figure}
-
 
 \begin{figure}[p]
 	\begin{tblr}{}
@@ -283,8 +282,10 @@ The Wilfrid Laurier University (Canada) suggests a~different mnemonic: ``\caps{M
 \end{enumerate}
 
 The first three components are largely identical according to these approaches. A~difference exists in the meaning of ``L'': While ``\caps{PEEL}'' stresses the link to the \emph{next} step in the chain of thought, ``\caps{MEAL}'' stresses underscoring the message of the \emph{current} paragraph. That is, the latter advocates \emph{closure}: summarizing the paragraph and linking \emph{back} to the topic sentence.
+\pagebreak
 
-Yet slightly different is the approach put forth by Academic Writing \caps{UK}:\footnote{See \url{https://academic-englishuk.com/paragraphing/}.}
+\Needspace*{3\baselineskip}
+Yet slightly different is the approach put forth by Academic Writing \caps{UK}:\footnote{See \url{https://academic-englishuk.com/paragraphing/}.}\par\nopagebreak
 \begin{enumerate}
 	\item Topic sentence---key topic in this paragraph.
 	\item Development---the main idea\slash topic discussed in more detail.
@@ -296,7 +297,7 @@ It is perfectly fine to mix the different approaches. For some paragraphs, a~clo
 
 One thing that \emph{all} these suggestions have in common is, however, that they start with a~\emph{topic sentence} and end with a~\emph{concluding\slash connecting sentence}. Hence, no matter how you fill the supporting sentences, it is probably best to start a~paragraph with a~topic sentence and end with a~concluding\slash connecting sentence.
 
-Let us illustrate the ``\caps{MEAL}''\slash``\caps{PEEL}'' structure, with an optional explanation\slash def\-i\-ni\-tion included, through some example sentences from \citet{sigfridsson}:
+Let us illustrate the ``\caps{MEAL}''\slash``\caps{PEEL}'' structure---including an optional explanation or definition---using example sentences from \citet{sigfridsson}:
 
 \begingroup
 	\microtypesetup{protrusion = false}%
@@ -378,7 +379,7 @@ In this section, we first present the design of the experiment (\ref{sec:design}
 Let's test the euro symbol: \texteuro, \euro 1,234.56, $\euro 1{,}234.56$. Let's also test text superscripts: $i$\textsuperscript{th} and text subscripts: CO\textsubscript{2} and H\textsubscript{2}O.
 $\sigma_\epsilon, c^\alpha$.
 \blindtext
-Let's test the footnote settings.\footnote{\blindmathfalse\blindtext\blindmathtrue}
+Let's test the footnote settings.\footnote{\blindmathfalse\unskip\blindtext\blindmathtrue}
 
 \begin{figure}[t]
 	\includegraphics[width=\textwidth]{../Images/Screenshots/BS_inc_conc_half.png} \\[\medskipamount]

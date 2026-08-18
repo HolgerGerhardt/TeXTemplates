@@ -123,6 +123,38 @@
 
 \newcommand{\currentchapter}{ChIntro}
 
+% Redefine the referencing commands to be chapter-specific in order to
+% avoid erroneous cross-references from one chapter to another ==>
+\makeatletter
+\renewcommand{\label}[1]{\labelorig{\currentchapter:#1}}
+% Based on https://tex.stackexchange.com/a/135995:
+\renewcommand{\label@in@display}[1]{\label@in@display@orig{\currentchapter:#1}}
+\makeatother
+\renewcommand{\ref}[1]{\reforig{\currentchapter:#1}}
+\renewcommand{\eqref}[1]{(\ref{#1})}
+\renewcommand{\autoref}[1]{\autoreforig{\currentchapter:#1}}
+\renewcommand{\hyperref}[2][]{\hyperreforig[\currentchapter:#1]{#2}}
+\renewcommand{\pageref}[1]{\pagereforig{\currentchapter:#1}}
+% Extend \renewcommand{\label}{...} to figure environment
+\let \origfigure \figure
+\let \origendfigure \endfigure
+\renewenvironment{figure}[1][]{%
+	\origfigure[#1]%
+	\renewcommand{\label}[1]{%
+		\labelorig{\currentchapter:##1}%
+	}%
+}{\origendfigure}
+% Extend \renewcommand{\label}{...} to table environment
+\let \origtable \table
+\let \origendtable \endtable
+\renewenvironment{table}[1][]{%
+	\origtable[#1]%
+	\renewcommand{\label}[1]{%
+		\labelorig{\currentchapter:##1}%
+	}%
+}{\origendtable}
+% <==
+
 \begin{refsection}
 
 \chapter*{Introduction}
@@ -150,38 +182,6 @@
 
 
 \renewcommand{\currentchapter}{Ch1}
-
-% Redefine the referencing commands to be chapter-specific in order to
-% avoid erroneous cross-references from one chapter to another ==>
-\makeatletter
-\renewcommand{\label}[1]{\labelorig{\currentchapter:#1}}
-% Based on https://tex.stackexchange.com/a/135995:
-\renewcommand{\label@in@display}[1]{\label@in@display@orig{\currentchapter:#1}}
-\makeatother
-\renewcommand{\ref}[1]{\reforig{\currentchapter:#1}}
-\renewcommand{\eqref}[1]{(\ref{#1})}
-\renewcommand{\autoref}[1]{\autoreforig{\currentchapter:#1}}
-\renewcommand{\hyperref}[2][]{\hyperreforig[\currentchapter:#1]{#2}}
-\renewcommand{\pageref}[1]{\pagereforig{\currentchapter:#1}}
-% <==
-% Extend \renewcommand{\label}{...} to figure environment
-\let \origfigure \figure
-\let \origendfigure \endfigure
-\renewenvironment{figure}[1][]{%
-	\origfigure[#1]%
-	\renewcommand{\label}[1]{%
-		\labelorig{\currentchapter:##1}%
-	}%
-}{\origendfigure}
-% Extend \renewcommand{\label}{...} to table environment
-\let \origtable \table
-\let \origendtable \endtable
-\renewenvironment{table}[1][]{%
-	\origtable[#1]%
-	\renewcommand{\label}[1]{%
-		\labelorig{\currentchapter:##1}%
-	}%
-}{\origendtable}
 
 \begin{refsection}
 
